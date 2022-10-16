@@ -23,8 +23,10 @@ contract Election {
     }
 
     struct Result {
-        uint256 candidateId;
-        Candidate candidate;
+        // uint256 candidateId;
+        // Candidate candidate;
+        string name;
+        uint256 voteCount;
     }
 
     mapping(address => Voter) public voters;
@@ -111,15 +113,30 @@ contract Election {
         emit VotedEvent(msg.sender, candidateId);
     }
 
-    function results() public view returns (Result memory) {
-        uint[2] memory resultsAr = [0, candidates[0].voteCount];
-        for (uint i = 1; i < candidates.length; i++) {
-            if (candidates[i].voteCount > resultsAr[1]) {
-                resultsAr[0] = i;
-                resultsAr[1] = candidates[i].voteCount;
+    function results() public view returns (Result[] memory results) {
+        // uint[2] memory resultsAr = [0, candidates[0].voteCount];
+        // for (uint i = 1; i < candidates.length; i++) {
+        //     if (candidates[i].voteCount > resultsAr[1]) {
+        //         resultsAr[0] = i;   //indice del candidato ganador
+        //         resultsAr[1] = candidates[i].voteCount; //votos del candidato ganador
+        //     }
+        // }
+        // Result memory result = Result(resultsAr[0], candidates[resultsAr[0]]);
+        // return result;
+        Result [] memory results = new Result[](candidates.length);
+        for (uint i = 0; i < candidates.length; i++) {
+            results[i] = Result(candidates[i].name, candidates[i].voteCount);
+        }
+        return results;
+    }
+
+    function getWinner() public view returns (Result memory) {
+        uint256 winnerIndex = 0;
+        for (uint256 i = 1; i < candidates.length; i++) {
+            if (candidates[i].voteCount > candidates[winnerIndex].voteCount) {
+                winnerIndex = i;
             }
         }
-        Result memory result = Result(resultsAr[0], candidates[resultsAr[0]]);
-        return result;
+        return Result(candidates[winnerIndex].name, candidates[winnerIndex].voteCount);
     }
 }
