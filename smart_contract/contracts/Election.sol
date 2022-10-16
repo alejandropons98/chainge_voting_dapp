@@ -113,22 +113,13 @@ contract Election {
         emit VotedEvent(msg.sender, candidateId);
     }
 
-    function results() public view returns (Result[] memory results) {
-        // uint[2] memory resultsAr = [0, candidates[0].voteCount];
-        // for (uint i = 1; i < candidates.length; i++) {
-        //     if (candidates[i].voteCount > resultsAr[1]) {
-        //         resultsAr[0] = i;   //indice del candidato ganador
-        //         resultsAr[1] = candidates[i].voteCount; //votos del candidato ganador
-        //     }
-        // }
-        // Result memory result = Result(resultsAr[0], candidates[resultsAr[0]]);
-        // return result;
-        Result [] memory results = new Result[](candidates.length);
-        for (uint i = 0; i < candidates.length; i++) {
-            results[i] = Result(candidates[i].name, candidates[i].voteCount);
-        }
-        return results;
-    }
+    // function results() public view returns (Result[] memory) {
+    //     Result[] memory results = new Result[](candidates.length);
+    //     for (uint i = 0; i < candidates.length; i++) {
+    //         results[i] = Result(candidates[i].name, candidates[i].voteCount);
+    //     }
+    //     return results;
+    // }
 
     function getWinner() public view returns (Result memory) {
         uint256 winnerIndex = 0;
