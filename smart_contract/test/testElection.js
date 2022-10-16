@@ -27,4 +27,42 @@ contract("Election", (accounts) => {
         assert.equal(candidate[3], 1, "increments the candidate's vote count");
     });
 
+    it("throws an exception for invalid candidates", async () => {
+        const election = await Election.deployed();
+        try {
+            await election.vote(99, { from: accounts[1] });
+            assert.fail();
+        } catch (error) {
+            assert(error.message.indexOf("revert") >= 0, "error message must contain revert");
+        }
+    });
+
+    it("throws an exception for double voting", async () => {
+        const election = await Election.deployed();
+        await election.registerCandidate("Candidate 3", "Los Cooles", "Liberales", { from: accounts[0] });
+        try {
+            await election.vote(0, { from: accounts[1] });
+            await election.vote(0, { from: accounts[1] });
+            assert.fail();
+        } catch (error) {
+            assert(error.message.indexOf("revert") >= 0, "error message must contain revert");
+        }
+    });
+
+    it("shows results", async () => {
+        const election = await Election.deployed();
+        await election.registerCandidate("Candidate 4", "Los Cooles", "Liberales", { from: accounts[0] });
+        await election.registerCandidate("Candidate 5", "Los Cooles", "Liberales", { from: accounts[0] });
+        await election.registerCandidate("Candidate 6", "Los Cooles", "Liberales", { from: accounts[0] });
+        await election.registerVoter(accounts[3], { from: accounts[0] });
+        await election.registerVoter(accounts[4], { from: accounts[0] });
+        await election.registerVoter(accounts[5], { from: accounts[0] });
+        await election.vote(3, { from: accounts[3] });
+        await election.vote(3, { from: accounts[4] });
+        await election.vote(4, { from: accounts[5] });
+        const results = await election.results();
+        assert.equal(results.candidateId, 3, "contains the correct candidate id");
+        assert.equal(results.candidate.voteCount, 2, "contains the correct vote count");
+    });
+
 });

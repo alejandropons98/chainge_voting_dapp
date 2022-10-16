@@ -1,4 +1,5 @@
 pragma solidity ^0.8.0;
+// SPDX-License-Identifier: UNLICENSED
 
 contract Election {
     // Election details
@@ -19,6 +20,11 @@ contract Election {
         bool isRegistered;
         bool hasVoted;
         uint256 votedCandidateId;
+    }
+
+    struct Result {
+        uint256 candidateId;
+        Candidate candidate;
     }
 
     mapping(address => Voter) public voters;
@@ -103,5 +109,17 @@ contract Election {
         candidates[candidateId].voteCount += 1;
 
         emit VotedEvent(msg.sender, candidateId);
+    }
+
+    function results() public view returns (Result memory) {
+        uint[2] memory resultsAr = [0, candidates[0].voteCount];
+        for (uint i = 1; i < candidates.length; i++) {
+            if (candidates[i].voteCount > resultsAr[1]) {
+                resultsAr[0] = i;
+                resultsAr[1] = candidates[i].voteCount;
+            }
+        }
+        Result memory result = Result(resultsAr[0], candidates[resultsAr[0]]);
+        return result;
     }
 }
