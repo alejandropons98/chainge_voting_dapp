@@ -79,5 +79,52 @@ contract("Election", (accounts) => {
         assert.equal(winner[0], "Candidate 8", "contains the correct name");
     });
 
+    it("gets percentage of votes", async () => {
+        await electionInstance.registerCandidate("Candidate 7", "Los Cooles", "Liberales", { from: accounts[0] });
+        await electionInstance.registerCandidate("Candidate 8", "Los Cooles", "Liberales", { from: accounts[0] });
+        await electionInstance.registerCandidate("Candidate 9", "Los Cooles", "Liberales", { from: accounts[0] });
+        await electionInstance.registerVoter(accounts[6], { from: accounts[0] });
+        await electionInstance.registerVoter(accounts[7], { from: accounts[0] });
+        await electionInstance.registerVoter(accounts[8], { from: accounts[0] });
+        await electionInstance.vote(1, { from: accounts[6] });
+        await electionInstance.vote(1, { from: accounts[7] });
+        await electionInstance.vote(2, { from: accounts[8] });
+        const percentage = await electionInstance.getPercentage();
+        assert.equal(percentage[0], 0, "contains the correct percentage");
+        assert.equal(percentage[1], 66, "contains the correct percentage");
+        assert.equal(percentage[2], 33, "contains the correct percentage");
+    });
+
+    it("gets candidate by id", async () => {
+        await electionInstance.registerCandidate("Candidate 10", "Los Cooles", "Liberales", { from: accounts[0] });
+        const candidate = await electionInstance.getCandidateById(0);
+        assert.equal(candidate[0], "Candidate 10", "contains the correct name");
+    });
+
+    it("gets candidate by name", async () => {
+        await electionInstance.registerCandidate("Candidate 11", "Los Cooles", "Liberales", { from: accounts[0] });
+        const candidate = await electionInstance.getCandidateByName("Candidate 11");
+        assert.equal(candidate[0], "Candidate 11", "contains the correct name");
+    });
+
+    it("gets total votes", async () => {
+        await electionInstance.registerCandidate("Candidate 12", "Los Cooles", "Liberales", { from: accounts[0] });
+        await electionInstance.registerCandidate("Candidate 13", "Los Cooles", "Liberales", { from: accounts[0] });
+        await electionInstance.registerCandidate("Candidate 14", "Los Cooles", "Liberales", { from: accounts[0] });
+        await electionInstance.registerVoter(accounts[6], { from: accounts[0] });
+        await electionInstance.registerVoter(accounts[7], { from: accounts[0] });
+        await electionInstance.registerVoter(accounts[8], { from: accounts[0] });
+        await electionInstance.vote(1, { from: accounts[6] });
+        await electionInstance.vote(1, { from: accounts[7] });
+        await electionInstance.vote(2, { from: accounts[8] });
+        let totalVotes = await electionInstance.getTotalVotes();
+        assert.equal(totalVotes, 3, "contains the correct total votes");
+        await electionInstance.registerVoter(accounts[5], { from: accounts[0] });
+        await electionInstance.vote(2, { from: accounts[5] });
+        totalVotes = await electionInstance.getTotalVotes();
+        assert.equal(totalVotes, 4, "contains the correct total votes");
+
+    });
+
 
 });

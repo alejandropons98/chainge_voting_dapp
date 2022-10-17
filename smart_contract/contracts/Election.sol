@@ -14,7 +14,14 @@ contract Election {
         string party;
         string degree;
         uint256 voteCount;
+        uint id;
     }
+
+    // struct Party {
+    //     string name;
+    //     uint256 voteCount;
+    //     uint id;
+    // }
 
     struct Voter {
         bool isRegistered;
@@ -93,7 +100,7 @@ contract Election {
 
     function registerCandidate(string memory _name, string memory _party, string memory _degree) public onlyOwner {
         candidates.push(
-            Candidate({name: _name, party: _party, degree: _degree, voteCount: 0})
+            Candidate({name: _name, party: _party, degree: _degree, voteCount: 0, id: candidates.length})
         );
 
         emit CandidateRegisteredEvent(candidates.length - 1);
@@ -113,12 +120,53 @@ contract Election {
         emit VotedEvent(msg.sender, candidateId);
     }
 
-    // function results() public view returns (Result[] memory) {
-    //     Result[] memory results = new Result[](candidates.length);
+    function getCandidateById(uint256 candidateId)
+        public
+        view
+        returns (
+            string memory name,
+            string memory party,
+            string memory degree,
+            uint256 voteCount
+        )
+    {
+        for (uint i = 0; i < candidates.length; i++) {
+            if (candidates[i].id == candidateId) {
+                return (candidates[i].name, candidates[i].party, candidates[i].degree, candidates[i].voteCount);
+            }
+        }
+    }
+
+    function getCandidateByName(string memory Sname)
+        public
+        view
+        returns (
+            string memory name,
+            string memory party,
+            string memory degree,
+            uint256 voteCount
+        )
+    {
+        for (uint i = 0; i < candidates.length; i++) {
+            if (keccak256(abi.encodePacked(candidates[i].name)) == keccak256(abi.encodePacked(Sname))) {
+                return (candidates[i].name, candidates[i].party, candidates[i].degree, candidates[i].voteCount);
+            }
+        }
+    }
+    
+    // function getCandidatesByParty(string memory Sparty)
+    //     public
+    //     view
+    //     returns (
+    //         uint[] memory partyIds
+    //     )
+    // {
     //     for (uint i = 0; i < candidates.length; i++) {
-    //         results[i] = Result(candidates[i].name, candidates[i].voteCount);
+    //         if (keccak256(abi.encodePacked(candidates[i].party)) == keccak256(abi.encodePacked(Sparty))) {
+    //             partyIds.push(candidates[i].id);
+    //         }
     //     }
-    //     return results;
+    //     return partyIds;
     // }
 
     function getWinner() public view returns (Result memory) {
@@ -129,5 +177,22 @@ contract Election {
             }
         }
         return Result(candidates[winnerIndex].name, candidates[winnerIndex].voteCount);
+    }
+
+    function getTotalVotes() public view returns (uint256) {
+        uint256 totalVotes = 0;
+        for (uint256 i = 0; i < candidates.length; i++) {
+            totalVotes += candidates[i].voteCount;
+        }
+        return totalVotes;
+    }
+
+    function getPercentage() public view returns (uint256[] memory) {
+        uint256 totalVotes = getTotalVotes();
+        uint256[] memory percentage = new uint256[](candidates.length);
+        for (uint256 i = 0; i < candidates.length; i++) {
+            percentage[i] = ((candidates[i].voteCount * 100) / totalVotes);
+        }
+        return percentage;
     }
 }
