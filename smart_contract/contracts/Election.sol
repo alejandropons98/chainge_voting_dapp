@@ -153,6 +153,14 @@ contract Election {
             }
         }
     }
+
+    function getAllCandidates()
+        public
+        view
+        returns (Candidate[] memory)
+    {
+        return candidates;
+    }
     
     // function getCandidatesByParty(string memory Sparty)
     //     public
