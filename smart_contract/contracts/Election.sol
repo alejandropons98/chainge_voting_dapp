@@ -96,6 +96,8 @@ contract Election {
         voters[_voterAddress].isRegistered = true;
         voters[_voterAddress].hasVoted = false;
         voters[_voterAddress].votedCandidateId = 0;
+
+        emit VoterRegisteredEvent(_voterAddress);
     }
 
     function registerCandidate(string memory _name, string memory _party, string memory _degree) public onlyOwner {
