@@ -1,9 +1,18 @@
-import { useState } from 'react'
-import reactLogo from './assets/react.svg'
-import './App.css'
+import { useState, useEffect } from 'react';
+import reactLogo from './assets/react.svg';
+import './App.css';
+import { load } from './funcs.js';
 
 function App() {
   const [count, setCount] = useState(0)
+  const [refresh, setRefresh] = useState(true)
+
+  useEffect(() => {
+    if(!refresh) return;
+    setRefresh(false);
+    load();
+  });
+
 
   return (
     <div className="App">
