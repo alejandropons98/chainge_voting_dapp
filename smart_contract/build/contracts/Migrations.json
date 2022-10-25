@@ -744,7 +744,7 @@
   "sourceMap": "25:483:1:-:0;;;180:50;;;;;;;;;-1:-1:-1;207:5:1;:18;;-1:-1:-1;;;;;;207:18:1;215:10;207:18;;;25:483;;;;;;",
   "deployedSourceMap": "25:483:1:-:0;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;341:165;;;;;;:::i;:::-;;:::i;:::-;;73:39;;;;;;;;;451:25:2;;;439:2;424:18;73:39:1;;;;;;;;49:20;;;;;-1:-1:-1;;;;;49:20:1;;;;;;-1:-1:-1;;;;;651:32:2;;;633:51;;621:2;606:18;49:20:1;487:203:2;234:103:1;;;;;;:::i;:::-;;:::i;341:165::-;163:5;;-1:-1:-1;;;;;163:5:1;149:10;:19;145:26;;476:24:::1;::::0;454:47:::1;::::0;-1:-1:-1;;;454:47:1;;436:11;;-1:-1:-1;;;;;454:21:1;::::1;::::0;::::1;::::0;:47:::1;::::0;::::1;;451:25:2::0;;;439:2;424:18;;305:177;454:47:1::1;;;;;;;;;;;;;;;;;;::::0;::::1;;;;;;;;;;;;::::0;::::1;;;;;;;;;397:109;145:26:::0;341:165;:::o;234:103::-;163:5;;-1:-1:-1;;;;;163:5:1;149:10;:19;145:26;;296:24:::1;:36:::0;234:103::o;14:286:2:-;73:6;126:2;114:9;105:7;101:23;97:32;94:52;;;142:1;139;132:12;94:52;168:23;;-1:-1:-1;;;;;220:31:2;;210:42;;200:70;;266:1;263;256:12;200:70;289:5;14:286;-1:-1:-1;;;14:286:2:o;695:180::-;754:6;807:2;795:9;786:7;782:23;778:32;775:52;;;823:1;820;813:12;775:52;-1:-1:-1;846:23:2;;695:180;-1:-1:-1;695:180:2:o",
   "source": "pragma solidity ^0.8.0;\n\ncontract Migrations {\n  address public owner;\n  uint256 public last_completed_migration;\n\n  modifier restricted() {\n    if (msg.sender == owner) _;\n  }\n\n  constructor() public {\n    owner = msg.sender;\n  }\n\n  function setCompleted(uint completed) public restricted {\n    last_completed_migration = completed;\n  }\n\n  function upgrade(address new_address) public restricted {\n    Migrations upgraded = Migrations(new_address);\n    upgraded.setCompleted(last_completed_migration);\n  }\n}\n",
-  "sourcePath": "D:\\Windows Folders\\Documents\\Uni\\Software\\voting-dapp\\smart_contract\\contracts\\Migrations.sol",
+  "sourcePath": "/Users/abert/Desktop/chainge_voting_dapp/smart_contract/contracts/Migrations.sol",
   "ast": {
     "absolutePath": "project:/contracts/Migrations.sol",
     "exportedSymbols": {
@@ -1402,12 +1402,12 @@
     "5777": {
       "events": {},
       "links": {},
-      "address": "0x4EEDcb95cC75A6d0231eB5ae28BC588ADF964bD3",
-      "transactionHash": "0xb0402b0ee6ea739febd673048c746ebbcf271cbfe1e5c7e1c3b32c874d8bd364"
+      "address": "0xC9c5fCdba2129dc19755bFC1B78963c74a704EAA",
+      "transactionHash": "0x5ed2c44a4fc791deeed5a4c9a14816119b2fc6834d4a173339eb4828fcdebf2a"
     }
   },
   "schemaVersion": "3.4.10",
-  "updatedAt": "2022-10-25T15:57:58.639Z",
+  "updatedAt": "2022-10-25T17:08:23.354Z",
   "networkType": "ethereum",
   "devdoc": {
     "kind": "dev",
