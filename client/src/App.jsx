@@ -1,7 +1,7 @@
 import { useState, useEffect } from 'react';
 import reactLogo from './assets/react.svg';
 import './App.css';
-import { load, getVoters } from './funcs.js';
+import { load, getVoters, registerCandidate } from './funcs.js';
 import NavBar from './components/NavBar';
 import CandidateCardGrid from './components/CandidateCardGrid';
 
@@ -48,13 +48,34 @@ function App() {
     setRefresh(false)
     load()
     .then(e => {
-      setCandidates(previousCandidates => previousCandidates.concat(e))
+      setCandidates(e)
     })
-  }, [candidates])
+  }, [candidates, refresh])
 
+  const HandleSubmit = (e) => {
+    e.preventDefault()
+    const name = e.target[0].value
+    const party = e.target[1].value
+    const degree = e.target[2].value
+    registerCandidate(name, degree, party)
+    setRefresh(true)
+  }
 
   return (
     <><NavBar />
+    <div>Registra tu Candidato</div>
+    <form onSubmit={HandleSubmit}> 
+      <label>Nomber: 
+        <input type="text" />
+      </label>
+      <label>Partido: 
+        <input type="text" />
+      </label>
+      <label>Indice: 
+        <input type="text" />
+      </label>
+      <button>Registrar</button>
+    </form>
     {candidates.length > 0 ? <CandidateCardGrid candidates={candidates}/> : <div><h1>No hay candidatos</h1></div>}
     <div className="App">
     </div></>
