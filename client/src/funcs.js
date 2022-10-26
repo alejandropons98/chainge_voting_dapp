@@ -2,15 +2,16 @@ import Web3 from 'web3';
 import { ElectionContract } from './abi/abi';
 
 const web3 = new Web3(Web3.givenProvider);
-const contractAddress = '0x2F4300728113951C144087F31bd97634621D8b57';
+const contractAddress = '0x79125ad13c7b4e94681d556A765b3Ca53d686Fad';
 const electionContract = new web3.eth.Contract(ElectionContract, contractAddress);
 
 
 export const load = async () => {
     await loadWeb3();
-    // await registerVoter('0xF12573D875A7Fa6f055fd73fc52617B7C25a6D7C');
-    // await registerCandidate('Alejandro', 'Partido de la U', 'Ingeniero');
-    // await registerCandidate('Robert', 'Partido de la U', 'Ingeniero');
+    // await registerVoter('0xD38bC30FbD81ea121a48Aad4cFD32049a52975eA');
+    await registerCandidate('Alejandro', 'Partido de la U', 'Ingeniero');
+    await registerCandidate('Robert', 'Partido de la U', 'Ingeniero');
+    await registerCandidate('Rubin', 'Partido de la A', 'Ingenierou');
     const candidates = await getCandidates();
     return candidates;
     // console.log(candidates);
@@ -45,7 +46,8 @@ export const vote = async(id) => {
 //Necesitamos poder jalar el numero de candidatos del contrato
 export const getCandidates = async() => {
     var candidates = [];
-    for (let i = 0; i < 2; i++) {
+    console.log(electionContract.methods)
+    for (let i = 0; i <= 2; i++) {
         await electionContract.methods.getCandidateById(i).call().then(
             function(info){
                 candidates.push(info);
@@ -67,7 +69,7 @@ export const getCandidates = async() => {
 // };
 
 function registerVoter(address){
-    electionContract.methods.registerVoter(address).send({from: '0xF12573D875A7Fa6f055fd73fc52617B7C25a6D7C'}).then(
+    electionContract.methods.registerVoter(address).send({from: '0xD38bC30FbD81ea121a48Aad4cFD32049a52975eA'}).then(
         function(info){
             console.log(info);
             return info;
@@ -76,7 +78,7 @@ function registerVoter(address){
 };
 
 const registerCandidate = async(name, party, degree) => {
-    await electionContract.methods.registerCandidate(name, party, degree).send({from: '0xF12573D875A7Fa6f055fd73fc52617B7C25a6D7C'}).then(
+    await electionContract.methods.registerCandidate(name, party, degree).send({from: '0xD38bC30FbD81ea121a48Aad4cFD32049a52975eA'}).then(
         e => console.log(e)
     )
 }

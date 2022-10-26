@@ -44,18 +44,13 @@ function App() {
   const [candidateName, setCandidateName] = useState('')
 
   useEffect(() => {
-    if(!refresh) return;
-    setRefresh(false);
+    if(!refresh) return
+    setRefresh(false)
     load()
     .then(e => {
-      for (let i = 0; i < e.length; i++) {
-        candidates.push(e[i]);
-      }
-      setCandidates(candidates);
-      console.log(candidates);
-
-    });
-  }, [candidates]);
+      setCandidates(previousCandidates => previousCandidates.concat(e))
+    })
+  }, [candidates])
 
 
   return (

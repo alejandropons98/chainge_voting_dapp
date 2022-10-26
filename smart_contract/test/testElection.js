@@ -107,6 +107,16 @@ contract("Election", (accounts) => {
         assert.equal(candidate[0], "Candidate 11", "contains the correct name");
     });
 
+    it("gets all candidates", async () => {
+        await electionInstance.registerCandidate("Candidate 12", "Los Cooles", "Liberales", { from: accounts[0] });
+        await electionInstance.registerCandidate("Candidate 13", "Los Cooles", "Liberales", { from: accounts[0] });
+        await electionInstance.registerCandidate("Candidate 14", "Los Cooles", "Liberales", { from: accounts[0] });
+        const candidates = await electionInstance.getAllCandidates();
+        assert.equal(candidates[0][0], "Candidate 12", "contains the correct name");
+        assert.equal(candidates[1][0], "Candidate 13", "contains the correct name");
+        assert.equal(candidates[2][0], "Candidate 14", "contains the correct name");
+    });
+    
     it("gets total votes", async () => {
         await electionInstance.registerCandidate("Candidate 12", "Los Cooles", "Liberales", { from: accounts[0] });
         await electionInstance.registerCandidate("Candidate 13", "Los Cooles", "Liberales", { from: accounts[0] });
