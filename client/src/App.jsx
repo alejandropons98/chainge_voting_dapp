@@ -1,7 +1,7 @@
 import { useState, useEffect } from 'react';
 import reactLogo from './assets/react.svg';
 import './App.css';
-import { load, getVoters, registerCandidate } from './funcs.js';
+import { load, getVoters, registerCandidate, getCandidates } from './funcs.js';
 import NavBar from './components/NavBar';
 import CandidateCardGrid from './components/CandidateCardGrid';
 
@@ -52,12 +52,14 @@ function App() {
     })
   }, [candidates, refresh])
 
-  const HandleSubmit = (e) => {
+  const HandleSubmit = async (e) => {
     e.preventDefault()
     const name = e.target[0].value
     const party = e.target[1].value
     const degree = e.target[2].value
-    registerCandidate(name, degree, party)
+    await registerCandidate(name, degree, party)
+    const info = await getCandidates()
+    setCandidates(info)
     setRefresh(true)
   }
 

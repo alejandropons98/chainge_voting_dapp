@@ -45,17 +45,7 @@ export const vote = async(id) => {
 
 //Necesitamos poder jalar el numero de candidatos del contrato
 export const getCandidates = async() => {
-    var candidates = [];
-    console.log(electionContract.methods.getAllCandidates().arguments)
-    for (let i = 0; i <= 10; i++) {
-        await electionContract.methods.getCandidateById(i).call().then(
-            function(info){
-                candidates.push(info);
-                // console.log(info);
-            }
-        );
-    }
-    console.log(candidates)
+    var candidates = await electionContract.methods.getAllCandidates().call();
     return candidates;
 }
 
