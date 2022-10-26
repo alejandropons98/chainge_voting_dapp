@@ -26,6 +26,7 @@ contract Election {
     struct Voter {
         bool isRegistered;
         bool hasVoted;
+        string voterID;
         uint256 votedCandidateId;
     }
 
@@ -39,6 +40,7 @@ contract Election {
     mapping(address => Voter) public voters;
     Candidate[] public candidates;
     WorkflowStatus public workflowStatus;
+    string[] public voterRegistry;
 
     // Para llevar control de cada estado
 
@@ -87,7 +89,7 @@ contract Election {
         WorkflowStatus newStatus
     );
 
-    function registerVoter(address _voterAddress) public onlyOwner {
+    function registerVoter(string memory voterID, address _voterAddress) public onlyOwner {
         require(
             !voters[_voterAddress].isRegistered,
             "the voter is already registered"
@@ -96,6 +98,7 @@ contract Election {
         voters[_voterAddress].isRegistered = true;
         voters[_voterAddress].hasVoted = false;
         voters[_voterAddress].votedCandidateId = 0;
+        voters[_voterAddress].voterID = voterID;
 
         emit VoterRegisteredEvent(_voterAddress);
     }
@@ -118,6 +121,8 @@ contract Election {
         voters[msg.sender].votedCandidateId = candidateId;
 
         candidates[candidateId].voteCount += 1;
+// TODO: meter el votante en el registro
+        voterRegistry.push(voters[msg.sender].voterID);
 
         emit VotedEvent(msg.sender, candidateId);
     }
@@ -205,5 +210,9 @@ contract Election {
             percentage[i] = ((candidates[i].voteCount * 100) / totalVotes);
         }
         return percentage;
+    }
+
+    function getVoterRegistry() public view returns (string[] memory) {
+        return voterRegistry;
     }
 }

@@ -16,14 +16,14 @@ contract("Election", (accounts) => {
     });
 
     it("registers a voter", async () => {
-        await electionInstance.registerVoter(accounts[1], { from: accounts[0] });
+        await electionInstance.registerVoter("1234", accounts[1], { from: accounts[0] });
         const voter = await electionInstance.voters(accounts[1]);
         assert.equal(voter[1], false, "has not voted");
     });
 
     it("allows a voter to cast a vote", async () => {
         await electionInstance.registerCandidate("Candidate 2", "Los Cooles", "Liberales", { from: accounts[0] });
-        await electionInstance.registerVoter(accounts[2], { from: accounts[0] });
+        await electionInstance.registerVoter("1234", accounts[2], { from: accounts[0] });
         await electionInstance.vote(0, { from: accounts[2] });
         const candidate = await electionInstance.candidates(0);
         assert.equal(candidate[3], 1, "increments the candidate's vote count");
@@ -68,9 +68,9 @@ contract("Election", (accounts) => {
         await electionInstance.registerCandidate("Candidate 7", "Los Cooles", "Liberales", { from: accounts[0] });
         await electionInstance.registerCandidate("Candidate 8", "Los Cooles", "Liberales", { from: accounts[0] });
         await electionInstance.registerCandidate("Candidate 9", "Los Cooles", "Liberales", { from: accounts[0] });
-        await electionInstance.registerVoter(accounts[6], { from: accounts[0] });
-        await electionInstance.registerVoter(accounts[7], { from: accounts[0] });
-        await electionInstance.registerVoter(accounts[8], { from: accounts[0] });
+        await electionInstance.registerVoter("1234", accounts[6], { from: accounts[0] });
+        await electionInstance.registerVoter("2345", accounts[7], { from: accounts[0] });
+        await electionInstance.registerVoter("3456", accounts[8], { from: accounts[0] });
         await electionInstance.vote(1, { from: accounts[6] });
         await electionInstance.vote(1, { from: accounts[7] });
         await electionInstance.vote(2, { from: accounts[8] });
@@ -83,9 +83,9 @@ contract("Election", (accounts) => {
         await electionInstance.registerCandidate("Candidate 7", "Los Cooles", "Liberales", { from: accounts[0] });
         await electionInstance.registerCandidate("Candidate 8", "Los Cooles", "Liberales", { from: accounts[0] });
         await electionInstance.registerCandidate("Candidate 9", "Los Cooles", "Liberales", { from: accounts[0] });
-        await electionInstance.registerVoter(accounts[6], { from: accounts[0] });
-        await electionInstance.registerVoter(accounts[7], { from: accounts[0] });
-        await electionInstance.registerVoter(accounts[8], { from: accounts[0] });
+        await electionInstance.registerVoter("1234", accounts[6], { from: accounts[0] });
+        await electionInstance.registerVoter("2345", accounts[7], { from: accounts[0] });
+        await electionInstance.registerVoter("3456", accounts[8], { from: accounts[0] });
         await electionInstance.vote(1, { from: accounts[6] });
         await electionInstance.vote(1, { from: accounts[7] });
         await electionInstance.vote(2, { from: accounts[8] });
@@ -121,19 +121,37 @@ contract("Election", (accounts) => {
         await electionInstance.registerCandidate("Candidate 12", "Los Cooles", "Liberales", { from: accounts[0] });
         await electionInstance.registerCandidate("Candidate 13", "Los Cooles", "Liberales", { from: accounts[0] });
         await electionInstance.registerCandidate("Candidate 14", "Los Cooles", "Liberales", { from: accounts[0] });
-        await electionInstance.registerVoter(accounts[6], { from: accounts[0] });
-        await electionInstance.registerVoter(accounts[7], { from: accounts[0] });
-        await electionInstance.registerVoter(accounts[8], { from: accounts[0] });
+        await electionInstance.registerVoter("1234",accounts[6], { from: accounts[0] });
+        await electionInstance.registerVoter("2345",accounts[7], { from: accounts[0] });
+        await electionInstance.registerVoter("3456",accounts[8], { from: accounts[0] });
         await electionInstance.vote(1, { from: accounts[6] });
         await electionInstance.vote(1, { from: accounts[7] });
         await electionInstance.vote(2, { from: accounts[8] });
         let totalVotes = await electionInstance.getTotalVotes();
         assert.equal(totalVotes, 3, "contains the correct total votes");
-        await electionInstance.registerVoter(accounts[5], { from: accounts[0] });
+        await electionInstance.registerVoter("4567", accounts[5], { from: accounts[0] });
         await electionInstance.vote(2, { from: accounts[5] });
         totalVotes = await electionInstance.getTotalVotes();
         assert.equal(totalVotes, 4, "contains the correct total votes");
 
+    });
+
+    it("gets voters from registry", async () => {
+        await electionInstance.registerCandidate("Candidate 7", "Los Cooles", "Liberales", { from: accounts[0] });
+        await electionInstance.registerCandidate("Candidate 8", "Los Cooles", "Liberales", { from: accounts[0] });
+        await electionInstance.registerCandidate("Candidate 9", "Los Cooles", "Liberales", { from: accounts[0] });
+        await electionInstance.registerVoter("1234", accounts[6], { from: accounts[0] });
+        await electionInstance.registerVoter("2345", accounts[7], { from: accounts[0] });
+        await electionInstance.registerVoter("3456", accounts[8], { from: accounts[0] });
+        await electionInstance.vote(1, { from: accounts[6] });
+        await electionInstance.vote(1, { from: accounts[7] });
+        await electionInstance.vote(2, { from: accounts[8] });
+
+        const voterRegistry = await electionInstance.getVoterRegistry();
+
+        assert.equal(voterRegistry[0], "1234", "contains the correct id");
+        assert.equal(voterRegistry[1], "2345", "contains the correct address");
+        assert.equal(voterRegistry[2], "3456", "contains the correct vote");
     });
 
 
