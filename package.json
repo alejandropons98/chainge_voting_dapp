@@ -1,5 +1,6 @@
 {
   "dependencies": {
-    "@truffle/contract": "^4.6.4"
+    "@truffle/contract": "^4.6.4",
+    "react-bootstrap": "^2.5.0"
   }
 }

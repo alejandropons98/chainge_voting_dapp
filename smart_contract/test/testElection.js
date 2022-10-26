@@ -116,7 +116,11 @@ contract("Election", (accounts) => {
         assert.equal(candidates[1][0], "Candidate 13", "contains the correct name");
         assert.equal(candidates[2][0], "Candidate 14", "contains the correct name");
     });
+<<<<<<< HEAD
 
+=======
+    
+>>>>>>> origin/Rubin
     it("gets total votes", async () => {
         await electionInstance.registerCandidate("Candidate 12", "Los Cooles", "Liberales", { from: accounts[0] });
         await electionInstance.registerCandidate("Candidate 13", "Los Cooles", "Liberales", { from: accounts[0] });

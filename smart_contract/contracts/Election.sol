@@ -96,6 +96,8 @@ contract Election {
         voters[_voterAddress].isRegistered = true;
         voters[_voterAddress].hasVoted = false;
         voters[_voterAddress].votedCandidateId = 0;
+
+        emit VoterRegisteredEvent(_voterAddress);
     }
 
     function registerCandidate(string memory _name, string memory _party, string memory _degree) public onlyOwner {
@@ -127,12 +129,13 @@ contract Election {
             string memory name,
             string memory party,
             string memory degree,
-            uint256 voteCount
+            uint256 voteCount,
+            uint id
         )
     {
         for (uint i = 0; i < candidates.length; i++) {
             if (candidates[i].id == candidateId) {
-                return (candidates[i].name, candidates[i].party, candidates[i].degree, candidates[i].voteCount);
+                return (candidates[i].name, candidates[i].party, candidates[i].degree, candidates[i].voteCount, candidates[i].id);
             }
         }
     }
