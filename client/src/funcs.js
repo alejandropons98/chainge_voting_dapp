@@ -2,7 +2,7 @@ import Web3 from 'web3';
 import { ElectionContract } from './abi/abi';
 
 const web3 = new Web3(Web3.givenProvider);
-const contractAddress = '0xf829B22F26240d5324cCA9f6c67507562DA70F0B';
+const contractAddress = '0x4996f491A037a4f10E22B441722FA92d942b5d97';
 const electionContract = new web3.eth.Contract(ElectionContract, contractAddress);
 
 
@@ -46,8 +46,8 @@ export const vote = async(id) => {
 //Necesitamos poder jalar el numero de candidatos del contrato
 export const getCandidates = async() => {
     var candidates = [];
-    console.log(electionContract.methods)
-    for (let i = 0; i <= 4; i++) {
+    console.log(electionContract.methods.getAllCandidates().arguments)
+    for (let i = 0; i <= 10; i++) {
         await electionContract.methods.getCandidateById(i).call().then(
             function(info){
                 candidates.push(info);
@@ -55,6 +55,7 @@ export const getCandidates = async() => {
             }
         );
     }
+    console.log(candidates)
     return candidates;
 }
 
@@ -69,7 +70,7 @@ export const getCandidates = async() => {
 // };
 
 function registerVoter(address){
-    electionContract.methods.registerVoter(address).send({from: '0x049cFdB8062949cCa777f60915eF3dc73ce41b80'}).then(
+    electionContract.methods.registerVoter(address).send({from: '0xBAF95e827814929925e4322ADAD530A2d7426012'}).then(
         function(info){
             console.log(info);
             return info;
@@ -77,8 +78,17 @@ function registerVoter(address){
     );
 };
 
+// function voterRegistry(address){
+//     electionContract.methods.voterRegistry(address).send({from: '0xBAF95e827814929925e4322ADAD530A2d7426012'}).then(
+//         function(info){
+//             console.log(info);
+//             return info;
+//         }
+//     );
+// };
+
 export const registerCandidate = async(name, party, degree) => {
-    await electionContract.methods.registerCandidate(name, party, degree).send({from: '0x049cFdB8062949cCa777f60915eF3dc73ce41b80'}).then(
+    await electionContract.methods.registerCandidate(name, party, degree).send({from: '0xBAF95e827814929925e4322ADAD530A2d7426012'}).then(
         e => console.log(e)
     )
 }

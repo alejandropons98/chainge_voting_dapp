@@ -171,6 +171,26 @@ export const ElectionContract = [
   {
     "inputs": [
       {
+        "internalType": "uint256",
+        "name": "",
+        "type": "uint256"
+      }
+    ],
+    "name": "voterRegistry",
+    "outputs": [
+      {
+        "internalType": "string",
+        "name": "",
+        "type": "string"
+      }
+    ],
+    "stateMutability": "view",
+    "type": "function",
+    "constant": true
+  },
+  {
+    "inputs": [
+      {
         "internalType": "address",
         "name": "",
         "type": "address"
@@ -187,6 +207,11 @@ export const ElectionContract = [
         "internalType": "bool",
         "name": "hasVoted",
         "type": "bool"
+      },
+      {
+        "internalType": "string",
+        "name": "voterID",
+        "type": "string"
       },
       {
         "internalType": "uint256",
@@ -214,6 +239,11 @@ export const ElectionContract = [
   },
   {
     "inputs": [
+      {
+        "internalType": "string",
+        "name": "voterID",
+        "type": "string"
+      },
       {
         "internalType": "address",
         "name": "_voterAddress",
@@ -425,6 +455,20 @@ export const ElectionContract = [
         "internalType": "uint256[]",
         "name": "",
         "type": "uint256[]"
+      }
+    ],
+    "stateMutability": "view",
+    "type": "function",
+    "constant": true
+  },
+  {
+    "inputs": [],
+    "name": "getVoterRegistry",
+    "outputs": [
+      {
+        "internalType": "string[]",
+        "name": "",
+        "type": "string[]"
       }
     ],
     "stateMutability": "view",
