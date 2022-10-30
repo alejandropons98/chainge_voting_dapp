@@ -8,6 +8,7 @@ import CandidateCardGrid from './components/CandidateCardGrid';
 function App() {
   const [count, setCount] = useState(0)
   const [refresh, setRefresh] = useState(true)
+  const [registry, setRegistry] = useState(0)
   const [accounts, setAccounts] = useState([])
   const [voters, setVoters] = useState([])
   const [candidates, setCandidates] = useState([
@@ -60,14 +61,20 @@ function App() {
     await registerCandidate(name, degree, party)
     const info = await getCandidates()
     setCandidates(info)
+    console.log(candidates)
     setRefresh(true)
+  }
+
+  const checkRegistry = async () => {
+    // const registryNum = await voterRegistry(0)
+    // setRegistry(registryNum)
   }
 
   return (
     <><NavBar />
     <div>Registra tu Candidato</div>
     <form onSubmit={HandleSubmit}> 
-      <label>Nomber: 
+      <label>Nombre: 
         <input type="text" />
       </label>
       <label>Partido: 
@@ -78,6 +85,8 @@ function App() {
       </label>
       <button>Registrar</button>
     </form>
+    {/* <button onClick={checkRegistry}>Registro de Votos</button> */}
+      
     {candidates.length > 0 ? <CandidateCardGrid candidates={candidates}/> : <div><h1>No hay candidatos</h1></div>}
     <div className="App">
     </div></>

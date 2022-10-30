@@ -2,25 +2,35 @@ import Web3 from 'web3';
 import { ElectionContract } from './abi/abi';
 
 const web3 = new Web3(Web3.givenProvider);
-const contractAddress = '0x4996f491A037a4f10E22B441722FA92d942b5d97';
+const contractAddress = '0xF2137d8D281fB58c6288d9234f5D8184e7F8d4Da'; //Ganache Address
 const electionContract = new web3.eth.Contract(ElectionContract, contractAddress);
 
 
 export const load = async () => {
     await loadWeb3();
-    // await registerVoter('0xD38bC30FbD81ea121a48Aad4cFD32049a52975eA');
     // await registerCandidate('Alejandro', 'Partido de la U', 'Ingeniero');
     // await registerCandidate('Robert', 'Partido de la U', 'Ingeniero');
     // await registerCandidate('Rubin', 'Partido de la A', 'Ingenierou');
     const candidates = await getCandidates();
+    //Primer Address Migration y Segundo primera de Ganache o las de Ganache
+    // electionContract.methods.registerVoter("0",'0xF2137d8D281fB58c6288d9234f5D8184e7F8d4Da').send({from: '0x122a95b7504C18fd215be894F05731ADA2b676A9'}).then(
+    //     function(info){
+    //         console.log(info);
+    //     }
+    // );
+    // electionContract.methods.registerVoter("1",'0xF2137d8D281fB58c6288d9234f5D8184e7F8d4Da').send({from: '0x791736a32462DBA56489e166d45C47F7426bE574'}).then(
+    //     function(info){
+    //         console.log(info);
+    //     }
+    // );
+
     return candidates;
-    // console.log(candidates);
     
 
     // console.log(electionContract.methods);
     // electionContract.methods.workflowStatus().call().then(console.log);
     
-    // electionContract.methods.registerVoter('0x6b6f7f8af8afff1ef518215e550ac14afac7e612').send({from: '0x434Cb1e7A19f4427B6092daE622b56D252a3c92b'}).then(
+    // electionContract.methods.registerVoter('0xF2137d8D281fB58c6288d9234f5D8184e7F8d4Da').send({from: '0x122a95b7504C18fd215be894F05731ADA2b676A9'}).then(
     //     function(info){
     //         console.log(info);
     //     }
@@ -39,8 +49,13 @@ export const getVoters = async() => {
 
 export const vote = async(id) => {
     const accounts = await window.ethereum.enable();
-    const account = accounts[0];
-    await electionContract.methods.vote(id).send({from: account}).then(info => console.log(info));
+    console.log(accounts)
+    await electionContract.methods.registerVoter("0",'0x11968dBbD2703CA81f04a1D630b9D4081aA95e75').send({from: '0x791736a32462DBA56489e166d45C47F7426bE574'}).then(
+        function(info){
+            console.log(info);
+        }
+    );
+    await electionContract.methods.vote(id).send({from: accounts}).then(info => console.log(info));
 }
 
 //Necesitamos poder jalar el numero de candidatos del contrato
@@ -59,8 +74,8 @@ export const getCandidates = async() => {
 //     );
 // };
 
-function registerVoter(address){
-    electionContract.methods.registerVoter(address).send({from: '0xBAF95e827814929925e4322ADAD530A2d7426012'}).then(
+function registerVoter(id,address){
+    electionContract.methods.registerVoter(id,address).send({from: '0x122a95b7504C18fd215be894F05731ADA2b676A9'}).then(
         function(info){
             console.log(info);
             return info;
@@ -68,17 +83,15 @@ function registerVoter(address){
     );
 };
 
-// function voterRegistry(address){
-//     electionContract.methods.voterRegistry(address).send({from: '0xBAF95e827814929925e4322ADAD530A2d7426012'}).then(
-//         function(info){
-//             console.log(info);
-//             return info;
-//         }
-//     );
+// export const voterRegistry = async (name) => {
+//     var registry = await electionContract.methods.voterRegistry(name).call()
+//     console.log(registry)
+//     return registry
 // };
 
 export const registerCandidate = async(name, party, degree) => {
-    await electionContract.methods.registerCandidate(name, party, degree).send({from: '0xBAF95e827814929925e4322ADAD530A2d7426012'}).then(
+    console.log(electionContract.methods)                                               //Metamask que estes usado
+    await electionContract.methods.registerCandidate(name, party, degree).send({from: '0x791736a32462DBA56489e166d45C47F7426bE574'}).then(
         e => console.log(e)
     )
 }
