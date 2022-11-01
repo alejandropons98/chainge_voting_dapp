@@ -17,12 +17,6 @@ contract Election {
         uint id;
     }
 
-    // struct Party {
-    //     string name;
-    //     uint256 voteCount;
-    //     uint id;
-    // }
-
     struct Voter {
         bool isRegistered;
         bool hasVoted;
@@ -39,6 +33,7 @@ contract Election {
 
     mapping(address => Voter) public voters;
     Candidate[] public candidates;
+    string[] public parties;
     WorkflowStatus public workflowStatus;
     string[] public voterRegistry;
 
@@ -108,7 +103,20 @@ contract Election {
             Candidate({name: _name, party: _party, degree: _degree, voteCount: 0, id: candidates.length})
         );
 
+        if (!isPartyRegistered(_party)) {
+            parties.push(_party);
+        }
+
         emit CandidateRegisteredEvent(candidates.length - 1);
+    }
+
+    function isPartyRegistered(string memory party) public view returns (bool) {
+        for (uint i = 0; i < parties.length; i++) {
+            if (keccak256(abi.encodePacked(parties[i])) == keccak256(abi.encodePacked(party))) {
+                return true;
+            }
+        }
+        return false;
     }
 
     function vote(uint256 candidateId)

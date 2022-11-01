@@ -2,7 +2,11 @@ import Web3 from 'web3';
 import { ElectionContract } from './abi/abi';
 
 const web3 = new Web3(Web3.givenProvider);
+<<<<<<< HEAD
 const contractAddress = '0xf829B22F26240d5324cCA9f6c67507562DA70F0B';
+=======
+const contractAddress = '0x1dCdaA73556DF2F523FbdEFEd4cc4F1B4482EE52';
+>>>>>>> main
 const electionContract = new web3.eth.Contract(ElectionContract, contractAddress);
 
 
@@ -69,7 +73,11 @@ export const getCandidates = async() => {
 // };
 
 function registerVoter(address){
+<<<<<<< HEAD
     electionContract.methods.registerVoter(address).send({from: '0x049cFdB8062949cCa777f60915eF3dc73ce41b80'}).then(
+=======
+    electionContract.methods.registerVoter(address).send({from: '0x8149adDc18f8CF86F2fb53Ae83FCCbb41b3c9765'}).then(
+>>>>>>> main
         function(info){
             console.log(info);
             return info;
@@ -78,7 +86,11 @@ function registerVoter(address){
 };
 
 export const registerCandidate = async(name, party, degree) => {
+<<<<<<< HEAD
     await electionContract.methods.registerCandidate(name, party, degree).send({from: '0x049cFdB8062949cCa777f60915eF3dc73ce41b80'}).then(
+=======
+    await electionContract.methods.registerCandidate(name, party, degree).send({from: '0x8149adDc18f8CF86F2fb53Ae83FCCbb41b3c9765'}).then(
+>>>>>>> main
         e => console.log(e)
     )
 }

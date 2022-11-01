@@ -6,6 +6,7 @@ import { CandidateCard } from './CandidateCard';
 function CandidateCardGrid(props) {
 
   const candidates = props.candidates;
+  console.log("Grid " + candidates.length);
 
   return (
     <Row xs={1} md={2} className="g-4">
