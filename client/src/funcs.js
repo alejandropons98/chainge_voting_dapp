@@ -2,7 +2,7 @@ import Web3 from 'web3';
 import { ElectionContract } from './abi/abi';
 
 const web3 = new Web3(Web3.givenProvider);
-const contractAddress = '0xF2137d8D281fB58c6288d9234f5D8184e7F8d4Da'; //Ganache Address
+const contractAddress = '0xA98370E06Ef5A917D6E9c41B3EcD6A6dfc1C60c5'; //Migration Address
 const electionContract = new web3.eth.Contract(ElectionContract, contractAddress);
 
 
@@ -13,12 +13,12 @@ export const load = async () => {
     // await registerCandidate('Rubin', 'Partido de la A', 'Ingenierou');
     const candidates = await getCandidates();
     //Primer Address Migration y Segundo primera de Ganache o las de Ganache
-    // electionContract.methods.registerVoter("0",'0xF2137d8D281fB58c6288d9234f5D8184e7F8d4Da').send({from: '0x122a95b7504C18fd215be894F05731ADA2b676A9'}).then(
+    // electionContract.methods.registerVoter("0",'0xA98370E06Ef5A917D6E9c41B3EcD6A6dfc1C60c5').send({from: '0xb5F5DfFa482505d45bC1D1529BcAF5eD51D4A3b4'}).then(
     //     function(info){
     //         console.log(info);
     //     }
     // );
-    // electionContract.methods.registerVoter("1",'0xF2137d8D281fB58c6288d9234f5D8184e7F8d4Da').send({from: '0x791736a32462DBA56489e166d45C47F7426bE574'}).then(
+    // electionContract.methods.registerVoter("1",'0xA98370E06Ef5A917D6E9c41B3EcD6A6dfc1C60c5').send({from: '0x791736a32462DBA56489e166d45C47F7426bE574'}).then(
     //     function(info){
     //         console.log(info);
     //     }
@@ -30,7 +30,7 @@ export const load = async () => {
     // console.log(electionContract.methods);
     // electionContract.methods.workflowStatus().call().then(console.log);
     
-    // electionContract.methods.registerVoter('0xF2137d8D281fB58c6288d9234f5D8184e7F8d4Da').send({from: '0x122a95b7504C18fd215be894F05731ADA2b676A9'}).then(
+    // electionContract.methods.registerVoter('0xA98370E06Ef5A917D6E9c41B3EcD6A6dfc1C60c5').send({from: '0xb5F5DfFa482505d45bC1D1529BcAF5eD51D4A3b4'}).then(
     //     function(info){
     //         console.log(info);
     //     }
@@ -75,7 +75,7 @@ export const getCandidates = async() => {
 // };
 
 function registerVoter(id,address){
-    electionContract.methods.registerVoter(id,address).send({from: '0x122a95b7504C18fd215be894F05731ADA2b676A9'}).then(
+    electionContract.methods.registerVoter(id,address).send({from: '0xb5F5DfFa482505d45bC1D1529BcAF5eD51D4A3b4'}).then(
         function(info){
             console.log(info);
             return info;
@@ -91,7 +91,7 @@ function registerVoter(id,address){
 
 export const registerCandidate = async(name, party, degree) => {
     console.log(electionContract.methods)                                               //Metamask que estes usado
-    await electionContract.methods.registerCandidate(name, party, degree).send({from: '0x791736a32462DBA56489e166d45C47F7426bE574'}).then(
+    await electionContract.methods.registerCandidate(name, party, degree).send({from: '0xb5F5DfFa482505d45bC1D1529BcAF5eD51D4A3b4'}).then(
         e => console.log(e)
     )
 }

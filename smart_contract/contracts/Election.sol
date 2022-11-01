@@ -17,11 +17,10 @@ contract Election {
         uint id;
     }
 
-    // struct Party {
-    //     string name;
-    //     uint256 voteCount;
-    //     uint id;
-    // }
+    struct Party {
+        string name;
+        uint id;
+    }
 
     struct Voter {
         bool isRegistered;
@@ -39,6 +38,7 @@ contract Election {
 
     mapping(address => Voter) public voters;
     Candidate[] public candidates;
+    Party[] public parties;
     WorkflowStatus public workflowStatus;
     string[] public voterRegistry;
 
