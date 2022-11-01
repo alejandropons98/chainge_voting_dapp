@@ -2,7 +2,7 @@ import Web3 from 'web3';
 import { ElectionContract } from './abi/abi';
 
 const web3 = new Web3(Web3.givenProvider);
-const contractAddress = '0x2F4300728113951C144087F31bd97634621D8b57';
+const contractAddress = '0x1dCdaA73556DF2F523FbdEFEd4cc4F1B4482EE52';
 const electionContract = new web3.eth.Contract(ElectionContract, contractAddress);
 
 
@@ -67,7 +67,7 @@ export const getCandidates = async() => {
 // };
 
 function registerVoter(address){
-    electionContract.methods.registerVoter(address).send({from: '0xF12573D875A7Fa6f055fd73fc52617B7C25a6D7C'}).then(
+    electionContract.methods.registerVoter(address).send({from: '0x8149adDc18f8CF86F2fb53Ae83FCCbb41b3c9765'}).then(
         function(info){
             console.log(info);
             return info;
@@ -75,8 +75,8 @@ function registerVoter(address){
     );
 };
 
-const registerCandidate = async(name, party, degree) => {
-    await electionContract.methods.registerCandidate(name, party, degree).send({from: '0xF12573D875A7Fa6f055fd73fc52617B7C25a6D7C'}).then(
+export const registerCandidate = async(name, party, degree) => {
+    await electionContract.methods.registerCandidate(name, party, degree).send({from: '0x8149adDc18f8CF86F2fb53Ae83FCCbb41b3c9765'}).then(
         e => console.log(e)
     )
 }
