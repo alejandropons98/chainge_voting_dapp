@@ -20,13 +20,11 @@ contract Election {
     struct Voter {
         bool isRegistered;
         bool hasVoted;
-        string voterID;
-        uint256 votedCandidateId;
+        string voterID;        uint16 voteCount;
+        string[] carreras;
     }
 
     struct Result {
-        // uint256 candidateId;
-        // Candidate candidate;
         string name;
         uint256 voteCount;
     }
@@ -84,18 +82,30 @@ contract Election {
         WorkflowStatus newStatus
     );
 
-    function registerVoter(string memory voterID, address _voterAddress) public onlyOwner {
+    function registerVoter(string memory voterID, address _voterAddress, string memory carrera) public onlyOwner {
         require(
-            !voters[_voterAddress].isRegistered,
+            !voters[_voterAddress].isRegistered || !carreraRegistrada(carrera, _voterAddress),
             "the voter is already registered"
         );
 
-        voters[_voterAddress].isRegistered = true;
-        voters[_voterAddress].hasVoted = false;
-        voters[_voterAddress].votedCandidateId = 0;
-        voters[_voterAddress].voterID = voterID;
+        if (!voters[_voterAddress].isRegistered){
+            voters[_voterAddress].isRegistered = true;
+            voters[_voterAddress].hasVoted = false;
+            voters[_voterAddress].voterID = voterID;
+        }
+        
+        voters[_voterAddress].carreras.push(carrera);
 
         emit VoterRegisteredEvent(_voterAddress);
+    }
+
+    function carreraRegistrada(string memory carrera, address _voterAddress) public view returns (bool){
+        for(uint i = 0; i < voters[_voterAddress].carreras.length; i++){
+            if(keccak256(abi.encodePacked(voters[_voterAddress].carreras[i])) == keccak256(abi.encodePacked(carrera))){
+                return true;
+            }
+        }
+        return false;
     }
 
     function registerCandidate(string memory _name, string memory _party, string memory _degree) public onlyOwner {
@@ -126,10 +136,7 @@ contract Election {
         require(!voters[msg.sender].hasVoted, "the caller has already voted");
 
         voters[msg.sender].hasVoted = true;
-        voters[msg.sender].votedCandidateId = candidateId;
-
         candidates[candidateId].voteCount += 1;
-// TODO: meter el votante en el registro
         voterRegistry.push(voters[msg.sender].voterID);
 
         emit VotedEvent(msg.sender, candidateId);
@@ -177,21 +184,6 @@ contract Election {
     {
         return candidates;
     }
-    
-    // function getCandidatesByParty(string memory Sparty)
-    //     public
-    //     view
-    //     returns (
-    //         uint[] memory partyIds
-    //     )
-    // {
-    //     for (uint i = 0; i < candidates.length; i++) {
-    //         if (keccak256(abi.encodePacked(candidates[i].party)) == keccak256(abi.encodePacked(Sparty))) {
-    //             partyIds.push(candidates[i].id);
-    //         }
-    //     }
-    //     return partyIds;
-    // }
 
     function getWinner() public view returns (Result memory) {
         uint256 winnerIndex = 0;
@@ -222,5 +214,9 @@ contract Election {
 
     function getVoterRegistry() public view returns (string[] memory) {
         return voterRegistry;
+    }
+
+    function getVoterCarreras(address _voterAddress) public view returns (string[] memory) {
+        return voters[_voterAddress].carreras;
     }
 }

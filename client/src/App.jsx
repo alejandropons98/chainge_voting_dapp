@@ -3,16 +3,11 @@ import { VotingPage } from "./pages/VotingPage/VotingPage";
 import { RegisterCandidate } from "./pages/RegisterCandidate/RegisterCandidate";
 import { Layout } from "./container/Layout/Layout";
 import './App.css';
-<<<<<<< HEAD
 import { load, getVoters, registerCandidate } from './funcs.js';
 import NavBar from './components/NavBar';
-=======
-import { load, getVoters } from './funcs.js';
->>>>>>> main
 import CandidateCardGrid from './components/CandidateCardGrid';
 import { Header } from "./container/Header/Header";
 
-<<<<<<< HEAD
 function App() {
   const [count, setCount] = useState(0)
   const [refresh, setRefresh] = useState(true)
@@ -87,19 +82,6 @@ function App() {
     {candidates.length > 0 ? <CandidateCardGrid candidates={candidates}/> : <div><h1>No hay candidatos</h1></div>}
     <div className="App">
     </div></>
-=======
-const App = () => {
-
-  return (
-    <BrowserRouter>
-    <Layout>
-    <Routes>
-      <Route path="/vote" element={<VotingPage />} />
-      <Route path="/registercandidate" element={<RegisterCandidate />} />
-    </Routes>
-    </Layout>
-    </ BrowserRouter>
->>>>>>> main
   )
 }
 
