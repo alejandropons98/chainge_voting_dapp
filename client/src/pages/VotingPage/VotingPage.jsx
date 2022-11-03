@@ -1,11 +1,12 @@
 import CandidateCardGrid from "../../components/CandidateCardGrid"
 import { getCandidates } from "../../funcs"
-import { useEffect, useState, useRef } from "react"
+import { useEffect, useState } from "react"
+import { ElectionContract } from "../../abi/abi"
 
 
 const VotingPage = () => {
 
-    const candidatesFetchedRef = useRef(false);
+    const [refresh, setRefresh] = useState(true)
     const [candidates, setCandidates] = useState([
         {
             id: 10,
@@ -38,21 +39,16 @@ const VotingPage = () => {
     ])
 
     const fetchCandidates = async () => {
-        const newCandidates = await getCandidates();
-        console.log(newCandidates);
-        newCandidates.forEach(e => {
-            candidates.push(e);
-        });
-        setCandidates(candidates);
-        console.log(candidates);
+        const newCandidates = await getCandidates()
+        setCandidates(candidates.concat(newCandidates))
     }
 
     useEffect(() => {
-        if (candidatesFetchedRef.current) return;
-        candidatesFetchedRef.current = true;
-        fetchCandidates();
-    }, []);
+        if(!refresh) return
+        setRefresh(false)
+        fetchCandidates()
 
+    }, [refresh,candidates])
 
     return (
         <CandidateCardGrid candidates={candidates} />
