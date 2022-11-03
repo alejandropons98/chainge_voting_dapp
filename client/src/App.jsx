@@ -6,10 +6,13 @@ import './App.css';
 import { load } from './funcs.js';
 import CandidateCardGrid from './components/CandidateCardGrid';
 import { Header } from "./container/Header/Header";
+import { useEffect } from "react";
 
 const App = () => {
   
-  load()
+  useEffect(() => {
+    load()
+  })
 
   return (
     <BrowserRouter>

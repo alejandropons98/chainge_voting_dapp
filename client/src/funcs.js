@@ -2,7 +2,7 @@ import Web3 from 'web3';
 import { ElectionContract } from './abi/abi';
 
 const web3 = new Web3(Web3.givenProvider);
-const contractAddress = '0xB82d199eadfab8E51AC0E659FC2a84F9AC27274e';
+const contractAddress = '0x4212E874C7151d8C7f60CCd7C392112DDD68541e';
 const electionContract = new web3.eth.Contract(ElectionContract, contractAddress);
 
 
@@ -26,14 +26,21 @@ export const getVoters = async() => {
 export const vote = async(id) => {
     const accounts = await window.ethereum.enable();
     const addressMetamask = accounts[0];
-    await electionContract.methods.registerVoter("12",contractAddress, "carrera").send({from: addressMetamask}).then(
+    await electionContract.methods.registerVoter("22",contractAddress, "carrera").send({from: addressMetamask}).then(
         function(info){
             console.log(info);
             console.log("registradou")
         }
-    );
-    await electionContract.methods.vote(id).send({from: addressMetamask}).then(info => console.log(info));
+        );
+    console.log(getVoters())
+    await electionContract.methods.vote(id).send({from: addressMetamask}).then(info => 
+        console.log("si",info));
 
+}
+
+export const myAddress = async () => {
+    const accounts = await window.ethereum.enable();
+    return accounts[0]
 }
 
 //Necesitamos poder jalar el numero de candidatos del contrato
@@ -111,8 +118,6 @@ const loadContract = async () => {
 const loadWeb3 = async () => {
     if (window.ethereum) {
         window.web3 = new Web3(window.ethereum);
-         const accounts = await window.ethereum.enable();
-        //  web3.eth.getAccounts().then(console.log);
     }
     else if (window.web3) {
         window.web3 = new Web3(window.web3.currentProvider);
