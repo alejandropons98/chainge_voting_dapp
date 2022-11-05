@@ -2,7 +2,7 @@ import Web3 from 'web3';
 import { ElectionContract } from './abi/abi';
 
 const web3 = new Web3(Web3.givenProvider);
-const contractAddress = '0x4212E874C7151d8C7f60CCd7C392112DDD68541e';
+const contractAddress = '0xc2874A9F1953928F37Bc4fB4f8f8056CdCb3430a';
 const electionContract = new web3.eth.Contract(ElectionContract, contractAddress);
 
 
@@ -19,22 +19,16 @@ export const load = async () => {
 
 };
 
-export const getVoters = async() => {
-    return await electionContract.methods.voters(contractAddress).call().then(info => console.log(info));
-}
+// Esto no es algo que necesitamos ahorita. Vamos a tener que agregar un array de Voters (Ahorita es un mapping)
+// export const getVoters = async() => {
+//     return await electionContract.methods.voters(contractAddress).call().then(info => console.log(info));
+// }
 
 export const vote = async(id) => {
     const accounts = await window.ethereum.enable();
-    const addressMetamask = accounts[0];
-    await electionContract.methods.registerVoter("22",contractAddress, "carrera").send({from: addressMetamask}).then(
-        function(info){
-            console.log(info);
-            console.log("registradou")
-        }
-        );
-    console.log(getVoters())
-    await electionContract.methods.vote(id).send({from: addressMetamask}).then(info => 
-        console.log("si",info));
+    const account = accounts[0];
+    await electionContract.methods.vote(id).send({from: account}).then(info => 
+        console.log(info));
 
 }
 
@@ -67,11 +61,22 @@ export const getCandidates = async() => {
 
 export const registerCandidate = async(name, party, degree) => {
     const accounts = await window.ethereum.enable();
-    const addressMetamask = accounts[0]
-    await electionContract.methods.registerCandidate(name, party, degree).send({from: addressMetamask}).then(
+    const account = accounts[0]
+    await electionContract.methods.registerCandidate(name, party, degree).send({from: account}).then(
         e => console.log(e)
     )
 }
+
+export const registerVoter = async(id, address, major) => {
+    const accounts = await window.ethereum.enable();
+    const account = accounts[0];
+    await electionContract.methods.registerVoter(id, address, major).send({from: account}).then(
+        function(info){
+            console.log(info);
+        }
+    );
+}
+
 
 export const getWorkflow = async () => {
   await electionContract.methods.workflowStatus().call().then(res => {

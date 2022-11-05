@@ -25,12 +25,12 @@ function NavBar() {
       <Navbar bg="light" variant="light">
         <Container>
           <Navbar.Brand href="/">Chainge</Navbar.Brand>
-          <Navbar.Brand href="/">{address}</Navbar.Brand>
           <Nav className="me-auto">
             <Nav.Link href="/login">Login</Nav.Link>
             <Nav.Link href="/register">Registrate</Nav.Link>
-            <Nav.Link href="/vote">Aqui ves ruta vote</Nav.Link>
-            <Nav.Link href="/registercandidate">Aqui ves ruta register</Nav.Link> 
+            <Nav.Link href="/vote">Votar</Nav.Link>
+            <Nav.Link href="/registercandidate">Registrar Candidato</Nav.Link> 
+            <Nav.Link href="/registervoter">Registrar Votante</Nav.Link>
           </Nav>
         </Container>
       </Navbar>

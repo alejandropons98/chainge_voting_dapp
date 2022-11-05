@@ -7,6 +7,7 @@ import { load } from './funcs.js';
 import CandidateCardGrid from './components/CandidateCardGrid';
 import { Header } from "./container/Header/Header";
 import { useEffect } from "react";
+import { RegisterVoter } from "./pages/RegisterVoter/RegisterVoter";
 
 const App = () => {
   
@@ -20,6 +21,7 @@ const App = () => {
     <Routes>
       <Route path="/vote" element={<VotingPage />} />
       <Route path="/registercandidate" element={<RegisterCandidate />} />
+      <Route path="/registervoter" element={<RegisterVoter />} />
     </Routes>
     </Layout>
     </ BrowserRouter>
