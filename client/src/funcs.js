@@ -2,63 +2,50 @@ import Web3 from 'web3';
 import { ElectionContract } from './abi/abi';
 
 const web3 = new Web3(Web3.givenProvider);
-<<<<<<< HEAD
-const contractAddress = '0xf829B22F26240d5324cCA9f6c67507562DA70F0B';
-=======
-const contractAddress = '0x1dCdaA73556DF2F523FbdEFEd4cc4F1B4482EE52';
->>>>>>> main
+const contractAddress = '0x4212E874C7151d8C7f60CCd7C392112DDD68541e';
 const electionContract = new web3.eth.Contract(ElectionContract, contractAddress);
 
 
 export const load = async () => {
     await loadWeb3();
-    // await registerVoter('0xD38bC30FbD81ea121a48Aad4cFD32049a52975eA');
-    // await registerCandidate('Alejandro', 'Partido de la U', 'Ingeniero');
-    // await registerCandidate('Robert', 'Partido de la U', 'Ingeniero');
-    // await registerCandidate('Rubin', 'Partido de la A', 'Ingenierou');
     const candidates = await getCandidates();
-    return candidates;
-    // console.log(candidates);
-    
-
-    // console.log(electionContract.methods);
-    // electionContract.methods.workflowStatus().call().then(console.log);
-    
-    // electionContract.methods.registerVoter('0x6b6f7f8af8afff1ef518215e550ac14afac7e612').send({from: '0x434Cb1e7A19f4427B6092daE622b56D252a3c92b'}).then(
+    //Primer Address Migration y Segundo primera de Ganache o las de Ganache
+    // electionContract.methods.registerVoter("0",'0xA98370E06Ef5A917D6E9c41B3EcD6A6dfc1C60c5').send({from: '0xb5F5DfFa482505d45bC1D1529BcAF5eD51D4A3b4'}).then(
     //     function(info){
     //         console.log(info);
     //     }
     // );
-    // const account = await loadAccount();
-    // const election = await loadContract();
-    // const accounts = await window.ethereum.enable();
-    // const account = accounts[0];
-    // console.log(account);
+    return candidates;
 
 };
 
 export const getVoters = async() => {
-    return await electionContract.methods.voters('0x14B3AF9486eC9dEAC1fB88B0a2d691187182D148').call().then(info => console.log(info));
+    return await electionContract.methods.voters(contractAddress).call().then(info => console.log(info));
 }
 
 export const vote = async(id) => {
     const accounts = await window.ethereum.enable();
-    const account = accounts[0];
-    await electionContract.methods.vote(id).send({from: account}).then(info => console.log(info));
+    const addressMetamask = accounts[0];
+    await electionContract.methods.registerVoter("22",contractAddress, "carrera").send({from: addressMetamask}).then(
+        function(info){
+            console.log(info);
+            console.log("registradou")
+        }
+        );
+    console.log(getVoters())
+    await electionContract.methods.vote(id).send({from: addressMetamask}).then(info => 
+        console.log("si",info));
+
+}
+
+export const myAddress = async () => {
+    const accounts = await window.ethereum.enable();
+    return accounts[0]
 }
 
 //Necesitamos poder jalar el numero de candidatos del contrato
 export const getCandidates = async() => {
-    var candidates = [];
-    console.log(electionContract.methods)
-    for (let i = 0; i <= 4; i++) {
-        await electionContract.methods.getCandidateById(i).call().then(
-            function(info){
-                candidates.push(info);
-                // console.log(info);
-            }
-        );
-    }
+    var candidates = await electionContract.methods.getAllCandidates().call();
     return candidates;
 }
 
@@ -72,25 +59,16 @@ export const getCandidates = async() => {
 //     );
 // };
 
-function registerVoter(address){
-<<<<<<< HEAD
-    electionContract.methods.registerVoter(address).send({from: '0x049cFdB8062949cCa777f60915eF3dc73ce41b80'}).then(
-=======
-    electionContract.methods.registerVoter(address).send({from: '0x8149adDc18f8CF86F2fb53Ae83FCCbb41b3c9765'}).then(
->>>>>>> main
-        function(info){
-            console.log(info);
-            return info;
-        }
-    );
-};
+// export const voterRegistry = async (name) => {
+//     var registry = await electionContract.methods.voterRegistry(name).call()
+//     console.log(registry)
+//     return registry
+// };
 
 export const registerCandidate = async(name, party, degree) => {
-<<<<<<< HEAD
-    await electionContract.methods.registerCandidate(name, party, degree).send({from: '0x049cFdB8062949cCa777f60915eF3dc73ce41b80'}).then(
-=======
-    await electionContract.methods.registerCandidate(name, party, degree).send({from: '0x8149adDc18f8CF86F2fb53Ae83FCCbb41b3c9765'}).then(
->>>>>>> main
+    const accounts = await window.ethereum.enable();
+    const addressMetamask = accounts[0]
+    await electionContract.methods.registerCandidate(name, party, degree).send({from: addressMetamask}).then(
         e => console.log(e)
     )
 }
@@ -140,8 +118,6 @@ const loadContract = async () => {
 const loadWeb3 = async () => {
     if (window.ethereum) {
         window.web3 = new Web3(window.ethereum);
-         const accounts = await window.ethereum.enable();
-        //  web3.eth.getAccounts().then(console.log);
     }
     else if (window.web3) {
         window.web3 = new Web3(window.web3.currentProvider);

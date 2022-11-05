@@ -2,10 +2,29 @@ import Button from 'react-bootstrap/Button';
 import Form from 'react-bootstrap/Form';
 import Row from 'react-bootstrap/Row';
 import Col from 'react-bootstrap/Col';
+import {registerCandidate} from '../funcs'
+import {useState} from 'react';
+import { Navigate, useNavigate } from "react-router-dom";
 
 function RegisterCandidateForm() {
+  
+  const navigate = useNavigate()
+  const handleSubmit = async (e) => {
+    e.preventDefault()
+    console.log(e)
+    const name = e.target[0].value
+    const party = e.target[1].value
+    const degree = e.target[2].value
+    await registerCandidate(name, degree, party)
+    // console.log(candidates)
+    navigate('/vote')
+  }
+
+
+
+
   return (
-    <Form style={{width: '50vw', marginLeft: 'auto', marginRight: 'auto'}} className='ml'>
+    <Form style={{width: '50vw', marginLeft: 'auto', marginRight: 'auto'}} className='ml' onSubmit={handleSubmit}>
         <br />
         <h2>Registra un candidato</h2>
         <Row>
@@ -22,7 +41,7 @@ function RegisterCandidateForm() {
       </Form.Group>
         </Col>
         </Row>
-    <Row>
+      <Row>
         </Row>
       <Button variant="primary" type="submit" className='mb-4'>
         Registrar
