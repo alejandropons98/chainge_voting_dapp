@@ -2,7 +2,7 @@ import Button from 'react-bootstrap/Button';
 import Form from 'react-bootstrap/Form';
 import Row from 'react-bootstrap/Row';
 import Col from 'react-bootstrap/Col';
-import { registerVoter } from '../funcs'
+import { registerVoter, getActiveVoters } from '../funcs'
 
 function RegisterVoterForm() {
 
@@ -12,9 +12,10 @@ function RegisterVoterForm() {
     const address = e.target[0].value
     const id = e.target[1].value
     const carrera = e.target[2].value
-    await registerVoter(id, address, carrera).then(
-      e => console.log(e)
-    )
+    await registerVoter(id, address, carrera)
+    const voters = await getActiveVoters()
+    console.log(voters)
+
   }
 
   return (

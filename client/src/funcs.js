@@ -32,11 +32,6 @@ export const vote = async(id) => {
 
 }
 
-export const myAddress = async () => {
-    const accounts = await window.ethereum.enable();
-    return accounts[0]
-}
-
 //Necesitamos poder jalar el numero de candidatos del contrato
 export const getCandidates = async() => {
     var candidates = await electionContract.methods.getAllCandidates().call();
@@ -53,11 +48,10 @@ export const getCandidates = async() => {
 //     );
 // };
 
-// export const voterRegistry = async (name) => {
-//     var registry = await electionContract.methods.voterRegistry(name).call()
-//     console.log(registry)
-//     return registry
-// };
+export const getActiveVoters = async() => {
+    var voters = await electionContract.methods.getVoterRegistry().call();
+    return voters;
+}
 
 export const registerCandidate = async(name, party, degree) => {
     const accounts = await window.ethereum.enable();
@@ -76,48 +70,6 @@ export const registerVoter = async(id, address, major) => {
         }
     );
 }
-
-
-export const getWorkflow = async () => {
-  await electionContract.methods.workflowStatus().call().then(res => {
-    console.log(res);
-    return res
-});
-}
-
-function showOwner(){
-    electionContract.methods.owner().call().then(
-        function(info){
-            console.log(info);
-        }
-    ).catch(function(err){
-        console.log(err);
-    });
-}
-
-
-function showName(){
-    electionContract.methods.name().call().then(
-        function(info){
-            console.log(info);
-        }
-    ).catch(function(err){
-        console.log(err);
-    });
-}
-
-
-const loadAccount = async () => {
-    const account = await web3.eth.getCoinbase();
-    console.log(account);
-    return account;
-};
-
-const loadContract = async () => {
-    // const electionContract = contract(ElectionJSON);
-    electionContract.setProvider(web3.currentProvider);
-    const election = await electionContract.deployed();
-};
 
 
 const loadWeb3 = async () => {
