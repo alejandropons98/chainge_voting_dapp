@@ -171,6 +171,46 @@ export const ElectionContract = [
   {
     "inputs": [
       {
+        "internalType": "uint256",
+        "name": "",
+        "type": "uint256"
+      }
+    ],
+    "name": "parties",
+    "outputs": [
+      {
+        "internalType": "string",
+        "name": "",
+        "type": "string"
+      }
+    ],
+    "stateMutability": "view",
+    "type": "function",
+    "constant": true
+  },
+  {
+    "inputs": [
+      {
+        "internalType": "uint256",
+        "name": "",
+        "type": "uint256"
+      }
+    ],
+    "name": "voterRegistry",
+    "outputs": [
+      {
+        "internalType": "string",
+        "name": "",
+        "type": "string"
+      }
+    ],
+    "stateMutability": "view",
+    "type": "function",
+    "constant": true
+  },
+  {
+    "inputs": [
+      {
         "internalType": "address",
         "name": "",
         "type": "address"
@@ -189,9 +229,14 @@ export const ElectionContract = [
         "type": "bool"
       },
       {
-        "internalType": "uint256",
-        "name": "votedCandidateId",
-        "type": "uint256"
+        "internalType": "string",
+        "name": "voterID",
+        "type": "string"
+      },
+      {
+        "internalType": "uint16",
+        "name": "voteCount",
+        "type": "uint16"
       }
     ],
     "stateMutability": "view",
@@ -215,15 +260,50 @@ export const ElectionContract = [
   {
     "inputs": [
       {
+        "internalType": "string",
+        "name": "voterID",
+        "type": "string"
+      },
+      {
         "internalType": "address",
         "name": "_voterAddress",
         "type": "address"
+      },
+      {
+        "internalType": "string",
+        "name": "carrera",
+        "type": "string"
       }
     ],
     "name": "registerVoter",
     "outputs": [],
     "stateMutability": "nonpayable",
     "type": "function"
+  },
+  {
+    "inputs": [
+      {
+        "internalType": "string",
+        "name": "carrera",
+        "type": "string"
+      },
+      {
+        "internalType": "address",
+        "name": "_voterAddress",
+        "type": "address"
+      }
+    ],
+    "name": "carreraRegistrada",
+    "outputs": [
+      {
+        "internalType": "bool",
+        "name": "",
+        "type": "bool"
+      }
+    ],
+    "stateMutability": "view",
+    "type": "function",
+    "constant": true
   },
   {
     "inputs": [
@@ -247,6 +327,26 @@ export const ElectionContract = [
     "outputs": [],
     "stateMutability": "nonpayable",
     "type": "function"
+  },
+  {
+    "inputs": [
+      {
+        "internalType": "string",
+        "name": "party",
+        "type": "string"
+      }
+    ],
+    "name": "isPartyRegistered",
+    "outputs": [
+      {
+        "internalType": "bool",
+        "name": "",
+        "type": "bool"
+      }
+    ],
+    "stateMutability": "view",
+    "type": "function",
+    "constant": true
   },
   {
     "inputs": [
@@ -425,6 +525,40 @@ export const ElectionContract = [
         "internalType": "uint256[]",
         "name": "",
         "type": "uint256[]"
+      }
+    ],
+    "stateMutability": "view",
+    "type": "function",
+    "constant": true
+  },
+  {
+    "inputs": [],
+    "name": "getVoterRegistry",
+    "outputs": [
+      {
+        "internalType": "string[]",
+        "name": "",
+        "type": "string[]"
+      }
+    ],
+    "stateMutability": "view",
+    "type": "function",
+    "constant": true
+  },
+  {
+    "inputs": [
+      {
+        "internalType": "address",
+        "name": "_voterAddress",
+        "type": "address"
+      }
+    ],
+    "name": "getVoterCarreras",
+    "outputs": [
+      {
+        "internalType": "string[]",
+        "name": "",
+        "type": "string[]"
       }
     ],
     "stateMutability": "view",

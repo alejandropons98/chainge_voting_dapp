@@ -213,7 +213,12 @@ contract Election {
     }
 
     function getVoterRegistry() public view returns (string[] memory) {
-        return voterRegistry;
+        
+        string[] memory myRegistry = new string[](voterRegistry.length);
+        for(uint i = 0; i < voterRegistry.length; i++){
+            myRegistry[i] = voterRegistry[i];
+        }
+        return myRegistry;
     }
 
     function getVoterCarreras(address _voterAddress) public view returns (string[] memory) {
