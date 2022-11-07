@@ -20,27 +20,36 @@ function RegisterCandidateForm() {
     navigate('/vote')
   }
 
-
+  const mystyle = {
+    width: '50vw',
+    marginLeft: 'auto',
+    marginRight: 'auto',
+    border: '#0d6efd solid',
+    borderRadius: '50px',
+    padding: '20px',
+    background: '#212529',
+    color: 'white'
+  };
 
 
   return (
-    <Form style={{width: '50vw', marginLeft: 'auto', marginRight: 'auto'}} className='ml' onSubmit={handleSubmit}>
+    <Form style={mystyle} className='ml' onSubmit={handleSubmit}>
         <br />
         <h2>Registra un candidato</h2>
-        <Row>
-            <Col className='m-2'>
+        {/* <Row>
+            <Col className='m-2'> */}
       <Form.Group className="mb-3" controlId="formName">
         {/* <Form.Label>Name</Form.Label> */}
         <Form.Control type="input" placeholder="Nombre" />
       </Form.Group>
-        </Col>
-        <Col className='m-2'>
+        {/* </Col> */}
+        {/* <Col className='m-2'> */}
       <Form.Group className="mb-3" controlId="formParty">
         {/* <Form.Label>Bounty</Form.Label> */}
         <Form.Control type="input" placeholder="Partido" />
       </Form.Group>
-        </Col>
-        </Row>
+        {/* </Col> */}
+        {/* </Row> */}
       <Row>
         </Row>
       <Button variant="primary" type="submit" className='mb-4'>
