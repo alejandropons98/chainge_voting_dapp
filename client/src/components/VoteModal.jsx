@@ -1,6 +1,7 @@
 import Button from 'react-bootstrap/Button';
 import Modal from 'react-bootstrap/Modal';
 import { vote } from '../funcs';
+import '../index.css'
 
 const VoteModal = (props) => {
     return (
@@ -17,10 +18,10 @@ const VoteModal = (props) => {
                 </Modal.Title>
             </Modal.Header>
             <Modal.Body>
-                <h4>Seguro que quiere votar por {props.candidateName}</h4>
+                <h4>Seguro que quiere votar por <strong>{props.candidateName}</strong>?</h4>
             </Modal.Body>
             <Modal.Footer>
-                <Button onClick={() => {vote(props.candidateId)}}>Votar</Button>
+                <Button onClick={() => {vote(props.candidateId)}} id='botonModal'>Votar</Button>
             </Modal.Footer>
         </Modal>
     )

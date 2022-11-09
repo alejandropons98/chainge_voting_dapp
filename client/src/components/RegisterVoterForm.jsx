@@ -18,27 +18,38 @@ function RegisterVoterForm() {
 
   }
 
+  const mystyle = {
+    width: '50vw',
+    marginLeft: 'auto',
+    marginRight: 'auto',
+    border: '#0d6efd solid',
+    borderRadius: '50px',
+    padding: '20px',
+    background: '#212529',
+    color: 'white'
+  };
+
   return (
-    <Form style={{ width: '50vw', marginLeft: 'auto', marginRight: 'auto' }} className='ml' onSubmit={handleSubmit}>
+    <Form style={mystyle} className='ml' onSubmit={handleSubmit}>
       <br />
       <h2>Registra un votante</h2>
-      <Row>
-        <Col className='m-2'>
+      {/* <Row> */}
+        {/* <Col className='m-2'> */}
           <Form.Group className="mb-3" controlId="formAddress">
             <Form.Control type="input" placeholder="Wallet Address" />
           </Form.Group>
-        </Col>
-        <Col className='m-2'>
+        {/* </Col> */}
+        {/* <Col className='m-2'> */}
           <Form.Group className="mb-3" controlId="formId">
             <Form.Control type="input" placeholder="Correo" />
           </Form.Group>
-        </Col>
-        <Col className='m-2'>
+        {/* </Col> */}
+        {/* <Col className='m-2'> */}
           <Form.Group className="mb-3" controlId="formMajor">
             <Form.Control type="input" placeholder="Carrera" />
           </Form.Group>
-        </Col>
-      </Row>
+        {/* </Col> */}
+      {/* </Row> */}
       <Row>
       </Row>
       <Button variant="primary" type="submit" className='mb-4'>

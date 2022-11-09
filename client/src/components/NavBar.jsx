@@ -15,17 +15,22 @@ function NavBar() {
 
   return (
     <>
-      <Navbar bg="light" variant="light">
+      <Navbar collapseOnSelect expand="lg" bg="dark" variant="dark" fixed="top">
         <Container>
           <Navbar.Brand href="/">Chainge</Navbar.Brand>
-          <Nav className="me-auto">
-            <Nav.Link href="/login">Login</Nav.Link>
+          <Navbar.Toggle aria-controls="responsive-navbar-nav" />
+          <Navbar.Collapse id="responsive-navbar-nav">
+          <Nav className="me-auto" variant="tabs">
             <Nav.Link href="/register">Registrate</Nav.Link>
-            <Nav.Link href="/vote">Votar</Nav.Link>
             <Nav.Link href="/registercandidate">Registrar Candidato</Nav.Link> 
             <Nav.Link href="/registervoter">Registrar Votante</Nav.Link>
             <Nav.Link href="/voters">Votantes Activos</Nav.Link>
+            <Nav.Link href="/vote">Votar</Nav.Link>
           </Nav>
+          <Nav>
+            <Nav.Link href="/login">Login</Nav.Link>
+          </Nav>
+          </Navbar.Collapse>
         </Container>
       </Navbar>
     </>
