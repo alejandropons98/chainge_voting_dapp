@@ -1,66 +1,69 @@
-import Web3 from 'web3';
-import { ElectionContract } from './abi/abi';
+import Web3 from "web3";
+import { ElectionContract } from "./abi/abi";
 
 const web3 = new Web3(Web3.givenProvider);
-<<<<<<< HEAD
-const contractAddress = '0xf829B22F26240d5324cCA9f6c67507562DA70F0B';
-=======
-const contractAddress = '0x1dCdaA73556DF2F523FbdEFEd4cc4F1B4482EE52';
->>>>>>> main
-const electionContract = new web3.eth.Contract(ElectionContract, contractAddress);
-
+const contractAddress = "0x1dCdaA73556DF2F523FbdEFEd4cc4F1B4482EE52";
+const electionContract = new web3.eth.Contract(
+  ElectionContract,
+  contractAddress
+);
 
 export const load = async () => {
-    await loadWeb3();
-    // await registerVoter('0xD38bC30FbD81ea121a48Aad4cFD32049a52975eA');
-    // await registerCandidate('Alejandro', 'Partido de la U', 'Ingeniero');
-    // await registerCandidate('Robert', 'Partido de la U', 'Ingeniero');
-    // await registerCandidate('Rubin', 'Partido de la A', 'Ingenierou');
-    const candidates = await getCandidates();
-    return candidates;
-    // console.log(candidates);
-    
+  await loadWeb3();
+  // await registerVoter('0xD38bC30FbD81ea121a48Aad4cFD32049a52975eA');
+  // await registerCandidate('Alejandro', 'Partido de la U', 'Ingeniero');
+  // await registerCandidate('Robert', 'Partido de la U', 'Ingeniero');
+  // await registerCandidate('Rubin', 'Partido de la A', 'Ingenierou');
+  const candidates = await getCandidates();
+  return candidates;
+  // console.log(candidates);
 
-    // console.log(electionContract.methods);
-    // electionContract.methods.workflowStatus().call().then(console.log);
-    
-    // electionContract.methods.registerVoter('0x6b6f7f8af8afff1ef518215e550ac14afac7e612').send({from: '0x434Cb1e7A19f4427B6092daE622b56D252a3c92b'}).then(
-    //     function(info){
-    //         console.log(info);
-    //     }
-    // );
-    // const account = await loadAccount();
-    // const election = await loadContract();
-    // const accounts = await window.ethereum.enable();
-    // const account = accounts[0];
-    // console.log(account);
+  // console.log(electionContract.methods);
+  // electionContract.methods.workflowStatus().call().then(console.log);
 
+  // electionContract.methods.registerVoter('0x6b6f7f8af8afff1ef518215e550ac14afac7e612').send({from: '0x434Cb1e7A19f4427B6092daE622b56D252a3c92b'}).then(
+  //     function(info){
+  //         console.log(info);
+  //     }
+  // );
+  // const account = await loadAccount();
+  // const election = await loadContract();
+  // const accounts = await window.ethereum.enable();
+  // const account = accounts[0];
+  // console.log(account);
 };
 
-export const getVoters = async() => {
-    return await electionContract.methods.voters('0x14B3AF9486eC9dEAC1fB88B0a2d691187182D148').call().then(info => console.log(info));
-}
+export const getVoters = async () => {
+  return await electionContract.methods
+    .voters("0x14B3AF9486eC9dEAC1fB88B0a2d691187182D148")
+    .call()
+    .then((info) => console.log(info));
+};
 
-export const vote = async(id) => {
-    const accounts = await window.ethereum.enable();
-    const account = accounts[0];
-    await electionContract.methods.vote(id).send({from: account}).then(info => console.log(info));
-}
+export const vote = async (id) => {
+  const accounts = await window.ethereum.enable();
+  const account = accounts[0];
+  await electionContract.methods
+    .vote(id)
+    .send({ from: account })
+    .then((info) => console.log(info));
+};
 
 //Necesitamos poder jalar el numero de candidatos del contrato
-export const getCandidates = async() => {
-    var candidates = [];
-    console.log(electionContract.methods)
-    for (let i = 0; i <= 4; i++) {
-        await electionContract.methods.getCandidateById(i).call().then(
-            function(info){
-                candidates.push(info);
-                // console.log(info);
-            }
-        );
-    }
-    return candidates;
-}
+export const getCandidates = async () => {
+  var candidates = [];
+  console.log(electionContract.methods);
+  for (let i = 0; i <= 4; i++) {
+    await electionContract.methods
+      .getCandidateById(i)
+      .call()
+      .then(function (info) {
+        candidates.push(info);
+        // console.log(info);
+      });
+  }
+  return candidates;
+};
 
 // function getCandidateById(id){
 //     electionContract.methods.getCandidateById(id).call().then(
@@ -72,82 +75,79 @@ export const getCandidates = async() => {
 //     );
 // };
 
-function registerVoter(address){
-<<<<<<< HEAD
-    electionContract.methods.registerVoter(address).send({from: '0x049cFdB8062949cCa777f60915eF3dc73ce41b80'}).then(
-=======
-    electionContract.methods.registerVoter(address).send({from: '0x8149adDc18f8CF86F2fb53Ae83FCCbb41b3c9765'}).then(
->>>>>>> main
-        function(info){
-            console.log(info);
-            return info;
-        }
-    );
+function registerVoter(address) {
+  electionContract.methods
+    .registerVoter(address)
+    .send({ from: "0x8149adDc18f8CF86F2fb53Ae83FCCbb41b3c9765" })
+    .then(function (info) {
+      console.log(info);
+      return info;
+    });
+}
+
+export const registerCandidate = async (name, party, degree) => {
+  await electionContract.methods
+    .registerCandidate(name, party, degree)
+    .send({ from: "0x8149adDc18f8CF86F2fb53Ae83FCCbb41b3c9765" })
+    .then((e) => console.log(e));
 };
 
-export const registerCandidate = async(name, party, degree) => {
-<<<<<<< HEAD
-    await electionContract.methods.registerCandidate(name, party, degree).send({from: '0x049cFdB8062949cCa777f60915eF3dc73ce41b80'}).then(
-=======
-    await electionContract.methods.registerCandidate(name, party, degree).send({from: '0x8149adDc18f8CF86F2fb53Ae83FCCbb41b3c9765'}).then(
->>>>>>> main
-        e => console.log(e)
-    )
-}
-
 export const getWorkflow = async () => {
-  await electionContract.methods.workflowStatus().call().then(res => {
-    console.log(res);
-    return res
-});
-}
+  await electionContract.methods
+    .workflowStatus()
+    .call()
+    .then((res) => {
+      console.log(res);
+      return res;
+    });
+};
 
-function showOwner(){
-    electionContract.methods.owner().call().then(
-        function(info){
-            console.log(info);
-        }
-    ).catch(function(err){
-        console.log(err);
+function showOwner() {
+  electionContract.methods
+    .owner()
+    .call()
+    .then(function (info) {
+      console.log(info);
+    })
+    .catch(function (err) {
+      console.log(err);
     });
 }
 
-
-function showName(){
-    electionContract.methods.name().call().then(
-        function(info){
-            console.log(info);
-        }
-    ).catch(function(err){
-        console.log(err);
+function showName() {
+  electionContract.methods
+    .name()
+    .call()
+    .then(function (info) {
+      console.log(info);
+    })
+    .catch(function (err) {
+      console.log(err);
     });
 }
-
 
 const loadAccount = async () => {
-    const account = await web3.eth.getCoinbase();
-    console.log(account);
-    return account;
+  const account = await web3.eth.getCoinbase();
+  console.log(account);
+  return account;
 };
 
 const loadContract = async () => {
-    // const electionContract = contract(ElectionJSON);
-    electionContract.setProvider(web3.currentProvider);
-    const election = await electionContract.deployed();
+  // const electionContract = contract(ElectionJSON);
+  electionContract.setProvider(web3.currentProvider);
+  const election = await electionContract.deployed();
 };
-
 
 const loadWeb3 = async () => {
-    if (window.ethereum) {
-        window.web3 = new Web3(window.ethereum);
-         const accounts = await window.ethereum.enable();
-        //  web3.eth.getAccounts().then(console.log);
-    }
-    else if (window.web3) {
-        window.web3 = new Web3(window.web3.currentProvider);
-    }
-    else {
-        window.alert('Non-Ethereum browser detected. You should consider trying MetaMask!');
-    }
+  if (window.ethereum) {
+    window.web3 = new Web3(window.ethereum);
+    const accounts = await window.ethereum.enable();
+    //  web3.eth.getAccounts().then(console.log);
+  } else if (window.web3) {
+    window.web3 = new Web3(window.web3.currentProvider);
+  } else {
+    window.alert(
+      "Non-Ethereum browser detected. You should consider trying MetaMask!"
+    );
+  }
 };
-
