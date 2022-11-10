@@ -21,7 +21,6 @@ function NavBar() {
           <Navbar.Toggle aria-controls="responsive-navbar-nav" />
           <Navbar.Collapse id="responsive-navbar-nav">
           <Nav className="me-auto" variant="tabs">
-            <Nav.Link href="/register">Registrate</Nav.Link>
             <Nav.Link href="/registercandidate">Registrar Candidato</Nav.Link> 
             <Nav.Link href="/registervoter">Registrar Votante</Nav.Link>
             <Nav.Link href="/voters">Votantes Activos</Nav.Link>

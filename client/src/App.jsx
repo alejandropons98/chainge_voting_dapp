@@ -9,6 +9,7 @@ import { Header } from "./container/Header/Header";
 import { useEffect } from "react";
 import { RegisterVoter } from "./pages/RegisterVoter/RegisterVoter";
 import { VotedVoters } from "./pages/VotedVoters/VotedVoters";
+import { Home } from "./pages/Home/Home";
 
 const App = () => {
   
@@ -20,6 +21,7 @@ const App = () => {
     <BrowserRouter>
     <Layout>
     <Routes>
+      <Route path="/" element={<Home />} />
       <Route path="/vote" element={<VotingPage />} />
       <Route path="/registercandidate" element={<RegisterCandidate />} />
       <Route path="/registervoter" element={<RegisterVoter />} />
