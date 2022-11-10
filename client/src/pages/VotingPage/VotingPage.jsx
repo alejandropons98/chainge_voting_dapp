@@ -2,6 +2,8 @@ import CandidateCardGrid from "../../components/CandidateCardGrid";
 import { getCandidates } from "../../funcs";
 import { useEffect, useState, useRef } from "react";
 import { Navbar } from "react-bootstrap";
+import { ElectionContract } from "../../abi/abi"
+
 
 const VotingPage = () => {
   const candidatesFetchedRef = useRef(false);
