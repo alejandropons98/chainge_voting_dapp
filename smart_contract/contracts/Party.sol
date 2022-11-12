@@ -9,9 +9,6 @@ contract Party {
 
     address public owner;
 
-    // mapping (string => bool) public seccionesDeParticipacion;
-    // string[] public seccionesDeParticipacion;
-
     string[] public consejosFac;
     string[] public consejosEsc;
     string[] public centroEstudiantes;
@@ -19,6 +16,9 @@ contract Party {
     bool public coordinacion;
     bool public consejoAcademico;
     bool public consejoAcademicoAux;
+
+    bool internal finished = false;
+    bool internal electionRunning = false;
 
     Candidate public consejeroAcademico;
     Candidate public consejeroAcademicoAux;
@@ -93,6 +93,8 @@ contract Party {
     }
 
     function addConsejoFacultad(string memory _facultad) public {
+        require(!finished, "Debe activar la edicion del partido");
+        require(!electionRunning, "No se puede editar el partido mientras se esta votando");
         require(msg.sender == owner, "Solo el dueno de la cuenta puede agregar secciones");
         require(checkInFacultad(_facultad), "La facultad no existe");
         require(!checkIfConsejoFacultad(_facultad), "La facultad ya esta en la lista");
@@ -100,6 +102,8 @@ contract Party {
     }
 
     function addConsejoEscuela(string memory _escuela) public {
+        require(!finished, "Debe activar la edicion del partido");
+        require(!electionRunning, "No se puede editar el partido mientras se esta votando");
         require(msg.sender == owner, "Solo el dueno de la cuenta puede agregar secciones");
         require(checkInEscuela(_escuela), "La escuela no existe");
         require(!checkIfConsejoEscuela(_escuela), "La escuela ya esta en la lista");
@@ -107,6 +111,8 @@ contract Party {
     }
 
     function addCentroEstudiantes(string memory _escuela) public {
+        require(!finished, "Debe activar la edicion del partido");
+        require(!electionRunning, "No se puede editar el partido mientras se esta votando");
         require(msg.sender == owner, "Solo el dueno de la cuenta puede agregar secciones");
         require(checkInEscuela(_escuela), "La escuela no existe");
         require(!checkIfCentroEstudiantes(_escuela), "La escuela ya esta en la lista");
@@ -114,18 +120,24 @@ contract Party {
     }
 
     function addJuntaDirectivaFCE() public {
+        require(!finished, "Debe activar la edicion del partido");
+        require(!electionRunning, "No se puede editar el partido mientras se esta votando");
         require(msg.sender == owner, "Solo el dueno de la cuenta puede agregar secciones");
         require(!juntaDirectiva, "La seccion ya esta en la lista");
         juntaDirectiva = true;
     }
 
     function addCoordinacionFCE() public {
+        require(!finished, "Debe activar la edicion del partido");
+        require(!electionRunning, "No se puede editar el partido mientras se esta votando");
         require(msg.sender == owner, "Solo el dueno de la cuenta puede agregar secciones");
         require(!coordinacion, "La seccion ya esta en la lista");
         coordinacion = true;
     }
     
     function addConsejeroAcademico(string memory _name, uint _id, string memory _degree) public {
+        require(!finished, "Debe activar la edicion del partido");
+        require(!electionRunning, "No se puede editar el partido mientras se esta votando");
         require(!consejoAcademico, "Ya hay un consejero academico");
         require(_id > 0, "El ID debe ser mayor a 0");
         require(msg.sender == owner, "Solo el dueno de la cuenta puede agregar candidatos");
@@ -136,6 +148,8 @@ contract Party {
     }
 
     function addConsejeroAcademicoAux(string memory _name, uint _id, string memory _degree) public {
+        require(!finished, "Debe activar la edicion del partido");
+        require(!electionRunning, "No se puede editar el partido mientras se esta votando");
         require(_id > 0, "El ID debe ser mayor a 0");
         require(consejoAcademico, "El candidato principal no esta registrado");
         require(msg.sender == owner, "Solo el dueno de la cuenta puede agregar candidatos");
@@ -217,6 +231,51 @@ contract Party {
             consejoFacultad[i] = string.concat("Consejo de Facultad ", facultades[i]);
         }
         return consejoFacultad;
+    }
+
+    function getParticipatingSections() public view returns (string[] memory) {
+        require(finished, "Debe culminar la edicion del partido");
+        string[] memory sections = new string[](consejosFac.length + consejosEsc.length + centroEstudiantes.length + 3);
+        for (uint i = 0; i < consejosFac.length; i++) {
+            sections[i] = string.concat("Consejo Facultad de ", consejosFac[i]);
+        }
+        for (uint i = 0; i < consejosEsc.length; i++) {
+            sections[i + consejosFac.length] = string.concat("Consejo Escuela de ", consejosEsc[i]);
+        }
+        for (uint i = 0; i < centroEstudiantes.length; i++) {
+            sections[i + consejosFac.length + consejosEsc.length] = string.concat("Centro de Estudiantes de ", centroEstudiantes[i]);
+        }
+        if (juntaDirectiva) {
+            sections[consejosFac.length + consejosEsc.length + centroEstudiantes.length] = "Junta Directiva FCE";
+        }
+        if (coordinacion) {
+            sections[consejosFac.length + consejosEsc.length + centroEstudiantes.length + 1] = "Coordinacion FCE";
+        }
+        if (consejoAcademico) {
+            sections[consejosFac.length + consejosEsc.length + centroEstudiantes.length + 2] = "Consejo Academico";
+        }
+        return sections;
+    }
+
+    // Hay que correr esto para terminar la edicion del partido y poder jalar las vainas para no poder editar mid eleccion
+    function listoEdicion() public {
+        require(!electionRunning, "La eleccion ya esta corriendo");
+        require(!finished, "Debe activar la edicion del partido");
+        require(msg.sender == owner, "Solo el dueno de la cuenta puede agregar candidatos");
+        finished = true;
+    }
+
+    function activarEdicion() public {
+        require(!electionRunning, "La eleccion ya esta corriendo");
+        require(finished, "La edicion esta activa");
+        require(msg.sender == owner, "Solo el dueno de la cuenta puede agregar candidatos");
+        finished = false;
+    }
+
+    function comenzarEleccion() public {
+        require(!electionRunning, "La eleccion ya esta corriendo");
+        require(msg.sender == owner, "Solo el dueno de la cuenta puede agregar candidatos");
+        electionRunning = true;
     }
 
 }

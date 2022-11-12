@@ -193,6 +193,71 @@ contract("Party", (accounts) => {
         }
     });
 
+    it("gets participating sections" , async () => {
+        await partyInstance.addConsejoFacultad("Ingenieria", { from: accounts[0] });
+        await partyInstance.addConsejoEscuela("Ing. de Sistemas", { from: accounts[0] });
+        await partyInstance.addCentroEstudiantes("Ing. de Sistemas", { from: accounts[0] });
+        await partyInstance.addJuntaDirectivaFCE();
+        await partyInstance.addCoordinacionFCE();
+        // Esto podria ser un array de strings para sacar toda la info
+        await partyInstance.addConsejeroAcademico("Luffy", 42,"Liberales", { from: accounts[0] });
+        await partyInstance.listoEdicion();
+
+        const sections = await partyInstance.getParticipatingSections();
+
+        assert.equal(sections[0], "Consejo Facultad de Ingenieria", "contains the correct name");
+        assert.equal(sections[1], "Consejo Escuela de Ing. de Sistemas", "contains the correct name");
+        assert.equal(sections[2], "Centro de Estudiantes de Ing. de Sistemas", "contains the correct name");
+        assert.equal(sections[3], "Junta Directiva FCE", "contains the correct name");
+        assert.equal(sections[4], "Coordinacion FCE", "contains the correct name");
+        assert.equal(sections[5], "Consejo Academico", "contains the correct name");
+    });
+
+    it("no jala secciones si no ha culminado edicion" , async () => {
+        await partyInstance.addConsejoFacultad("Ingenieria", { from: accounts[0] });
+        await partyInstance.addConsejoEscuela("Ing. de Sistemas", { from: accounts[0] });
+        await partyInstance.addCentroEstudiantes("Ing. de Sistemas", { from: accounts[0] });
+        await partyInstance.addJuntaDirectivaFCE();
+        await partyInstance.addCoordinacionFCE();
+        // Esto podria ser un array de strings para sacar toda la info
+        await partyInstance.addConsejeroAcademico("Luffy", 42,"Liberales", { from: accounts[0] });
+
+        try {
+            await partyInstance.getParticipatingSections();
+            assert.fail();
+        } catch (error) {
+            assert(error.message.indexOf("revert") >= 0, "error message must contain revert");
+        }
+    });
+
+    it("no permite cerrar si la eleccion ya comenzo" , async () => {
+        await partyInstance.addConsejoFacultad("Ingenieria", { from: accounts[0] });
+        await partyInstance.addConsejoEscuela("Ing. de Sistemas", { from: accounts[0] });
+        await partyInstance.addCentroEstudiantes("Ing. de Sistemas", { from: accounts[0] });
+        await partyInstance.comenzarEleccion();
+
+        try {
+            await partyInstance.listoEdicion();
+            assert.fail();
+        } catch (error) {
+            assert(error.message.indexOf("revert") >= 0, "error message must contain revert");
+        }
+    });
+
+    it("no permite edicion si la eleccion comenzo" , async () => {
+        await partyInstance.addConsejoFacultad("Ingenieria", { from: accounts[0] });
+        await partyInstance.addConsejoEscuela("Ing. de Sistemas", { from: accounts[0] });
+        await partyInstance.addCentroEstudiantes("Ing. de Sistemas", { from: accounts[0] });
+        await partyInstance.comenzarEleccion();
+
+        try {
+            await partyInstance.addConsejoFacultad("Ingenieria", { from: accounts[0] });
+            assert.fail();
+        } catch (error) {
+            assert(error.message.indexOf("revert") >= 0, "error message must contain revert");
+        }
+    });
+
 
 
 
