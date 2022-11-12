@@ -16,35 +16,16 @@ contract("Party", (accounts) => {
         assert.equal(siglas, "SHGF", "contains the correct siglas");
     });
 
-    it("registers a candidate", async () => {
-        await partyInstance.addConsejeroAcademico("Luffy", 42,"Liberales", { from: accounts[0] });
-        const candidate = await partyInstance.getConsejeroAcademico();
-        assert.equal(candidate[0], "Luffy", "contains the correct name");
-        assert.equal(candidate[1], 42, "contains the correct id");
-        assert.equal(candidate[2], "Liberales", "contains the correct degree");
+    // it("registers a candidate", async () => {
+    //     await partyInstance.addConsejeroAcademico("Luffy", 42,"Liberales", { from: accounts[0] });
+    //     const candidate = await partyInstance.getConsejeroAcademico();
+    //     assert.equal(candidate[0], "Luffy", "contains the correct name");
+    //     assert.equal(candidate[1], 42, "contains the correct id");
+    //     assert.equal(candidate[2], "Liberales", "contains the correct degree");
 
-        const seccionExiste = await partyInstance.checkIfConsejeroAcademico();
-        assert.equal(seccionExiste, true, "contains the correct degree");
-    });
-
-    it("registers aux members", async () => {
-        await partyInstance.addConsejeroAcademico("Luffy", 42,"Liberales", { from: accounts[0] });
-        await partyInstance.addConsejeroAcademicoAux("Zoro", 43,"Liberales", { from: accounts[0] });
-
-        const auxMembers = await partyInstance.getConsejeroAcademicoAux();
-        assert.equal(auxMembers[0], "Zoro", "contains the correct name");
-        assert.equal(auxMembers[1], 43, "contains the correct id");
-        assert.equal(auxMembers[2], "Liberales", "contains the correct degree");
-    });
-
-    it("doesnt register aux before main", async () => {
-        try {
-            await partyInstance.addConsejeroAcademicoAux("Zoro", 43,"Liberales", { from: accounts[0] });
-            assert.fail();
-        } catch (error) {
-            assert(error.message.indexOf("revert") >= 0, "error message must contain revert");
-        }
-    });
+    //     const seccionExiste = await partyInstance.checkIfConsejeroAcademico();
+    //     assert.equal(seccionExiste, true, "contains the correct degree");
+    // });
 
     it("registers consejo facultad", async () => {
         await partyInstance.addConsejoFacultad("Ingenieria", { from: accounts[0] });
@@ -172,26 +153,16 @@ contract("Party", (accounts) => {
         }
     });
 
-    it("no registra consejero academico si ya existe" , async () => {
-        await partyInstance.addConsejeroAcademico("Luffy", 42,"Liberales", { from: accounts[0] });
-        try {
-            await partyInstance.addConsejeroAcademico("Zoro", 43,"Liberales", { from: accounts[0] });
-            assert.fail();
-        } catch (error) {
-            assert(error.message.indexOf("revert") >= 0, "error message must contain revert");
-        }
-    });
+    // it("no registra consejero academico si ya existe" , async () => {
+    //     await partyInstance.addConsejeroAcademico("Luffy", 42,"Liberales", { from: accounts[0] });
+    //     try {
+    //         await partyInstance.addConsejeroAcademico("Zoro", 43,"Liberales", { from: accounts[0] });
+    //         assert.fail();
+    //     } catch (error) {
+    //         assert(error.message.indexOf("revert") >= 0, "error message must contain revert");
+    //     }
+    // });
 
-    it("no registra consejero academico auxiliar si ya existe" , async () => {
-        await partyInstance.addConsejeroAcademico("Luffy", 42,"Liberales", { from: accounts[0] });
-        await partyInstance.addConsejeroAcademicoAux("Zoro", 43,"Liberales", { from: accounts[0] });
-        try {
-            await partyInstance.addConsejeroAcademicoAux("Brook", 5,"Ing. Quimica", { from: accounts[0] });
-            assert.fail();
-        } catch (error) {
-            assert(error.message.indexOf("revert") >= 0, "error message must contain revert");
-        }
-    });
 
     it("gets participating sections" , async () => {
         await partyInstance.addConsejoFacultad("Ingenieria", { from: accounts[0] });
@@ -199,8 +170,6 @@ contract("Party", (accounts) => {
         await partyInstance.addCentroEstudiantes("Ing. de Sistemas", { from: accounts[0] });
         await partyInstance.addJuntaDirectivaFCE();
         await partyInstance.addCoordinacionFCE();
-        // Esto podria ser un array de strings para sacar toda la info
-        await partyInstance.addConsejeroAcademico("Luffy", 42,"Liberales", { from: accounts[0] });
         await partyInstance.listoEdicion();
 
         const sections = await partyInstance.getParticipatingSections();
@@ -210,7 +179,6 @@ contract("Party", (accounts) => {
         assert.equal(sections[2], "Centro de Estudiantes de Ing. de Sistemas", "contains the correct name");
         assert.equal(sections[3], "Junta Directiva FCE", "contains the correct name");
         assert.equal(sections[4], "Coordinacion FCE", "contains the correct name");
-        assert.equal(sections[5], "Consejo Academico", "contains the correct name");
     });
 
     it("no jala secciones si no ha culminado edicion" , async () => {
@@ -219,8 +187,6 @@ contract("Party", (accounts) => {
         await partyInstance.addCentroEstudiantes("Ing. de Sistemas", { from: accounts[0] });
         await partyInstance.addJuntaDirectivaFCE();
         await partyInstance.addCoordinacionFCE();
-        // Esto podria ser un array de strings para sacar toda la info
-        await partyInstance.addConsejeroAcademico("Luffy", 42,"Liberales", { from: accounts[0] });
 
         try {
             await partyInstance.getParticipatingSections();

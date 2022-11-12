@@ -14,14 +14,12 @@ contract Party {
     string[] public centroEstudiantes;
     bool public juntaDirectiva;
     bool public coordinacion;
-    bool public consejoAcademico;
-    bool public consejoAcademicoAux;
+    // bool public consejoAcademico;
 
     bool internal finished = false;
     bool internal electionRunning = false;
 
-    Candidate public consejeroAcademico;
-    Candidate public consejeroAcademicoAux;
+    // Candidate public consejeroAcademico;
 
     constructor(string memory _name, string memory _siglas) {
         name = _name;
@@ -29,11 +27,11 @@ contract Party {
         owner = msg.sender;
     }
 
-    struct Candidate {
-        string name;
-        uint id;
-        string degree;
-    }
+    // struct Candidate {
+    //     string name;
+    //     uint id;
+    //     string degree;
+    // }
 
     string[] private escuelas = [
         "Ing. Quimica",
@@ -135,55 +133,39 @@ contract Party {
         coordinacion = true;
     }
     
-    function addConsejeroAcademico(string memory _name, uint _id, string memory _degree) public {
-        require(!finished, "Debe activar la edicion del partido");
-        require(!electionRunning, "No se puede editar el partido mientras se esta votando");
-        require(!consejoAcademico, "Ya hay un consejero academico");
-        require(_id > 0, "El ID debe ser mayor a 0");
-        require(msg.sender == owner, "Solo el dueno de la cuenta puede agregar candidatos");
-        Candidate memory newCandidate = Candidate(_name, _id, _degree);
-        require(checkRegisteredCandidate(newCandidate), "El candidato ya esta registrado");
-        consejeroAcademico = newCandidate;
-        consejoAcademico = true;
-    }
+    // function addConsejeroAcademico(string memory _name, uint _id, string memory _degree) public {
+    //     require(!finished, "Debe activar la edicion del partido");
+    //     require(!electionRunning, "No se puede editar el partido mientras se esta votando");
+    //     require(!consejoAcademico, "Ya hay un consejero academico");
+    //     require(_id > 0, "El ID debe ser mayor a 0");
+    //     require(msg.sender == owner, "Solo el dueno de la cuenta puede agregar candidatos");
+    //     Candidate memory newCandidate = Candidate(_name, _id, _degree);
+    //     require(checkRegisteredCandidate(newCandidate), "El candidato ya esta registrado");
+    //     consejeroAcademico = newCandidate;
+    //     consejoAcademico = true;
+    // }
 
-    function addConsejeroAcademicoAux(string memory _name, uint _id, string memory _degree) public {
-        require(!finished, "Debe activar la edicion del partido");
-        require(!electionRunning, "No se puede editar el partido mientras se esta votando");
-        require(_id > 0, "El ID debe ser mayor a 0");
-        require(consejoAcademico, "El candidato principal no esta registrado");
-        require(msg.sender == owner, "Solo el dueno de la cuenta puede agregar candidatos");
-        Candidate memory newCandidate = Candidate(_name, _id, _degree);
-        require(checkRegisteredCandidate(newCandidate), "El candidato ya esta registrado");
-        require(!consejoAcademicoAux, "Ya hay un consejero academico auxiliar");
-        consejeroAcademicoAux = newCandidate;
-        consejoAcademicoAux = true;
-    }
+    // function checkRegisteredCandidate(Candidate memory _candidate) public view returns (bool) {
+    //     if (consejeroAcademico.id == _candidate.id) {
+    //         return false;
+    //     }
+    //     if (consejeroAcademicoAux.id == _candidate.id) {
+    //         return false;
+    //     }
+    //     return true;
+    // }
 
-    function checkRegisteredCandidate(Candidate memory _candidate) public view returns (bool) {
-        if (consejeroAcademico.id == _candidate.id) {
-            return false;
-        }
-        if (consejeroAcademicoAux.id == _candidate.id) {
-            return false;
-        }
-        return true;
-    }
+    // function checkCandidateExists() public view returns (bool) {
+    //     if (consejeroAcademico.id == 0) {
+    //         return false;
+    //     }
+    //     return true;
+    // }
 
-    function checkCandidateExists() public view returns (bool) {
-        if (consejeroAcademico.id == 0) {
-            return false;
-        }
-        return true;
-    }
+    // function getConsejeroAcademico() public view returns (Candidate memory) {
+    //     return consejeroAcademico;
+    // }
 
-    function getConsejeroAcademico() public view returns (Candidate memory) {
-        return consejeroAcademico;
-    }
-
-    function getConsejeroAcademicoAux() public view returns (Candidate memory) {
-        return consejeroAcademicoAux;
-    }
 
     function checkIfConsejoFacultad(string memory _consejo) public view returns (bool) {
         for (uint i = 0; i < consejosFac.length; i++) {
@@ -220,11 +202,6 @@ contract Party {
         return coordinacion;
     }
 
-    function checkIfConsejeroAcademico() public view returns (bool) {
-        return consejoAcademico;
-    }
-
-
     function getConsejoFacultad() public view returns (string[] memory) {
         string[] memory consejoFacultad = new string[](facultades.length);
         for (uint i = 0; i < facultades.length; i++) {
@@ -235,7 +212,7 @@ contract Party {
 
     function getParticipatingSections() public view returns (string[] memory) {
         require(finished, "Debe culminar la edicion del partido");
-        string[] memory sections = new string[](consejosFac.length + consejosEsc.length + centroEstudiantes.length + 3);
+        string[] memory sections = new string[](consejosFac.length + consejosEsc.length + centroEstudiantes.length + 2);
         for (uint i = 0; i < consejosFac.length; i++) {
             sections[i] = string.concat("Consejo Facultad de ", consejosFac[i]);
         }
@@ -250,9 +227,6 @@ contract Party {
         }
         if (coordinacion) {
             sections[consejosFac.length + consejosEsc.length + centroEstudiantes.length + 1] = "Coordinacion FCE";
-        }
-        if (consejoAcademico) {
-            sections[consejosFac.length + consejosEsc.length + centroEstudiantes.length + 2] = "Consejo Academico";
         }
         return sections;
     }
