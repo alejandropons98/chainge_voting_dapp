@@ -4,6 +4,10 @@ contract("Election", (accounts) => {
     let electionInstance;
     beforeEach(async () => {
         electionInstance = await Election.new(); 
+        await electionInstance.agregarARegistroElectoral(66, { from: accounts[0] });
+        await electionInstance.agregarARegistroElectoral(42, { from: accounts[0] });
+        await electionInstance.agregarARegistroElectoral(8, { from: accounts[0] });
+        await electionInstance.agregarARegistroElectoral(1234, { from: accounts[0] });
 
     });
 
@@ -394,31 +398,22 @@ contract("Election", (accounts) => {
         assert.equal(candidatos[3][2], "Derecho", "regresa candidatos correctamente");
     });
 
+    // Pruebas votantes
 
-
-
-//     it("registers a candidate", async () => {
-//         await electionInstance.registerCandidate("Candidate 1", "Los Cooles", "Liberales", { from: accounts[0] });
-//         const candidate = await electionInstance.candidates(0);
-//         assert.equal(candidate[0], "Candidate 1", "contains the correct name");
-//         assert.equal(candidate[1], "Los Cooles", "contains the correct party");
-//         assert.equal(candidate[2], "Liberales", "contains the correct degree");
-//         assert.equal(candidate[3], 0, "contains the correct vote count");
-//     });
-
-// Esto todavia no
     it("registra votante", async () => {
-        await electionInstance.registerVoter("1234", accounts[1], ["Ing. de Sistemas"], { from: accounts[0] });
-        const voter = await electionInstance.voters(accounts[1]);
-        assert.equal(voter[1], false, "has not voted");
+        await electionInstance.addVotante(1234, ["Ing. de Sistemas"], { from: accounts[0] });
+        const voter = await electionInstance.getVotante(1234);
+        assert.equal(voter[1][0], "Ing. de Sistemas", "has not voted");
+        assert.equal(voter[2], false, "has not voted");
+
     });
 
     it("registra votante con mas de una carrera", async () => {
-        await electionInstance.registerVoter("1234", accounts[1], ["Ing. de Sistemas", "Ing. Industrial"], { from: accounts[0] });
-        const voter = await electionInstance.voters(accounts[1]);
+        await electionInstance.addVotante(1234, ["Ing. de Sistemas", "Ing. Industrial"], { from: accounts[0] });
+        const voter = await electionInstance.getVotante(1234);
         assert.equal(voter[1][0], "Ing. de Sistemas", "registra carrera correctamente");
         assert.equal(voter[1][1], "Ing. Industrial", "registra carrera correctamente");
-        assert.equal(voter[1], false, "has not voted");
+        assert.equal(voter[2], false, "has not voted");
     });
 
     it("agrega a registro electoral", async () => {
@@ -426,6 +421,15 @@ contract("Election", (accounts) => {
         const registroElectoral = await electionInstance.inRegistroElectoral(123);
 
         assert.equal(registroElectoral, true, "agrega a registro electoral correctamente");
+    });
+
+    it("no agrega repetido a registro electoral", async () => {
+        try {
+            await electionInstance.agregarARegistroElectoral(42, { from: accounts[0] });
+            assert.fail();
+        } catch (error) {
+            assert(error.message.indexOf('revert') >= 0, "error message must contain revert");
+        }
     });
 
 
