@@ -11,6 +11,302 @@ contract Election {
 
     address public owner;
 
+    string[] private escuelas = [
+        "Ing. Quimica",
+        "Ing. de Sistemas",
+        "Ing. Civil",
+        "Ing. Mecanica",
+        "Ing. de Produccion",
+        "Ing. Electrica",
+        "Administracion",
+        "Contaduria",
+        "Economia",
+        "Educacion",
+        "Idiomas",
+        "Psicolologia",
+        "Mate. Industriales",
+        "Est. Liberales",
+        "Derecho"
+    ];
+
+    string[] private facultades = [
+        "Ingenieria",
+        "Ciencias Economicas y Sociales",
+        "Ciencias y Artes",
+        "Estudios Juridicos y Politicos"
+    ];
+
+
+    // Agrupaciones
+
+    struct Party {
+        string name;
+        string siglas;
+    }
+
+    struct CandidateConsejero {
+        string nombre;
+        uint id;
+        string degree;
+        uint voteCount;
+    }
+
+    struct CandidateConsejoFacultad {
+        string nombreAgrupacion;
+        string siglasAgrupacion;
+        uint voteCount;
+    }
+
+    struct CandidateConsejoEscuela {
+        string nombreAgrupacion;
+        string siglasAgrupacion;
+        uint voteCount;
+    }
+
+    struct CandidateCentroEstudiantes {
+        string nombreAgrupacion;
+        string siglasAgrupacion;
+        uint voteCount;
+    }
+
+    struct CandidateJuntaDirectiva {
+        string nombreAgrupacion;
+        string siglasAgrupacion;
+        uint voteCount;
+    }
+
+    struct CandidateCoordinacion {
+        string nombreAgrupacion;
+        string siglasAgrupacion;
+        uint voteCount;
+    }   
+
+    Party[] public agrupacionesRegistradas;
+
+    CandidateConsejero[] public candidatosConsejoAcademico;
+    CandidateJuntaDirectiva[] public candidatosJuntaDirectivaFCE;
+    CandidateCoordinacion[] public candidatosCoordinacionFCE;
+
+    mapping (string => CandidateConsejoFacultad[]) public candidatosConsejoFacultad;
+    mapping (string => CandidateConsejoEscuela[]) public candidatosConsejoEscuela;
+    mapping (string => CandidateCentroEstudiantes[]) public candidatosCentroEstudiante;
+
+    // TODO: Para los check puedo quitar la comparacion de las siglas para que sea mas eficiente, aunque quizas seria mejor
+    // hacer la comparacion pero con un OR para que no se repitan siglas
+    function addAgrupacion(string memory _name, string memory _siglas) public {
+        require(!checkAgrupacion(_name, _siglas), "Agrupacion ya registrada");
+        require(msg.sender == owner, "Solo el dueno del contrato puede registrar agrupaciones");
+        agrupacionesRegistradas.push(Party(_name, _siglas));
+    }
+
+    function checkAgrupacion(string memory _name, string memory _siglas) public view returns (bool) {
+        for (uint i = 0; i < agrupacionesRegistradas.length; i++) {
+            if (keccak256(abi.encodePacked(agrupacionesRegistradas[i].name)) == keccak256(abi.encodePacked(_name)) && keccak256(abi.encodePacked(agrupacionesRegistradas[i].siglas)) == keccak256(abi.encodePacked(_siglas))) {
+                return true;
+            }
+        }
+        return false;
+    }
+
+    function getAgrupaciones() public view returns (Party[] memory) {
+        return agrupacionesRegistradas;
+    }
+
+    function getAgrupacion(string memory _name) public view returns (Party memory) {
+        for (uint i = 0; i < agrupacionesRegistradas.length; i++) {
+            if (keccak256(abi.encodePacked(agrupacionesRegistradas[i].name)) == keccak256(abi.encodePacked(_name))) {
+                return agrupacionesRegistradas[i];
+            }
+        }
+    }
+
+    function addConsejoFacultad(Party memory _agrupacion, string memory _facultad) public {
+        require(checkAgrupacion(_agrupacion.name, _agrupacion.siglas), "Agrupacion no registrada");
+        require(!checkConsejoFacultad(_agrupacion, _facultad), "Agrupacion ya registrada en este consejo");
+        require(checkInFacultades(_facultad), "Facultad no registrada");
+        require(msg.sender == owner, "Solo el dueno del contrato puede registrar candidatos");
+        candidatosConsejoFacultad[_facultad].push(CandidateConsejoFacultad(_agrupacion.name, _agrupacion.siglas, 0));
+    }
+
+    function checkConsejoFacultad(Party memory _agrupacion, string memory _facultad) public view returns (bool) {
+        for (uint i = 0; i < candidatosConsejoFacultad[_facultad].length; i++) {
+            if (keccak256(abi.encodePacked(candidatosConsejoFacultad[_facultad][i].nombreAgrupacion)) == keccak256(abi.encodePacked(_agrupacion.name)) && keccak256(abi.encodePacked(candidatosConsejoFacultad[_facultad][i].siglasAgrupacion)) == keccak256(abi.encodePacked(_agrupacion.siglas))) {
+                return true;
+            }
+        }
+        return false;
+    }
+
+    function checkInFacultades(string memory _facultad) public view returns (bool) {
+        for (uint i = 0; i < facultades.length; i++) {
+            if (keccak256(abi.encodePacked(facultades[i])) == keccak256(abi.encodePacked(_facultad))) {
+                return true;
+            }
+        }
+        return false;
+    }
+
+    function addConsejoEscuela(Party memory _agrupacion, string memory _escuela) public {
+        require(checkAgrupacion(_agrupacion.name, _agrupacion.siglas), "Agrupacion no registrada");
+        require(!checkConsejoEscuela(_agrupacion, _escuela), "Agrupacion ya registrada en este consejo");
+        require(checkInEscuelas(_escuela), "Escuela no registrada");
+        require(msg.sender == owner, "Solo el dueno del contrato puede registrar candidatos");
+        candidatosConsejoEscuela[_escuela].push(CandidateConsejoEscuela(_agrupacion.name, _agrupacion.siglas, 0));
+    }
+
+    function checkConsejoEscuela(Party memory _agrupacion, string memory _escuela) public view returns (bool) {
+        for (uint i = 0; i < candidatosConsejoEscuela[_escuela].length; i++) {
+            if (keccak256(abi.encodePacked(candidatosConsejoEscuela[_escuela][i].nombreAgrupacion)) == keccak256(abi.encodePacked(_agrupacion.name)) && keccak256(abi.encodePacked(candidatosConsejoEscuela[_escuela][i].siglasAgrupacion)) == keccak256(abi.encodePacked(_agrupacion.siglas))) {
+                return true;
+            }
+        }
+        return false;
+    }
+
+    function checkInEscuelas(string memory _escuela) public view returns (bool) {
+        for (uint i = 0; i < escuelas.length; i++) {
+            if (keccak256(abi.encodePacked(escuelas[i])) == keccak256(abi.encodePacked(_escuela))) {
+                return true;
+            }
+        }
+        return false;
+    }
+
+    function addCentroEstudiantes(Party memory _agrupacion, string memory _escuela) public {
+        require(checkAgrupacion(_agrupacion.name, _agrupacion.siglas), "Agrupacion no registrada");
+        require(!checkCentroEstudiantes(_agrupacion, _escuela), "Agrupacion ya registrada en este consejo");
+        require(checkInEscuelas(_escuela), "Centro no registrado");
+        require(msg.sender == owner, "Solo el dueno del contrato puede registrar candidatos");
+        candidatosCentroEstudiante[_escuela].push(CandidateCentroEstudiantes(_agrupacion.name, _agrupacion.siglas, 0));
+    }
+
+    function checkCentroEstudiantes(Party memory _agrupacion, string memory _escuela) public view returns (bool) {
+        for (uint i = 0; i < candidatosCentroEstudiante[_escuela].length; i++) {
+            if (keccak256(abi.encodePacked(candidatosCentroEstudiante[_escuela][i].nombreAgrupacion)) == keccak256(abi.encodePacked(_agrupacion.name)) && keccak256(abi.encodePacked(candidatosCentroEstudiante[_escuela][i].siglasAgrupacion)) == keccak256(abi.encodePacked(_agrupacion.siglas))) {
+                return true;
+            }
+        }
+        return false;
+    }
+
+    function addJuntaDirectiva(Party memory _agrupacion) public {
+        require(checkAgrupacion(_agrupacion.name, _agrupacion.siglas), "Agrupacion no registrada");
+        require(!checkJuntaDirectiva(_agrupacion), "Agrupacion ya registrada en este consejo");
+        require(msg.sender == owner, "Solo el dueno del contrato puede registrar candidatos");
+        candidatosJuntaDirectivaFCE.push(CandidateJuntaDirectiva(_agrupacion.name, _agrupacion.siglas, 0));
+    }
+
+    function checkJuntaDirectiva(Party memory _agrupacion) public view returns (bool) {
+        for (uint i = 0; i < candidatosJuntaDirectivaFCE.length; i++) {
+            if (keccak256(abi.encodePacked(candidatosJuntaDirectivaFCE[i].nombreAgrupacion)) == keccak256(abi.encodePacked(_agrupacion.name)) && keccak256(abi.encodePacked(candidatosJuntaDirectivaFCE[i].siglasAgrupacion)) == keccak256(abi.encodePacked(_agrupacion.siglas))) {
+                return true;
+            }
+        }
+        return false;
+    }
+
+    function addCoordinacionFCE(Party memory _agrupacion) public {
+        require(checkAgrupacion(_agrupacion.name, _agrupacion.siglas), "Agrupacion no registrada");
+        require(!checkCoordinacion(_agrupacion), "Agrupacion ya registrada en este consejo");
+        require(msg.sender == owner, "Solo el dueno del contrato puede registrar candidatos");
+        candidatosCoordinacionFCE.push(CandidateCoordinacion(_agrupacion.name, _agrupacion.siglas, 0));
+    }
+
+    function checkCoordinacion(Party memory _agrupacion) public view returns (bool) {
+        for (uint i = 0; i < candidatosCoordinacionFCE.length; i++) {
+            if (keccak256(abi.encodePacked(candidatosCoordinacionFCE[i].nombreAgrupacion)) == keccak256(abi.encodePacked(_agrupacion.name)) && keccak256(abi.encodePacked(candidatosCoordinacionFCE[i].siglasAgrupacion)) == keccak256(abi.encodePacked(_agrupacion.siglas))) {
+                return true;
+            }
+        }
+        return false;
+    }
+
+    function addConsejeroAcademico(string memory _name, uint _id, string memory _major) public {
+        require(msg.sender == owner, "Solo el dueno del contrato puede registrar candidatos");
+        require(!checkConsejeroAcademico(_id), "Consejero ya registrado");
+        candidatosConsejoAcademico.push(CandidateConsejero(_name, _id, _major, 0));
+    }
+
+    function checkConsejeroAcademico(uint _id) public view returns (bool) {
+        for (uint i = 0; i < candidatosConsejoAcademico.length; i++) {
+            if (candidatosConsejoAcademico[i].id == _id) {
+                return true;
+            }
+        }
+        return false;
+    }
+
+    function getCandidateConsejoAcademico(uint _id) public view returns (CandidateConsejero memory) {
+        for (uint i = 0; i < candidatosConsejoAcademico.length; i++) {
+            if (candidatosConsejoAcademico[i].id == _id) {
+                return candidatosConsejoAcademico[i];
+            }
+        }
+    }
+
+    function getAllCandidatesConsejoAcademico() public view returns (CandidateConsejero[] memory) {
+        return candidatosConsejoAcademico;
+    }
+
+    function getCandidatosConsejoFacultad(string memory _facultad) public view returns (CandidateConsejoFacultad[] memory) {
+        return candidatosConsejoFacultad[_facultad];
+    }
+
+    function getCandidatosConsejoEscuela(string memory _escuela) public view returns (CandidateCentroEstudiantes[] memory) {
+        return candidatosCentroEstudiante[_escuela];
+    }
+
+    function getCandidatosCentroEstudiante(string memory _escuela) public view returns (CandidateCentroEstudiantes[] memory) {
+        return candidatosCentroEstudiante[_escuela];
+    }
+
+    function getCandidatosdCoordinacionFCE() public view returns (CandidateCoordinacion[] memory) {
+        return candidatosCoordinacionFCE;
+    }
+
+    function getCandidatosJuntaDirectivaFCE() public view returns (CandidateJuntaDirectiva[] memory) {
+        return candidatosJuntaDirectivaFCE;
+    }
+
+
+    // Votantes
+
+    // struct Votante {
+    //     uint id;
+    //     string[] carreras;
+    //     bool voted;
+    // }
+
+    // mapping (uint => Votante) votantes;
+    // mapping (uint => bool) registroElectoral;
+
+    // function addVotante(uint _id, string[] memory _carreras) public {
+    //     require(!checkRegisteredVoter(_id), "Votante ya registrado");
+    //     require(inRegistroElectoral(_id), "Votante no registrado en el registro electoral");
+    //     require(msg.sender == owner, "Solo el dueno del contrato puede registrar votantes");
+    //     votantes[_id] = Votante(_id, _carreras, false);
+    // }
+
+    // function checkRegisteredVoter(uint _id) public view returns (bool) {
+    //     if (votantes[_id].id == _id) {
+    //         return true;
+    //     }
+    //     return false;
+    // }
+
+    // function inRegistroElectoral(uint _id) public view returns (bool) {
+    //     return registroElectoral[_id];
+    // }
+
+    // function agregarARegistroElectoral(uint _id) public {
+    //     require(msg.sender == owner, "Solo el dueno del contrato puede registrar votantes");
+    //     registroElectoral[_id] = true;
+    // }
+
+
+
+
+
     struct Candidate {
         string name;
         string party;
@@ -22,7 +318,7 @@ contract Election {
     struct Voter {
         bool isRegistered;
         bool hasVoted;
-        string voterID;        uint16 voteCount;
+        string voterID; 
         string[] carreras;
     }
 
