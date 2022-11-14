@@ -42,7 +42,7 @@ contract Election {
     //     WorkflowStatus newStatus
     // );
 
-    constructor() public {
+    constructor() {
         owner = msg.sender;
     }
 
@@ -161,7 +161,7 @@ contract Election {
         return agrupacionesRegistradas;
     }
 
-    function getAgrupacion(string memory _name) public view returns (Party memory) {
+    function getAgrupacion(string memory _name) public view returns (Party memory agrupacion) {
         for (uint i = 0; i < agrupacionesRegistradas.length; i++) {
             if (keccak256(abi.encodePacked(agrupacionesRegistradas[i].name)) == keccak256(abi.encodePacked(_name))) {
                 return agrupacionesRegistradas[i];
@@ -285,7 +285,7 @@ contract Election {
         return false;
     }
 
-    function getCandidateConsejoAcademico(uint _id) public view returns (CandidateConsejero memory) {
+    function getCandidateConsejoAcademico(uint _id) public view returns (CandidateConsejero memory candidate) {
         for (uint i = 0; i < candidatosConsejoAcademico.length; i++) {
             if (candidatosConsejoAcademico[i].id == _id) {
                 return candidatosConsejoAcademico[i];
@@ -326,7 +326,9 @@ contract Election {
         bool voted;
     }
 
+
     mapping (uint => Votante) votantes;
+    mapping (uint => mapping (string => bool)) votantesFacultades;
     mapping (uint => bool) registroElectoral;
     // mapping(address => Voter) public voters;
     // Candidate[] public candidates;
@@ -339,7 +341,119 @@ contract Election {
         require(inRegistroElectoral(_id), "Votante no registrado en el registro electoral");
         require(msg.sender == owner, "Solo el dueno del contrato puede registrar votantes");
         votantes[_id] = Votante(_id, _carreras, false);
+        registerVotanteFacultad(votantes[_id]);
     }
+
+    function registerVotanteFacultad(Votante memory _votante) public {
+        string[] memory carreras = _votante.carreras;
+        for (uint i = 0; i < carreras.length; i++) {
+            votantesFacultades[_votante.id][getFacultadCarrera(carreras[i])] = true;
+        }
+    }
+
+    function getFacultadCarrera(string memory _carrera) public pure returns (string memory) {
+        if (keccak256(abi.encodePacked(_carrera)) == keccak256(abi.encodePacked("Ing. Quimica"))) {
+            return "Ingenieria";
+        } else if (keccak256(abi.encodePacked(_carrera)) == keccak256(abi.encodePacked("Ing. de Sistemas"))) {
+            return "Ingenieria";
+        } else if (keccak256(abi.encodePacked(_carrera)) == keccak256(abi.encodePacked("Ing. Civil"))) {
+            return "Ingenieria";
+        } else if (keccak256(abi.encodePacked(_carrera)) == keccak256(abi.encodePacked("Ing. Mecanica"))) {
+            return "Ingenieria";
+        } else if (keccak256(abi.encodePacked(_carrera)) == keccak256(abi.encodePacked("Ing. de Produccion"))) {
+            return "Ingenieria";
+        } else if (keccak256(abi.encodePacked(_carrera)) == keccak256(abi.encodePacked("Ing. Electrica"))) {
+            return "Ingenieria";
+        } else if (keccak256(abi.encodePacked(_carrera)) == keccak256(abi.encodePacked("Administracion"))) {
+            return "Ciencias Economicas y Sociales";
+        } else if (keccak256(abi.encodePacked(_carrera)) == keccak256(abi.encodePacked("Economia"))) {
+            return "Ciencias Economicas y Sociales";
+        } else if (keccak256(abi.encodePacked(_carrera)) == keccak256(abi.encodePacked("Contaduria"))) {
+            return "Ciencias Economicas y Sociales";
+        } else if (keccak256(abi.encodePacked(_carrera)) == keccak256(abi.encodePacked("Educacion"))) {
+            return "Ciencias y Artes";
+        } else if (keccak256(abi.encodePacked(_carrera)) == keccak256(abi.encodePacked("Idiomas"))) {
+            return "Ciencias y Artes";
+        } else if (keccak256(abi.encodePacked(_carrera)) == keccak256(abi.encodePacked("Psicologia"))) {
+            return "Ciencias y Artes";
+        } else if (keccak256(abi.encodePacked(_carrera)) == keccak256(abi.encodePacked("Mate. Industriales"))) {
+            return "Ciencias y Artes";
+        } else if (keccak256(abi.encodePacked(_carrera)) == keccak256(abi.encodePacked("Est. Liberales"))) {
+            return "Estudios Juridicos y Politicos";
+        } else if (keccak256(abi.encodePacked(_carrera)) == keccak256(abi.encodePacked("Derecho"))) {
+            return "Estudios Juridicos y Politicos";
+        }
+    }
+
+    function checkVotanteEnFacultad(uint _id, string memory _facultad) public view returns (bool) {
+        return votantesFacultades[_id][_facultad];
+    }
+
+    function getParticipatingSections(uint _id) public view returns (string[] memory) {
+        uint facCounter = getFacultyCount(_id);
+        uint escuelaCounter = votantes[_id].carreras.length;
+        uint sectionCounter = (3 + facCounter + escuelaCounter * 2);
+        string[] memory secciones = new string[](sectionCounter);
+
+        secciones[0] = "Junta Directiva FCE";
+        secciones[1] = "Coordinacion FCE";
+        secciones[2] = "Consejo Academico";
+        string[] memory facultades = new string[](facCounter);
+        uint i = 0;
+        if (checkVotanteEnFacultad(_id, "Ingenieria")) {
+            facultades[i] = "Ingenieria";
+            i++;
+        }
+        if (checkVotanteEnFacultad(_id, "Ciencias Economicas y Sociales")) {
+            facultades[i] = "Ciencias Economicas y Sociales";
+            i++;
+        }
+        if (checkVotanteEnFacultad(_id, "Ciencias y Artes")) {
+            facultades[i] = "Ciencias y Artes";
+            i++;
+        }
+        if (checkVotanteEnFacultad(_id, "Estudios Juridicos y Politicos")) {
+            facultades[i] = "Estudios Juridicos y Politicos";
+            i++;
+        }
+        for (uint j = 0; j < facultades.length; j++) {
+            secciones[j + 3] = string.concat("Consejo de Facultad de ", facultades[j]);
+        }
+        for (uint k = 0; k < votantes[_id].carreras.length; k++) {
+            secciones[k + 3 + facCounter] = string.concat("Consejo de Escuela de ", votantes[_id].carreras[k]);
+        }
+        for (uint l = 0; l < votantes[_id].carreras.length; l++) {
+            secciones[l + 3 + facCounter + escuelaCounter] = string.concat("Centro de Estudiantes de ", votantes[_id].carreras[l]);
+        }
+
+        return secciones;
+    }
+
+    function getFacultyCount(uint _id) public view returns (uint) {
+        uint facCounter = 0;
+        if (checkVotanteEnFacultad(_id, "Ingenieria")) {
+            facCounter++;
+        }
+        if (checkVotanteEnFacultad(_id, "Ciencias Economicas y Sociales")) {
+            facCounter++;
+        }
+        if (checkVotanteEnFacultad(_id, "Ciencias y Artes")) {
+            facCounter++;
+        }
+        if (checkVotanteEnFacultad(_id, "Estudios Juridicos y Politicos")) {
+            facCounter++;
+        }
+        return facCounter;
+    }
+
+    // function checkRegisteredFacultad(string memory _facultad, string[] memory _facultadesRegistradas) public pure returns (bool) {
+    //     for (uint i = 0; i < _facultadesRegistradas.length; i++) {
+    //         if (keccak256(abi.encodePacked(_facultadesRegistradas[i])) == keccak256(abi.encodePacked(_facultad))) {
+    //             return true;
+    //         }
+    //     }
+    //     return false;
+    // }
 
     function checkRegisteredVoter(uint _id) public view returns (bool) {
         if (votantes[_id].id == _id) {
