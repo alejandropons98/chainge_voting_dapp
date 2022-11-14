@@ -463,6 +463,112 @@ contract("Election", (accounts) => {
         assert.equal(sections[8], "Centro de Estudiantes de Ing. de Produccion", "regresa centro de estudiantes correctamente");
     });
 
+    // it("allows voter to vote", async () => {
+    //     await electionInstance.addAgrupacion("Straw Hat Grand Fleet", "SHGF", { from: accounts[0] });
+    //     const agrupacion = await electionInstance.getAgrupacion("Straw Hat Grand Fleet");
+
+    //     await electionInstance.addConsejoFacultad(agrupacion, "Ingenieria", { from: accounts[0] });
+    //     await electionInstance.addConsejoFacultad(agrupacion, "Ciencias Economicas y Sociales", { from: accounts[0] });
+    //     await electionInstance.addConsejoEscuela(agrupacion, "Economia", { from: accounts[0] });
+    //     await electionInstance.addConsejoEscuela(agrupacion, "Ing. de Produccion", { from: accounts[0] });
+    //     await electionInstance.addCentroEstudiantes(agrupacion, "Economia", { from: accounts[0] });
+    //     await electionInstance.addCentroEstudiantes(agrupacion, "Ing. de Produccion", { from: accounts[0] });
+    //     await electionInstance.addJuntaDirectivaFCE(agrupacion, { from: accounts[0] });
+    //     await electionInstance.addCoordinacionFCE(agrupacion, { from: accounts[0] });
+    //     await electionInstance.addConsejeroAcademico("Monkey D. Luffy", 42, "Ing. de Sistemas", { from: accounts[0] });
+
+
+    //     await electionInstance.addVotante(66, ["Economia", "Ing. de Produccion"], { from: accounts[0] });
+    //     await electionInstance.voteJunta(66, "SHGF", { from: accounts[0] });
+    //     await electionInstance.voteCoordinacion(66, "SHGF", { from: accounts[0] });
+    //     await electionInstance.voteConsejoAcademico(66, 42, { from: accounts[0] });
+    //     await electionInstance.voteConsejoFacultad(66, "Ingenieria", "SHGF", { from: accounts[0] });
+    //     await electionInstance.voteConsejoFacultad(66, "Ciencias Economicas y Sociales", "SHGF", { from: accounts[0] });
+    //     await electionInstance.voteConsejoEscuela(66, "Economia", "SHGF", { from: accounts[0] });
+    //     await electionInstance.voteConsejoEscuela(66, "Ing. de Produccion", "SHGF", { from: accounts[0] });
+    //     await electionInstance.voteCentroEstudiantes(66, "Economia", "SHGF", { from: accounts[0] });
+    //     await electionInstance.voteCentroEstudiantes(66, "Ing. de Produccion", "SHGF", { from: accounts[0] });
+
+    //     const junta = await electionInstance.getJuntaDirectivaFCE("SHGF");
+    //     const coordinacion = await electionInstance.getCoordinacionFCE("SHGF");
+    //     const consejoAcademico = await electionInstance.getConsejeroAcademico(42);
+    //     const consejoFacultadIng = await electionInstance.getConsejoFacultad("SHGF", "Ingenieria");
+    //     const consejoFacultadEco = await electionInstance.getConsejoFacultad("SHGF", "Ciencias Economicas y Sociales");
+    //     const consejoEscuelaEco = await electionInstance.getConsejoEscuela("SHGF", "Economia");
+    //     const consejoEscuelaIng = await electionInstance.getConsejoEscuela("SHGF", "Ing. de Produccion");
+    //     const centroEstudiantesEco = await electionInstance.getCentroEstudiantes("SHGF", "Economia");
+    //     const centroEstudiantesIng = await electionInstance.getCentroEstudiantes("SHGF", "Ing. de Produccion");
+
+    //     assert.equal(junta, 1, "voto junta correctamente");
+    //     assert.equal(coordinacion, 1, "voto coordinacion correctamente");
+    //     assert.equal(consejoAcademico, 1, "voto consejo academico correctamente");
+    //     assert.equal(consejoFacultadIng, 1, "voto consejo facultad correctamente");
+    //     assert.equal(consejoFacultadEco, 1, "voto consejo facultad correctamente");
+    //     assert.equal(consejoEscuelaEco, 1, "voto consejo de escuela correctamente");
+    //     assert.equal(consejoEscuelaIng, 1, "voto consejo de escuela correctamente");
+    //     assert.equal(centroEstudiantesEco, 1, "voto centro estudiantes correctamente");
+    //     assert.equal(centroEstudiantesIng, 1, "voto centro de estudiantes correctamente");
+    // });
+
+    it("gets junta directiva con siglas", async () => {
+        await electionInstance.addAgrupacion("Straw Hat Grand Fleet", "SHGF", { from: accounts[0] });
+        const agrupacion = await electionInstance.getAgrupacion("Straw Hat Grand Fleet");
+
+        await electionInstance.addJuntaDirectivaFCE(agrupacion, { from: accounts[0] });
+        const candidatoJunta = await electionInstance.getJuntaDirectivaFCE("SHGF");
+
+        assert.equal(candidatoJunta[0], "Straw Hat Grand Fleet", "regresa candidato de junta correctamente");
+    });
+
+    it("gets coordinacion con siglas", async () => {
+        await electionInstance.addAgrupacion("Straw Hat Grand Fleet", "SHGF", { from: accounts[0] });
+        const agrupacion = await electionInstance.getAgrupacion("Straw Hat Grand Fleet");
+
+        await electionInstance.addCoordinacionFCE(agrupacion, { from: accounts[0] });
+        const candidatoCoordinacion = await electionInstance.getCoordinacionFCE("SHGF");
+
+        assert.equal(candidatoCoordinacion[0], "Straw Hat Grand Fleet", "regresa candidato de coordinacion correctamente");
+    });
+
+    it("gets consejero academico con id", async () => {
+        await electionInstance.addConsejeroAcademico("Monkey D. Luffy", 42, "Ing. de Sistemas", { from: accounts[0] });
+        const candidatoConsejeroAcademico = await electionInstance.getConsejeroAcademico(42);
+
+        assert.equal(candidatoConsejeroAcademico[0], "Monkey D. Luffy", "regresa candidato de consejero academico correctamente");
+    });
+
+    it("gets consejo facultad con siglas y facultad", async () => {
+        await electionInstance.addAgrupacion("Straw Hat Grand Fleet", "SHGF", { from: accounts[0] });
+        const agrupacion = await electionInstance.getAgrupacion("Straw Hat Grand Fleet");
+
+        await electionInstance.addConsejoFacultad(agrupacion, "Ingenieria", { from: accounts[0] });
+        const candidatoConsejoFacultad = await electionInstance.getConsejoFacultad("SHGF", "Ingenieria");
+
+        assert.equal(candidatoConsejoFacultad[0], "Straw Hat Grand Fleet", "regresa candidato de consejo facultad correctamente");
+    });
+
+    it("gets consejo escuela con siglas y escuela", async () => {
+        await electionInstance.addAgrupacion("Straw Hat Grand Fleet", "SHGF", { from: accounts[0] });
+        const agrupacion = await electionInstance.getAgrupacion("Straw Hat Grand Fleet");
+
+        await electionInstance.addConsejoEscuela(agrupacion, "Economia", { from: accounts[0] });
+        const candidatoConsejoEscuela = await electionInstance.getConsejoEscuela("SHGF", "Economia");
+
+        assert.equal(candidatoConsejoEscuela[0], "Straw Hat Grand Fleet", "regresa candidato de consejo escuela correctamente");
+    });
+
+    it("gets centro estudiantes con siglas y escuela", async () => {
+        await electionInstance.addAgrupacion("Straw Hat Grand Fleet", "SHGF", { from: accounts[0] });
+        const agrupacion = await electionInstance.getAgrupacion("Straw Hat Grand Fleet");
+
+        await electionInstance.addCentroEstudiantes(agrupacion, "Economia", { from: accounts[0] });
+        const candidatoCentroEstudiantes = await electionInstance.getCentroEstudiantes("SHGF", "Economia");
+
+        assert.equal(candidatoCentroEstudiantes[0], "Straw Hat Grand Fleet", "regresa candidato de centro estudiantes correctamente");
+
+    });
+
+
 
 
 
