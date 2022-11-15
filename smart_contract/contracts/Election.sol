@@ -1,9 +1,10 @@
 // SPDX-License-Identifier: UNLICENSED
 pragma solidity ^0.8.0;
-// import "./Party.sol";
+import "./PartyLib.sol";
 
 
 contract Election {
+    using PartyLib for *;
     // Para llevar control de cada estado
 
     // TODO: esto es para despues
@@ -101,80 +102,73 @@ contract Election {
 
     // Agrupaciones
 
-    struct Party {
-        string name;
-        string siglas;
-    }
+    // struct PartyLib.Party {
+    //     string name;
+    //     string siglas;
+    // }
 
-    struct CandidateConsejero {
-        string nombre;
-        uint id;
-        string degree;
-        uint voteCount;
-    }
+    // struct PartyLib.CandidateConsejero {
+    //     string nombre;
+    //     uint id;
+    //     string degree;
+    //     uint voteCount;
+    // }
 
-    struct CandidateConsejoFacultad {
-        string nombreAgrupacion;
-        string siglasAgrupacion;
-        uint voteCount;
-    }
+    // struct PartyLib.CandidateConsejoFacultad {
+    //     string nombreAgrupacion;
+    //     string siglasAgrupacion;
+    //     uint voteCount;
+    // }
 
-    struct CandidateConsejoEscuela {
-        string nombreAgrupacion;
-        string siglasAgrupacion;
-        uint voteCount;
-    }
+    // struct PartyLib.CandidateConsejoEscuela {
+    //     string nombreAgrupacion;
+    //     string siglasAgrupacion;
+    //     uint voteCount;
+    // }
 
-    struct CandidateCentroEstudiantes {
-        string nombreAgrupacion;
-        string siglasAgrupacion;
-        uint voteCount;
-    }
+    // struct CandidateCentroEstudiantes {
+    //     string nombreAgrupacion;
+    //     string siglasAgrupacion;
+    //     uint voteCount;
+    // }
 
-    struct CandidateJuntaDirectiva {
-        string nombreAgrupacion;
-        string siglasAgrupacion;
-        uint voteCount;
-    }
+    // struct PartyLib.CandidateJuntaDirectiva {
+    //     string nombreAgrupacion;
+    //     string siglasAgrupacion;
+    //     uint voteCount;
+    // }
 
-    struct CandidateCoordinacion {
-        string nombreAgrupacion;
-        string siglasAgrupacion;
-        uint voteCount;
-    }   
+    // struct PartyLib.CandidateCoordinacion {
+    //     string nombreAgrupacion;
+    //     string siglasAgrupacion;
+    //     uint voteCount;
+    // }   
 
-    Party[] public agrupacionesRegistradas;
+    PartyLib.Party[] public agrupacionesRegistradas;
 
-    CandidateConsejero[] public candidatosConsejoAcademico;
-    CandidateJuntaDirectiva[] public candidatosJuntaDirectivaFCE;
-    CandidateCoordinacion[] public candidatosCoordinacionFCE;
+    PartyLib.CandidateConsejero[] public candidatosConsejoAcademico;
+    PartyLib.CandidateJuntaDirectiva[] public candidatosJuntaDirectivaFCE;
+    PartyLib.CandidateCoordinacion[] public candidatosCoordinacionFCE;
 
-    mapping (string => CandidateConsejoFacultad[]) public candidatosConsejoFacultad;
-    mapping (string => CandidateConsejoEscuela[]) public candidatosConsejoEscuela;
-    mapping (string => CandidateCentroEstudiantes[]) public candidatosCentroEstudiante;
+    mapping (string => PartyLib.CandidateConsejoFacultad[]) public candidatosConsejoFacultad;
+    mapping (string => PartyLib.CandidateConsejoEscuela[]) public candidatosConsejoEscuela;
+    mapping (string => PartyLib.CandidateCentroEstudiantes[]) public candidatosCentroEstudiante;
 
     // TODO: Para los check puedo quitar la comparacion de las siglas para que sea mas eficiente, aunque quizas seria mejor
     // hacer la comparacion pero con un OR para que no se repitan siglas
     function addAgrupacion(string memory _name, string memory _siglas) public {
-        require(!checkAgrupacion(_name, _siglas), "Agrupacion ya registrada");
-        require(msg.sender == owner, "Solo el dueno del contrato puede registrar agrupaciones");
-        agrupacionesRegistradas.push(Party(_name, _siglas));
+        PartyLib.addAgrupacion(_name, _siglas, owner, agrupacionesRegistradas);
     }
 
-    function checkAgrupacion(string memory _name, string memory _siglas) public view returns (bool) {
-        for (uint i = 0; i < agrupacionesRegistradas.length; ++i) {
-            if(compareStrings(agrupacionesRegistradas[i].name, _name) && compareStrings(agrupacionesRegistradas[i].siglas, _siglas)) {
-                return true;
-            }
-        }
-        return false;
+    function checkAgrupacion(string memory _name, string memory _siglas) public view returns (bool result) {
+        return PartyLib.checkAgrupacion(_name, _siglas, agrupacionesRegistradas);
     }
 
-    function getAgrupaciones() public view returns (Party[] memory) {
+    function getAgrupaciones() public view returns (PartyLib.Party[] memory) {
         return agrupacionesRegistradas;
     }
 
-    function getAgrupacion(string memory _name) public view returns (Party memory agrupacion) {
+    function getAgrupacion(string memory _name) public view returns (PartyLib.Party memory agrupacion) {
         for (uint i = 0; i < agrupacionesRegistradas.length; ++i) {
             if(compareStrings(agrupacionesRegistradas[i].name, _name)) {
                 return agrupacionesRegistradas[i];
@@ -182,111 +176,58 @@ contract Election {
         }
     }
 
-    function addConsejoFacultad(Party memory _agrupacion, string memory _facultad) public {
-        require(checkAgrupacion(_agrupacion.name, _agrupacion.siglas), "Agrupacion no registrada");
-        require(!checkConsejoFacultad(_agrupacion, _facultad), "Agrupacion ya registrada en este consejo");
-        require(checkInFacultades(_facultad), "Facultad no registrada");
-        require(msg.sender == owner, "Solo el dueno del contrato puede registrar candidatos");
-        candidatosConsejoFacultad[_facultad].push(CandidateConsejoFacultad(_agrupacion.name, _agrupacion.siglas, 0));
+    function addConsejoFacultad(PartyLib.Party memory _agrupacion, string memory _facultad) public {
+        PartyLib.addConsejoFacultad(_agrupacion, _facultad, owner, candidatosConsejoFacultad, agrupacionesRegistradas, facultades);
     }
 
-    function checkConsejoFacultad(Party memory _agrupacion, string memory _facultad) public view returns (bool) {
-        for (uint i = 0; i < candidatosConsejoFacultad[_facultad].length; ++i) {
-            if (compareStrings(candidatosConsejoFacultad[_facultad][i].nombreAgrupacion, _agrupacion.name) && compareStrings(candidatosConsejoFacultad[_facultad][i].siglasAgrupacion, _agrupacion.siglas)) {
-                return true;
-            }
-        }
-        return false;
+    function checkConsejoFacultad(PartyLib.Party memory _agrupacion, string memory _facultad) public view returns (bool result) {
+        return PartyLib.checkConsejoFacultad(_agrupacion, _facultad, candidatosConsejoFacultad);
     }
 
-    function checkInFacultades(string memory _facultad) public view returns (bool) {
-        for (uint i = 0; i < facultades.length; ++i) {
-            if(compareStrings(facultades[i], _facultad)) {
-                return true;
-            }
-        }
-        return false;
+    function checkInFacultades(string memory _facultad) public view returns (bool result) {
+        return PartyLib.checkInFacultades(_facultad, facultades);
     }
 
-    function addConsejoEscuela(Party memory _agrupacion, string memory _escuela) public {
-        require(checkAgrupacion(_agrupacion.name, _agrupacion.siglas), "Agrupacion no registrada");
-        require(!checkConsejoEscuela(_agrupacion, _escuela), "Agrupacion ya registrada en este consejo");
-        require(checkInEscuelas(_escuela), "Escuela no registrada");
-        require(msg.sender == owner, "Solo el dueno del contrato puede registrar candidatos");
-        candidatosConsejoEscuela[_escuela].push(CandidateConsejoEscuela(_agrupacion.name, _agrupacion.siglas, 0));
+    function addConsejoEscuela(PartyLib.Party memory _agrupacion, string memory _escuela) public {
+        PartyLib.addConsejoEscuela(_agrupacion, _escuela, owner, candidatosConsejoEscuela, agrupacionesRegistradas, escuelas);
     }
 
-    function checkConsejoEscuela(Party memory _agrupacion, string memory _escuela) public view returns (bool) {
-        for (uint i = 0; i < candidatosConsejoEscuela[_escuela].length; ++i) {
-            if(compareStrings(candidatosConsejoEscuela[_escuela][i].nombreAgrupacion, _agrupacion.name) && compareStrings(candidatosConsejoEscuela[_escuela][i].siglasAgrupacion, _agrupacion.siglas)) {
-                return true;
-            }
-        }
-        return false;
+    function checkConsejoEscuela(PartyLib.Party memory _agrupacion, string memory _escuela) public view returns (bool result) {
+        return PartyLib.checkConsejoEscuela(_agrupacion, _escuela, candidatosConsejoEscuela);
     }
 
-    function checkInEscuelas(string memory _escuela) public view returns (bool) {
-        for (uint i = 0; i < escuelas.length; ++i) {
-            if(compareStrings(escuelas[i], _escuela)) {
-                return true;
-            }
-        }
-        return false;
+    function checkInEscuelas(string memory _escuela) public view returns (bool result) {
+        return PartyLib.checkInEscuelas(_escuela, escuelas);
     }
 
-    function addCentroEstudiantes(Party memory _agrupacion, string memory _escuela) public {
-        require(checkAgrupacion(_agrupacion.name, _agrupacion.siglas), "Agrupacion no registrada");
-        require(!checkCentroEstudiantes(_agrupacion, _escuela), "Agrupacion ya registrada en este consejo");
-        require(checkInEscuelas(_escuela), "Centro no registrado");
-        require(msg.sender == owner, "Solo el dueno del contrato puede registrar candidatos");
-        candidatosCentroEstudiante[_escuela].push(CandidateCentroEstudiantes(_agrupacion.name, _agrupacion.siglas, 0));
+    function addCentroEstudiantes(PartyLib.Party memory _agrupacion, string memory _escuela) public {
+        PartyLib.addCentroEstudiantes(_agrupacion, _escuela, owner, candidatosCentroEstudiante, agrupacionesRegistradas, escuelas);
     }
 
-    function checkCentroEstudiantes(Party memory _agrupacion, string memory _escuela) public view returns (bool) {
-        for (uint i = 0; i < candidatosCentroEstudiante[_escuela].length; ++i) {
-            if(compareStrings(candidatosCentroEstudiante[_escuela][i].nombreAgrupacion, _agrupacion.name) && compareStrings(candidatosCentroEstudiante[_escuela][i].siglasAgrupacion, _agrupacion.siglas)) {
-                return true;
-            }
-        }
-        return false;
+    function checkCentroEstudiantes(PartyLib.Party memory _agrupacion, string memory _escuela) public view returns (bool result) {
+        return PartyLib.checkCentroEstudiantes(_agrupacion, _escuela, candidatosCentroEstudiante);
     }
 
-    function addJuntaDirectivaFCE(Party memory _agrupacion) public {
-        require(checkAgrupacion(_agrupacion.name, _agrupacion.siglas), "Agrupacion no registrada");
-        require(!checkJuntaDirectiva(_agrupacion), "Agrupacion ya registrada en este consejo");
-        require(msg.sender == owner, "Solo el dueno del contrato puede registrar candidatos");
-        candidatosJuntaDirectivaFCE.push(CandidateJuntaDirectiva(_agrupacion.name, _agrupacion.siglas, 0));
+    function addJuntaDirectivaFCE(PartyLib.Party memory _agrupacion) public {
+        PartyLib.addJuntaDirectivaFCE(_agrupacion, owner, candidatosJuntaDirectivaFCE, agrupacionesRegistradas);
     }
 
-    function checkJuntaDirectiva(Party memory _agrupacion) public view returns (bool) {
-        for (uint i = 0; i < candidatosJuntaDirectivaFCE.length; ++i) {
-            if (compareStrings(candidatosJuntaDirectivaFCE[i].nombreAgrupacion, _agrupacion.name) && compareStrings(candidatosJuntaDirectivaFCE[i].siglasAgrupacion, _agrupacion.siglas)) {
-                return true;
-            }
-        }
-        return false;
+    function checkJuntaDirectiva(PartyLib.Party memory _agrupacion) public view returns (bool result) {
+        return PartyLib.checkJuntaDirectiva(_agrupacion, candidatosJuntaDirectivaFCE);
     }
 
-    function addCoordinacionFCE(Party memory _agrupacion) public {
-        require(checkAgrupacion(_agrupacion.name, _agrupacion.siglas), "Agrupacion no registrada");
-        require(!checkCoordinacion(_agrupacion), "Agrupacion ya registrada en este consejo");
-        require(msg.sender == owner, "Solo el dueno del contrato puede registrar candidatos");
-        candidatosCoordinacionFCE.push(CandidateCoordinacion(_agrupacion.name, _agrupacion.siglas, 0));
+    function addCoordinacionFCE(PartyLib.Party memory _agrupacion) public {
+        PartyLib.addCoordinacionFCE(_agrupacion, owner, candidatosCoordinacionFCE, agrupacionesRegistradas);
     }
 
-    function checkCoordinacion(Party memory _agrupacion) public view returns (bool) {
-        for (uint i = 0; i < candidatosCoordinacionFCE.length; ++i) {
-            if (compareStrings(candidatosCoordinacionFCE[i].nombreAgrupacion, _agrupacion.name) && compareStrings(candidatosCoordinacionFCE[i].siglasAgrupacion, _agrupacion.siglas)) {
-                return true;
-            }
-        }
-        return false;
+    function checkCoordinacion(PartyLib.Party memory _agrupacion) public view returns (bool result) {
+        return PartyLib.checkCoordinacion(_agrupacion, candidatosCoordinacionFCE);
     }
 
     function addConsejeroAcademico(string memory _name, uint _id, string memory _major) public {
         require(msg.sender == owner, "Solo el dueno del contrato puede registrar candidatos");
         require(!checkConsejeroAcademico(_id), "Consejero ya registrado");
-        candidatosConsejoAcademico.push(CandidateConsejero(_name, _id, _major, 0));
+        candidatosConsejoAcademico.push(PartyLib.CandidateConsejero(_name, _id, _major, 0));
     }
 
     function checkConsejeroAcademico(uint _id) public view returns (bool) {
@@ -298,7 +239,7 @@ contract Election {
         return false;
     }
 
-    function getCandidateConsejoAcademico(uint _id) public view returns (CandidateConsejero memory candidate) {
+    function getCandidateConsejoAcademico(uint _id) public view returns (PartyLib.CandidateConsejero memory candidate) {
         for (uint i = 0; i < candidatosConsejoAcademico.length; ++i) {
             if (candidatosConsejoAcademico[i].id == _id) {
                 return candidatosConsejoAcademico[i];
@@ -306,31 +247,31 @@ contract Election {
         }
     }
 
-    function getAllCandidatesConsejoAcademico() public view returns (CandidateConsejero[] memory) {
+    function getAllCandidatesConsejoAcademico() public view returns (PartyLib.CandidateConsejero[] memory) {
         return candidatosConsejoAcademico;
     }
 
-    function getCandidatosConsejoFacultad(string memory _facultad) public view returns (CandidateConsejoFacultad[] memory) {
+    function getCandidatosConsejoFacultad(string memory _facultad) public view returns (PartyLib.CandidateConsejoFacultad[] memory) {
         return candidatosConsejoFacultad[_facultad];
     }
 
-    function getCandidatosConsejoEscuela(string memory _escuela) public view returns (CandidateCentroEstudiantes[] memory) {
+    function getCandidatosConsejoEscuela(string memory _escuela) public view returns (PartyLib.CandidateCentroEstudiantes[] memory) {
         return candidatosCentroEstudiante[_escuela];
     }
 
-    function getCandidatosCentroEstudiante(string memory _escuela) public view returns (CandidateCentroEstudiantes[] memory) {
+    function getCandidatosCentroEstudiante(string memory _escuela) public view returns (PartyLib.CandidateCentroEstudiantes[] memory) {
         return candidatosCentroEstudiante[_escuela];
     }
 
-    function getCandidatosdCoordinacionFCE() public view returns (CandidateCoordinacion[] memory) {
+    function getCandidatosdCoordinacionFCE() public view returns (PartyLib.CandidateCoordinacion[] memory) {
         return candidatosCoordinacionFCE;
     }
 
-    function getCandidatosJuntaDirectivaFCE() public view returns (CandidateJuntaDirectiva[] memory) {
+    function getCandidatosJuntaDirectivaFCE() public view returns (PartyLib.CandidateJuntaDirectiva[] memory) {
         return candidatosJuntaDirectivaFCE;
     }
 
-    function getJuntaDirectivaFCE(string memory _siglas) public view returns (CandidateJuntaDirectiva memory junta) {
+    function getJuntaDirectivaFCE(string memory _siglas) public view returns (PartyLib.CandidateJuntaDirectiva memory junta) {
         for (uint i = 0; i < candidatosJuntaDirectivaFCE.length; ++i) {
             if (keccak256(abi.encodePacked(candidatosJuntaDirectivaFCE[i].siglasAgrupacion)) == keccak256(abi.encodePacked(_siglas))) {
                 return candidatosJuntaDirectivaFCE[i];
@@ -338,7 +279,7 @@ contract Election {
         }
     }
 
-    function getCoordinacionFCE(string memory _siglas) public view returns (CandidateCoordinacion memory coordinacion) {
+    function getCoordinacionFCE(string memory _siglas) public view returns (PartyLib.CandidateCoordinacion memory coordinacion) {
         for (uint i = 0; i < candidatosCoordinacionFCE.length; ++i) {
             if (compareStrings(candidatosCoordinacionFCE[i].siglasAgrupacion, _siglas)) {
                 return candidatosCoordinacionFCE[i];
@@ -346,7 +287,7 @@ contract Election {
         }
     }
 
-    function getCentroEstudiantes(string memory _siglas, string memory _escuela) public view returns (CandidateCentroEstudiantes memory centro) {
+    function getCentroEstudiantes(string memory _siglas, string memory _escuela) public view returns (PartyLib.CandidateCentroEstudiantes memory centro) {
         for (uint i = 0; i < candidatosCentroEstudiante[_escuela].length; ++i) {
             if (compareStrings(candidatosCentroEstudiante[_escuela][i].siglasAgrupacion, _siglas)) {
                 return candidatosCentroEstudiante[_escuela][i];
@@ -354,7 +295,7 @@ contract Election {
         }
     }
 
-    function getConsejoFacultad(string memory _siglas, string memory _facultad) public view returns (CandidateConsejoFacultad memory consejo) {
+    function getConsejoFacultad(string memory _siglas, string memory _facultad) public view returns (PartyLib.CandidateConsejoFacultad memory consejo) {
         for (uint i = 0; i < candidatosConsejoFacultad[_facultad].length; ++i) {
             if (compareStrings(candidatosConsejoFacultad[_facultad][i].siglasAgrupacion, _siglas)) {
                 return candidatosConsejoFacultad[_facultad][i];
@@ -363,7 +304,7 @@ contract Election {
         }
     }
 
-    function getConsejeroAcademico(uint _id) public view returns (CandidateConsejero memory consejero) {
+    function getConsejeroAcademico(uint _id) public view returns (PartyLib.CandidateConsejero memory consejero) {
         for (uint i = 0; i < candidatosConsejoAcademico.length; ++i) {
             if (candidatosConsejoAcademico[i].id == _id) {
                 return candidatosConsejoAcademico[i];
@@ -371,7 +312,7 @@ contract Election {
         }
     }
 
-    function getConsejoEscuela(string memory _siglas, string memory _escuela) public view returns (CandidateConsejoEscuela memory consejo) {
+    function getConsejoEscuela(string memory _siglas, string memory _escuela) public view returns (PartyLib.CandidateConsejoEscuela memory consejo) {
         for (uint i = 0; i < candidatosConsejoEscuela[_escuela].length; ++i) {
             if (compareStrings(candidatosConsejoEscuela[_escuela][i].siglasAgrupacion, _siglas)) {
                 return candidatosConsejoEscuela[_escuela][i];
@@ -425,7 +366,7 @@ contract Election {
         require(!votantes[_id].voted, "Votante ya ha votado");
         require(checkRegisteredVoter(_id), "Votante no registrado en el registro electoral");
         require(msg.sender == owner, "Solo el dueno del contrato puede registrar votantes");
-        CandidateJuntaDirectiva memory candidato = getJuntaDirectivaFCE(_siglas);
+        PartyLib.CandidateJuntaDirectiva memory candidato = getJuntaDirectivaFCE(_siglas);
         candidato.voteCount += 1;
         votantes[_id].votoJuntaDirectiva = true;
         if (checkListoVotando(_id)) {
@@ -437,7 +378,7 @@ contract Election {
         require(!votantes[_id].votoCoordinacion, "Votante ya ha votado");
         require(checkRegisteredVoter(_id), "Votante no registrado en el registro electoral");
         require(msg.sender == owner, "Solo el dueno del contrato puede registrar votantes");
-        CandidateCoordinacion memory candidato = getCoordinacionFCE(_siglas);
+        PartyLib.CandidateCoordinacion memory candidato = getCoordinacionFCE(_siglas);
         candidato.voteCount += 1;
         votantes[_id].votoCoordinacion = true;
         if (checkListoVotando(_id)) {
@@ -450,7 +391,7 @@ contract Election {
         require(!votantes[_id].votoConsejoAcademico, "Votante ya ha votado");
         require(checkRegisteredVoter(_id), "Votante no registrado en el registro electoral");
         require(msg.sender == owner, "Solo el dueno del contrato puede registrar votantes");
-        CandidateConsejero memory candidato = getConsejeroAcademico(_idCandidato);
+        PartyLib.CandidateConsejero memory candidato = getConsejeroAcademico(_idCandidato);
         candidato.voteCount += 1;
         votantes[_id].votoConsejoAcademico = true;
         if (checkListoVotando(_id)) {
@@ -462,7 +403,7 @@ contract Election {
         require(!votantes[_id].votoConsejoFacultad, "Votante ya ha votado");
         require(checkRegisteredVoter(_id), "Votante no registrado en el registro electoral");
         require(msg.sender == owner, "Solo el dueno del contrato puede registrar votantes");
-        CandidateConsejoFacultad memory candidato = getConsejoFacultad(_siglas, _facultad);
+        PartyLib.CandidateConsejoFacultad memory candidato = getConsejoFacultad(_siglas, _facultad);
         candidato.voteCount++;
         Votante memory votante = votantes[_id];
         votante.votosFacultad--;
@@ -478,7 +419,7 @@ contract Election {
         require(!votantes[_id].votoConsejoEscuela, "Votante ya ha votado");
         require(checkRegisteredVoter(_id), "Votante no registrado en el registro electoral");
         require(msg.sender == owner, "Solo el dueno del contrato puede registrar votantes");
-        CandidateConsejoEscuela memory candidato = getConsejoEscuela(_siglas, _escuela);
+        PartyLib.CandidateConsejoEscuela memory candidato = getConsejoEscuela(_siglas, _escuela);
         candidato.voteCount++;
         Votante memory votante = votantes[_id];
         votante.votosConsejoEscuela--;
@@ -494,7 +435,7 @@ contract Election {
         require(!votantes[_id].votoCentroEstudiantes, "Votante ya ha votado");
         require(checkRegisteredVoter(_id), "Votante no registrado en el registro electoral");
         require(msg.sender == owner, "Solo el dueno del contrato puede registrar votantes");
-        CandidateCentroEstudiantes memory candidato = getCentroEstudiantes(_siglas, _escuela);
+        PartyLib.CandidateCentroEstudiantes memory candidato = getCentroEstudiantes(_siglas, _escuela);
         candidato.voteCount++;
         Votante memory votante = votantes[_id];
         votante.votosCentroEstudiantes--;
@@ -647,7 +588,7 @@ contract Election {
 
     // struct Candidate {
     //     string name;
-    //     string party;
+    //     string PartyLib.Party;
     //     string degree;
     //     uint256 voteCount;
     //     uint id;
@@ -695,21 +636,21 @@ contract Election {
     //     return false;
     // }
 
-    // function registerCandidate(string memory _name, string memory _party, string memory _degree) public onlyOwner {
+    // function registerCandidate(string memory _name, string memory _PartyLib.Party, string memory _degree) public onlyOwner {
     //     candidates.push(
-    //         Candidate({name: _name, party: _party, degree: _degree, voteCount: 0, id: candidates.length})
+    //         Candidate({name: _name, PartyLib.Party: _PartyLib.Party, degree: _degree, voteCount: 0, id: candidates.length})
     //     );
 
-    //     if (!isPartyRegistered(_party)) {
-    //         parties.push(_party);
+    //     if (!isPartyLib.PartyRegistered(_PartyLib.Party)) {
+    //         parties.push(_PartyLib.Party);
     //     }
 
     //     emit CandidateRegisteredEvent(candidates.length - 1);
     // }
 
-    // function isPartyRegistered(string memory party) public view returns (bool) {
+    // function isPartyLib.PartyRegistered(string memory PartyLib.Party) public view returns (bool) {
     //     for (uint i = 0; i < parties.length; ++i) {
-    //         if (keccak256(abi.encodePacked(parties[i])) == keccak256(abi.encodePacked(party))) {
+    //         if (keccak256(abi.encodePacked(parties[i])) == keccak256(abi.encodePacked(PartyLib.Party))) {
     //             return true;
     //         }
     //     }
@@ -734,7 +675,7 @@ contract Election {
     //     view
     //     returns (
     //         string memory name,
-    //         string memory party,
+    //         string memory PartyLib.Party,
     //         string memory degree,
     //         uint256 voteCount,
     //         uint id
@@ -742,7 +683,7 @@ contract Election {
     // {
     //     for (uint i = 0; i < candidates.length; ++i) {
     //         if (candidates[i].id == candidateId) {
-    //             return (candidates[i].name, candidates[i].party, candidates[i].degree, candidates[i].voteCount, candidates[i].id);
+    //             return (candidates[i].name, candidates[i].PartyLib.Party, candidates[i].degree, candidates[i].voteCount, candidates[i].id);
     //         }
     //     }
     // }
@@ -752,14 +693,14 @@ contract Election {
     //     view
     //     returns (
     //         string memory name,
-    //         string memory party,
+    //         string memory PartyLib.Party,
     //         string memory degree,
     //         uint256 voteCount
     //     )
     // {
     //     for (uint i = 0; i < candidates.length; ++i) {
     //         if (keccak256(abi.encodePacked(candidates[i].name)) == keccak256(abi.encodePacked(Sname))) {
-    //             return (candidates[i].name, candidates[i].party, candidates[i].degree, candidates[i].voteCount);
+    //             return (candidates[i].name, candidates[i].PartyLib.Party, candidates[i].degree, candidates[i].voteCount);
     //         }
     //     }
     // }
