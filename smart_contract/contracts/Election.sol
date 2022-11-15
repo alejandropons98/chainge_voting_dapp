@@ -1,10 +1,12 @@
 // SPDX-License-Identifier: UNLICENSED
 pragma solidity ^0.8.0;
 import "./PartyLib.sol";
+import "./StringComp.sol";
 
 
 contract Election {
     using PartyLib for *;
+    using StringComp for *;
     // Para llevar control de cada estado
 
     // TODO: esto es para despues
@@ -42,19 +44,6 @@ contract Election {
     //     WorkflowStatus previousStatus,
     //     WorkflowStatus newStatus
     // );
-
-    function compareStrings(string memory a, string memory b)
-        internal
-        pure
-        returns (bool)
-    {
-        if (bytes(a).length != bytes(b).length) {
-            return false;
-        } else {
-            return keccak256(abi.encodePacked((a))) ==
-                keccak256(abi.encodePacked((b)));
-        }
-    }
 
     constructor() {
         owner = msg.sender;
@@ -170,7 +159,7 @@ contract Election {
 
     function getAgrupacion(string memory _name) public view returns (PartyLib.Party memory agrupacion) {
         for (uint i = 0; i < agrupacionesRegistradas.length; ++i) {
-            if(compareStrings(agrupacionesRegistradas[i].name, _name)) {
+            if(StringComp.compareStrings(agrupacionesRegistradas[i].name, _name)) {
                 return agrupacionesRegistradas[i];
             }
         }
@@ -273,7 +262,7 @@ contract Election {
 
     function getJuntaDirectivaFCE(string memory _siglas) public view returns (PartyLib.CandidateJuntaDirectiva memory junta) {
         for (uint i = 0; i < candidatosJuntaDirectivaFCE.length; ++i) {
-            if (keccak256(abi.encodePacked(candidatosJuntaDirectivaFCE[i].siglasAgrupacion)) == keccak256(abi.encodePacked(_siglas))) {
+            if (StringComp.compareStrings(candidatosJuntaDirectivaFCE[i].siglasAgrupacion, _siglas)) {
                 return candidatosJuntaDirectivaFCE[i];
             }
         }
@@ -281,7 +270,7 @@ contract Election {
 
     function getCoordinacionFCE(string memory _siglas) public view returns (PartyLib.CandidateCoordinacion memory coordinacion) {
         for (uint i = 0; i < candidatosCoordinacionFCE.length; ++i) {
-            if (compareStrings(candidatosCoordinacionFCE[i].siglasAgrupacion, _siglas)) {
+            if (StringComp.compareStrings(candidatosCoordinacionFCE[i].siglasAgrupacion, _siglas)) {
                 return candidatosCoordinacionFCE[i];
             }
         }
@@ -289,7 +278,7 @@ contract Election {
 
     function getCentroEstudiantes(string memory _siglas, string memory _escuela) public view returns (PartyLib.CandidateCentroEstudiantes memory centro) {
         for (uint i = 0; i < candidatosCentroEstudiante[_escuela].length; ++i) {
-            if (compareStrings(candidatosCentroEstudiante[_escuela][i].siglasAgrupacion, _siglas)) {
+            if (StringComp.compareStrings(candidatosCentroEstudiante[_escuela][i].siglasAgrupacion, _siglas)) {
                 return candidatosCentroEstudiante[_escuela][i];
             }
         }
@@ -297,7 +286,7 @@ contract Election {
 
     function getConsejoFacultad(string memory _siglas, string memory _facultad) public view returns (PartyLib.CandidateConsejoFacultad memory consejo) {
         for (uint i = 0; i < candidatosConsejoFacultad[_facultad].length; ++i) {
-            if (compareStrings(candidatosConsejoFacultad[_facultad][i].siglasAgrupacion, _siglas)) {
+            if (StringComp.compareStrings(candidatosConsejoFacultad[_facultad][i].siglasAgrupacion, _siglas)) {
                 return candidatosConsejoFacultad[_facultad][i];
             }
 
@@ -314,7 +303,7 @@ contract Election {
 
     function getConsejoEscuela(string memory _siglas, string memory _escuela) public view returns (PartyLib.CandidateConsejoEscuela memory consejo) {
         for (uint i = 0; i < candidatosConsejoEscuela[_escuela].length; ++i) {
-            if (compareStrings(candidatosConsejoEscuela[_escuela][i].siglasAgrupacion, _siglas)) {
+            if (StringComp.compareStrings(candidatosConsejoEscuela[_escuela][i].siglasAgrupacion, _siglas)) {
                 return candidatosConsejoEscuela[_escuela][i];
             }
         }
@@ -461,35 +450,35 @@ contract Election {
 
     function getFacultadCarrera(string memory _carrera) public pure returns (string memory facCarrera) {
 
-        if (compareStrings(_carrera, "Ing. Quimica")) {
+        if (StringComp.compareStrings(_carrera, "Ing. Quimica")) {
             return "Ingenieria";
-        } else if (compareStrings(_carrera, "Ing. de Sistemas")) {
+        } else if (StringComp.compareStrings(_carrera, "Ing. de Sistemas")) {
             return "Ingenieria";
-        } else if (compareStrings(_carrera, "Ing. Civil")) {
+        } else if (StringComp.compareStrings(_carrera, "Ing. Civil")) {
             return "Ingenieria";
-        } else if (compareStrings(_carrera, "Ing. Mecanica")) {
+        } else if (StringComp.compareStrings(_carrera, "Ing. Mecanica")) {
             return "Ingenieria";
-        } else if (compareStrings(_carrera, "Ing. de Produccion")) {
+        } else if (StringComp.compareStrings(_carrera, "Ing. de Produccion")) {
             return "Ingenieria";
-        } else if (compareStrings(_carrera, "Ing. Electrica")) {
+        } else if (StringComp.compareStrings(_carrera, "Ing. Electrica")) {
             return "Ingenieria";
-        } else if (compareStrings(_carrera, "Administracion")) {
+        } else if (StringComp.compareStrings(_carrera, "Administracion")) {
             return "Ciencias Economicas y Sociales";
-        } else if (compareStrings(_carrera, "Economia")) {
+        } else if (StringComp.compareStrings(_carrera, "Economia")) {
             return "Ciencias Economicas y Sociales";
-        } else if (compareStrings(_carrera, "Contaduria")) {
+        } else if (StringComp.compareStrings(_carrera, "Contaduria")) {
             return "Ciencias Economicas y Sociales";
-        } else if (compareStrings(_carrera, "Educacion")) {
+        } else if (StringComp.compareStrings(_carrera, "Educacion")) {
             return "Ciencias y Artes";
-        } else if (compareStrings(_carrera, "Idiomas")) {
+        } else if (StringComp.compareStrings(_carrera, "Idiomas")) {
             return "Ciencias y Artes";
-        } else if (compareStrings(_carrera, "Psicologia")) {
+        } else if (StringComp.compareStrings(_carrera, "Psicologia")) {
             return "Ciencias y Artes";
-        } else if (compareStrings(_carrera, "Mate. Industriales")) {
+        } else if (StringComp.compareStrings(_carrera, "Mate. Industriales")) {
             return "Ciencias y Artes";
-        } else if (compareStrings(_carrera, "Est. Liberales")) {
+        } else if (StringComp.compareStrings(_carrera, "Est. Liberales")) {
             return "Estudios Juridicos y Politicos";
-        } else if (compareStrings(_carrera, "Derecho")) {
+        } else if (StringComp.compareStrings(_carrera, "Derecho")) {
             return "Estudios Juridicos y Politicos";
         }
     }
