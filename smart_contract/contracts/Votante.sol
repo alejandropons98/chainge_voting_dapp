@@ -45,7 +45,10 @@ contract Votante {
     }
 
     function getVoted() public view returns (bool) {
-        return voted;
+        if (!getVotedCentroEstudiantes() || !getVotedConsejoFacultad() || !getVotedConsejoEscuela() || !getVotedCoordinacionFCE() || !getVotedJuntaDirectivaFCE() || !getVotedConsejoAcademico()) {
+            return false;
+        }
+        return true;
     }
 
     function getVotedConsejoAcademico() public view returns (bool) {
@@ -87,40 +90,34 @@ contract Votante {
     function votarConsejoAcademico() public {
         require(!votedConsejoAcademico);
         votedConsejoAcademico = true;
-        voted = votedConsejoAcademico && votedJuntaDirectivaFCE && votedCoordinacionFCE && votedCentroEstudiantes && votedConsejoEscuela && votedConsejoFacultad;
     }
 
     function votarJuntaDirectivaFCE() public {
         require(!votedJuntaDirectivaFCE);
         votedJuntaDirectivaFCE = true;
-        voted = votedConsejoAcademico && votedJuntaDirectivaFCE && votedCoordinacionFCE && votedCentroEstudiantes && votedConsejoEscuela && votedConsejoFacultad;
     }
 
     function votarCoordinacionFCE() public {
         require(!votedCoordinacionFCE);
         votedCoordinacionFCE = true;
-        voted = votedConsejoAcademico && votedJuntaDirectivaFCE && votedCoordinacionFCE && votedCentroEstudiantes && votedConsejoEscuela && votedConsejoFacultad;
     }
 
     function votarCentroEstudiantes() public {
         require(!votedCentroEstudiantes);
         numeroVotosCentroEst--;
         votedCentroEstudiantes = numeroVotosCentroEst == 0;
-        voted = votedConsejoAcademico && votedJuntaDirectivaFCE && votedCoordinacionFCE && votedCentroEstudiantes && votedConsejoEscuela && votedConsejoFacultad;
     }
 
     function votarConsejoEscuela() public {
         require(!votedConsejoEscuela);
         numeroVotosCE--;
         votedConsejoEscuela = numeroVotosCE == 0;
-        voted = votedConsejoAcademico && votedJuntaDirectivaFCE && votedCoordinacionFCE && votedCentroEstudiantes && votedConsejoEscuela && votedConsejoFacultad;
     }
 
     function votarConsejoFacultad() public {
         require(!votedConsejoFacultad);
         numeroVotosCF--;
         votedConsejoFacultad = numeroVotosCF == 0;
-        voted = votedConsejoAcademico && votedJuntaDirectivaFCE && votedCoordinacionFCE && votedCentroEstudiantes && votedConsejoEscuela && votedConsejoFacultad;
     }
 
     function canVote() public view returns (bool) {

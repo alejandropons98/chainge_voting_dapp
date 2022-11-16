@@ -46,12 +46,12 @@ contract Eleccion {
         return (votantesRegistrados[_id].getID(), votantesRegistrados[_id].getCarreras(), votantesRegistrados[_id].getFacultades());
     }
 
-    function getVotanteVotado(uint _id) public view returns (bool) {
+    function getVotanteCulminoVotacion(uint _id) public view returns (bool) {
         return votantesRegistrados[_id].getVoted();
     }
 
-    function getVotanteVotados(uint _id) public view returns (bool, bool, bool, bool, bool) {
-        return (votantesRegistrados[_id].getVotedConsejoAcademico(), votantesRegistrados[_id].getVotedJuntaDirectivaFCE(), votantesRegistrados[_id].getVotedCoordinacionFCE(), votantesRegistrados[_id].getVotedCentroEstudiantes(), votantesRegistrados[_id].getVotedConsejoEscuela());
+    function getVotanteSeccionesVotadas(uint _id) public view returns (bool, bool, bool, bool, bool, bool) {
+        return (votantesRegistrados[_id].getVotedConsejoAcademico(), votantesRegistrados[_id].getVotedJuntaDirectivaFCE(), votantesRegistrados[_id].getVotedCoordinacionFCE(), votantesRegistrados[_id].getVotedCentroEstudiantes(), votantesRegistrados[_id].getVotedConsejoEscuela(), votantesRegistrados[_id].getVotedConsejoFacultad());
     }
 
     function getVotanteNumeroVotos(uint _id) public view returns (uint, uint, uint) {
@@ -63,11 +63,11 @@ contract Eleccion {
         candidatosConsejoAcademico[_id] = new ConsejoAcademico(_nombre, _id, _carrera);
     }
 
-    function getCandidateConsejoAcademico(uint _id) public view returns (string memory, uint, string memory, uint) {
+    function getCandidatoConsejoAcademico(uint _id) public view returns (string memory, uint, string memory, uint) {
         return (candidatosConsejoAcademico[_id].name(), candidatosConsejoAcademico[_id].id(), candidatosConsejoAcademico[_id].carrera(), candidatosConsejoAcademico[_id].totalVotes());
     }
 
-    function voteCandidateConsejoAcademico(uint _id, uint _voterID) public {
+    function voteCandidatoConsejoAcademico(uint _id, uint _voterID) public {
         ConsejoAcademico candidato = candidatosConsejoAcademico[_id];
         candidato.vote();
         Votante votante = votantesRegistrados[_voterID];
@@ -80,11 +80,11 @@ contract Eleccion {
         candidatosJuntaFCE[_siglas] = new JuntaDirectivaFCE(_agrupacion, _siglas);
     }
 
-    function getCandidateJuntaDirectivaFCE(string memory _siglas) public view returns (string memory, string memory, uint) {
+    function getCandidatoJuntaDirectivaFCE(string memory _siglas) public view returns (string memory, string memory, uint) {
         return (candidatosJuntaFCE[_siglas].agrupacion(), candidatosJuntaFCE[_siglas].siglas(), candidatosJuntaFCE[_siglas].totalVotes());
     }
 
-    function voteCandidateJuntaDirectivaFCE(string memory _siglas, uint _voterID) public {
+    function voteCandidatoJuntaDirectivaFCE(string memory _siglas, uint _voterID) public {
         JuntaDirectivaFCE candidato = candidatosJuntaFCE[_siglas];
         candidato.vote();
         Votante votante = votantesRegistrados[_voterID];
@@ -99,7 +99,7 @@ contract Eleccion {
         return (candidatosCoordinacionFCE[_siglas].agrupacion(), candidatosCoordinacionFCE[_siglas].siglas(), candidatosCoordinacionFCE[_siglas].totalVotes());
     }
 
-    function voteCandidateCoordinacionFCE(string memory _siglas, uint _voterID) public {
+    function voteCandidatoCoordinacionFCE(string memory _siglas, uint _voterID) public {
         CoordinacionFCE candidato = candidatosCoordinacionFCE[_siglas];
         candidato.vote();
         Votante votante = votantesRegistrados[_voterID];
@@ -114,7 +114,7 @@ contract Eleccion {
         return (candidatosCentroEstudiantes[_escuela][_siglas].nombre(), candidatosCentroEstudiantes[_escuela][_siglas].siglas(), candidatosCentroEstudiantes[_escuela][_siglas].escuela(), candidatosCentroEstudiantes[_escuela][_siglas].totalVotes());
     }
 
-    function voteCandidateCentroEstudiantes(string memory _siglas, string memory _escuela, uint _voterID) public {
+    function voteCandidatoCentroEstudiantes(string memory _siglas, string memory _escuela, uint _voterID) public {
         CentroEstudiantes candidato = candidatosCentroEstudiantes[_escuela][_siglas];
         candidato.vote();
         Votante votante = votantesRegistrados[_voterID];
@@ -129,7 +129,7 @@ contract Eleccion {
         return (candidatosConsejoEscuela[_escuela][_siglas].nombre(), candidatosConsejoEscuela[_escuela][_siglas].siglas(), candidatosConsejoEscuela[_escuela][_siglas].escuela(), candidatosConsejoEscuela[_escuela][_siglas].totalVotes());
     }
 
-    function voteCandidateConsejoEscuela(string memory _siglas, string memory _escuela, uint _voterID) public {
+    function voteCandidatoConsejoEscuela(string memory _siglas, string memory _escuela, uint _voterID) public {
         ConsejoEscuela candidato = candidatosConsejoEscuela[_escuela][_siglas];
         candidato.vote();
         Votante votante = votantesRegistrados[_voterID];
@@ -144,7 +144,7 @@ contract Eleccion {
         return (candidatosConsejoFacultad[_facultad][_siglas].nombre(), candidatosConsejoFacultad[_facultad][_siglas].siglas(), candidatosConsejoFacultad[_facultad][_siglas].facultad(), candidatosConsejoFacultad[_facultad][_siglas].totalVotes());
     }
 
-    function voteCandidateConsejoFacultad(string memory _siglas, string memory _facultad, uint _voterID) public {
+    function voteCandidatoConsejoFacultad(string memory _siglas, string memory _facultad, uint _voterID) public {
         ConsejoFacultad candidato = candidatosConsejoFacultad[_facultad][_siglas];
         candidato.vote();
         Votante votante = votantesRegistrados[_voterID];
