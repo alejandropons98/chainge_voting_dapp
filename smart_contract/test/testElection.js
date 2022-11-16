@@ -127,4 +127,27 @@ contract("Eleccion", (accounts) => {
         const votante = await electionInstance.getVotanteCulminoVotacion(13);
         assert.equal(votante, true, "Votante completo votacion correctamente");
     });
+
+    it ("retorna ganadores consejo academico", async () => {
+        await electionInstance.agregarCandidatoConsejoAcademico("Monkey D. Luffy", 42, "Ing. de Sistemas", { from: accounts[0] });
+        await electionInstance.agregarCandidatoConsejoAcademico("Roronoa Zoro", 43, "Ing. de Sistemas", { from: accounts[0] });
+        await electionInstance.agregarCandidatoConsejoAcademico("Nami", 44, "Ing. de Sistemas", { from: accounts[0] });
+
+        await electionInstance.agregarVotante(13, ["Ing. de Sistemas"], ["Ingenieria"], { from: accounts[0] });
+        await electionInstance.agregarVotante(14, ["Ing. de Sistemas"], ["Ingenieria"], { from: accounts[0] });
+        await electionInstance.agregarVotante(15, ["Ing. de Sistemas"], ["Ingenieria"], { from: accounts[0] });
+
+        await electionInstance.voteCandidatoConsejoAcademico(42, 13, { from: accounts[0] });
+        await electionInstance.voteCandidatoConsejoAcademico(43, 14, { from: accounts[0] });
+        await electionInstance.voteCandidatoConsejoAcademico(42, 15, { from: accounts[0] });
+
+        const ganadores = await electionInstance.getGanadoresConsejoAcademico();
+
+        assert.equal(ganadores[0], "Monkey D. Luffy", "Ganador 1 correcto");
+        assert.equal(ganadores[1], 42, "Ganador 1 correcto");
+        assert.equal(ganadores[3], "Roronoa Zoro", "Ganador 2 correcto");
+        assert.equal(ganadores[4], 43, "Ganador 2 correcto");
+    });
+
+
 });
