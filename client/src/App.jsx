@@ -10,12 +10,13 @@ import { useEffect } from "react";
 import { RegisterVoter } from "./pages/RegisterVoter/RegisterVoter";
 import { VotedVoters } from "./pages/VotedVoters/VotedVoters";
 import { Home } from "./pages/Home/Home";
+import { Audit } from "./pages/Audit/Audit";
 
 const App = () => {
   
   useEffect(() => {
     load()
-  })
+  },[])
 
   return (
     <BrowserRouter>
@@ -26,6 +27,7 @@ const App = () => {
       <Route path="/registercandidate" element={<RegisterCandidate />} />
       <Route path="/registervoter" element={<RegisterVoter />} />
       <Route path="/voters" element={<VotedVoters />} />
+      <Route path="/audit" element={<Audit />} />
     </Routes>
     </Layout>
     </ BrowserRouter>

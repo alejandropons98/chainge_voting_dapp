@@ -25,6 +25,7 @@ function NavBar() {
             <Nav.Link href="/registervoter">Registrar Votante</Nav.Link>
             <Nav.Link href="/voters">Votantes Activos</Nav.Link>
             <Nav.Link href="/vote">Votar</Nav.Link>
+            <Nav.Link href="/audit">Auditoria</Nav.Link>
           </Nav>
           <Nav>
             <Nav.Link href="/login">Login</Nav.Link>

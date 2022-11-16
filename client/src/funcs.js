@@ -1,8 +1,9 @@
+import { useState } from 'react';
 import Web3 from 'web3';
 import { ElectionContract } from './abi/abi';
 
 const web3 = new Web3(Web3.givenProvider);
-const contractAddress = '0xc2874A9F1953928F37Bc4fB4f8f8056CdCb3430a';
+const contractAddress = '0x244f881E839a7e342F10Eec0787405bc703Dd321';
 const electionContract = new web3.eth.Contract(ElectionContract, contractAddress);
 
 
@@ -66,7 +67,7 @@ export const registerVoter = async(id, address, major) => {
     const account = accounts[0];
     await electionContract.methods.registerVoter(id, address, major).send({from: account}).then(
         function(info){
-            console.log(info);
+            console.log(info)
         }
     );
 }
