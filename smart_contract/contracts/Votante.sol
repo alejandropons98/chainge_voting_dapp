@@ -16,10 +16,9 @@ contract Votante {
     uint numeroVotosCF;
     uint numeroVotosCE;
 
-    constructor (uint _id, string[] memory _carreras, string[] memory _facultades) {
+    constructor (uint _id, string[] memory _carreras) {
         studentId = _id;
         carreras = _carreras;
-        facultades = _facultades;
         voted = false;
         votedConsejoAcademico = false;
         votedJuntaDirectivaFCE = false;
@@ -28,8 +27,12 @@ contract Votante {
         votedConsejoEscuela = false;
         votedConsejoFacultad = false;
         numeroVotosCentroEst = carreras.length;
-        numeroVotosCF = facultades.length;
         numeroVotosCE = carreras.length;
+    }
+
+    function addFacultades(string[] memory _facultades) public {
+        facultades = _facultades;
+        numeroVotosCF = facultades.length;
     }
 
     function getID() public view returns (uint) {

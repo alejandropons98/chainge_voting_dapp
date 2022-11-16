@@ -37,8 +37,8 @@ contract ListaVotantes {
         carreraFacultad["Derechos"] = "Estudios Juridicos y Politicos";
     }
 
-    function addVotante(uint _id, string[] memory _carreras, string[] memory _facultades) public {
-        votantes[_id] = new Votante(_id, _carreras, _facultades);
+    function addVotante(Votante _nuevoVotante) public {
+        votantes[_nuevoVotante.getID()] = _nuevoVotante;
         numeroVotantes++;
     }
 
@@ -46,7 +46,7 @@ contract ListaVotantes {
         return votantes[_id];
     }
 
-    function addIDARegistro(uint _id) internal {
+    function addIDARegistro(uint _id) public {
         require(!checkIDRegistrado(_id), "El ID ya se encuentra registrado");
         IDsRegistroElectoral.push(_id);
         numeroVotantesRegistroElectoral++;
@@ -61,9 +61,11 @@ contract ListaVotantes {
         return false;
     }
 
-    function registrarVotante(uint _id, string[] memory _carreras) internal {
+    function registrarVotante(uint _id, string[] memory _carreras) external {
         require(!checkVotanteRegistrado(_id), "El ID ya se encuentra registrado");
-        Votante nuevoVotante = new Votante(_id, _carreras, getFacultades(_carreras));
+        Votante nuevoVotante = new Votante(_id, _carreras);
+        nuevoVotante.addFacultades(getFacultades(_carreras));
+        addVotante(nuevoVotante);
         votantesRegistrados.push(nuevoVotante);
         IDsRegistroElectoral.push(_id);
     }
@@ -77,12 +79,12 @@ contract ListaVotantes {
         return false;
     }
 
-    function registrarVotanteFacultad(uint _id, string[] memory _facultades) internal {
-        require(!checkVotanteRegistrado(_id), "El ID ya se encuentra registrado");
-        Votante nuevoVotante = new Votante(_id, new string[](0), _facultades);
-        votantesRegistrados.push(nuevoVotante);
-        IDsRegistroElectoral.push(_id);
-    }
+    // function registrarVotanteFacultad(uint _id, string[] memory _facultades) internal {
+    //     require(!checkVotanteRegistrado(_id), "El ID ya se encuentra registrado");
+    //     Votante nuevoVotante = new Votante(_id, new string[](0), _facultades);
+    //     votantesRegistrados.push(nuevoVotante);
+    //     IDsRegistroElectoral.push(_id);
+    // }
 
     function getFacultades(string[] memory _carreras) internal view returns (string[] memory) {
         string memory newFac;
