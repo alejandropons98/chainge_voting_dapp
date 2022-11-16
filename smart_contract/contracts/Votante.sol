@@ -16,9 +16,10 @@ contract Votante {
     uint numeroVotosCF;
     uint numeroVotosCE;
 
-    constructor (uint _id, string[] memory _carreras) {
+    constructor (uint _id, string[] memory _carreras, string[] memory _facultades) {
         studentId = _id;
         carreras = _carreras;
+        facultades = _facultades;
         voted = false;
         votedConsejoAcademico = false;
         votedJuntaDirectivaFCE = false;
@@ -28,15 +29,59 @@ contract Votante {
         votedConsejoFacultad = false;
         numeroVotosCentroEst = carreras.length;
         numeroVotosCE = carreras.length;
-    }
-
-    function addFacultades(string[] memory _facultades) public {
-        facultades = _facultades;
         numeroVotosCF = facultades.length;
     }
 
     function getID() public view returns (uint) {
         return studentId;
+    }
+
+    function getCarreras() public view returns (string[] memory) {
+        return carreras;
+    }
+
+    function getFacultades() public view returns (string[] memory) {
+        return facultades;
+    }
+
+    function getVoted() public view returns (bool) {
+        return voted;
+    }
+
+    function getVotedConsejoAcademico() public view returns (bool) {
+        return votedConsejoAcademico;
+    }
+
+    function getVotedJuntaDirectivaFCE() public view returns (bool) {
+        return votedJuntaDirectivaFCE;
+    }
+
+    function getVotedCoordinacionFCE() public view returns (bool) {
+        return votedCoordinacionFCE;
+    }
+
+    function getVotedCentroEstudiantes() public view returns (bool) {
+        return votedCentroEstudiantes;
+    }
+
+    function getVotedConsejoEscuela() public view returns (bool) {
+        return votedConsejoEscuela;
+    }
+
+    function getVotedConsejoFacultad() public view returns (bool) {
+        return votedConsejoFacultad;
+    }
+
+    function getNumeroVotosCentroEst() public view returns (uint) {
+        return numeroVotosCentroEst;
+    }
+
+    function getNumeroVotosCF() public view returns (uint) {
+        return numeroVotosCF;
+    }
+
+    function getNumeroVotosCE() public view returns (uint) {
+        return numeroVotosCE;
     }
 
     function votarConsejoAcademico() public {
