@@ -5,161 +5,22 @@ export const ElectionContract = [
     "type": "constructor"
   },
   {
-    "anonymous": false,
     "inputs": [
       {
-        "indexed": false,
-        "internalType": "uint256",
-        "name": "candidateId",
-        "type": "uint256"
-      }
-    ],
-    "name": "CandidateRegisteredEvent",
-    "type": "event"
-  },
-  {
-    "anonymous": false,
-    "inputs": [
-      {
-        "indexed": false,
-        "internalType": "address",
-        "name": "voter",
-        "type": "address"
-      },
-      {
-        "indexed": false,
-        "internalType": "uint256",
-        "name": "proposalId",
-        "type": "uint256"
-      }
-    ],
-    "name": "VotedEvent",
-    "type": "event"
-  },
-  {
-    "anonymous": false,
-    "inputs": [
-      {
-        "indexed": false,
-        "internalType": "address",
-        "name": "voterAddress",
-        "type": "address"
-      }
-    ],
-    "name": "VoterRegisteredEvent",
-    "type": "event"
-  },
-  {
-    "anonymous": false,
-    "inputs": [],
-    "name": "VotesTalliedEvent",
-    "type": "event"
-  },
-  {
-    "anonymous": false,
-    "inputs": [],
-    "name": "VotingSessionEndedEvent",
-    "type": "event"
-  },
-  {
-    "anonymous": false,
-    "inputs": [],
-    "name": "VotingSessionStartedEvent",
-    "type": "event"
-  },
-  {
-    "anonymous": false,
-    "inputs": [
-      {
-        "indexed": false,
-        "internalType": "enum Election.WorkflowStatus",
-        "name": "previousStatus",
-        "type": "uint8"
-      },
-      {
-        "indexed": false,
-        "internalType": "enum Election.WorkflowStatus",
-        "name": "newStatus",
-        "type": "uint8"
-      }
-    ],
-    "name": "WorkflowStatusChangeEvent",
-    "type": "event"
-  },
-  {
-    "inputs": [
-      {
-        "internalType": "uint256",
+        "internalType": "string",
         "name": "",
-        "type": "uint256"
-      }
-    ],
-    "name": "candidates",
-    "outputs": [
-      {
-        "internalType": "string",
-        "name": "name",
         "type": "string"
       },
-      {
-        "internalType": "string",
-        "name": "party",
-        "type": "string"
-      },
-      {
-        "internalType": "string",
-        "name": "degree",
-        "type": "string"
-      },
-      {
-        "internalType": "uint256",
-        "name": "voteCount",
-        "type": "uint256"
-      },
-      {
-        "internalType": "uint256",
-        "name": "id",
-        "type": "uint256"
-      }
-    ],
-    "stateMutability": "view",
-    "type": "function",
-    "constant": true
-  },
-  {
-    "inputs": [],
-    "name": "description",
-    "outputs": [
       {
         "internalType": "string",
         "name": "",
         "type": "string"
       }
     ],
-    "stateMutability": "view",
-    "type": "function",
-    "constant": true
-  },
-  {
-    "inputs": [],
-    "name": "name",
+    "name": "candidatosCentroEstudiantes",
     "outputs": [
       {
-        "internalType": "string",
-        "name": "",
-        "type": "string"
-      }
-    ],
-    "stateMutability": "view",
-    "type": "function",
-    "constant": true
-  },
-  {
-    "inputs": [],
-    "name": "owner",
-    "outputs": [
-      {
-        "internalType": "address",
+        "internalType": "contract CentroEstudiantes",
         "name": "",
         "type": "address"
       }
@@ -176,12 +37,102 @@ export const ElectionContract = [
         "type": "uint256"
       }
     ],
-    "name": "parties",
+    "name": "candidatosConsejoAcademico",
     "outputs": [
+      {
+        "internalType": "contract ConsejoAcademico",
+        "name": "",
+        "type": "address"
+      }
+    ],
+    "stateMutability": "view",
+    "type": "function",
+    "constant": true
+  },
+  {
+    "inputs": [
       {
         "internalType": "string",
         "name": "",
         "type": "string"
+      },
+      {
+        "internalType": "string",
+        "name": "",
+        "type": "string"
+      }
+    ],
+    "name": "candidatosConsejoEscuela",
+    "outputs": [
+      {
+        "internalType": "contract ConsejoEscuela",
+        "name": "",
+        "type": "address"
+      }
+    ],
+    "stateMutability": "view",
+    "type": "function",
+    "constant": true
+  },
+  {
+    "inputs": [
+      {
+        "internalType": "string",
+        "name": "",
+        "type": "string"
+      },
+      {
+        "internalType": "string",
+        "name": "",
+        "type": "string"
+      }
+    ],
+    "name": "candidatosConsejoFacultad",
+    "outputs": [
+      {
+        "internalType": "contract ConsejoFacultad",
+        "name": "",
+        "type": "address"
+      }
+    ],
+    "stateMutability": "view",
+    "type": "function",
+    "constant": true
+  },
+  {
+    "inputs": [
+      {
+        "internalType": "string",
+        "name": "",
+        "type": "string"
+      }
+    ],
+    "name": "candidatosCoordinacionFCE",
+    "outputs": [
+      {
+        "internalType": "contract CoordinacionFCE",
+        "name": "",
+        "type": "address"
+      }
+    ],
+    "stateMutability": "view",
+    "type": "function",
+    "constant": true
+  },
+  {
+    "inputs": [
+      {
+        "internalType": "string",
+        "name": "",
+        "type": "string"
+      }
+    ],
+    "name": "candidatosJuntaFCE",
+    "outputs": [
+      {
+        "internalType": "contract JuntaDirectivaFCE",
+        "name": "",
+        "type": "address"
       }
     ],
     "stateMutability": "view",
@@ -196,152 +147,12 @@ export const ElectionContract = [
         "type": "uint256"
       }
     ],
-    "name": "voterRegistry",
+    "name": "registroElectoral",
     "outputs": [
       {
-        "internalType": "string",
+        "internalType": "uint256",
         "name": "",
-        "type": "string"
-      }
-    ],
-    "stateMutability": "view",
-    "type": "function",
-    "constant": true
-  },
-  {
-    "inputs": [
-      {
-        "internalType": "address",
-        "name": "",
-        "type": "address"
-      }
-    ],
-    "name": "voters",
-    "outputs": [
-      {
-        "internalType": "bool",
-        "name": "isRegistered",
-        "type": "bool"
-      },
-      {
-        "internalType": "bool",
-        "name": "hasVoted",
-        "type": "bool"
-      },
-      {
-        "internalType": "string",
-        "name": "voterID",
-        "type": "string"
-      },
-      {
-        "internalType": "uint16",
-        "name": "voteCount",
-        "type": "uint16"
-      }
-    ],
-    "stateMutability": "view",
-    "type": "function",
-    "constant": true
-  },
-  {
-    "inputs": [],
-    "name": "workflowStatus",
-    "outputs": [
-      {
-        "internalType": "enum Election.WorkflowStatus",
-        "name": "",
-        "type": "uint8"
-      }
-    ],
-    "stateMutability": "view",
-    "type": "function",
-    "constant": true
-  },
-  {
-    "inputs": [
-      {
-        "internalType": "string",
-        "name": "voterID",
-        "type": "string"
-      },
-      {
-        "internalType": "address",
-        "name": "_voterAddress",
-        "type": "address"
-      },
-      {
-        "internalType": "string",
-        "name": "carrera",
-        "type": "string"
-      }
-    ],
-    "name": "registerVoter",
-    "outputs": [],
-    "stateMutability": "nonpayable",
-    "type": "function"
-  },
-  {
-    "inputs": [
-      {
-        "internalType": "string",
-        "name": "carrera",
-        "type": "string"
-      },
-      {
-        "internalType": "address",
-        "name": "_voterAddress",
-        "type": "address"
-      }
-    ],
-    "name": "carreraRegistrada",
-    "outputs": [
-      {
-        "internalType": "bool",
-        "name": "",
-        "type": "bool"
-      }
-    ],
-    "stateMutability": "view",
-    "type": "function",
-    "constant": true
-  },
-  {
-    "inputs": [
-      {
-        "internalType": "string",
-        "name": "_name",
-        "type": "string"
-      },
-      {
-        "internalType": "string",
-        "name": "_party",
-        "type": "string"
-      },
-      {
-        "internalType": "string",
-        "name": "_degree",
-        "type": "string"
-      }
-    ],
-    "name": "registerCandidate",
-    "outputs": [],
-    "stateMutability": "nonpayable",
-    "type": "function"
-  },
-  {
-    "inputs": [
-      {
-        "internalType": "string",
-        "name": "party",
-        "type": "string"
-      }
-    ],
-    "name": "isPartyRegistered",
-    "outputs": [
-      {
-        "internalType": "bool",
-        "name": "",
-        "type": "bool"
+        "type": "uint256"
       }
     ],
     "stateMutability": "view",
@@ -352,11 +163,31 @@ export const ElectionContract = [
     "inputs": [
       {
         "internalType": "uint256",
-        "name": "candidateId",
+        "name": "",
         "type": "uint256"
       }
     ],
-    "name": "vote",
+    "name": "votantesRegistrados",
+    "outputs": [
+      {
+        "internalType": "contract Votante",
+        "name": "",
+        "type": "address"
+      }
+    ],
+    "stateMutability": "view",
+    "type": "function",
+    "constant": true
+  },
+  {
+    "inputs": [
+      {
+        "internalType": "uint256",
+        "name": "_id",
+        "type": "uint256"
+      }
+    ],
+    "name": "agregarIDARegistro",
     "outputs": [],
     "stateMutability": "nonpayable",
     "type": "function"
@@ -365,36 +196,16 @@ export const ElectionContract = [
     "inputs": [
       {
         "internalType": "uint256",
-        "name": "candidateId",
+        "name": "_id",
         "type": "uint256"
       }
     ],
-    "name": "getCandidateById",
+    "name": "checkRegistroElectoral",
     "outputs": [
       {
-        "internalType": "string",
-        "name": "name",
-        "type": "string"
-      },
-      {
-        "internalType": "string",
-        "name": "party",
-        "type": "string"
-      },
-      {
-        "internalType": "string",
-        "name": "degree",
-        "type": "string"
-      },
-      {
-        "internalType": "uint256",
-        "name": "voteCount",
-        "type": "uint256"
-      },
-      {
-        "internalType": "uint256",
-        "name": "id",
-        "type": "uint256"
+        "internalType": "bool",
+        "name": "",
+        "type": "bool"
       }
     ],
     "stateMutability": "view",
@@ -404,137 +215,46 @@ export const ElectionContract = [
   {
     "inputs": [
       {
-        "internalType": "string",
-        "name": "Sname",
-        "type": "string"
+        "internalType": "uint256",
+        "name": "_id",
+        "type": "uint256"
+      },
+      {
+        "internalType": "string[]",
+        "name": "_carreras",
+        "type": "string[]"
+      },
+      {
+        "internalType": "string[]",
+        "name": "_facultades",
+        "type": "string[]"
       }
     ],
-    "name": "getCandidateByName",
-    "outputs": [
-      {
-        "internalType": "string",
-        "name": "name",
-        "type": "string"
-      },
-      {
-        "internalType": "string",
-        "name": "party",
-        "type": "string"
-      },
-      {
-        "internalType": "string",
-        "name": "degree",
-        "type": "string"
-      },
+    "name": "agregarVotante",
+    "outputs": [],
+    "stateMutability": "nonpayable",
+    "type": "function"
+  },
+  {
+    "inputs": [
       {
         "internalType": "uint256",
-        "name": "voteCount",
+        "name": "_id",
         "type": "uint256"
       }
     ],
-    "stateMutability": "view",
-    "type": "function",
-    "constant": true
-  },
-  {
-    "inputs": [],
-    "name": "getAllCandidates",
-    "outputs": [
-      {
-        "components": [
-          {
-            "internalType": "string",
-            "name": "name",
-            "type": "string"
-          },
-          {
-            "internalType": "string",
-            "name": "party",
-            "type": "string"
-          },
-          {
-            "internalType": "string",
-            "name": "degree",
-            "type": "string"
-          },
-          {
-            "internalType": "uint256",
-            "name": "voteCount",
-            "type": "uint256"
-          },
-          {
-            "internalType": "uint256",
-            "name": "id",
-            "type": "uint256"
-          }
-        ],
-        "internalType": "struct Election.Candidate[]",
-        "name": "",
-        "type": "tuple[]"
-      }
-    ],
-    "stateMutability": "view",
-    "type": "function",
-    "constant": true
-  },
-  {
-    "inputs": [],
-    "name": "getWinner",
-    "outputs": [
-      {
-        "components": [
-          {
-            "internalType": "string",
-            "name": "name",
-            "type": "string"
-          },
-          {
-            "internalType": "uint256",
-            "name": "voteCount",
-            "type": "uint256"
-          }
-        ],
-        "internalType": "struct Election.Result",
-        "name": "",
-        "type": "tuple"
-      }
-    ],
-    "stateMutability": "view",
-    "type": "function",
-    "constant": true
-  },
-  {
-    "inputs": [],
-    "name": "getTotalVotes",
+    "name": "getVotanteInfo",
     "outputs": [
       {
         "internalType": "uint256",
         "name": "",
         "type": "uint256"
-      }
-    ],
-    "stateMutability": "view",
-    "type": "function",
-    "constant": true
-  },
-  {
-    "inputs": [],
-    "name": "getPercentage",
-    "outputs": [
+      },
       {
-        "internalType": "uint256[]",
+        "internalType": "string[]",
         "name": "",
-        "type": "uint256[]"
-      }
-    ],
-    "stateMutability": "view",
-    "type": "function",
-    "constant": true
-  },
-  {
-    "inputs": [],
-    "name": "getVoterRegistry",
-    "outputs": [
+        "type": "string[]"
+      },
       {
         "internalType": "string[]",
         "name": "",
@@ -548,22 +268,558 @@ export const ElectionContract = [
   {
     "inputs": [
       {
-        "internalType": "address",
-        "name": "_voterAddress",
-        "type": "address"
+        "internalType": "uint256",
+        "name": "_id",
+        "type": "uint256"
       }
     ],
-    "name": "getVoterCarreras",
+    "name": "getVotanteVotado",
     "outputs": [
       {
-        "internalType": "string[]",
+        "internalType": "bool",
         "name": "",
-        "type": "string[]"
+        "type": "bool"
       }
     ],
     "stateMutability": "view",
     "type": "function",
     "constant": true
+  },
+  {
+    "inputs": [
+      {
+        "internalType": "uint256",
+        "name": "_id",
+        "type": "uint256"
+      }
+    ],
+    "name": "getVotanteVotados",
+    "outputs": [
+      {
+        "internalType": "bool",
+        "name": "",
+        "type": "bool"
+      },
+      {
+        "internalType": "bool",
+        "name": "",
+        "type": "bool"
+      },
+      {
+        "internalType": "bool",
+        "name": "",
+        "type": "bool"
+      },
+      {
+        "internalType": "bool",
+        "name": "",
+        "type": "bool"
+      },
+      {
+        "internalType": "bool",
+        "name": "",
+        "type": "bool"
+      }
+    ],
+    "stateMutability": "view",
+    "type": "function",
+    "constant": true
+  },
+  {
+    "inputs": [
+      {
+        "internalType": "uint256",
+        "name": "_id",
+        "type": "uint256"
+      }
+    ],
+    "name": "getVotanteNumeroVotos",
+    "outputs": [
+      {
+        "internalType": "uint256",
+        "name": "",
+        "type": "uint256"
+      },
+      {
+        "internalType": "uint256",
+        "name": "",
+        "type": "uint256"
+      },
+      {
+        "internalType": "uint256",
+        "name": "",
+        "type": "uint256"
+      }
+    ],
+    "stateMutability": "view",
+    "type": "function",
+    "constant": true
+  },
+  {
+    "inputs": [
+      {
+        "internalType": "string",
+        "name": "_nombre",
+        "type": "string"
+      },
+      {
+        "internalType": "uint256",
+        "name": "_id",
+        "type": "uint256"
+      },
+      {
+        "internalType": "string",
+        "name": "_carrera",
+        "type": "string"
+      }
+    ],
+    "name": "agregarCandidatoConsejoAcademico",
+    "outputs": [],
+    "stateMutability": "nonpayable",
+    "type": "function"
+  },
+  {
+    "inputs": [
+      {
+        "internalType": "uint256",
+        "name": "_id",
+        "type": "uint256"
+      }
+    ],
+    "name": "getCandidateConsejoAcademico",
+    "outputs": [
+      {
+        "internalType": "string",
+        "name": "",
+        "type": "string"
+      },
+      {
+        "internalType": "uint256",
+        "name": "",
+        "type": "uint256"
+      },
+      {
+        "internalType": "string",
+        "name": "",
+        "type": "string"
+      },
+      {
+        "internalType": "uint256",
+        "name": "",
+        "type": "uint256"
+      }
+    ],
+    "stateMutability": "view",
+    "type": "function",
+    "constant": true
+  },
+  {
+    "inputs": [
+      {
+        "internalType": "uint256",
+        "name": "_id",
+        "type": "uint256"
+      },
+      {
+        "internalType": "uint256",
+        "name": "_voterID",
+        "type": "uint256"
+      }
+    ],
+    "name": "voteCandidateConsejoAcademico",
+    "outputs": [],
+    "stateMutability": "nonpayable",
+    "type": "function"
+  },
+  {
+    "inputs": [
+      {
+        "internalType": "string",
+        "name": "_agrupacion",
+        "type": "string"
+      },
+      {
+        "internalType": "string",
+        "name": "_siglas",
+        "type": "string"
+      }
+    ],
+    "name": "agregarCandidatoJuntaDirectivaFCE",
+    "outputs": [],
+    "stateMutability": "nonpayable",
+    "type": "function"
+  },
+  {
+    "inputs": [
+      {
+        "internalType": "string",
+        "name": "_siglas",
+        "type": "string"
+      }
+    ],
+    "name": "getCandidateJuntaDirectivaFCE",
+    "outputs": [
+      {
+        "internalType": "string",
+        "name": "",
+        "type": "string"
+      },
+      {
+        "internalType": "string",
+        "name": "",
+        "type": "string"
+      },
+      {
+        "internalType": "uint256",
+        "name": "",
+        "type": "uint256"
+      }
+    ],
+    "stateMutability": "view",
+    "type": "function",
+    "constant": true
+  },
+  {
+    "inputs": [
+      {
+        "internalType": "string",
+        "name": "_siglas",
+        "type": "string"
+      },
+      {
+        "internalType": "uint256",
+        "name": "_voterID",
+        "type": "uint256"
+      }
+    ],
+    "name": "voteCandidateJuntaDirectivaFCE",
+    "outputs": [],
+    "stateMutability": "nonpayable",
+    "type": "function"
+  },
+  {
+    "inputs": [
+      {
+        "internalType": "string",
+        "name": "_agrupacion",
+        "type": "string"
+      },
+      {
+        "internalType": "string",
+        "name": "_siglas",
+        "type": "string"
+      }
+    ],
+    "name": "agregarCandidatoCoordinacionFCE",
+    "outputs": [],
+    "stateMutability": "nonpayable",
+    "type": "function"
+  },
+  {
+    "inputs": [
+      {
+        "internalType": "string",
+        "name": "_siglas",
+        "type": "string"
+      }
+    ],
+    "name": "getCandidatoCoordinacionFCE",
+    "outputs": [
+      {
+        "internalType": "string",
+        "name": "",
+        "type": "string"
+      },
+      {
+        "internalType": "string",
+        "name": "",
+        "type": "string"
+      },
+      {
+        "internalType": "uint256",
+        "name": "",
+        "type": "uint256"
+      }
+    ],
+    "stateMutability": "view",
+    "type": "function",
+    "constant": true
+  },
+  {
+    "inputs": [
+      {
+        "internalType": "string",
+        "name": "_siglas",
+        "type": "string"
+      },
+      {
+        "internalType": "uint256",
+        "name": "_voterID",
+        "type": "uint256"
+      }
+    ],
+    "name": "voteCandidateCoordinacionFCE",
+    "outputs": [],
+    "stateMutability": "nonpayable",
+    "type": "function"
+  },
+  {
+    "inputs": [
+      {
+        "internalType": "string",
+        "name": "_nombre",
+        "type": "string"
+      },
+      {
+        "internalType": "string",
+        "name": "_siglas",
+        "type": "string"
+      },
+      {
+        "internalType": "string",
+        "name": "_escuela",
+        "type": "string"
+      }
+    ],
+    "name": "agregarCandidatoCentroEstudiantes",
+    "outputs": [],
+    "stateMutability": "nonpayable",
+    "type": "function"
+  },
+  {
+    "inputs": [
+      {
+        "internalType": "string",
+        "name": "_siglas",
+        "type": "string"
+      },
+      {
+        "internalType": "string",
+        "name": "_escuela",
+        "type": "string"
+      }
+    ],
+    "name": "getCandidatoCentroEstudiantes",
+    "outputs": [
+      {
+        "internalType": "string",
+        "name": "",
+        "type": "string"
+      },
+      {
+        "internalType": "string",
+        "name": "",
+        "type": "string"
+      },
+      {
+        "internalType": "string",
+        "name": "",
+        "type": "string"
+      },
+      {
+        "internalType": "uint256",
+        "name": "",
+        "type": "uint256"
+      }
+    ],
+    "stateMutability": "view",
+    "type": "function",
+    "constant": true
+  },
+  {
+    "inputs": [
+      {
+        "internalType": "string",
+        "name": "_siglas",
+        "type": "string"
+      },
+      {
+        "internalType": "string",
+        "name": "_escuela",
+        "type": "string"
+      },
+      {
+        "internalType": "uint256",
+        "name": "_voterID",
+        "type": "uint256"
+      }
+    ],
+    "name": "voteCandidateCentroEstudiantes",
+    "outputs": [],
+    "stateMutability": "nonpayable",
+    "type": "function"
+  },
+  {
+    "inputs": [
+      {
+        "internalType": "string",
+        "name": "_nombre",
+        "type": "string"
+      },
+      {
+        "internalType": "string",
+        "name": "_siglas",
+        "type": "string"
+      },
+      {
+        "internalType": "string",
+        "name": "_escuela",
+        "type": "string"
+      }
+    ],
+    "name": "agregarCandidatoConsejoEscuela",
+    "outputs": [],
+    "stateMutability": "nonpayable",
+    "type": "function"
+  },
+  {
+    "inputs": [
+      {
+        "internalType": "string",
+        "name": "_siglas",
+        "type": "string"
+      },
+      {
+        "internalType": "string",
+        "name": "_escuela",
+        "type": "string"
+      }
+    ],
+    "name": "getCandidatoConsejoEscuela",
+    "outputs": [
+      {
+        "internalType": "string",
+        "name": "",
+        "type": "string"
+      },
+      {
+        "internalType": "string",
+        "name": "",
+        "type": "string"
+      },
+      {
+        "internalType": "string",
+        "name": "",
+        "type": "string"
+      },
+      {
+        "internalType": "uint256",
+        "name": "",
+        "type": "uint256"
+      }
+    ],
+    "stateMutability": "view",
+    "type": "function",
+    "constant": true
+  },
+  {
+    "inputs": [
+      {
+        "internalType": "string",
+        "name": "_siglas",
+        "type": "string"
+      },
+      {
+        "internalType": "string",
+        "name": "_escuela",
+        "type": "string"
+      },
+      {
+        "internalType": "uint256",
+        "name": "_voterID",
+        "type": "uint256"
+      }
+    ],
+    "name": "voteCandidateConsejoEscuela",
+    "outputs": [],
+    "stateMutability": "nonpayable",
+    "type": "function"
+  },
+  {
+    "inputs": [
+      {
+        "internalType": "string",
+        "name": "_nombre",
+        "type": "string"
+      },
+      {
+        "internalType": "string",
+        "name": "_siglas",
+        "type": "string"
+      },
+      {
+        "internalType": "string",
+        "name": "_facultad",
+        "type": "string"
+      }
+    ],
+    "name": "agregarCandidatoConsejoFacultad",
+    "outputs": [],
+    "stateMutability": "nonpayable",
+    "type": "function"
+  },
+  {
+    "inputs": [
+      {
+        "internalType": "string",
+        "name": "_siglas",
+        "type": "string"
+      },
+      {
+        "internalType": "string",
+        "name": "_facultad",
+        "type": "string"
+      }
+    ],
+    "name": "getCandidatoConsejoFacultad",
+    "outputs": [
+      {
+        "internalType": "string",
+        "name": "",
+        "type": "string"
+      },
+      {
+        "internalType": "string",
+        "name": "",
+        "type": "string"
+      },
+      {
+        "internalType": "string",
+        "name": "",
+        "type": "string"
+      },
+      {
+        "internalType": "uint256",
+        "name": "",
+        "type": "uint256"
+      }
+    ],
+    "stateMutability": "view",
+    "type": "function",
+    "constant": true
+  },
+  {
+    "inputs": [
+      {
+        "internalType": "string",
+        "name": "_siglas",
+        "type": "string"
+      },
+      {
+        "internalType": "string",
+        "name": "_facultad",
+        "type": "string"
+      },
+      {
+        "internalType": "uint256",
+        "name": "_voterID",
+        "type": "uint256"
+      }
+    ],
+    "name": "voteCandidateConsejoFacultad",
+    "outputs": [],
+    "stateMutability": "nonpayable",
+    "type": "function"
   }
 
 ]

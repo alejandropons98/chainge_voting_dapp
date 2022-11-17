@@ -1,163 +1,130 @@
-const Election = artifacts.require("./Election.sol");
+const Eleccion = artifacts.require("./Eleccion.sol");
 
-contract("Election", (accounts) => {
+contract("Eleccion", (accounts) => {
     let electionInstance;
     beforeEach(async () => {
-        electionInstance = await Election.new();
+        electionInstance = await Eleccion.new();
+        await electionInstance.agregarIDARegistro(13, { from: accounts[0] });
     });
 
-    it("registers a candidate", async () => {
-        await electionInstance.registerCandidate("Candidate 1", "Los Cooles", "Liberales", { from: accounts[0] });
-        const candidate = await electionInstance.candidates(0);
-        assert.equal(candidate[0], "Candidate 1", "contains the correct name");
-        assert.equal(candidate[1], "Los Cooles", "contains the correct party");
-        assert.equal(candidate[2], "Liberales", "contains the correct degree");
-        assert.equal(candidate[3], 0, "contains the correct vote count");
+    it ("agrega votante", async () => {
+        await electionInstance.agregarVotante(13, ["Ing. de Sistemas"], ["Ingenieria"], { from: accounts[0] });
+        const voter = await electionInstance.getVotanteInfo(13);
+        assert.equal(voter[0], 13, "Votante agregado correctamente");
     });
 
-    it("registers a voter", async () => {
-        await electionInstance.registerVoter("1234", accounts[1], "Ing. guhy", { from: accounts[0] });
-        const voter = await electionInstance.voters(accounts[1]);
-        assert.equal(voter[1], false, "has not voted");
+    it ("agrega candidato consejo academico", async () => {
+        await electionInstance.agregarCandidatoConsejoAcademico("Monkey D. Luffy", 42, "Ing. de Sistemas", { from: accounts[0] });
+        const candidate = await electionInstance.getCandidatoConsejoAcademico(42);
+        assert.equal(candidate[1], 42, "Candidato agregado correctamente");
     });
 
-    it("allows a voter to cast a vote", async () => {
-        await electionInstance.registerCandidate("Candidate 2", "Los Cooles", "Liberales", { from: accounts[0] });
-        await electionInstance.registerVoter("1234", accounts[2], "Ing. Sistemas", { from: accounts[0] });
-        await electionInstance.vote(0, { from: accounts[2] });
-        const candidate = await electionInstance.candidates(0);
-        assert.equal(candidate[3], 1, "increments the candidate's vote count");
+    it ("vota consejo academico", async () => {
+        await electionInstance.agregarVotante(13, ["Ing. de Sistemas"], ["Ingenieria"], { from: accounts[0] });
+        await electionInstance.agregarCandidatoConsejoAcademico("Monkey D. Luffy", 42, "Ing. de Sistemas", { from: accounts[0] });
+        await electionInstance.voteCandidatoConsejoAcademico(42, 13, { from: accounts[0] });
+        const vote = await electionInstance.getCandidatoConsejoAcademico(42);
+        assert.equal(vote[3], 1, "Voto agregado correctamente");
+        const votante = await electionInstance.getVotanteSeccionesVotadas(13);
+        assert.equal(votante[0], true, "Votante voto correctamente");
     });
 
-    it("throws an exception for invalid candidates", async () => {
-        try {
-            await electionInstance.vote(99, { from: accounts[1] });
-            assert.fail();
-        } catch (error) {
-            assert(error.message.indexOf("revert") >= 0, "error message must contain revert");
-        }
+    it ("agrega candidato junta directiva FCE", async () => {
+        await electionInstance.agregarCandidatoJuntaDirectivaFCE("Straw Hat Grand Fleet", "SHGF", { from: accounts[0] });
+        const candidate = await electionInstance.getCandidatoJuntaDirectivaFCE("SHGF");
+        assert.equal(candidate[1], "SHGF", "Candidato agregado correctamente");
     });
 
-    it("throws an exception for double voting", async () => {
-        await electionInstance.registerCandidate("Candidate 3", "Los Cooles", "Liberales", { from: accounts[0] });
-        try {
-            await electionInstance.vote(0, { from: accounts[1] });
-            await electionInstance.vote(0, { from: accounts[1] });
-            assert.fail();
-        } catch (error) {
-            assert(error.message.indexOf("revert") >= 0, "error message must contain revert");
-        }
+    it ("vota junta directiva FCE", async () => {
+        await electionInstance.agregarVotante(13, ["Ing. de Sistemas"], ["Ingenieria"], { from: accounts[0] });
+        await electionInstance.agregarCandidatoJuntaDirectivaFCE("Straw Hat Grand Fleet", "SHGF", { from: accounts[0] });
+        await electionInstance.voteCandidatoJuntaDirectivaFCE("SHGF", 13, { from: accounts[0] });
+        const vote = await electionInstance.getCandidatoJuntaDirectivaFCE("SHGF");
+        assert.equal(vote[2], 1, "Voto agregado correctamente");
+        const votante = await electionInstance.getVotanteSeccionesVotadas(13);
+        assert.equal(votante[1], true, "Votante voto correctamente");
     });
 
-    it("gets winner of the election", async () => {
-        await electionInstance.registerCandidate("Candidate 7", "Los Cooles", "Liberales", { from: accounts[0] });
-        await electionInstance.registerCandidate("Candidate 8", "Los Cooles", "Liberales", { from: accounts[0] });
-        await electionInstance.registerCandidate("Candidate 9", "Los Cooles", "Liberales", { from: accounts[0] });
-        await electionInstance.registerVoter("1234", accounts[6], "Ing. Sistemas", { from: accounts[0] });
-        await electionInstance.registerVoter("2345", accounts[7], "Ing. Sistemas", { from: accounts[0] });
-        await electionInstance.registerVoter("3456", accounts[8], "Ing. Sistemas", { from: accounts[0] });
-        await electionInstance.vote(1, { from: accounts[6] });
-        await electionInstance.vote(1, { from: accounts[7] });
-        await electionInstance.vote(2, { from: accounts[8] });
-        const winner = await electionInstance.getWinner();
-        assert.equal(winner[1], 2, "contains the correct vote count");
-        assert.equal(winner[0], "Candidate 8", "contains the correct name");
+    it ("agrega candidato coordinacion FCE", async () => {
+        await electionInstance.agregarCandidatoCoordinacionFCE("Straw Hat Pirates", "SHP", { from: accounts[0] });
+        const candidate = await electionInstance.getCandidatoCoordinacionFCE("SHP");
+        assert.equal(candidate[1], "SHP", "Candidato agregado correctamente");
     });
 
-    it("gets percentage of votes", async () => {
-        await electionInstance.registerCandidate("Candidate 7", "Los Cooles", "Liberales", { from: accounts[0] });
-        await electionInstance.registerCandidate("Candidate 8", "Los Cooles", "Liberales", { from: accounts[0] });
-        await electionInstance.registerCandidate("Candidate 9", "Los Cooles", "Liberales", { from: accounts[0] });
-        await electionInstance.registerVoter("1234", accounts[6], "Ing. Sistemas", { from: accounts[0] });
-        await electionInstance.registerVoter("2345", accounts[7], "Ing. Sistemas", { from: accounts[0] });
-        await electionInstance.registerVoter("3456", accounts[8], "Ing. Sistemas", { from: accounts[0] });
-        await electionInstance.vote(1, { from: accounts[6] });
-        await electionInstance.vote(1, { from: accounts[7] });
-        await electionInstance.vote(2, { from: accounts[8] });
-        const percentage = await electionInstance.getPercentage();
-        assert.equal(percentage[0], 0, "contains the correct percentage");
-        assert.equal(percentage[1], 66, "contains the correct percentage");
-        assert.equal(percentage[2], 33, "contains the correct percentage");
+    it ("vota coordinacion FCE", async () => {
+        await electionInstance.agregarVotante(13, ["Ing. de Sistemas"], ["Ingenieria"], { from: accounts[0] });
+        await electionInstance.agregarCandidatoCoordinacionFCE("Straw Hat Pirates", "SHP", { from: accounts[0] });
+        await electionInstance.voteCandidatoCoordinacionFCE("SHP", 13, { from: accounts[0] });
+        const vote = await electionInstance.getCandidatoCoordinacionFCE("SHP");
+        assert.equal(vote[2], 1, "Voto agregado correctamente");
+        const votante = await electionInstance.getVotanteSeccionesVotadas(13);
+        assert.equal(votante[2], true, "Votante voto correctamente");
     });
 
-    it("gets candidate by id", async () => {
-        await electionInstance.registerCandidate("Candidate 10", "Los Cooles", "Liberales", { from: accounts[0] });
-        const candidate = await electionInstance.getCandidateById(0);
-        assert.equal(candidate[0], "Candidate 10", "contains the correct name");
+    it ("agrega candidato centro estudiantes", async () => {
+        await electionInstance.agregarCandidatoCentroEstudiantes("Straw Hat Crew", "SHC", "Ing. de Sistemas", { from: accounts[0] });
+        const candidate = await electionInstance.getCandidatoCentroEstudiantes("SHC", "Ing. de Sistemas");
+        assert.equal(candidate[1], "SHC", "Candidato agregado correctamente");
     });
 
-    it("gets candidate by name", async () => {
-        await electionInstance.registerCandidate("Candidate 11", "Los Cooles", "Liberales", { from: accounts[0] });
-        const candidate = await electionInstance.getCandidateByName("Candidate 11");
-        assert.equal(candidate[0], "Candidate 11", "contains the correct name");
+    it ("vota centro estudiantes", async () => {
+        await electionInstance.agregarVotante(13, ["Ing. de Sistemas"], ["Ingenieria"], { from: accounts[0] });
+        await electionInstance.agregarCandidatoCentroEstudiantes("Straw Hat Crew", "SHC", "Ing. de Sistemas", { from: accounts[0] });
+        await electionInstance.voteCandidatoCentroEstudiantes("SHC", "Ing. de Sistemas", 13, { from: accounts[0] });
+        const vote = await electionInstance.getCandidatoCentroEstudiantes("SHC", "Ing. de Sistemas");
+        assert.equal(vote[3], 1, "Voto agregado correctamente");
+        const votante = await electionInstance.getVotanteSeccionesVotadas(13);
+        assert.equal(votante[3], true, "Votante voto correctamente");
     });
 
-    it("gets all candidates", async () => {
-        await electionInstance.registerCandidate("Candidate 12", "Los Cooles", "Liberales", { from: accounts[0] });
-        await electionInstance.registerCandidate("Candidate 13", "Los Cooles", "Liberales", { from: accounts[0] });
-        await electionInstance.registerCandidate("Candidate 14", "Los Cooles", "Liberales", { from: accounts[0] });
-        const candidates = await electionInstance.getAllCandidates();
-        assert.equal(candidates[0][0], "Candidate 12", "contains the correct name");
-        assert.equal(candidates[1][0], "Candidate 13", "contains the correct name");
-        assert.equal(candidates[2][0], "Candidate 14", "contains the correct name");
-    });
-    
-    it("gets total votes", async () => {
-        await electionInstance.registerCandidate("Candidate 12", "Los Cooles", "Liberales", { from: accounts[0] });
-        await electionInstance.registerCandidate("Candidate 13", "Los Cooles", "Liberales", { from: accounts[0] });
-        await electionInstance.registerCandidate("Candidate 14", "Los Cooles", "Liberales", { from: accounts[0] });
-        await electionInstance.registerVoter("1234",accounts[6], "Ing. Sistemas", { from: accounts[0] });
-        await electionInstance.registerVoter("2345",accounts[7], "Ing. Sistemas", { from: accounts[0] });
-        await electionInstance.registerVoter("3456",accounts[8], "Ing. Sistemas", { from: accounts[0] });
-        await electionInstance.vote(1, { from: accounts[6] });
-        await electionInstance.vote(1, { from: accounts[7] });
-        await electionInstance.vote(2, { from: accounts[8] });
-        let totalVotes = await electionInstance.getTotalVotes();
-        assert.equal(totalVotes, 3, "contains the correct total votes");
-        await electionInstance.registerVoter("4567", accounts[5], "Liberales", { from: accounts[0] });
-        await electionInstance.vote(2, { from: accounts[5] });
-        totalVotes = await electionInstance.getTotalVotes();
-        assert.equal(totalVotes, 4, "contains the correct total votes");
-
+    it ("agrega candidato consejo escuela", async () => {
+        await electionInstance.agregarCandidatoConsejoEscuela("Straw Hat Crew", "SHC", "Ing. de Sistemas", { from: accounts[0] });
+        const candidate = await electionInstance.getCandidatoConsejoEscuela("SHC", "Ing. de Sistemas");
+        assert.equal(candidate[1], "SHC", "Candidato agregado correctamente");
     });
 
-    it("gets voters from registry", async () => {
-        await electionInstance.registerCandidate("Candidate 7", "Los Cooles", "Liberales", { from: accounts[0] });
-        await electionInstance.registerCandidate("Candidate 8", "Los Cooles", "Liberales", { from: accounts[0] });
-        await electionInstance.registerCandidate("Candidate 9", "Los Cooles", "Liberales", { from: accounts[0] });
-        await electionInstance.registerVoter("1234", accounts[6], "Ing. Sistemas", { from: accounts[0] });
-        await electionInstance.registerVoter("2345", accounts[7], "Ing. Sistemas", { from: accounts[0] });
-        await electionInstance.registerVoter("3456", accounts[8], "Ing. Sistemas", { from: accounts[0] });
-        await electionInstance.vote(1, { from: accounts[6] });
-        await electionInstance.vote(1, { from: accounts[7] });
-        await electionInstance.vote(2, { from: accounts[8] });
-
-        const voterRegistry = await electionInstance.getVoterRegistry();
-
-        assert.equal(voterRegistry[0], "1234", "contains the correct id");
-        assert.equal(voterRegistry[1], "2345", "contains the correct id");
-        assert.equal(voterRegistry[2], "3456", "contains the correct id");
+    it ("vota consejo escuela", async () => {
+        await electionInstance.agregarVotante(13, ["Ing. de Sistemas"], ["Ingenieria"], { from: accounts[0] });
+        await electionInstance.agregarCandidatoConsejoEscuela("Straw Hat Crew", "SHC", "Ing. de Sistemas", { from: accounts[0] });
+        await electionInstance.voteCandidatoConsejoEscuela("SHC", "Ing. de Sistemas", 13, { from: accounts[0] });
+        const vote = await electionInstance.getCandidatoConsejoEscuela("SHC", "Ing. de Sistemas");
+        assert.equal(vote[3], 1, "Voto agregado correctamente");
+        const votante = await electionInstance.getVotanteSeccionesVotadas(13);
+        assert.equal(votante[4], true, "Votante voto correctamente");
     });
 
-    it ("throws exception when double registration", async () => {
-        try {
-            await electionInstance.registerVoter("1234", accounts[6], "Ing. Sistemas", { from: accounts[0] });
-            await electionInstance.registerVoter("1234", accounts[6], "Ing. Sistemas", { from: accounts[0] });
-        } catch (error) {
-            assert.equal(error.reason, "the voter is already registered");
-        }
+    it ("agrega candidato consejo facultad", async () => {
+        await electionInstance.agregarCandidatoConsejoFacultad("Straw Hat Crew", "SHC", "Ingenieria", { from: accounts[0] });
+        const candidate = await electionInstance.getCandidatoConsejoFacultad("SHC", "Ingenieria");
+        assert.equal(candidate[1], "SHC", "Candidato agregado correctamente");
     });
 
-    it ("registers a new carrera for existing voter", async () => {
-        await electionInstance.registerVoter("1234", accounts[7], "Ing. Sistemas", { from: accounts[0] });
-        await electionInstance.registerVoter("1234", accounts[7], "Ing. Mecanica", { from: accounts[0] });
-        
-        const voterCarreras = await electionInstance.getVoterCarreras(accounts[7]);
-
-        assert.equal(voterCarreras[0], "Ing. Sistemas", "contains the correct carrera");
-        assert.equal(voterCarreras[1], "Ing. Mecanica", "contains the correct carrera");
+    it ("vota consejo facultad", async () => {
+        await electionInstance.agregarVotante(13, ["Ing. de Sistemas"], ["Ingenieria"], { from: accounts[0] });
+        await electionInstance.agregarCandidatoConsejoFacultad("Straw Hat Crew", "SHC", "Ingenieria", { from: accounts[0] });
+        await electionInstance.voteCandidatoConsejoFacultad("SHC", "Ingenieria", 13, { from: accounts[0] });
+        const vote = await electionInstance.getCandidatoConsejoFacultad("SHC", "Ingenieria");
+        assert.equal(vote[3], 1, "Voto agregado correctamente");
+        const votante = await electionInstance.getVotanteSeccionesVotadas(13);
+        assert.equal(votante[5], true, "Votante voto correctamente");
     });
 
+    it ("completa votacion", async () => {
+        await electionInstance.agregarVotante(13, ["Ing. de Sistemas"], ["Ingenieria"], { from: accounts[0] });
+        await electionInstance.agregarCandidatoConsejoAcademico("Monkey D. Luffy", 42, "Ing. de Sistemas", { from: accounts[0] });
+        await electionInstance.voteCandidatoConsejoAcademico(42, 13, { from: accounts[0] });
+        await electionInstance.agregarCandidatoJuntaDirectivaFCE("Straw Hat Grand Fleet", "SHGF", { from: accounts[0] });
+        await electionInstance.voteCandidatoJuntaDirectivaFCE("SHGF", 13, { from: accounts[0] });
+        await electionInstance.agregarCandidatoCoordinacionFCE("Straw Hat Pirates", "SHP", { from: accounts[0] });
+        await electionInstance.voteCandidatoCoordinacionFCE("SHP", 13, { from: accounts[0] });
+        await electionInstance.agregarCandidatoCentroEstudiantes("Straw Hat Crew", "SHC", "Ing. de Sistemas", { from: accounts[0] });
+        await electionInstance.voteCandidatoCentroEstudiantes("SHC", "Ing. de Sistemas", 13, { from: accounts[0] });
+        await electionInstance.agregarCandidatoConsejoEscuela("Straw Hat Crew", "SHC", "Ing. de Sistemas", { from: accounts[0] });
+        await electionInstance.voteCandidatoConsejoEscuela("SHC", "Ing. de Sistemas", 13, { from: accounts[0] });
+        await electionInstance.agregarCandidatoConsejoFacultad("Straw Hat Crew", "SHC", "Ingenieria", { from: accounts[0] });
+        await electionInstance.voteCandidatoConsejoFacultad("SHC", "Ingenieria", 13, { from: accounts[0] });
 
-
+        const votante = await electionInstance.getVotanteCulminoVotacion(13);
+        assert.equal(votante, true, "Votante completo votacion correctamente");
+    });
 });

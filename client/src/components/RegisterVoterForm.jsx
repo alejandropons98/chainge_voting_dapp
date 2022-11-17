@@ -10,12 +10,11 @@ function RegisterVoterForm() {
     e.preventDefault()
     console.log(e)
     const address = e.target[0].value
-    const id = e.target[1].value
-    const carrera = e.target[2].value
-    await registerVoter(id, address, carrera)
-    const voters = await getActiveVoters()
-    console.log(voters)
-
+    const facultades = []
+    const carreras = []
+    carreras.push(e.target[1].value)
+    facultades.push(e.target[2].value)
+    await registerVoter(facultades, carreras)
   }
 
   const mystyle = {
@@ -41,12 +40,12 @@ function RegisterVoterForm() {
         {/* </Col> */}
         {/* <Col className='m-2'> */}
           <Form.Group className="mb-3" controlId="formId">
-            <Form.Control type="input" placeholder="Correo" />
+            <Form.Control type="input" placeholder="Facultades" />
           </Form.Group>
         {/* </Col> */}
         {/* <Col className='m-2'> */}
           <Form.Group className="mb-3" controlId="formMajor">
-            <Form.Control type="input" placeholder="Carrera" />
+            <Form.Control type="input" placeholder="Carreras" />
           </Form.Group>
         {/* </Col> */}
       {/* </Row> */}
