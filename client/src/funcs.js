@@ -3,7 +3,7 @@ import Web3 from 'web3';
 import { ElectionContract } from './abi/abi';
 
 const web3 = new Web3(Web3.givenProvider);
-const contractAddress = '0xBe7596BA17eBCd3e7CF4207A1583FcEB3ceeE3b5';
+const contractAddress = '0x1CA8c2A68D0fEE1E0F240Ab568d06EFC8EDd5120';
 const electionContract = new web3.eth.Contract(ElectionContract, contractAddress);
 
 
@@ -38,6 +38,10 @@ export const getCandidates = async() => {
     return candidates;
 }
 
+export const registerNewId = async(id) => {
+    await electionContract.methods.agregarIDARegistro(id).call();
+}
+
 // function getCandidateById(id){
 //     electionContract.methods.getCandidateById(id).call().then(
 //         function(info){
@@ -47,12 +51,10 @@ export const getCandidates = async() => {
 //         }
 //     );
 // };
-
 export const getActiveVoters = async() => {
     var voters = await electionContract.methods.getVoterRegistry().call();
     return voters;
 }
-
 export const registerCandidateJDFCE = async(agrupacion, siglas) => {
     const accounts = await window.ethereum.enable();
     const account = accounts[0]
@@ -89,7 +91,7 @@ export const registerConsejoEscuela = async(name, siglas, escuela) => {
     )
 }
 
-export const registerVoter = async(carreras, facultades) => {
+export const registerVoter = async(id, carreras, facultades) => {
     const accounts = await window.ethereum.enable();
     const account = accounts[0];
     await electionContract.methods.agregarVotante(id, carreras, facultades).send({from: account}).then(
@@ -98,7 +100,6 @@ export const registerVoter = async(carreras, facultades) => {
         }
     );
 }
-
 
 const loadWeb3 = async () => {
     if (window.ethereum) {
