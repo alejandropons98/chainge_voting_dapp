@@ -11,7 +11,7 @@ function RegisterVoterForm() {
   const [facultades, setFacultades] = useState(['Est. Juridicos y Politicos', 'Ciencias y Artes', 'Cs. Econ. y Sociales','Ingenieria'])
   const [facultadesSeleccionadas, setFacultadesSeleccionadas] = useState([])
   const [carrerasSeleccionadas, setCarrerasSeleccionadas] = useState([])
-  const [newCarreras, setNewCarreras] = useState( new Set() )
+  const [newCarreras, setNewCarreras] = useState(new Set())
   
   const carrerasDict = {
     'Est. Juridicos y Politicos': ['Estudios Liberales', 'Derecho'],
@@ -22,8 +22,7 @@ function RegisterVoterForm() {
   
   const handleSubmit = async (e) => {
     e.preventDefault()
-    const id = Math.floor(Math.random() * 100)
-    console.log(id)
+    const id = e.target[0].value
     await registerNewId(id)
     await registerVoter(id, facultadesSeleccionadas, carrerasSeleccionadas)
   }
@@ -42,7 +41,6 @@ function RegisterVoterForm() {
     const carreraSelect = e.target.text
     newCarreras.add(carreraSelect)
     const carrerasLista = [...newCarreras]
-    console.log(newCarreras)
     setCarrerasSeleccionadas(carrerasLista)
   }
 
@@ -61,6 +59,11 @@ function RegisterVoterForm() {
     <Form style={mystyle} className='ml' onSubmit={handleSubmit}>
       <br />
       <h2>Registra un votante</h2>
+      <br />
+      <div>Cedula: </div>
+      <Form.Group key = "CedulaForm">
+        <Form.Control type="input" placeholder="Cedula" key = "CI"/>
+      </Form.Group>
       <br />
       <>
         <div>Elige tu Facultad:

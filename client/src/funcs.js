@@ -39,7 +39,10 @@ export const getCandidates = async() => {
 }
 
 export const registerNewId = async(id) => {
-    await electionContract.methods.agregarIDARegistro(id).call();
+    const accounts = await window.ethereum.enable();
+    const account = accounts[0];
+    await electionContract.methods.agregarIDARegistro(id).send({from: account}).then(info => 
+        console.log(info));
 }
 
 // function getCandidateById(id){

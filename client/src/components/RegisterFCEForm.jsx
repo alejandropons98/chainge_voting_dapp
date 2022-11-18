@@ -1,7 +1,7 @@
 import Button from 'react-bootstrap/Button';
 import Form from 'react-bootstrap/Form';
 import Row from 'react-bootstrap/Row';
-import {registerCandidateJDFCE, registerCandidateCCFCE, registerConsejoAcademico, registerConsejoFacultad, registerConsejoEscuela} from '../funcs'
+import {registerCandidateJDFCE, registerCandidateCCFCE, registerConsejoFacultad, registerConsejoEscuela} from '../funcs'
 import { Navigate, useNavigate } from "react-router-dom";
 import { useState } from "react";
 import SplitButton from 'react-bootstrap/SplitButton';
@@ -13,6 +13,7 @@ function RegisterFCEForm() {
     const [facultadesSeleccionadas, setFacultadesSeleccionadas] = useState([])
     const [carrerasSeleccionadas, setCarrerasSeleccionadas] = useState([])
     const [newCarreras, setNewCarreras] = useState( new Set() )
+    const [formValue, setFormValue] = useState({})
 
     const carrerasDict = {
         'Est. Juridicos y Politicos': ['Estudios Liberales', 'Derecho'],
@@ -23,20 +24,29 @@ function RegisterFCEForm() {
 
     const handleSubmit = async(e) => {
         e.preventDefault()
-        const agrupacion = e.target[0].value
-        const siglas = e.target[1].value
-        //Funcion que registra la junta Directiva FCE
-        registerCandidateJDFCE(agrupacion, siglas)
-        //Funcion que registra la Coordinacion FCE
-        registerCandidateCCFCE(agrupacion, siglas)
+        await registerCandidateJDFCE(formValue["agrupacion"], formValue["siglas"])
+        
+        if (formValue["checkbox"] ="on") await registerCandidateCCFCE(formValue["agrupacion"], formValue["siglas"])
+        
+        facultadesSeleccionadas.map(async (facultad) => {
+            await registerConsejoFacultad(formValue[facultad], formValue["siglas"], facultad)
+            carrerasSeleccionadas.map(async (carrera) => {
+                await registerConsejoEscuela(formValue[carrera], formValue["siglas"], carrera)
+            }) 
+        })
+    }
 
+    const handleChange = ({target}) => {
+        setFormValue((prev) => {
+            return {...prev, [target.name] : target.value}
+        })
     }
 
     const handleCarrera = (e) => {
         e.preventDefault()
-        const carreraSelect = e.target.text
+        const carreraSelect=e.target.text
         newCarreras.add(carreraSelect)
-        const carrerasLista = [...newCarreras]
+        const carrerasLista=[...newCarreras]
         console.log(newCarreras)
         setCarrerasSeleccionadas(carrerasLista)
     }
@@ -65,22 +75,14 @@ function RegisterFCEForm() {
         <Form style={mystyle} className='ml' onSubmit={handleSubmit}>
             <br />
             <h2>Registro de Junta Directiva FCE</h2>
-            {/* <Row>
-                <Col className='m-2'> */}
-            <Form.Group className="mb-3" controlId="formAgrup">
-            {/* <Form.Label>Name</Form.Label> */}
-                <Form.Control type="input" placeholder="Agrupacion" />
+            <Form.Group className="mb-3" controlid="formAgrup">
+                <Form.Control type="input" placeholder="Agrupacion" name="agrupacion" onChange={handleChange}/>
             </Form.Group>
-            {/* </Col> */}
-            {/* <Col className='m-2'> */}
-            <Form.Group className="mb-3" controlId="formSiglas">
-            {/* <Form.Label>Bounty</Form.Label> */}
-                <Form.Control type="input" placeholder="Siglas" />
+            <Form.Group className="mb-3" controlid="formSiglas">
+                <Form.Control type="input" placeholder="Siglas" name="siglas" onChange={handleChange}/>
             </Form.Group>
-            {/* </Col> */}
-            {/* </Row> */}
             <Row/>
-            <Form.Check type='checkbox' label='Checkbox para agregar su junta a la Coordinacion de la FCE'>
+            <Form.Check type='checkbox' name="checkbox" onChange={handleChange} label='Checkbox para agregar su junta a la Coordinacion de la FCE'>
             </Form.Check>
             <Row/>
             <>
@@ -93,9 +95,9 @@ function RegisterFCEForm() {
                 <br />
                 <div>Indique el nombre de cada Participante</div>
                 {facultadesSeleccionadas.map((facultad)=>(
-                    <Form.Group className = "facultades" controlId="formFacultades">
+                    <Form.Group className = "facultades" controlid="formFacultades">
                         <br />
-                        <Form.Control type = "input" placeholder = {facultad}></Form.Control>
+                        <Form.Control type="input" placeholder={facultad} name={facultad} key={facultad} onChange={handleChange}></Form.Control>
                     </Form.Group>
                 ))} 
             </>
@@ -105,7 +107,7 @@ function RegisterFCEForm() {
                 <SplitButton key= 'Carrera' title='Carrera'>
                     {facultadesSeleccionadas.map((facultad,i) => (
                         carrerasDict[facultad].map((carrera) => (
-                        <Dropdown.Item eventKey={i} key= {carrera} onClick = {handleCarrera}>{carrera}</Dropdown.Item>
+                        <Dropdown.Item eventKey={i} key= {carrera} controlId={carrera} onClick={handleCarrera}>{carrera}</Dropdown.Item>
                         ))
                     ))}
                 </SplitButton>
@@ -114,7 +116,7 @@ function RegisterFCEForm() {
                 {carrerasSeleccionadas.map((carrera) => (
                     <Form.Group className = "carreras" controlId="formCarreras">
                         <br />
-                        <Form.Control type = "input" placeholder = {carrera}></Form.Control>
+                        <Form.Control type = "input" controlId={carrera} name={carrera} placeholder = {carrera} key= {carrera} onChange={handleChange}></Form.Control>
                     </Form.Group>
                 ))}
             </>

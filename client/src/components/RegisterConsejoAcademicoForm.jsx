@@ -1,18 +1,26 @@
 import Button from 'react-bootstrap/Button';
 import Form from 'react-bootstrap/Form';
-import Row from 'react-bootstrap/Row';
 import { registerConsejoAcademico } from '../funcs'
 import { Navigate, useNavigate } from "react-router-dom";
+import { useState } from "react"
+import SplitButton from 'react-bootstrap/SplitButton';
+import Dropdown from 'react-bootstrap/Dropdown';
 
 function RegisterConsejoAcademicoForm() {
     
+    const [carreraSeleccionada, setCarreraSeleccionada] = useState("Carrera")
+    const carreras = ['Estudios Liberales', 'Derecho','Educacion', 'Psicologia','Idiomas Modernos','Mate. Industrial', 'Ciencias Administrativas', 'Economia','Contaduria Publica','Ing. Quimica', 'Ing. de Produccion','Ing. Mecanica', 'Ing. Civil', 'Ing. Electrica', 'Ing. Sistemas']  
+    
+    const handleCarrera = (e) => {
+        e.preventDefault()
+        setCarreraSeleccionada(e.target.text)
+    }
+
     const handleSubmit = async(e) => {
         e.preventDefault()
-        const nombreCA = e.target[0].value
-        const carreraCA = e.target[1].value
-        const id = 2 
-    //Funcion que registra la consejos Academicos
-    registerConsejoAcademico(nombreCA, carreraCA, id)
+        const id = e.target[0].value
+        const nombreCA = e.target[1].value
+        await registerConsejoAcademico(nombreCA, carreraSeleccionada, id)
     }
 
     const mystyle = {
@@ -31,14 +39,22 @@ function RegisterConsejoAcademicoForm() {
             <br />
             <h2>Registro de Consejero Academico</h2>
             <Form.Group className="mb-3" controlId="formName">
+                <Form.Control type="input" placeholder="Cedula" />
+            </Form.Group>
+            <Form.Group className="mb-3" controlId="formName">
                 <Form.Control type="input" placeholder="Nombre" />
             </Form.Group>
-            <Form.Group className="mb-3" controlId="formCarrera">
-                <Form.Control type="input" placeholder="Carrera" />
-            </Form.Group>
+            <SplitButton key= 'Carrera' title={carreraSeleccionada}>
+                {carreras.map((carrera) => (
+                    <Dropdown.Item key= {carrera} onClick={handleCarrera}>{carrera}</Dropdown.Item>
+                ))}
+            </SplitButton>
+            <br />
+            <br />
             <Button variant="primary" type="submit" className='mb-4'>
                 Registrar
             </Button>
+            <br />
        </Form>
     )
 }
