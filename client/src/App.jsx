@@ -1,6 +1,6 @@
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import { VotingPage } from "./pages/VotingPage/VotingPage";
-import { RegisterConsejoEstudiantil } from "./pages/RegisterConsejoEstudiantil/RegisterConsejoEstudiantil";
+import { RegisterConsejoAcademico } from "./pages/RegisterConsejoAcademico/RegisterConsejoAcademico";
 import { RegisterFCE } from "./pages/RegisterFCE/RegisterFCE";
 import { Layout } from "./container/Layout/Layout";
 import './App.css';
@@ -25,7 +25,7 @@ const App = () => {
     <Routes>
       <Route path="/" element={<Home />} />
       <Route path="/vote" element={<VotingPage />} />
-      <Route path="/registerConsejoEstudiantil" element={<RegisterConsejoEstudiantil />} />
+      <Route path="/registerConsejoAcademico" element={<RegisterConsejoAcademico />} />
       <Route path="/registerCentroEstudiantes" element={<RegisterFCE/>} />
       <Route path="/registervoter" element={<RegisterVoter />} />
       <Route path="/voters" element={<VotedVoters />} />

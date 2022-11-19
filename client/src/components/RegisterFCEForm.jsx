@@ -25,7 +25,6 @@ function RegisterFCEForm() {
     const handleSubmit = async(e) => {
         e.preventDefault()
         await registerCandidateJDFCE(formValue["agrupacion"], formValue["siglas"])
-        
         if (formValue["checkbox"] ="on") await registerCandidateCCFCE(formValue["agrupacion"], formValue["siglas"])
         
         facultadesSeleccionadas.map(async (facultad) => {
