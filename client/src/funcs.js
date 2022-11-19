@@ -3,7 +3,7 @@ import Web3 from 'web3';
 import { ElectionContract } from './abi/abi';
 
 const web3 = new Web3(Web3.givenProvider);
-const contractAddress = '0x1CA8c2A68D0fEE1E0F240Ab568d06EFC8EDd5120';
+const contractAddress = '0xc55B86bEcB19F51A8796771fA93A20F6152a4323';
 const electionContract = new web3.eth.Contract(ElectionContract, contractAddress);
 
 
@@ -18,12 +18,10 @@ export const load = async () => {
     return;
 
 };
-
 // Esto no es algo que necesitamos ahorita. Vamos a tener que agregar un array de Voters (Ahorita es un mapping)
 // export const getVoters = async() => {
 //     return await electionContract.methods.voters(contractAddress).call().then(info => console.log(info));
 // }
-
 export const vote = async(id) => {
     const accounts = await window.ethereum.enable();
     const account = accounts[0];
@@ -31,13 +29,11 @@ export const vote = async(id) => {
         console.log(info));
 
 }
-
 //Necesitamos poder jalar el numero de candidatos del contrato
 export const getCandidates = async() => {
     var candidates = await electionContract.methods.getAllCandidates().call();
     return candidates;
 }
-
 export const registerNewId = async(id) => {
     const accounts = await window.ethereum.enable();
     const account = accounts[0];
@@ -54,6 +50,7 @@ export const registerNewId = async(id) => {
 //         }
 //     );
 // };
+
 export const getActiveVoters = async() => {
     var voters = await electionContract.methods.getVoterRegistry().call();
     return voters;
@@ -102,6 +99,17 @@ export const registerVoter = async(id, carreras, facultades) => {
             console.log(info)
         }
     );
+}
+
+export const verCandidatosCentroEstudiantes = async() => {
+    var candidatos = await electionContract.methods.candidatosCentroEstudiantes().call
+    console.log(candidatos)
+    return candidatos
+}
+export const verCandidatosConsejoAcademico = async() => {
+    var candidatos = await electionContract.methods.candidatosCentroEstudiantes().call
+    console.log(candidatos)
+    return candidatos
 }
 
 const loadWeb3 = async () => {

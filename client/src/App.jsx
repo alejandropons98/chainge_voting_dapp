@@ -1,6 +1,5 @@
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import { VotingPage } from "./pages/VotingPage/VotingPage";
-import { RegisterCandidate } from "./pages/RegisterCandidate/RegisterCandidate";
 import { RegisterConsejoEstudiantil } from "./pages/RegisterConsejoEstudiantil/RegisterConsejoEstudiantil";
 import { RegisterFCE } from "./pages/RegisterFCE/RegisterFCE";
 import { Layout } from "./container/Layout/Layout";

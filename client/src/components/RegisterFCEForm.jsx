@@ -35,7 +35,7 @@ function RegisterFCEForm() {
             }) 
         })
     }
-
+//CLEEEEEEEEEEAN
     const handleChange = ({target}) => {
         setFormValue((prev) => {
             return {...prev, [target.name] : target.value}
@@ -76,13 +76,13 @@ function RegisterFCEForm() {
             <br />
             <h2>Registro de Junta Directiva FCE</h2>
             <Form.Group className="mb-3" controlid="formAgrup">
-                <Form.Control type="input" placeholder="Agrupacion" name="agrupacion" onChange={handleChange}/>
+                <Form.Control type="input" key="Agrupacion" placeholder="Agrupacion" name="agrupacion" onChange={handleChange}/>
             </Form.Group>
             <Form.Group className="mb-3" controlid="formSiglas">
-                <Form.Control type="input" placeholder="Siglas" name="siglas" onChange={handleChange}/>
+                <Form.Control type="input" placeholder="Siglas" key="siglas" name="siglas" onChange={handleChange}/>
             </Form.Group>
             <Row/>
-            <Form.Check type='checkbox' name="checkbox" onChange={handleChange} label='Checkbox para agregar su junta a la Coordinacion de la FCE'>
+            <Form.Check type='checkbox' name="checkbox" key="checkbox" onChange={handleChange} label='Checkbox para agregar su junta a la Coordinacion de la FCE'>
             </Form.Check>
             <Row/>
             <>
@@ -103,20 +103,20 @@ function RegisterFCEForm() {
             </>
             <br />
             <>
-                <h4>Carras a Participar</h4>
+                <h4>Carreras a Participar</h4>
                 <SplitButton key= 'Carrera' title='Carrera'>
                     {facultadesSeleccionadas.map((facultad,i) => (
                         carrerasDict[facultad].map((carrera) => (
-                        <Dropdown.Item eventKey={i} key= {carrera} controlId={carrera} onClick={handleCarrera}>{carrera}</Dropdown.Item>
+                        <Dropdown.Item eventKey={i} key= {carrera} onClick={handleCarrera}>{carrera}</Dropdown.Item>
                         ))
                     ))}
                 </SplitButton>
                 <br/>
                 <div>Indique el nombre de cada Participante</div>
                 {carrerasSeleccionadas.map((carrera) => (
-                    <Form.Group className = "carreras" controlId="formCarreras">
+                    <Form.Group className = "carreras" >
                         <br />
-                        <Form.Control type = "input" controlId={carrera} name={carrera} placeholder = {carrera} key= {carrera} onChange={handleChange}></Form.Control>
+                        <Form.Control type = "input" name={carrera} placeholder = {carrera} key= {carrera} onChange={handleChange}></Form.Control>
                     </Form.Group>
                 ))}
             </>
