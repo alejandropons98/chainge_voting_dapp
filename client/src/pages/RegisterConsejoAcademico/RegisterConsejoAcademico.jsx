@@ -1,6 +1,6 @@
 import { RegisterConsejoAcademicoForm } from "../../components/RegisterConsejoAcademicoForm";
 
-const RegisterConsejoEstudiantil = () => {
+const RegisterConsejoAcademico = () => {
 
 
     return (
@@ -8,4 +8,4 @@ const RegisterConsejoEstudiantil = () => {
     );
 }
 
-export { RegisterConsejoEstudiantil };
+export { RegisterConsejoAcademico };
