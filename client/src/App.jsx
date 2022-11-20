@@ -11,7 +11,9 @@ import { RegisterVoter } from "./pages/RegisterVoter/RegisterVoter";
 import { VotedVoters } from "./pages/VotedVoters/VotedVoters";
 import { Home } from "./pages/Home/Home";
 import LoginPage from "./pages/LoginPage/LoginPage";
-
+import AuthProvider from "./context/authContext";
+import RegisterForm from "./components/RegisterFrom";
+import { ProtectedRoute } from "./components/ProtectedRoute";
 const App = () => {
   useEffect(() => {
     load();
@@ -20,14 +22,52 @@ const App = () => {
   return (
     <BrowserRouter>
       <Layout>
-        <Routes>
-          <Route path="/" element={<Home />} />
-          <Route path="/vote" element={<VotingPage />} />
-          <Route path="/registercandidate" element={<RegisterCandidate />} />
-          <Route path="/registervoter" element={<RegisterVoter />} />
-          <Route path="/voters" element={<VotedVoters />} />
-          <Route path="/login" element={<LoginPage />} />
-        </Routes>
+        <AuthProvider>
+          <Routes>
+            <Route
+              path="/"
+              element={
+                <ProtectedRoute>
+                  <Home />
+                </ProtectedRoute>
+              }
+            />
+            <Route
+              path="/vote"
+              element={
+                <ProtectedRoute>
+                  <VotingPage />
+                </ProtectedRoute>
+              }
+            />
+            <Route
+              path="/registercandidate"
+              element={
+                <ProtectedRoute>
+                  <RegisterCandidate />
+                </ProtectedRoute>
+              }
+            />
+            <Route
+              path="/registervoter"
+              element={
+                <ProtectedRoute>
+                  <RegisterVoter />
+                </ProtectedRoute>
+              }
+            />
+            <Route
+              path="/voters"
+              element={
+                <ProtectedRoute>
+                  <VotedVoters />
+                </ProtectedRoute>
+              }
+            />
+            <Route path="/login" element={<LoginPage />} />
+            <Route path="/registeruser" element={<RegisterForm />} />
+          </Routes>
+        </AuthProvider>
       </Layout>
     </BrowserRouter>
   );
