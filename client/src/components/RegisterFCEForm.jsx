@@ -19,7 +19,7 @@ function RegisterFCEForm() {
         'Est. Juridicos y Politicos': ['Estudios Liberales', 'Derecho'],
         'Ciencias y Artes':['Educacion', 'Psicologia','Idiomas Modernos', 'Mate. Industrial'], 
         'Cs. Econ. y Sociales': ['Ciencias Administrativas', 'Economia','Contaduria Publica'],
-        'Ingenieria': ['Ing. Quimica', 'Ing. de Produccion','Ing. Mecanica', 'Ing. Civil', 'Ing. Electrica', 'Ing. Sistemas']
+        'Ingenieria': ['Ingenieria Quimica', 'Ingenieria de Produccion','Ingenieria Mecanica', 'Ingenieria Civil', 'Ingenieria Electrica', 'Ingenieria Sistemas']
     }
 
     const handleSubmit = async(e) => {
@@ -93,10 +93,10 @@ function RegisterFCEForm() {
                 </SplitButton>
                 <br />
                 <div>Indique el nombre de cada Participante</div>
-                {facultadesSeleccionadas.map((facultad)=>(
-                    <Form.Group className = "facultades" controlid="formFacultades">
+                {facultadesSeleccionadas.map((facultad, i)=>(
+                    <Form.Group className = "facultades">
                         <br />
-                        <Form.Control type="input" placeholder={facultad} name={facultad} key={facultad} onChange={handleChange}></Form.Control>
+                        <Form.Control type="input" placeholder={facultad} name={facultad} key={i} onChange={handleChange}></Form.Control>
                     </Form.Group>
                 ))} 
             </>

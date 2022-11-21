@@ -3,7 +3,7 @@ import Web3 from 'web3';
 import { ElectionContract } from './abi/abi';
 
 const web3 = new Web3(Web3.givenProvider);
-const contractAddress = '0x55a983FdcC93E1dB2F8Ca382CDae2237D6332978';
+const contractAddress = '0xBdD68Db7c680AA3e7D985f7F2605246CF27a3f0f';
 const electionContract = new web3.eth.Contract(ElectionContract, contractAddress);
 
 
@@ -77,6 +77,10 @@ export const getCentroEstudiantesCandidates = async() => {
         candidatosCentroEstudiantesKeys.push(await electionContract.methods.candidatosCentroEstudiantesKeys(i).call());
     }
     const numeroEscuelas = await electionContract.methods.getEscuelasLength().call();
+    var escuelas = []
+    for(let i = 0; i < numeroEscuelas; i++){
+        escuelas.push(await electionContract.methods.escuelas(i).call());
+    }
     var centroEstudiantesCandidates = {};
     for(let i = 0; i < numeroEscuelas; i++){
         for(let j = 0; j < numeroCandidatosCentroEstudiantes; j++){
@@ -94,9 +98,19 @@ export const getConsejoEscuelaCandidates = async() => {
     }
     const numeroEscuelas = await electionContract.methods.getEscuelasLength().call();
     var ConsejoEscuelaCandidates = {};
+    var escuelas = []
+    for(let i = 0; i < numeroEscuelas; i++){
+        escuelas.push(await electionContract.methods.escuelas(i).call());
+    }
+    console.log(numeroEscuelas)
     for(let i = 0; i < numeroEscuelas; i++){
         for(let j = 0; j < numeroCandidatosConsejoEscuela; j++){
-            ConsejoEscuelaCandidates[escuelas[i]].push(await electionContract.methods.getCandidatoConsejoEscuela(candidatosConsejoEscuelaKeys[j], escuelas[i]).call());
+            if(j == 0){
+                ConsejoEscuelaCandidates[escuelas[i]] = [];
+                ConsejoEscuelaCandidates[escuelas[i]].push(await electionContract.methods.getCandidatoConsejoEscuela(candidatosConsejoEscuelaKeys[j], escuelas[i]).call());
+            }else{
+                ConsejoEscuelaCandidates[escuelas[i]].push(await electionContract.methods.getCandidatoConsejoEscuela(candidatosConsejoEscuelaKeys[j], escuelas[i]).call());
+            }
         }
     }
     return ConsejoEscuelaCandidates;
@@ -109,10 +123,19 @@ export const getConsejoFacultadCandidates = async() => {
         candidatosConsejoFacultadKeys.push(await electionContract.methods.candidatosConsejoFacultadKeys(i).call());
     }
     const numeroEscuelas = await electionContract.methods.getEscuelasLength().call();
+    var escuelas = []
+    for(let i = 0; i < numeroEscuelas; i++){
+        escuelas.push(await electionContract.methods.escuelas(i).call());
+    }
     var ConsejoFacultadCandidates = {};
     for(let i = 0; i < numeroEscuelas; i++){
         for(let j = 0; j < numeroCandidatosConsejoFacultad; j++){
-            ConsejoFacultadCandidates[escuelas[i]].push(await electionContract.methods.getCandidatoConsejoFacultad(candidatosConsejoFacultadKeys[j], escuelas[i]).call());
+            if(j == 0){
+                ConsejoFacultadCandidates[escuelas[i]] = [];
+                ConsejoFacultadCandidates[escuelas[i]].push(await electionContract.methods.getCandidatoConsejoFacultad(candidatosConsejoFacultadKeys[j], escuelas[i]).call());
+            }else{
+                ConsejoFacultadCandidates[escuelas[i]].push(await electionContract.methods.getCandidatoConsejoFacultad(candidatosConsejoFacultadKeys[j], escuelas[i]).call());
+            }
         }
     }
     return ConsejoFacultadCandidates;
@@ -209,4 +232,3 @@ const loadWeb3 = async () => {
         window.alert('Non-Ethereum browser detected. You should consider trying MetaMask!');
     }
 };
-

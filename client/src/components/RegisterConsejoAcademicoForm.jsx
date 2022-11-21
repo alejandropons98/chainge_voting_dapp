@@ -9,7 +9,7 @@ import Dropdown from 'react-bootstrap/Dropdown';
 function RegisterConsejoAcademicoForm() {
     
     const [carreraSeleccionada, setCarreraSeleccionada] = useState("Carrera")
-    const carreras = ['Estudios Liberales', 'Derecho','Educacion', 'Psicologia','Idiomas Modernos','Mate. Industrial', 'Ciencias Administrativas', 'Economia','Contaduria Publica','Ing. Quimica', 'Ing. de Produccion','Ing. Mecanica', 'Ing. Civil', 'Ing. Electrica', 'Ing. Sistemas']  
+    const carreras = ['Estudios Liberales', 'Derecho','Educacion', 'Psicologia','Idiomas Modernos','Mate. Industrial', 'Ciencias Administrativas', 'Economia','Contaduria Publica','Ingenieria Quimica', 'Ingenieria de Produccion','Ingenieria Mecanica', 'Ingenieria Civil', 'Ingenieria Electrica', 'Ingenieria Sistemas']  
     
     const handleCarrera = (e) => {
         e.preventDefault()
