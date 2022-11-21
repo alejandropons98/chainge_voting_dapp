@@ -19,13 +19,19 @@ function NavBar() {
           <Navbar.Toggle aria-controls="responsive-navbar-nav" />
           <Navbar.Collapse id="responsive-navbar-nav">
             <Nav className="me-auto" variant="tabs">
-              <Nav.Link href="/registercandidate">Registrar Candidato</Nav.Link>
+              <Nav.Link href="/registerConsejoAcademico">
+                Registro Consejo Academico
+              </Nav.Link>
+              <Nav.Link href="/registerCentroEstudiantes">
+                Registrar Centro de Estudiantes
+              </Nav.Link>
               <Nav.Link href="/registervoter">Registrar Votante</Nav.Link>
               <Nav.Link href="/voters">Votantes Activos</Nav.Link>
               <Nav.Link href="/vote">Votar</Nav.Link>
+              <Nav.Link href="/audit">Auditoria</Nav.Link>
             </Nav>
             <Nav>
-              <Nav.Link href="/login">Log out</Nav.Link>
+              <Nav.Link href="/login">Login</Nav.Link>
             </Nav>
           </Navbar.Collapse>
         </Container>

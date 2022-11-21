@@ -22,41 +22,41 @@
       "type": "function"
     }
   ],
-  "metadata": "{\"compiler\":{\"version\":\"0.8.17+commit.8df45f5f\"},\"language\":\"Solidity\",\"output\":{\"abi\":[{\"inputs\":[],\"name\":\"totalVotes\",\"outputs\":[{\"internalType\":\"uint256\",\"name\":\"\",\"type\":\"uint256\"}],\"stateMutability\":\"view\",\"type\":\"function\"},{\"inputs\":[],\"name\":\"vote\",\"outputs\":[],\"stateMutability\":\"nonpayable\",\"type\":\"function\"}],\"devdoc\":{\"kind\":\"dev\",\"methods\":{},\"version\":1},\"userdoc\":{\"kind\":\"user\",\"methods\":{},\"version\":1}},\"settings\":{\"compilationTarget\":{\"project:/contracts/Candidate.sol\":\"Candidate\"},\"evmVersion\":\"london\",\"libraries\":{},\"metadata\":{\"bytecodeHash\":\"ipfs\"},\"optimizer\":{\"enabled\":true,\"runs\":200},\"remappings\":[]},\"sources\":{\"project:/contracts/Candidate.sol\":{\"keccak256\":\"0xb816723f092e6f3ae1a6d3395a5564d4718b293df530a3276a16c84094bc97bd\",\"urls\":[\"bzz-raw://6efedeceaf62a11c2850077498e805655605febc500d83b81454775720956693\",\"dweb:/ipfs/QmUuMqLtAeQiYCb1PVBMyn63vcxf93h1LYXnB6q8oQ1oQz\"]}},\"version\":1}",
-  "bytecode": "0x60806040526000805534801561001457600080fd5b5060c4806100236000396000f3fe6080604052348015600f57600080fd5b506004361060325760003560e01c80630d15fd77146037578063632a9a5214604c575b600080fd5b60005460405190815260200160405180910390f35b60526054565b005b6000805490806061836068565b9190505550565b600060018201608757634e487b7160e01b600052601160045260246000fd5b506001019056fea26469706673582212200ac6c2c44eb990c3046d6de9fd4587861010bf91a1972bccb41914ffee5a1f8c64736f6c63430008110033",
-  "deployedBytecode": "0x6080604052348015600f57600080fd5b506004361060325760003560e01c80630d15fd77146037578063632a9a5214604c575b600080fd5b60005460405190815260200160405180910390f35b60526054565b005b6000805490806061836068565b9190505550565b600060018201608757634e487b7160e01b600052601160045260246000fd5b506001019056fea26469706673582212200ac6c2c44eb990c3046d6de9fd4587861010bf91a1972bccb41914ffee5a1f8c64736f6c63430008110033",
+  "metadata": "{\"compiler\":{\"version\":\"0.8.17+commit.8df45f5f\"},\"language\":\"Solidity\",\"output\":{\"abi\":[{\"inputs\":[],\"name\":\"totalVotes\",\"outputs\":[{\"internalType\":\"uint256\",\"name\":\"\",\"type\":\"uint256\"}],\"stateMutability\":\"view\",\"type\":\"function\"},{\"inputs\":[],\"name\":\"vote\",\"outputs\":[],\"stateMutability\":\"nonpayable\",\"type\":\"function\"}],\"devdoc\":{\"kind\":\"dev\",\"methods\":{},\"version\":1},\"userdoc\":{\"kind\":\"user\",\"methods\":{},\"version\":1}},\"settings\":{\"compilationTarget\":{\"project:/contracts/Candidate.sol\":\"Candidate\"},\"evmVersion\":\"london\",\"libraries\":{},\"metadata\":{\"bytecodeHash\":\"ipfs\"},\"optimizer\":{\"enabled\":true,\"runs\":200},\"remappings\":[]},\"sources\":{\"project:/contracts/Candidate.sol\":{\"keccak256\":\"0x03df25ffc0469bd04cbaa71ef53b51bc45d05dac16e849c9108f0d214239eee0\",\"urls\":[\"bzz-raw://541222ca46e8852b8c7e9e4bffda303e023fcc9778bd30466ef794f3aa1f238c\",\"dweb:/ipfs/QmQun3GPo8EzoHeTGMxz5eryukSog5EzfujF4UaaEXhqdf\"]}},\"version\":1}",
+  "bytecode": "0x60806040526000805534801561001457600080fd5b5060c4806100236000396000f3fe6080604052348015600f57600080fd5b506004361060325760003560e01c80630d15fd77146037578063632a9a5214604c575b600080fd5b60005460405190815260200160405180910390f35b60526054565b005b6000805490806061836068565b9190505550565b600060018201608757634e487b7160e01b600052601160045260246000fd5b506001019056fea26469706673582212201dbf9bee28719a42bd2c4c18cc2ec45a783981ff64fa71bc96bc3246e352279c64736f6c63430008110033",
+  "deployedBytecode": "0x6080604052348015600f57600080fd5b506004361060325760003560e01c80630d15fd77146037578063632a9a5214604c575b600080fd5b60005460405190815260200160405180910390f35b60526054565b005b6000805490806061836068565b9190505550565b600060018201608757634e487b7160e01b600052601160045260246000fd5b506001019056fea26469706673582212201dbf9bee28719a42bd2c4c18cc2ec45a783981ff64fa71bc96bc3246e352279c64736f6c63430008110033",
   "immutableReferences": {},
   "generatedSources": [],
   "deployedGeneratedSources": [
     {
       "ast": {
         "nodeType": "YulBlock",
-        "src": "0:430:6",
+        "src": "0:430:5",
         "statements": [
           {
             "nodeType": "YulBlock",
-            "src": "6:3:6",
+            "src": "6:3:5",
             "statements": []
           },
           {
             "body": {
               "nodeType": "YulBlock",
-              "src": "115:76:6",
+              "src": "115:76:5",
               "statements": [
                 {
                   "nodeType": "YulAssignment",
-                  "src": "125:26:6",
+                  "src": "125:26:5",
                   "value": {
                     "arguments": [
                       {
                         "name": "headStart",
                         "nodeType": "YulIdentifier",
-                        "src": "137:9:6"
+                        "src": "137:9:5"
                       },
                       {
                         "kind": "number",
                         "nodeType": "YulLiteral",
-                        "src": "148:2:6",
+                        "src": "148:2:5",
                         "type": "",
                         "value": "32"
                       }
@@ -64,16 +64,16 @@
                     "functionName": {
                       "name": "add",
                       "nodeType": "YulIdentifier",
-                      "src": "133:3:6"
+                      "src": "133:3:5"
                     },
                     "nodeType": "YulFunctionCall",
-                    "src": "133:18:6"
+                    "src": "133:18:5"
                   },
                   "variableNames": [
                     {
                       "name": "tail",
                       "nodeType": "YulIdentifier",
-                      "src": "125:4:6"
+                      "src": "125:4:5"
                     }
                   ]
                 },
@@ -83,24 +83,24 @@
                       {
                         "name": "headStart",
                         "nodeType": "YulIdentifier",
-                        "src": "167:9:6"
+                        "src": "167:9:5"
                       },
                       {
                         "name": "value0",
                         "nodeType": "YulIdentifier",
-                        "src": "178:6:6"
+                        "src": "178:6:5"
                       }
                     ],
                     "functionName": {
                       "name": "mstore",
                       "nodeType": "YulIdentifier",
-                      "src": "160:6:6"
+                      "src": "160:6:5"
                     },
                     "nodeType": "YulFunctionCall",
-                    "src": "160:25:6"
+                    "src": "160:25:5"
                   },
                   "nodeType": "YulExpressionStatement",
-                  "src": "160:25:6"
+                  "src": "160:25:5"
                 }
               ]
             },
@@ -110,13 +110,13 @@
               {
                 "name": "headStart",
                 "nodeType": "YulTypedName",
-                "src": "84:9:6",
+                "src": "84:9:5",
                 "type": ""
               },
               {
                 "name": "value0",
                 "nodeType": "YulTypedName",
-                "src": "95:6:6",
+                "src": "95:6:5",
                 "type": ""
               }
             ],
@@ -124,21 +124,21 @@
               {
                 "name": "tail",
                 "nodeType": "YulTypedName",
-                "src": "106:4:6",
+                "src": "106:4:5",
                 "type": ""
               }
             ],
-            "src": "14:177:6"
+            "src": "14:177:5"
           },
           {
             "body": {
               "nodeType": "YulBlock",
-              "src": "243:185:6",
+              "src": "243:185:5",
               "statements": [
                 {
                   "body": {
                     "nodeType": "YulBlock",
-                    "src": "282:111:6",
+                    "src": "282:111:5",
                     "statements": [
                       {
                         "expression": {
@@ -146,7 +146,7 @@
                             {
                               "kind": "number",
                               "nodeType": "YulLiteral",
-                              "src": "303:1:6",
+                              "src": "303:1:5",
                               "type": "",
                               "value": "0"
                             },
@@ -155,14 +155,14 @@
                                 {
                                   "kind": "number",
                                   "nodeType": "YulLiteral",
-                                  "src": "310:3:6",
+                                  "src": "310:3:5",
                                   "type": "",
                                   "value": "224"
                                 },
                                 {
                                   "kind": "number",
                                   "nodeType": "YulLiteral",
-                                  "src": "315:10:6",
+                                  "src": "315:10:5",
                                   "type": "",
                                   "value": "0x4e487b71"
                                 }
@@ -170,22 +170,22 @@
                               "functionName": {
                                 "name": "shl",
                                 "nodeType": "YulIdentifier",
-                                "src": "306:3:6"
+                                "src": "306:3:5"
                               },
                               "nodeType": "YulFunctionCall",
-                              "src": "306:20:6"
+                              "src": "306:20:5"
                             }
                           ],
                           "functionName": {
                             "name": "mstore",
                             "nodeType": "YulIdentifier",
-                            "src": "296:6:6"
+                            "src": "296:6:5"
                           },
                           "nodeType": "YulFunctionCall",
-                          "src": "296:31:6"
+                          "src": "296:31:5"
                         },
                         "nodeType": "YulExpressionStatement",
-                        "src": "296:31:6"
+                        "src": "296:31:5"
                       },
                       {
                         "expression": {
@@ -193,14 +193,14 @@
                             {
                               "kind": "number",
                               "nodeType": "YulLiteral",
-                              "src": "347:1:6",
+                              "src": "347:1:5",
                               "type": "",
                               "value": "4"
                             },
                             {
                               "kind": "number",
                               "nodeType": "YulLiteral",
-                              "src": "350:4:6",
+                              "src": "350:4:5",
                               "type": "",
                               "value": "0x11"
                             }
@@ -208,13 +208,13 @@
                           "functionName": {
                             "name": "mstore",
                             "nodeType": "YulIdentifier",
-                            "src": "340:6:6"
+                            "src": "340:6:5"
                           },
                           "nodeType": "YulFunctionCall",
-                          "src": "340:15:6"
+                          "src": "340:15:5"
                         },
                         "nodeType": "YulExpressionStatement",
-                        "src": "340:15:6"
+                        "src": "340:15:5"
                       },
                       {
                         "expression": {
@@ -222,14 +222,14 @@
                             {
                               "kind": "number",
                               "nodeType": "YulLiteral",
-                              "src": "375:1:6",
+                              "src": "375:1:5",
                               "type": "",
                               "value": "0"
                             },
                             {
                               "kind": "number",
                               "nodeType": "YulLiteral",
-                              "src": "378:4:6",
+                              "src": "378:4:5",
                               "type": "",
                               "value": "0x24"
                             }
@@ -237,13 +237,13 @@
                           "functionName": {
                             "name": "revert",
                             "nodeType": "YulIdentifier",
-                            "src": "368:6:6"
+                            "src": "368:6:5"
                           },
                           "nodeType": "YulFunctionCall",
-                          "src": "368:15:6"
+                          "src": "368:15:5"
                         },
                         "nodeType": "YulExpressionStatement",
-                        "src": "368:15:6"
+                        "src": "368:15:5"
                       }
                     ]
                   },
@@ -252,14 +252,14 @@
                       {
                         "name": "value",
                         "nodeType": "YulIdentifier",
-                        "src": "259:5:6"
+                        "src": "259:5:5"
                       },
                       {
                         "arguments": [
                           {
                             "kind": "number",
                             "nodeType": "YulLiteral",
-                            "src": "270:1:6",
+                            "src": "270:1:5",
                             "type": "",
                             "value": "0"
                           }
@@ -267,37 +267,37 @@
                         "functionName": {
                           "name": "not",
                           "nodeType": "YulIdentifier",
-                          "src": "266:3:6"
+                          "src": "266:3:5"
                         },
                         "nodeType": "YulFunctionCall",
-                        "src": "266:6:6"
+                        "src": "266:6:5"
                       }
                     ],
                     "functionName": {
                       "name": "eq",
                       "nodeType": "YulIdentifier",
-                      "src": "256:2:6"
+                      "src": "256:2:5"
                     },
                     "nodeType": "YulFunctionCall",
-                    "src": "256:17:6"
+                    "src": "256:17:5"
                   },
                   "nodeType": "YulIf",
-                  "src": "253:140:6"
+                  "src": "253:140:5"
                 },
                 {
                   "nodeType": "YulAssignment",
-                  "src": "402:20:6",
+                  "src": "402:20:5",
                   "value": {
                     "arguments": [
                       {
                         "name": "value",
                         "nodeType": "YulIdentifier",
-                        "src": "413:5:6"
+                        "src": "413:5:5"
                       },
                       {
                         "kind": "number",
                         "nodeType": "YulLiteral",
-                        "src": "420:1:6",
+                        "src": "420:1:5",
                         "type": "",
                         "value": "1"
                       }
@@ -305,16 +305,16 @@
                     "functionName": {
                       "name": "add",
                       "nodeType": "YulIdentifier",
-                      "src": "409:3:6"
+                      "src": "409:3:5"
                     },
                     "nodeType": "YulFunctionCall",
-                    "src": "409:13:6"
+                    "src": "409:13:5"
                   },
                   "variableNames": [
                     {
                       "name": "ret",
                       "nodeType": "YulIdentifier",
-                      "src": "402:3:6"
+                      "src": "402:3:5"
                     }
                   ]
                 }
@@ -326,7 +326,7 @@
               {
                 "name": "value",
                 "nodeType": "YulTypedName",
-                "src": "225:5:6",
+                "src": "225:5:5",
                 "type": ""
               }
             ],
@@ -334,24 +334,24 @@
               {
                 "name": "ret",
                 "nodeType": "YulTypedName",
-                "src": "235:3:6",
+                "src": "235:3:5",
                 "type": ""
               }
             ],
-            "src": "196:232:6"
+            "src": "196:232:5"
           }
         ]
       },
       "contents": "{\n    { }\n    function abi_encode_tuple_t_uint256__to_t_uint256__fromStack_reversed(headStart, value0) -> tail\n    {\n        tail := add(headStart, 32)\n        mstore(headStart, value0)\n    }\n    function increment_t_uint256(value) -> ret\n    {\n        if eq(value, not(0))\n        {\n            mstore(0, shl(224, 0x4e487b71))\n            mstore(4, 0x11)\n            revert(0, 0x24)\n        }\n        ret := add(value, 1)\n    }\n}",
-      "id": 6,
+      "id": 5,
       "language": "Yul",
       "name": "#utility.yul"
     }
   ],
-  "sourceMap": "64:200:0:-:0;;;115:1;89:27;;64:200;;;;;;;;;;;;;;;;",
-  "deployedSourceMap": "64:200:0:-:0;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;180:82;223:4;246:9;180:82;;160:25:6;;;148:2;133:18;180:82:0;;;;;;;123:51;;;:::i;:::-;;;156:9;:11;;;:9;:11;;;:::i;:::-;;;;;;123:51::o;196:232:6:-;235:3;256:17;;;253:140;;315:10;310:3;306:20;303:1;296:31;350:4;347:1;340:15;378:4;375:1;368:15;253:140;-1:-1:-1;420:1:6;409:13;;196:232::o",
-  "source": "// SPDX-Licence-Identifier: UNLICENSED\npragma solidity ^0.8.0;\n\ncontract Candidate {\n    uint internal voteCount = 0;\n\n    function vote() public {\n        voteCount++;\n    }\n\n    function totalVotes() public view returns (uint) {\n        return voteCount;\n    }\n}\n\ncontract ConsejoAcademico is Candidate {\n    string public name;\n    uint public id;\n    string public carrera;\n\n    constructor(string memory _name, uint _id ,string memory _carrera) Candidate() {\n        name = _name;\n        id = _id;\n        carrera = _carrera;\n    }\n}\n\ncontract CandidatoFCE is Candidate {\n    string public agrupacion;\n    string public siglas;\n\n    constructor(string memory _agrupacion, string memory _siglas) Candidate() {\n        agrupacion = _agrupacion;\n        siglas = _siglas;\n    }\n}\n\ncontract JuntaDirectivaFCE is CandidatoFCE {\n    string public seccion;\n\n    constructor(string memory _agrupacion, string memory _siglas) CandidatoFCE(_agrupacion, _siglas) {\n        seccion = \"Junta Directiva\";\n    }\n}\n\ncontract CoordinacionFCE is CandidatoFCE {\n    string public seccion;\n\n    constructor(string memory _agrupacion, string memory _siglas) CandidatoFCE(_agrupacion, _siglas) {\n        seccion = \"Coordinacion\";\n    }\n}\n\n\ncontract CentroEstudiantes is Candidate {\n    string public nombre;\n    string public siglas;\n    string public escuela;\n\n    constructor(string memory _nombre, string memory _siglas, string memory _escuela) Candidate() {\n        nombre = _nombre;\n        siglas = _siglas;\n        escuela = _escuela;\n    }\n}\n\ncontract ConsejoEscuela is Candidate {\n    string public nombre;\n    string public siglas;\n    string public escuela;\n\n    constructor(string memory _nombre, string memory _siglas, string memory _escuela) Candidate() {\n        nombre = _nombre;\n        siglas = _siglas;\n        escuela = _escuela;\n    }\n}\n\ncontract ConsejoFacultad is Candidate {\n    string public nombre;\n    string public siglas;\n    string public facultad;\n\n    constructor(string memory _nombre, string memory _siglas, string memory _facultad) Candidate() {\n        nombre = _nombre;\n        siglas = _siglas;\n        facultad = _facultad;\n    }\n}\n\n// contract CandidateList {\n//     address public owner;\n    \n//     mapping (uint => mapping (address => ConsejoAcademico)) public candidatosConsejoAcademico;\n//     mapping (string => mapping (address => CandidatoFCE)) public candidatosFCE;\n//     mapping (string => mapping (address => CentroEstudiantes)) public candidatosCentroEstudiantes;\n//     mapping (string => mapping (address => ConsejoEscuela)) public candidatosConsejoEscuela;\n//     mapping (string => mapping (address => ConsejoFacultad)) public candidatosConsejoFacultad;\n\n//     constructor () {\n//         owner = msg.sender;\n//     }\n//     // address[] public candidatosConsejoAcademicoAccts;\n//     // address[] public candidatosFCEAccts;\n//     // address[] public candidatosCentroEstudiantesAccts;\n//     // address[] public candidatosConsejoEscuelaAccts;\n//     // address[] public candidatosConsejoFacultadAccts;\n\n//     function addCandidateConsejoAcademico(string memory _name, uint _id, string memory _carrera) public {\n//         ConsejoAcademico candidate = new ConsejoAcademico(_name, _id, _carrera);\n//         candidatosConsejoAcademico[_id][msg.sender] = candidate;\n//     }\n\n//     function addCandidateFCE(string memory _agrupacion, uint _siglas, string memory _seccion) public {\n//         CandidatoFCE candidate = new CandidatoFCE(_agrupacion, _siglas);\n//         candidatosFCE[_seccion][msg.sender] = candidate;\n//     }\n\n//     function addCandidateCentroEstudiantes(string memory _nombre, string memory _siglas, string memory _escuela) public {\n//         CentroEstudiantes candidate = new CentroEstudiantes(_nombre, _siglas, _escuela);\n//         candidatosCentroEstudiantes[_escuela][msg.sender] = candidate;\n//     }\n\n//     function addCandidateConsejoEscuela(string memory _nombre, string memory _siglas, string memory _escuela) public {\n//         ConsejoEscuela candidate = new ConsejoEscuela(_nombre, _siglas, _escuela);\n//         candidatosConsejoEscuela[_escuela][msg.sender] = candidate;\n//     }\n\n//     function addCandidateConsejoFacultad(string memory _nombre, string memory _siglas, string memory _facultad) public {\n//         ConsejoFacultad candidate = new ConsejoFacultad(_nombre, _siglas, _facultad);\n//         candidatosConsejoFacultad[_facultad][msg.sender] = candidate;\n//     }\n\n// }\n\n",
-  "sourcePath": "/Users/abert/Desktop/chainge_voting_dapp/smart_contract/contracts/Candidate.sol",
+  "sourceMap": "67:210:0:-:0;;;119:1;93:27;;67:210;;;;;;;;;;;;;;;;",
+  "deployedSourceMap": "67:210:0:-:0;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;190:84;233:4;257:9;190:84;;160:25:5;;;148:2;133:18;190:84:0;;;;;;;129:53;;;:::i;:::-;;;163:9;:11;;;:9;:11;;;:::i;:::-;;;;;;129:53::o;196:232:5:-;235:3;256:17;;;253:140;;315:10;310:3;306:20;303:1;296:31;350:4;347:1;340:15;378:4;375:1;368:15;253:140;-1:-1:-1;420:1:5;409:13;;196:232::o",
+  "source": "// SPDX-Licence-Identifier: UNLICENSED\r\npragma solidity ^0.8.0;\r\n\r\ncontract Candidate {\r\n    uint internal voteCount = 0;\r\n\r\n    function vote() public {\r\n        voteCount++;\r\n    }\r\n\r\n    function totalVotes() public view returns (uint) {\r\n        return voteCount;\r\n    }\r\n}\r\n\r\ncontract ConsejoAcademico is Candidate {\r\n    string public name;\r\n    uint public id;\r\n    string public carrera;\r\n\r\n    constructor(string memory _name, uint _id ,string memory _carrera) Candidate() {\r\n        name = _name;\r\n        id = _id;\r\n        carrera = _carrera;\r\n    }\r\n}\r\n\r\ncontract CandidatoFCE is Candidate {\r\n    string public agrupacion;\r\n    string public siglas;\r\n\r\n    constructor(string memory _agrupacion, string memory _siglas) Candidate() {\r\n        agrupacion = _agrupacion;\r\n        siglas = _siglas;\r\n    }\r\n}\r\n\r\ncontract JuntaDirectivaFCE is CandidatoFCE {\r\n    string public seccion;\r\n\r\n    constructor(string memory _agrupacion, string memory _siglas) CandidatoFCE(_agrupacion, _siglas) {\r\n        seccion = \"Junta Directiva\";\r\n    }\r\n}\r\n\r\ncontract CoordinacionFCE is CandidatoFCE {\r\n    string public seccion;\r\n\r\n    constructor(string memory _agrupacion, string memory _siglas) CandidatoFCE(_agrupacion, _siglas) {\r\n        seccion = \"Coordinacion\";\r\n    }\r\n}\r\n\r\n\r\ncontract CentroEstudiantes is Candidate {\r\n    string public nombre;\r\n    string public siglas;\r\n    string public escuela;\r\n\r\n    constructor(string memory _nombre, string memory _siglas, string memory _escuela) Candidate() {\r\n        nombre = _nombre;\r\n        siglas = _siglas;\r\n        escuela = _escuela;\r\n    }\r\n}\r\n\r\ncontract ConsejoEscuela is Candidate {\r\n    string public nombre;\r\n    string public siglas;\r\n    string public escuela;\r\n\r\n    constructor(string memory _nombre, string memory _siglas, string memory _escuela) Candidate() {\r\n        nombre = _nombre;\r\n        siglas = _siglas;\r\n        escuela = _escuela;\r\n    }\r\n}\r\n\r\ncontract ConsejoFacultad is Candidate {\r\n    string public nombre;\r\n    string public siglas;\r\n    string public facultad;\r\n\r\n    constructor(string memory _nombre, string memory _siglas, string memory _facultad) Candidate() {\r\n        nombre = _nombre;\r\n        siglas = _siglas;\r\n        facultad = _facultad;\r\n    }\r\n}\r\n\r\n// contract CandidateList {\r\n//     address public owner;\r\n    \r\n//     mapping (uint => mapping (address => ConsejoAcademico)) public candidatosConsejoAcademico;\r\n//     mapping (string => mapping (address => CandidatoFCE)) public candidatosFCE;\r\n//     mapping (string => mapping (address => CentroEstudiantes)) public candidatosCentroEstudiantes;\r\n//     mapping (string => mapping (address => ConsejoEscuela)) public candidatosConsejoEscuela;\r\n//     mapping (string => mapping (address => ConsejoFacultad)) public candidatosConsejoFacultad;\r\n\r\n//     constructor () {\r\n//         owner = msg.sender;\r\n//     }\r\n//     // address[] public candidatosConsejoAcademicoAccts;\r\n//     // address[] public candidatosFCEAccts;\r\n//     // address[] public candidatosCentroEstudiantesAccts;\r\n//     // address[] public candidatosConsejoEscuelaAccts;\r\n//     // address[] public candidatosConsejoFacultadAccts;\r\n\r\n//     function addCandidateConsejoAcademico(string memory _name, uint _id, string memory _carrera) public {\r\n//         ConsejoAcademico candidate = new ConsejoAcademico(_name, _id, _carrera);\r\n//         candidatosConsejoAcademico[_id][msg.sender] = candidate;\r\n//     }\r\n\r\n//     function addCandidateFCE(string memory _agrupacion, uint _siglas, string memory _seccion) public {\r\n//         CandidatoFCE candidate = new CandidatoFCE(_agrupacion, _siglas);\r\n//         candidatosFCE[_seccion][msg.sender] = candidate;\r\n//     }\r\n\r\n//     function addCandidateCentroEstudiantes(string memory _nombre, string memory _siglas, string memory _escuela) public {\r\n//         CentroEstudiantes candidate = new CentroEstudiantes(_nombre, _siglas, _escuela);\r\n//         candidatosCentroEstudiantes[_escuela][msg.sender] = candidate;\r\n//     }\r\n\r\n//     function addCandidateConsejoEscuela(string memory _nombre, string memory _siglas, string memory _escuela) public {\r\n//         ConsejoEscuela candidate = new ConsejoEscuela(_nombre, _siglas, _escuela);\r\n//         candidatosConsejoEscuela[_escuela][msg.sender] = candidate;\r\n//     }\r\n\r\n//     function addCandidateConsejoFacultad(string memory _nombre, string memory _siglas, string memory _facultad) public {\r\n//         ConsejoFacultad candidate = new ConsejoFacultad(_nombre, _siglas, _facultad);\r\n//         candidatosConsejoFacultad[_facultad][msg.sender] = candidate;\r\n//     }\r\n\r\n// }\r\n\r\n",
+  "sourcePath": "D:\\Windows Folders\\Documents\\Uni\\Software\\voting-dapp\\smart_contract\\contracts\\Candidate.sol",
   "ast": {
     "absolutePath": "project:/contracts/Candidate.sol",
     "exportedSymbols": {
@@ -392,7 +392,7 @@
           ".0"
         ],
         "nodeType": "PragmaDirective",
-        "src": "39:23:0"
+        "src": "40:23:0"
       },
       {
         "abstract": false,
@@ -406,7 +406,7 @@
           20
         ],
         "name": "Candidate",
-        "nameLocation": "73:9:0",
+        "nameLocation": "76:9:0",
         "nodeType": "ContractDefinition",
         "nodes": [
           {
@@ -414,10 +414,10 @@
             "id": 4,
             "mutability": "mutable",
             "name": "voteCount",
-            "nameLocation": "103:9:0",
+            "nameLocation": "107:9:0",
             "nodeType": "VariableDeclaration",
             "scope": 20,
-            "src": "89:27:0",
+            "src": "93:27:0",
             "stateVariable": true,
             "storageLocation": "default",
             "typeDescriptions": {
@@ -428,7 +428,7 @@
               "id": 2,
               "name": "uint",
               "nodeType": "ElementaryTypeName",
-              "src": "89:4:0",
+              "src": "93:4:0",
               "typeDescriptions": {
                 "typeIdentifier": "t_uint256",
                 "typeString": "uint256"
@@ -443,7 +443,7 @@
               "kind": "number",
               "lValueRequested": false,
               "nodeType": "Literal",
-              "src": "115:1:0",
+              "src": "119:1:0",
               "typeDescriptions": {
                 "typeIdentifier": "t_rational_0_by_1",
                 "typeString": "int_const 0"
@@ -456,7 +456,7 @@
             "body": {
               "id": 10,
               "nodeType": "Block",
-              "src": "146:28:0",
+              "src": "152:30:0",
               "statements": [
                 {
                   "expression": {
@@ -468,14 +468,14 @@
                     "nodeType": "UnaryOperation",
                     "operator": "++",
                     "prefix": false,
-                    "src": "156:11:0",
+                    "src": "163:11:0",
                     "subExpression": {
                       "id": 7,
                       "name": "voteCount",
                       "nodeType": "Identifier",
                       "overloadedDeclarations": [],
                       "referencedDeclaration": 4,
-                      "src": "156:9:0",
+                      "src": "163:9:0",
                       "typeDescriptions": {
                         "typeIdentifier": "t_uint256",
                         "typeString": "uint256"
@@ -488,7 +488,7 @@
                   },
                   "id": 9,
                   "nodeType": "ExpressionStatement",
-                  "src": "156:11:0"
+                  "src": "163:11:0"
                 }
               ]
             },
@@ -498,22 +498,22 @@
             "kind": "function",
             "modifiers": [],
             "name": "vote",
-            "nameLocation": "132:4:0",
+            "nameLocation": "138:4:0",
             "nodeType": "FunctionDefinition",
             "parameters": {
               "id": 5,
               "nodeType": "ParameterList",
               "parameters": [],
-              "src": "136:2:0"
+              "src": "142:2:0"
             },
             "returnParameters": {
               "id": 6,
               "nodeType": "ParameterList",
               "parameters": [],
-              "src": "146:0:0"
+              "src": "152:0:0"
             },
             "scope": 20,
-            "src": "123:51:0",
+            "src": "129:53:0",
             "stateMutability": "nonpayable",
             "virtual": false,
             "visibility": "public"
@@ -522,7 +522,7 @@
             "body": {
               "id": 18,
               "nodeType": "Block",
-              "src": "229:33:0",
+              "src": "239:35:0",
               "statements": [
                 {
                   "expression": {
@@ -531,7 +531,7 @@
                     "nodeType": "Identifier",
                     "overloadedDeclarations": [],
                     "referencedDeclaration": 4,
-                    "src": "246:9:0",
+                    "src": "257:9:0",
                     "typeDescriptions": {
                       "typeIdentifier": "t_uint256",
                       "typeString": "uint256"
@@ -540,7 +540,7 @@
                   "functionReturnParameters": 15,
                   "id": 17,
                   "nodeType": "Return",
-                  "src": "239:16:0"
+                  "src": "250:16:0"
                 }
               ]
             },
@@ -550,13 +550,13 @@
             "kind": "function",
             "modifiers": [],
             "name": "totalVotes",
-            "nameLocation": "189:10:0",
+            "nameLocation": "199:10:0",
             "nodeType": "FunctionDefinition",
             "parameters": {
               "id": 12,
               "nodeType": "ParameterList",
               "parameters": [],
-              "src": "199:2:0"
+              "src": "209:2:0"
             },
             "returnParameters": {
               "id": 15,
@@ -570,7 +570,7 @@
                   "nameLocation": "-1:-1:-1",
                   "nodeType": "VariableDeclaration",
                   "scope": 19,
-                  "src": "223:4:0",
+                  "src": "233:4:0",
                   "stateVariable": false,
                   "storageLocation": "default",
                   "typeDescriptions": {
@@ -581,7 +581,7 @@
                     "id": 13,
                     "name": "uint",
                     "nodeType": "ElementaryTypeName",
-                    "src": "223:4:0",
+                    "src": "233:4:0",
                     "typeDescriptions": {
                       "typeIdentifier": "t_uint256",
                       "typeString": "uint256"
@@ -590,17 +590,17 @@
                   "visibility": "internal"
                 }
               ],
-              "src": "222:6:0"
+              "src": "232:6:0"
             },
             "scope": 20,
-            "src": "180:82:0",
+            "src": "190:84:0",
             "stateMutability": "view",
             "virtual": false,
             "visibility": "public"
           }
         ],
         "scope": 220,
-        "src": "64:200:0",
+        "src": "67:210:0",
         "usedErrors": []
       },
       {
@@ -611,15 +611,15 @@
               "id": 21,
               "name": "Candidate",
               "nameLocations": [
-                "295:9:0"
+                "310:9:0"
               ],
               "nodeType": "IdentifierPath",
               "referencedDeclaration": 20,
-              "src": "295:9:0"
+              "src": "310:9:0"
             },
             "id": 22,
             "nodeType": "InheritanceSpecifier",
-            "src": "295:9:0"
+            "src": "310:9:0"
           }
         ],
         "canonicalName": "ConsejoAcademico",
@@ -632,7 +632,7 @@
           20
         ],
         "name": "ConsejoAcademico",
-        "nameLocation": "275:16:0",
+        "nameLocation": "290:16:0",
         "nodeType": "ContractDefinition",
         "nodes": [
           {
@@ -641,10 +641,10 @@
             "id": 24,
             "mutability": "mutable",
             "name": "name",
-            "nameLocation": "325:4:0",
+            "nameLocation": "341:4:0",
             "nodeType": "VariableDeclaration",
             "scope": 53,
-            "src": "311:18:0",
+            "src": "327:18:0",
             "stateVariable": true,
             "storageLocation": "default",
             "typeDescriptions": {
@@ -655,7 +655,7 @@
               "id": 23,
               "name": "string",
               "nodeType": "ElementaryTypeName",
-              "src": "311:6:0",
+              "src": "327:6:0",
               "typeDescriptions": {
                 "typeIdentifier": "t_string_storage_ptr",
                 "typeString": "string"
@@ -669,10 +669,10 @@
             "id": 26,
             "mutability": "mutable",
             "name": "id",
-            "nameLocation": "347:2:0",
+            "nameLocation": "364:2:0",
             "nodeType": "VariableDeclaration",
             "scope": 53,
-            "src": "335:14:0",
+            "src": "352:14:0",
             "stateVariable": true,
             "storageLocation": "default",
             "typeDescriptions": {
@@ -683,7 +683,7 @@
               "id": 25,
               "name": "uint",
               "nodeType": "ElementaryTypeName",
-              "src": "335:4:0",
+              "src": "352:4:0",
               "typeDescriptions": {
                 "typeIdentifier": "t_uint256",
                 "typeString": "uint256"
@@ -697,10 +697,10 @@
             "id": 28,
             "mutability": "mutable",
             "name": "carrera",
-            "nameLocation": "369:7:0",
+            "nameLocation": "387:7:0",
             "nodeType": "VariableDeclaration",
             "scope": 53,
-            "src": "355:21:0",
+            "src": "373:21:0",
             "stateVariable": true,
             "storageLocation": "default",
             "typeDescriptions": {
@@ -711,7 +711,7 @@
               "id": 27,
               "name": "string",
               "nodeType": "ElementaryTypeName",
-              "src": "355:6:0",
+              "src": "373:6:0",
               "typeDescriptions": {
                 "typeIdentifier": "t_string_storage_ptr",
                 "typeString": "string"
@@ -723,7 +723,7 @@
             "body": {
               "id": 51,
               "nodeType": "Block",
-              "src": "462:75:0",
+              "src": "482:79:0",
               "statements": [
                 {
                   "expression": {
@@ -738,7 +738,7 @@
                       "nodeType": "Identifier",
                       "overloadedDeclarations": [],
                       "referencedDeclaration": 24,
-                      "src": "472:4:0",
+                      "src": "493:4:0",
                       "typeDescriptions": {
                         "typeIdentifier": "t_string_storage",
                         "typeString": "string storage ref"
@@ -752,13 +752,13 @@
                       "nodeType": "Identifier",
                       "overloadedDeclarations": [],
                       "referencedDeclaration": 30,
-                      "src": "479:5:0",
+                      "src": "500:5:0",
                       "typeDescriptions": {
                         "typeIdentifier": "t_string_memory_ptr",
                         "typeString": "string memory"
                       }
                     },
-                    "src": "472:12:0",
+                    "src": "493:12:0",
                     "typeDescriptions": {
                       "typeIdentifier": "t_string_storage",
                       "typeString": "string storage ref"
@@ -766,7 +766,7 @@
                   },
                   "id": 42,
                   "nodeType": "ExpressionStatement",
-                  "src": "472:12:0"
+                  "src": "493:12:0"
                 },
                 {
                   "expression": {
@@ -781,7 +781,7 @@
                       "nodeType": "Identifier",
                       "overloadedDeclarations": [],
                       "referencedDeclaration": 26,
-                      "src": "494:2:0",
+                      "src": "516:2:0",
                       "typeDescriptions": {
                         "typeIdentifier": "t_uint256",
                         "typeString": "uint256"
@@ -795,13 +795,13 @@
                       "nodeType": "Identifier",
                       "overloadedDeclarations": [],
                       "referencedDeclaration": 32,
-                      "src": "499:3:0",
+                      "src": "521:3:0",
                       "typeDescriptions": {
                         "typeIdentifier": "t_uint256",
                         "typeString": "uint256"
                       }
                     },
-                    "src": "494:8:0",
+                    "src": "516:8:0",
                     "typeDescriptions": {
                       "typeIdentifier": "t_uint256",
                       "typeString": "uint256"
@@ -809,7 +809,7 @@
                   },
                   "id": 46,
                   "nodeType": "ExpressionStatement",
-                  "src": "494:8:0"
+                  "src": "516:8:0"
                 },
                 {
                   "expression": {
@@ -824,7 +824,7 @@
                       "nodeType": "Identifier",
                       "overloadedDeclarations": [],
                       "referencedDeclaration": 28,
-                      "src": "512:7:0",
+                      "src": "535:7:0",
                       "typeDescriptions": {
                         "typeIdentifier": "t_string_storage",
                         "typeString": "string storage ref"
@@ -838,13 +838,13 @@
                       "nodeType": "Identifier",
                       "overloadedDeclarations": [],
                       "referencedDeclaration": 34,
-                      "src": "522:8:0",
+                      "src": "545:8:0",
                       "typeDescriptions": {
                         "typeIdentifier": "t_string_memory_ptr",
                         "typeString": "string memory"
                       }
                     },
-                    "src": "512:18:0",
+                    "src": "535:18:0",
                     "typeDescriptions": {
                       "typeIdentifier": "t_string_storage",
                       "typeString": "string storage ref"
@@ -852,7 +852,7 @@
                   },
                   "id": 50,
                   "nodeType": "ExpressionStatement",
-                  "src": "512:18:0"
+                  "src": "535:18:0"
                 }
               ]
             },
@@ -868,14 +868,14 @@
                   "id": 36,
                   "name": "Candidate",
                   "nameLocations": [
-                    "450:9:0"
+                    "470:9:0"
                   ],
                   "nodeType": "IdentifierPath",
                   "referencedDeclaration": 20,
-                  "src": "450:9:0"
+                  "src": "470:9:0"
                 },
                 "nodeType": "ModifierInvocation",
-                "src": "450:11:0"
+                "src": "470:11:0"
               }
             ],
             "name": "",
@@ -890,10 +890,10 @@
                   "id": 30,
                   "mutability": "mutable",
                   "name": "_name",
-                  "nameLocation": "409:5:0",
+                  "nameLocation": "429:5:0",
                   "nodeType": "VariableDeclaration",
                   "scope": 52,
-                  "src": "395:19:0",
+                  "src": "415:19:0",
                   "stateVariable": false,
                   "storageLocation": "memory",
                   "typeDescriptions": {
@@ -904,7 +904,7 @@
                     "id": 29,
                     "name": "string",
                     "nodeType": "ElementaryTypeName",
-                    "src": "395:6:0",
+                    "src": "415:6:0",
                     "typeDescriptions": {
                       "typeIdentifier": "t_string_storage_ptr",
                       "typeString": "string"
@@ -917,10 +917,10 @@
                   "id": 32,
                   "mutability": "mutable",
                   "name": "_id",
-                  "nameLocation": "421:3:0",
+                  "nameLocation": "441:3:0",
                   "nodeType": "VariableDeclaration",
                   "scope": 52,
-                  "src": "416:8:0",
+                  "src": "436:8:0",
                   "stateVariable": false,
                   "storageLocation": "default",
                   "typeDescriptions": {
@@ -931,7 +931,7 @@
                     "id": 31,
                     "name": "uint",
                     "nodeType": "ElementaryTypeName",
-                    "src": "416:4:0",
+                    "src": "436:4:0",
                     "typeDescriptions": {
                       "typeIdentifier": "t_uint256",
                       "typeString": "uint256"
@@ -944,10 +944,10 @@
                   "id": 34,
                   "mutability": "mutable",
                   "name": "_carrera",
-                  "nameLocation": "440:8:0",
+                  "nameLocation": "460:8:0",
                   "nodeType": "VariableDeclaration",
                   "scope": 52,
-                  "src": "426:22:0",
+                  "src": "446:22:0",
                   "stateVariable": false,
                   "storageLocation": "memory",
                   "typeDescriptions": {
@@ -958,7 +958,7 @@
                     "id": 33,
                     "name": "string",
                     "nodeType": "ElementaryTypeName",
-                    "src": "426:6:0",
+                    "src": "446:6:0",
                     "typeDescriptions": {
                       "typeIdentifier": "t_string_storage_ptr",
                       "typeString": "string"
@@ -967,23 +967,23 @@
                   "visibility": "internal"
                 }
               ],
-              "src": "394:55:0"
+              "src": "414:55:0"
             },
             "returnParameters": {
               "id": 38,
               "nodeType": "ParameterList",
               "parameters": [],
-              "src": "462:0:0"
+              "src": "482:0:0"
             },
             "scope": 53,
-            "src": "383:154:0",
+            "src": "403:158:0",
             "stateMutability": "nonpayable",
             "virtual": false,
             "visibility": "public"
           }
         ],
         "scope": 220,
-        "src": "266:273:0",
+        "src": "281:283:0",
         "usedErrors": []
       },
       {
@@ -994,15 +994,15 @@
               "id": 54,
               "name": "Candidate",
               "nameLocations": [
-                "566:9:0"
+                "593:9:0"
               ],
               "nodeType": "IdentifierPath",
               "referencedDeclaration": 20,
-              "src": "566:9:0"
+              "src": "593:9:0"
             },
             "id": 55,
             "nodeType": "InheritanceSpecifier",
-            "src": "566:9:0"
+            "src": "593:9:0"
           }
         ],
         "canonicalName": "CandidatoFCE",
@@ -1015,7 +1015,7 @@
           20
         ],
         "name": "CandidatoFCE",
-        "nameLocation": "550:12:0",
+        "nameLocation": "577:12:0",
         "nodeType": "ContractDefinition",
         "nodes": [
           {
@@ -1024,10 +1024,10 @@
             "id": 57,
             "mutability": "mutable",
             "name": "agrupacion",
-            "nameLocation": "596:10:0",
+            "nameLocation": "624:10:0",
             "nodeType": "VariableDeclaration",
             "scope": 78,
-            "src": "582:24:0",
+            "src": "610:24:0",
             "stateVariable": true,
             "storageLocation": "default",
             "typeDescriptions": {
@@ -1038,7 +1038,7 @@
               "id": 56,
               "name": "string",
               "nodeType": "ElementaryTypeName",
-              "src": "582:6:0",
+              "src": "610:6:0",
               "typeDescriptions": {
                 "typeIdentifier": "t_string_storage_ptr",
                 "typeString": "string"
@@ -1052,10 +1052,10 @@
             "id": 59,
             "mutability": "mutable",
             "name": "siglas",
-            "nameLocation": "626:6:0",
+            "nameLocation": "655:6:0",
             "nodeType": "VariableDeclaration",
             "scope": 78,
-            "src": "612:20:0",
+            "src": "641:20:0",
             "stateVariable": true,
             "storageLocation": "default",
             "typeDescriptions": {
@@ -1066,7 +1066,7 @@
               "id": 58,
               "name": "string",
               "nodeType": "ElementaryTypeName",
-              "src": "612:6:0",
+              "src": "641:6:0",
               "typeDescriptions": {
                 "typeIdentifier": "t_string_storage_ptr",
                 "typeString": "string"
@@ -1078,7 +1078,7 @@
             "body": {
               "id": 76,
               "nodeType": "Block",
-              "src": "713:67:0",
+              "src": "744:70:0",
               "statements": [
                 {
                   "expression": {
@@ -1093,7 +1093,7 @@
                       "nodeType": "Identifier",
                       "overloadedDeclarations": [],
                       "referencedDeclaration": 57,
-                      "src": "723:10:0",
+                      "src": "755:10:0",
                       "typeDescriptions": {
                         "typeIdentifier": "t_string_storage",
                         "typeString": "string storage ref"
@@ -1107,13 +1107,13 @@
                       "nodeType": "Identifier",
                       "overloadedDeclarations": [],
                       "referencedDeclaration": 61,
-                      "src": "736:11:0",
+                      "src": "768:11:0",
                       "typeDescriptions": {
                         "typeIdentifier": "t_string_memory_ptr",
                         "typeString": "string memory"
                       }
                     },
-                    "src": "723:24:0",
+                    "src": "755:24:0",
                     "typeDescriptions": {
                       "typeIdentifier": "t_string_storage",
                       "typeString": "string storage ref"
@@ -1121,7 +1121,7 @@
                   },
                   "id": 71,
                   "nodeType": "ExpressionStatement",
-                  "src": "723:24:0"
+                  "src": "755:24:0"
                 },
                 {
                   "expression": {
@@ -1136,7 +1136,7 @@
                       "nodeType": "Identifier",
                       "overloadedDeclarations": [],
                       "referencedDeclaration": 59,
-                      "src": "757:6:0",
+                      "src": "790:6:0",
                       "typeDescriptions": {
                         "typeIdentifier": "t_string_storage",
                         "typeString": "string storage ref"
@@ -1150,13 +1150,13 @@
                       "nodeType": "Identifier",
                       "overloadedDeclarations": [],
                       "referencedDeclaration": 63,
-                      "src": "766:7:0",
+                      "src": "799:7:0",
                       "typeDescriptions": {
                         "typeIdentifier": "t_string_memory_ptr",
                         "typeString": "string memory"
                       }
                     },
-                    "src": "757:16:0",
+                    "src": "790:16:0",
                     "typeDescriptions": {
                       "typeIdentifier": "t_string_storage",
                       "typeString": "string storage ref"
@@ -1164,7 +1164,7 @@
                   },
                   "id": 75,
                   "nodeType": "ExpressionStatement",
-                  "src": "757:16:0"
+                  "src": "790:16:0"
                 }
               ]
             },
@@ -1180,14 +1180,14 @@
                   "id": 65,
                   "name": "Candidate",
                   "nameLocations": [
-                    "701:9:0"
+                    "732:9:0"
                   ],
                   "nodeType": "IdentifierPath",
                   "referencedDeclaration": 20,
-                  "src": "701:9:0"
+                  "src": "732:9:0"
                 },
                 "nodeType": "ModifierInvocation",
-                "src": "701:11:0"
+                "src": "732:11:0"
               }
             ],
             "name": "",
@@ -1202,10 +1202,10 @@
                   "id": 61,
                   "mutability": "mutable",
                   "name": "_agrupacion",
-                  "nameLocation": "665:11:0",
+                  "nameLocation": "696:11:0",
                   "nodeType": "VariableDeclaration",
                   "scope": 77,
-                  "src": "651:25:0",
+                  "src": "682:25:0",
                   "stateVariable": false,
                   "storageLocation": "memory",
                   "typeDescriptions": {
@@ -1216,7 +1216,7 @@
                     "id": 60,
                     "name": "string",
                     "nodeType": "ElementaryTypeName",
-                    "src": "651:6:0",
+                    "src": "682:6:0",
                     "typeDescriptions": {
                       "typeIdentifier": "t_string_storage_ptr",
                       "typeString": "string"
@@ -1229,10 +1229,10 @@
                   "id": 63,
                   "mutability": "mutable",
                   "name": "_siglas",
-                  "nameLocation": "692:7:0",
+                  "nameLocation": "723:7:0",
                   "nodeType": "VariableDeclaration",
                   "scope": 77,
-                  "src": "678:21:0",
+                  "src": "709:21:0",
                   "stateVariable": false,
                   "storageLocation": "memory",
                   "typeDescriptions": {
@@ -1243,7 +1243,7 @@
                     "id": 62,
                     "name": "string",
                     "nodeType": "ElementaryTypeName",
-                    "src": "678:6:0",
+                    "src": "709:6:0",
                     "typeDescriptions": {
                       "typeIdentifier": "t_string_storage_ptr",
                       "typeString": "string"
@@ -1252,23 +1252,23 @@
                   "visibility": "internal"
                 }
               ],
-              "src": "650:50:0"
+              "src": "681:50:0"
             },
             "returnParameters": {
               "id": 67,
               "nodeType": "ParameterList",
               "parameters": [],
-              "src": "713:0:0"
+              "src": "744:0:0"
             },
             "scope": 78,
-            "src": "639:141:0",
+            "src": "670:144:0",
             "stateMutability": "nonpayable",
             "virtual": false,
             "visibility": "public"
           }
         ],
         "scope": 220,
-        "src": "541:241:0",
+        "src": "568:249:0",
         "usedErrors": []
       },
       {
@@ -1279,15 +1279,15 @@
               "id": 79,
               "name": "CandidatoFCE",
               "nameLocations": [
-                "814:12:0"
+                "851:12:0"
               ],
               "nodeType": "IdentifierPath",
               "referencedDeclaration": 78,
-              "src": "814:12:0"
+              "src": "851:12:0"
             },
             "id": 80,
             "nodeType": "InheritanceSpecifier",
-            "src": "814:12:0"
+            "src": "851:12:0"
           }
         ],
         "canonicalName": "JuntaDirectivaFCE",
@@ -1301,7 +1301,7 @@
           20
         ],
         "name": "JuntaDirectivaFCE",
-        "nameLocation": "793:17:0",
+        "nameLocation": "830:17:0",
         "nodeType": "ContractDefinition",
         "nodes": [
           {
@@ -1310,10 +1310,10 @@
             "id": 82,
             "mutability": "mutable",
             "name": "seccion",
-            "nameLocation": "847:7:0",
+            "nameLocation": "885:7:0",
             "nodeType": "VariableDeclaration",
             "scope": 99,
-            "src": "833:21:0",
+            "src": "871:21:0",
             "stateVariable": true,
             "storageLocation": "default",
             "typeDescriptions": {
@@ -1324,7 +1324,7 @@
               "id": 81,
               "name": "string",
               "nodeType": "ElementaryTypeName",
-              "src": "833:6:0",
+              "src": "871:6:0",
               "typeDescriptions": {
                 "typeIdentifier": "t_string_storage_ptr",
                 "typeString": "string"
@@ -1336,7 +1336,7 @@
             "body": {
               "id": 97,
               "nodeType": "Block",
-              "src": "958:44:0",
+              "src": "998:46:0",
               "statements": [
                 {
                   "expression": {
@@ -1351,7 +1351,7 @@
                       "nodeType": "Identifier",
                       "overloadedDeclarations": [],
                       "referencedDeclaration": 82,
-                      "src": "968:7:0",
+                      "src": "1009:7:0",
                       "typeDescriptions": {
                         "typeIdentifier": "t_string_storage",
                         "typeString": "string storage ref"
@@ -1368,14 +1368,14 @@
                       "kind": "string",
                       "lValueRequested": false,
                       "nodeType": "Literal",
-                      "src": "978:17:0",
+                      "src": "1019:17:0",
                       "typeDescriptions": {
                         "typeIdentifier": "t_stringliteral_c16d557b0dee5b3dcc55f0e64eb54d1df1d7555f7f1a5dd4b60305b377e3da3d",
                         "typeString": "literal_string \"Junta Directiva\""
                       },
                       "value": "Junta Directiva"
                     },
-                    "src": "968:27:0",
+                    "src": "1009:27:0",
                     "typeDescriptions": {
                       "typeIdentifier": "t_string_storage",
                       "typeString": "string storage ref"
@@ -1383,7 +1383,7 @@
                   },
                   "id": 96,
                   "nodeType": "ExpressionStatement",
-                  "src": "968:27:0"
+                  "src": "1009:27:0"
                 }
               ]
             },
@@ -1399,7 +1399,7 @@
                     "nodeType": "Identifier",
                     "overloadedDeclarations": [],
                     "referencedDeclaration": 84,
-                    "src": "936:11:0",
+                    "src": "976:11:0",
                     "typeDescriptions": {
                       "typeIdentifier": "t_string_memory_ptr",
                       "typeString": "string memory"
@@ -1411,7 +1411,7 @@
                     "nodeType": "Identifier",
                     "overloadedDeclarations": [],
                     "referencedDeclaration": 86,
-                    "src": "949:7:0",
+                    "src": "989:7:0",
                     "typeDescriptions": {
                       "typeIdentifier": "t_string_memory_ptr",
                       "typeString": "string memory"
@@ -1424,14 +1424,14 @@
                   "id": 88,
                   "name": "CandidatoFCE",
                   "nameLocations": [
-                    "923:12:0"
+                    "963:12:0"
                   ],
                   "nodeType": "IdentifierPath",
                   "referencedDeclaration": 78,
-                  "src": "923:12:0"
+                  "src": "963:12:0"
                 },
                 "nodeType": "ModifierInvocation",
-                "src": "923:34:0"
+                "src": "963:34:0"
               }
             ],
             "name": "",
@@ -1446,10 +1446,10 @@
                   "id": 84,
                   "mutability": "mutable",
                   "name": "_agrupacion",
-                  "nameLocation": "887:11:0",
+                  "nameLocation": "927:11:0",
                   "nodeType": "VariableDeclaration",
                   "scope": 98,
-                  "src": "873:25:0",
+                  "src": "913:25:0",
                   "stateVariable": false,
                   "storageLocation": "memory",
                   "typeDescriptions": {
@@ -1460,7 +1460,7 @@
                     "id": 83,
                     "name": "string",
                     "nodeType": "ElementaryTypeName",
-                    "src": "873:6:0",
+                    "src": "913:6:0",
                     "typeDescriptions": {
                       "typeIdentifier": "t_string_storage_ptr",
                       "typeString": "string"
@@ -1473,10 +1473,10 @@
                   "id": 86,
                   "mutability": "mutable",
                   "name": "_siglas",
-                  "nameLocation": "914:7:0",
+                  "nameLocation": "954:7:0",
                   "nodeType": "VariableDeclaration",
                   "scope": 98,
-                  "src": "900:21:0",
+                  "src": "940:21:0",
                   "stateVariable": false,
                   "storageLocation": "memory",
                   "typeDescriptions": {
@@ -1487,7 +1487,7 @@
                     "id": 85,
                     "name": "string",
                     "nodeType": "ElementaryTypeName",
-                    "src": "900:6:0",
+                    "src": "940:6:0",
                     "typeDescriptions": {
                       "typeIdentifier": "t_string_storage_ptr",
                       "typeString": "string"
@@ -1496,23 +1496,23 @@
                   "visibility": "internal"
                 }
               ],
-              "src": "872:50:0"
+              "src": "912:50:0"
             },
             "returnParameters": {
               "id": 92,
               "nodeType": "ParameterList",
               "parameters": [],
-              "src": "958:0:0"
+              "src": "998:0:0"
             },
             "scope": 99,
-            "src": "861:141:0",
+            "src": "901:143:0",
             "stateMutability": "nonpayable",
             "virtual": false,
             "visibility": "public"
           }
         ],
         "scope": 220,
-        "src": "784:220:0",
+        "src": "821:226:0",
         "usedErrors": []
       },
       {
@@ -1523,15 +1523,15 @@
               "id": 100,
               "name": "CandidatoFCE",
               "nameLocations": [
-                "1034:12:0"
+                "1079:12:0"
               ],
               "nodeType": "IdentifierPath",
               "referencedDeclaration": 78,
-              "src": "1034:12:0"
+              "src": "1079:12:0"
             },
             "id": 101,
             "nodeType": "InheritanceSpecifier",
-            "src": "1034:12:0"
+            "src": "1079:12:0"
           }
         ],
         "canonicalName": "CoordinacionFCE",
@@ -1545,7 +1545,7 @@
           20
         ],
         "name": "CoordinacionFCE",
-        "nameLocation": "1015:15:0",
+        "nameLocation": "1060:15:0",
         "nodeType": "ContractDefinition",
         "nodes": [
           {
@@ -1554,10 +1554,10 @@
             "id": 103,
             "mutability": "mutable",
             "name": "seccion",
-            "nameLocation": "1067:7:0",
+            "nameLocation": "1113:7:0",
             "nodeType": "VariableDeclaration",
             "scope": 120,
-            "src": "1053:21:0",
+            "src": "1099:21:0",
             "stateVariable": true,
             "storageLocation": "default",
             "typeDescriptions": {
@@ -1568,7 +1568,7 @@
               "id": 102,
               "name": "string",
               "nodeType": "ElementaryTypeName",
-              "src": "1053:6:0",
+              "src": "1099:6:0",
               "typeDescriptions": {
                 "typeIdentifier": "t_string_storage_ptr",
                 "typeString": "string"
@@ -1580,7 +1580,7 @@
             "body": {
               "id": 118,
               "nodeType": "Block",
-              "src": "1178:41:0",
+              "src": "1226:43:0",
               "statements": [
                 {
                   "expression": {
@@ -1595,7 +1595,7 @@
                       "nodeType": "Identifier",
                       "overloadedDeclarations": [],
                       "referencedDeclaration": 103,
-                      "src": "1188:7:0",
+                      "src": "1237:7:0",
                       "typeDescriptions": {
                         "typeIdentifier": "t_string_storage",
                         "typeString": "string storage ref"
@@ -1612,14 +1612,14 @@
                       "kind": "string",
                       "lValueRequested": false,
                       "nodeType": "Literal",
-                      "src": "1198:14:0",
+                      "src": "1247:14:0",
                       "typeDescriptions": {
                         "typeIdentifier": "t_stringliteral_42dac506d749b85a775b61c466b2735cac69743ae72c6a3a30bf4a966568b93e",
                         "typeString": "literal_string \"Coordinacion\""
                       },
                       "value": "Coordinacion"
                     },
-                    "src": "1188:24:0",
+                    "src": "1237:24:0",
                     "typeDescriptions": {
                       "typeIdentifier": "t_string_storage",
                       "typeString": "string storage ref"
@@ -1627,7 +1627,7 @@
                   },
                   "id": 117,
                   "nodeType": "ExpressionStatement",
-                  "src": "1188:24:0"
+                  "src": "1237:24:0"
                 }
               ]
             },
@@ -1643,7 +1643,7 @@
                     "nodeType": "Identifier",
                     "overloadedDeclarations": [],
                     "referencedDeclaration": 105,
-                    "src": "1156:11:0",
+                    "src": "1204:11:0",
                     "typeDescriptions": {
                       "typeIdentifier": "t_string_memory_ptr",
                       "typeString": "string memory"
@@ -1655,7 +1655,7 @@
                     "nodeType": "Identifier",
                     "overloadedDeclarations": [],
                     "referencedDeclaration": 107,
-                    "src": "1169:7:0",
+                    "src": "1217:7:0",
                     "typeDescriptions": {
                       "typeIdentifier": "t_string_memory_ptr",
                       "typeString": "string memory"
@@ -1668,14 +1668,14 @@
                   "id": 109,
                   "name": "CandidatoFCE",
                   "nameLocations": [
-                    "1143:12:0"
+                    "1191:12:0"
                   ],
                   "nodeType": "IdentifierPath",
                   "referencedDeclaration": 78,
-                  "src": "1143:12:0"
+                  "src": "1191:12:0"
                 },
                 "nodeType": "ModifierInvocation",
-                "src": "1143:34:0"
+                "src": "1191:34:0"
               }
             ],
             "name": "",
@@ -1690,10 +1690,10 @@
                   "id": 105,
                   "mutability": "mutable",
                   "name": "_agrupacion",
-                  "nameLocation": "1107:11:0",
+                  "nameLocation": "1155:11:0",
                   "nodeType": "VariableDeclaration",
                   "scope": 119,
-                  "src": "1093:25:0",
+                  "src": "1141:25:0",
                   "stateVariable": false,
                   "storageLocation": "memory",
                   "typeDescriptions": {
@@ -1704,7 +1704,7 @@
                     "id": 104,
                     "name": "string",
                     "nodeType": "ElementaryTypeName",
-                    "src": "1093:6:0",
+                    "src": "1141:6:0",
                     "typeDescriptions": {
                       "typeIdentifier": "t_string_storage_ptr",
                       "typeString": "string"
@@ -1717,10 +1717,10 @@
                   "id": 107,
                   "mutability": "mutable",
                   "name": "_siglas",
-                  "nameLocation": "1134:7:0",
+                  "nameLocation": "1182:7:0",
                   "nodeType": "VariableDeclaration",
                   "scope": 119,
-                  "src": "1120:21:0",
+                  "src": "1168:21:0",
                   "stateVariable": false,
                   "storageLocation": "memory",
                   "typeDescriptions": {
@@ -1731,7 +1731,7 @@
                     "id": 106,
                     "name": "string",
                     "nodeType": "ElementaryTypeName",
-                    "src": "1120:6:0",
+                    "src": "1168:6:0",
                     "typeDescriptions": {
                       "typeIdentifier": "t_string_storage_ptr",
                       "typeString": "string"
@@ -1740,23 +1740,23 @@
                   "visibility": "internal"
                 }
               ],
-              "src": "1092:50:0"
+              "src": "1140:50:0"
             },
             "returnParameters": {
               "id": 113,
               "nodeType": "ParameterList",
               "parameters": [],
-              "src": "1178:0:0"
+              "src": "1226:0:0"
             },
             "scope": 120,
-            "src": "1081:138:0",
+            "src": "1129:140:0",
             "stateMutability": "nonpayable",
             "virtual": false,
             "visibility": "public"
           }
         ],
         "scope": 220,
-        "src": "1006:215:0",
+        "src": "1051:221:0",
         "usedErrors": []
       },
       {
@@ -1767,15 +1767,15 @@
               "id": 121,
               "name": "Candidate",
               "nameLocations": [
-                "1254:9:0"
+                "1308:9:0"
               ],
               "nodeType": "IdentifierPath",
               "referencedDeclaration": 20,
-              "src": "1254:9:0"
+              "src": "1308:9:0"
             },
             "id": 122,
             "nodeType": "InheritanceSpecifier",
-            "src": "1254:9:0"
+            "src": "1308:9:0"
           }
         ],
         "canonicalName": "CentroEstudiantes",
@@ -1788,7 +1788,7 @@
           20
         ],
         "name": "CentroEstudiantes",
-        "nameLocation": "1233:17:0",
+        "nameLocation": "1287:17:0",
         "nodeType": "ContractDefinition",
         "nodes": [
           {
@@ -1797,10 +1797,10 @@
             "id": 124,
             "mutability": "mutable",
             "name": "nombre",
-            "nameLocation": "1284:6:0",
+            "nameLocation": "1339:6:0",
             "nodeType": "VariableDeclaration",
             "scope": 153,
-            "src": "1270:20:0",
+            "src": "1325:20:0",
             "stateVariable": true,
             "storageLocation": "default",
             "typeDescriptions": {
@@ -1811,7 +1811,7 @@
               "id": 123,
               "name": "string",
               "nodeType": "ElementaryTypeName",
-              "src": "1270:6:0",
+              "src": "1325:6:0",
               "typeDescriptions": {
                 "typeIdentifier": "t_string_storage_ptr",
                 "typeString": "string"
@@ -1825,10 +1825,10 @@
             "id": 126,
             "mutability": "mutable",
             "name": "siglas",
-            "nameLocation": "1310:6:0",
+            "nameLocation": "1366:6:0",
             "nodeType": "VariableDeclaration",
             "scope": 153,
-            "src": "1296:20:0",
+            "src": "1352:20:0",
             "stateVariable": true,
             "storageLocation": "default",
             "typeDescriptions": {
@@ -1839,7 +1839,7 @@
               "id": 125,
               "name": "string",
               "nodeType": "ElementaryTypeName",
-              "src": "1296:6:0",
+              "src": "1352:6:0",
               "typeDescriptions": {
                 "typeIdentifier": "t_string_storage_ptr",
                 "typeString": "string"
@@ -1853,10 +1853,10 @@
             "id": 128,
             "mutability": "mutable",
             "name": "escuela",
-            "nameLocation": "1336:7:0",
+            "nameLocation": "1393:7:0",
             "nodeType": "VariableDeclaration",
             "scope": 153,
-            "src": "1322:21:0",
+            "src": "1379:21:0",
             "stateVariable": true,
             "storageLocation": "default",
             "typeDescriptions": {
@@ -1867,7 +1867,7 @@
               "id": 127,
               "name": "string",
               "nodeType": "ElementaryTypeName",
-              "src": "1322:6:0",
+              "src": "1379:6:0",
               "typeDescriptions": {
                 "typeIdentifier": "t_string_storage_ptr",
                 "typeString": "string"
@@ -1879,7 +1879,7 @@
             "body": {
               "id": 151,
               "nodeType": "Block",
-              "src": "1444:87:0",
+              "src": "1503:91:0",
               "statements": [
                 {
                   "expression": {
@@ -1894,7 +1894,7 @@
                       "nodeType": "Identifier",
                       "overloadedDeclarations": [],
                       "referencedDeclaration": 124,
-                      "src": "1454:6:0",
+                      "src": "1514:6:0",
                       "typeDescriptions": {
                         "typeIdentifier": "t_string_storage",
                         "typeString": "string storage ref"
@@ -1908,13 +1908,13 @@
                       "nodeType": "Identifier",
                       "overloadedDeclarations": [],
                       "referencedDeclaration": 130,
-                      "src": "1463:7:0",
+                      "src": "1523:7:0",
                       "typeDescriptions": {
                         "typeIdentifier": "t_string_memory_ptr",
                         "typeString": "string memory"
                       }
                     },
-                    "src": "1454:16:0",
+                    "src": "1514:16:0",
                     "typeDescriptions": {
                       "typeIdentifier": "t_string_storage",
                       "typeString": "string storage ref"
@@ -1922,7 +1922,7 @@
                   },
                   "id": 142,
                   "nodeType": "ExpressionStatement",
-                  "src": "1454:16:0"
+                  "src": "1514:16:0"
                 },
                 {
                   "expression": {
@@ -1937,7 +1937,7 @@
                       "nodeType": "Identifier",
                       "overloadedDeclarations": [],
                       "referencedDeclaration": 126,
-                      "src": "1480:6:0",
+                      "src": "1541:6:0",
                       "typeDescriptions": {
                         "typeIdentifier": "t_string_storage",
                         "typeString": "string storage ref"
@@ -1951,13 +1951,13 @@
                       "nodeType": "Identifier",
                       "overloadedDeclarations": [],
                       "referencedDeclaration": 132,
-                      "src": "1489:7:0",
+                      "src": "1550:7:0",
                       "typeDescriptions": {
                         "typeIdentifier": "t_string_memory_ptr",
                         "typeString": "string memory"
                       }
                     },
-                    "src": "1480:16:0",
+                    "src": "1541:16:0",
                     "typeDescriptions": {
                       "typeIdentifier": "t_string_storage",
                       "typeString": "string storage ref"
@@ -1965,7 +1965,7 @@
                   },
                   "id": 146,
                   "nodeType": "ExpressionStatement",
-                  "src": "1480:16:0"
+                  "src": "1541:16:0"
                 },
                 {
                   "expression": {
@@ -1980,7 +1980,7 @@
                       "nodeType": "Identifier",
                       "overloadedDeclarations": [],
                       "referencedDeclaration": 128,
-                      "src": "1506:7:0",
+                      "src": "1568:7:0",
                       "typeDescriptions": {
                         "typeIdentifier": "t_string_storage",
                         "typeString": "string storage ref"
@@ -1994,13 +1994,13 @@
                       "nodeType": "Identifier",
                       "overloadedDeclarations": [],
                       "referencedDeclaration": 134,
-                      "src": "1516:8:0",
+                      "src": "1578:8:0",
                       "typeDescriptions": {
                         "typeIdentifier": "t_string_memory_ptr",
                         "typeString": "string memory"
                       }
                     },
-                    "src": "1506:18:0",
+                    "src": "1568:18:0",
                     "typeDescriptions": {
                       "typeIdentifier": "t_string_storage",
                       "typeString": "string storage ref"
@@ -2008,7 +2008,7 @@
                   },
                   "id": 150,
                   "nodeType": "ExpressionStatement",
-                  "src": "1506:18:0"
+                  "src": "1568:18:0"
                 }
               ]
             },
@@ -2024,14 +2024,14 @@
                   "id": 136,
                   "name": "Candidate",
                   "nameLocations": [
-                    "1432:9:0"
+                    "1491:9:0"
                   ],
                   "nodeType": "IdentifierPath",
                   "referencedDeclaration": 20,
-                  "src": "1432:9:0"
+                  "src": "1491:9:0"
                 },
                 "nodeType": "ModifierInvocation",
-                "src": "1432:11:0"
+                "src": "1491:11:0"
               }
             ],
             "name": "",
@@ -2046,10 +2046,10 @@
                   "id": 130,
                   "mutability": "mutable",
                   "name": "_nombre",
-                  "nameLocation": "1376:7:0",
+                  "nameLocation": "1435:7:0",
                   "nodeType": "VariableDeclaration",
                   "scope": 152,
-                  "src": "1362:21:0",
+                  "src": "1421:21:0",
                   "stateVariable": false,
                   "storageLocation": "memory",
                   "typeDescriptions": {
@@ -2060,7 +2060,7 @@
                     "id": 129,
                     "name": "string",
                     "nodeType": "ElementaryTypeName",
-                    "src": "1362:6:0",
+                    "src": "1421:6:0",
                     "typeDescriptions": {
                       "typeIdentifier": "t_string_storage_ptr",
                       "typeString": "string"
@@ -2073,10 +2073,10 @@
                   "id": 132,
                   "mutability": "mutable",
                   "name": "_siglas",
-                  "nameLocation": "1399:7:0",
+                  "nameLocation": "1458:7:0",
                   "nodeType": "VariableDeclaration",
                   "scope": 152,
-                  "src": "1385:21:0",
+                  "src": "1444:21:0",
                   "stateVariable": false,
                   "storageLocation": "memory",
                   "typeDescriptions": {
@@ -2087,7 +2087,7 @@
                     "id": 131,
                     "name": "string",
                     "nodeType": "ElementaryTypeName",
-                    "src": "1385:6:0",
+                    "src": "1444:6:0",
                     "typeDescriptions": {
                       "typeIdentifier": "t_string_storage_ptr",
                       "typeString": "string"
@@ -2100,10 +2100,10 @@
                   "id": 134,
                   "mutability": "mutable",
                   "name": "_escuela",
-                  "nameLocation": "1422:8:0",
+                  "nameLocation": "1481:8:0",
                   "nodeType": "VariableDeclaration",
                   "scope": 152,
-                  "src": "1408:22:0",
+                  "src": "1467:22:0",
                   "stateVariable": false,
                   "storageLocation": "memory",
                   "typeDescriptions": {
@@ -2114,7 +2114,7 @@
                     "id": 133,
                     "name": "string",
                     "nodeType": "ElementaryTypeName",
-                    "src": "1408:6:0",
+                    "src": "1467:6:0",
                     "typeDescriptions": {
                       "typeIdentifier": "t_string_storage_ptr",
                       "typeString": "string"
@@ -2123,23 +2123,23 @@
                   "visibility": "internal"
                 }
               ],
-              "src": "1361:70:0"
+              "src": "1420:70:0"
             },
             "returnParameters": {
               "id": 138,
               "nodeType": "ParameterList",
               "parameters": [],
-              "src": "1444:0:0"
+              "src": "1503:0:0"
             },
             "scope": 153,
-            "src": "1350:181:0",
+            "src": "1409:185:0",
             "stateMutability": "nonpayable",
             "virtual": false,
             "visibility": "public"
           }
         ],
         "scope": 220,
-        "src": "1224:309:0",
+        "src": "1278:319:0",
         "usedErrors": []
       },
       {
@@ -2150,15 +2150,15 @@
               "id": 154,
               "name": "Candidate",
               "nameLocations": [
-                "1562:9:0"
+                "1628:9:0"
               ],
               "nodeType": "IdentifierPath",
               "referencedDeclaration": 20,
-              "src": "1562:9:0"
+              "src": "1628:9:0"
             },
             "id": 155,
             "nodeType": "InheritanceSpecifier",
-            "src": "1562:9:0"
+            "src": "1628:9:0"
           }
         ],
         "canonicalName": "ConsejoEscuela",
@@ -2171,7 +2171,7 @@
           20
         ],
         "name": "ConsejoEscuela",
-        "nameLocation": "1544:14:0",
+        "nameLocation": "1610:14:0",
         "nodeType": "ContractDefinition",
         "nodes": [
           {
@@ -2180,10 +2180,10 @@
             "id": 157,
             "mutability": "mutable",
             "name": "nombre",
-            "nameLocation": "1592:6:0",
+            "nameLocation": "1659:6:0",
             "nodeType": "VariableDeclaration",
             "scope": 186,
-            "src": "1578:20:0",
+            "src": "1645:20:0",
             "stateVariable": true,
             "storageLocation": "default",
             "typeDescriptions": {
@@ -2194,7 +2194,7 @@
               "id": 156,
               "name": "string",
               "nodeType": "ElementaryTypeName",
-              "src": "1578:6:0",
+              "src": "1645:6:0",
               "typeDescriptions": {
                 "typeIdentifier": "t_string_storage_ptr",
                 "typeString": "string"
@@ -2208,10 +2208,10 @@
             "id": 159,
             "mutability": "mutable",
             "name": "siglas",
-            "nameLocation": "1618:6:0",
+            "nameLocation": "1686:6:0",
             "nodeType": "VariableDeclaration",
             "scope": 186,
-            "src": "1604:20:0",
+            "src": "1672:20:0",
             "stateVariable": true,
             "storageLocation": "default",
             "typeDescriptions": {
@@ -2222,7 +2222,7 @@
               "id": 158,
               "name": "string",
               "nodeType": "ElementaryTypeName",
-              "src": "1604:6:0",
+              "src": "1672:6:0",
               "typeDescriptions": {
                 "typeIdentifier": "t_string_storage_ptr",
                 "typeString": "string"
@@ -2236,10 +2236,10 @@
             "id": 161,
             "mutability": "mutable",
             "name": "escuela",
-            "nameLocation": "1644:7:0",
+            "nameLocation": "1713:7:0",
             "nodeType": "VariableDeclaration",
             "scope": 186,
-            "src": "1630:21:0",
+            "src": "1699:21:0",
             "stateVariable": true,
             "storageLocation": "default",
             "typeDescriptions": {
@@ -2250,7 +2250,7 @@
               "id": 160,
               "name": "string",
               "nodeType": "ElementaryTypeName",
-              "src": "1630:6:0",
+              "src": "1699:6:0",
               "typeDescriptions": {
                 "typeIdentifier": "t_string_storage_ptr",
                 "typeString": "string"
@@ -2262,7 +2262,7 @@
             "body": {
               "id": 184,
               "nodeType": "Block",
-              "src": "1752:87:0",
+              "src": "1823:91:0",
               "statements": [
                 {
                   "expression": {
@@ -2277,7 +2277,7 @@
                       "nodeType": "Identifier",
                       "overloadedDeclarations": [],
                       "referencedDeclaration": 157,
-                      "src": "1762:6:0",
+                      "src": "1834:6:0",
                       "typeDescriptions": {
                         "typeIdentifier": "t_string_storage",
                         "typeString": "string storage ref"
@@ -2291,13 +2291,13 @@
                       "nodeType": "Identifier",
                       "overloadedDeclarations": [],
                       "referencedDeclaration": 163,
-                      "src": "1771:7:0",
+                      "src": "1843:7:0",
                       "typeDescriptions": {
                         "typeIdentifier": "t_string_memory_ptr",
                         "typeString": "string memory"
                       }
                     },
-                    "src": "1762:16:0",
+                    "src": "1834:16:0",
                     "typeDescriptions": {
                       "typeIdentifier": "t_string_storage",
                       "typeString": "string storage ref"
@@ -2305,7 +2305,7 @@
                   },
                   "id": 175,
                   "nodeType": "ExpressionStatement",
-                  "src": "1762:16:0"
+                  "src": "1834:16:0"
                 },
                 {
                   "expression": {
@@ -2320,7 +2320,7 @@
                       "nodeType": "Identifier",
                       "overloadedDeclarations": [],
                       "referencedDeclaration": 159,
-                      "src": "1788:6:0",
+                      "src": "1861:6:0",
                       "typeDescriptions": {
                         "typeIdentifier": "t_string_storage",
                         "typeString": "string storage ref"
@@ -2334,13 +2334,13 @@
                       "nodeType": "Identifier",
                       "overloadedDeclarations": [],
                       "referencedDeclaration": 165,
-                      "src": "1797:7:0",
+                      "src": "1870:7:0",
                       "typeDescriptions": {
                         "typeIdentifier": "t_string_memory_ptr",
                         "typeString": "string memory"
                       }
                     },
-                    "src": "1788:16:0",
+                    "src": "1861:16:0",
                     "typeDescriptions": {
                       "typeIdentifier": "t_string_storage",
                       "typeString": "string storage ref"
@@ -2348,7 +2348,7 @@
                   },
                   "id": 179,
                   "nodeType": "ExpressionStatement",
-                  "src": "1788:16:0"
+                  "src": "1861:16:0"
                 },
                 {
                   "expression": {
@@ -2363,7 +2363,7 @@
                       "nodeType": "Identifier",
                       "overloadedDeclarations": [],
                       "referencedDeclaration": 161,
-                      "src": "1814:7:0",
+                      "src": "1888:7:0",
                       "typeDescriptions": {
                         "typeIdentifier": "t_string_storage",
                         "typeString": "string storage ref"
@@ -2377,13 +2377,13 @@
                       "nodeType": "Identifier",
                       "overloadedDeclarations": [],
                       "referencedDeclaration": 167,
-                      "src": "1824:8:0",
+                      "src": "1898:8:0",
                       "typeDescriptions": {
                         "typeIdentifier": "t_string_memory_ptr",
                         "typeString": "string memory"
                       }
                     },
-                    "src": "1814:18:0",
+                    "src": "1888:18:0",
                     "typeDescriptions": {
                       "typeIdentifier": "t_string_storage",
                       "typeString": "string storage ref"
@@ -2391,7 +2391,7 @@
                   },
                   "id": 183,
                   "nodeType": "ExpressionStatement",
-                  "src": "1814:18:0"
+                  "src": "1888:18:0"
                 }
               ]
             },
@@ -2407,14 +2407,14 @@
                   "id": 169,
                   "name": "Candidate",
                   "nameLocations": [
-                    "1740:9:0"
+                    "1811:9:0"
                   ],
                   "nodeType": "IdentifierPath",
                   "referencedDeclaration": 20,
-                  "src": "1740:9:0"
+                  "src": "1811:9:0"
                 },
                 "nodeType": "ModifierInvocation",
-                "src": "1740:11:0"
+                "src": "1811:11:0"
               }
             ],
             "name": "",
@@ -2429,10 +2429,10 @@
                   "id": 163,
                   "mutability": "mutable",
                   "name": "_nombre",
-                  "nameLocation": "1684:7:0",
+                  "nameLocation": "1755:7:0",
                   "nodeType": "VariableDeclaration",
                   "scope": 185,
-                  "src": "1670:21:0",
+                  "src": "1741:21:0",
                   "stateVariable": false,
                   "storageLocation": "memory",
                   "typeDescriptions": {
@@ -2443,7 +2443,7 @@
                     "id": 162,
                     "name": "string",
                     "nodeType": "ElementaryTypeName",
-                    "src": "1670:6:0",
+                    "src": "1741:6:0",
                     "typeDescriptions": {
                       "typeIdentifier": "t_string_storage_ptr",
                       "typeString": "string"
@@ -2456,10 +2456,10 @@
                   "id": 165,
                   "mutability": "mutable",
                   "name": "_siglas",
-                  "nameLocation": "1707:7:0",
+                  "nameLocation": "1778:7:0",
                   "nodeType": "VariableDeclaration",
                   "scope": 185,
-                  "src": "1693:21:0",
+                  "src": "1764:21:0",
                   "stateVariable": false,
                   "storageLocation": "memory",
                   "typeDescriptions": {
@@ -2470,7 +2470,7 @@
                     "id": 164,
                     "name": "string",
                     "nodeType": "ElementaryTypeName",
-                    "src": "1693:6:0",
+                    "src": "1764:6:0",
                     "typeDescriptions": {
                       "typeIdentifier": "t_string_storage_ptr",
                       "typeString": "string"
@@ -2483,10 +2483,10 @@
                   "id": 167,
                   "mutability": "mutable",
                   "name": "_escuela",
-                  "nameLocation": "1730:8:0",
+                  "nameLocation": "1801:8:0",
                   "nodeType": "VariableDeclaration",
                   "scope": 185,
-                  "src": "1716:22:0",
+                  "src": "1787:22:0",
                   "stateVariable": false,
                   "storageLocation": "memory",
                   "typeDescriptions": {
@@ -2497,7 +2497,7 @@
                     "id": 166,
                     "name": "string",
                     "nodeType": "ElementaryTypeName",
-                    "src": "1716:6:0",
+                    "src": "1787:6:0",
                     "typeDescriptions": {
                       "typeIdentifier": "t_string_storage_ptr",
                       "typeString": "string"
@@ -2506,23 +2506,23 @@
                   "visibility": "internal"
                 }
               ],
-              "src": "1669:70:0"
+              "src": "1740:70:0"
             },
             "returnParameters": {
               "id": 171,
               "nodeType": "ParameterList",
               "parameters": [],
-              "src": "1752:0:0"
+              "src": "1823:0:0"
             },
             "scope": 186,
-            "src": "1658:181:0",
+            "src": "1729:185:0",
             "stateMutability": "nonpayable",
             "virtual": false,
             "visibility": "public"
           }
         ],
         "scope": 220,
-        "src": "1535:306:0",
+        "src": "1601:316:0",
         "usedErrors": []
       },
       {
@@ -2533,15 +2533,15 @@
               "id": 187,
               "name": "Candidate",
               "nameLocations": [
-                "1871:9:0"
+                "1949:9:0"
               ],
               "nodeType": "IdentifierPath",
               "referencedDeclaration": 20,
-              "src": "1871:9:0"
+              "src": "1949:9:0"
             },
             "id": 188,
             "nodeType": "InheritanceSpecifier",
-            "src": "1871:9:0"
+            "src": "1949:9:0"
           }
         ],
         "canonicalName": "ConsejoFacultad",
@@ -2554,7 +2554,7 @@
           20
         ],
         "name": "ConsejoFacultad",
-        "nameLocation": "1852:15:0",
+        "nameLocation": "1930:15:0",
         "nodeType": "ContractDefinition",
         "nodes": [
           {
@@ -2563,10 +2563,10 @@
             "id": 190,
             "mutability": "mutable",
             "name": "nombre",
-            "nameLocation": "1901:6:0",
+            "nameLocation": "1980:6:0",
             "nodeType": "VariableDeclaration",
             "scope": 219,
-            "src": "1887:20:0",
+            "src": "1966:20:0",
             "stateVariable": true,
             "storageLocation": "default",
             "typeDescriptions": {
@@ -2577,7 +2577,7 @@
               "id": 189,
               "name": "string",
               "nodeType": "ElementaryTypeName",
-              "src": "1887:6:0",
+              "src": "1966:6:0",
               "typeDescriptions": {
                 "typeIdentifier": "t_string_storage_ptr",
                 "typeString": "string"
@@ -2591,10 +2591,10 @@
             "id": 192,
             "mutability": "mutable",
             "name": "siglas",
-            "nameLocation": "1927:6:0",
+            "nameLocation": "2007:6:0",
             "nodeType": "VariableDeclaration",
             "scope": 219,
-            "src": "1913:20:0",
+            "src": "1993:20:0",
             "stateVariable": true,
             "storageLocation": "default",
             "typeDescriptions": {
@@ -2605,7 +2605,7 @@
               "id": 191,
               "name": "string",
               "nodeType": "ElementaryTypeName",
-              "src": "1913:6:0",
+              "src": "1993:6:0",
               "typeDescriptions": {
                 "typeIdentifier": "t_string_storage_ptr",
                 "typeString": "string"
@@ -2619,10 +2619,10 @@
             "id": 194,
             "mutability": "mutable",
             "name": "facultad",
-            "nameLocation": "1953:8:0",
+            "nameLocation": "2034:8:0",
             "nodeType": "VariableDeclaration",
             "scope": 219,
-            "src": "1939:22:0",
+            "src": "2020:22:0",
             "stateVariable": true,
             "storageLocation": "default",
             "typeDescriptions": {
@@ -2633,7 +2633,7 @@
               "id": 193,
               "name": "string",
               "nodeType": "ElementaryTypeName",
-              "src": "1939:6:0",
+              "src": "2020:6:0",
               "typeDescriptions": {
                 "typeIdentifier": "t_string_storage_ptr",
                 "typeString": "string"
@@ -2645,7 +2645,7 @@
             "body": {
               "id": 217,
               "nodeType": "Block",
-              "src": "2063:89:0",
+              "src": "2146:93:0",
               "statements": [
                 {
                   "expression": {
@@ -2660,7 +2660,7 @@
                       "nodeType": "Identifier",
                       "overloadedDeclarations": [],
                       "referencedDeclaration": 190,
-                      "src": "2073:6:0",
+                      "src": "2157:6:0",
                       "typeDescriptions": {
                         "typeIdentifier": "t_string_storage",
                         "typeString": "string storage ref"
@@ -2674,13 +2674,13 @@
                       "nodeType": "Identifier",
                       "overloadedDeclarations": [],
                       "referencedDeclaration": 196,
-                      "src": "2082:7:0",
+                      "src": "2166:7:0",
                       "typeDescriptions": {
                         "typeIdentifier": "t_string_memory_ptr",
                         "typeString": "string memory"
                       }
                     },
-                    "src": "2073:16:0",
+                    "src": "2157:16:0",
                     "typeDescriptions": {
                       "typeIdentifier": "t_string_storage",
                       "typeString": "string storage ref"
@@ -2688,7 +2688,7 @@
                   },
                   "id": 208,
                   "nodeType": "ExpressionStatement",
-                  "src": "2073:16:0"
+                  "src": "2157:16:0"
                 },
                 {
                   "expression": {
@@ -2703,7 +2703,7 @@
                       "nodeType": "Identifier",
                       "overloadedDeclarations": [],
                       "referencedDeclaration": 192,
-                      "src": "2099:6:0",
+                      "src": "2184:6:0",
                       "typeDescriptions": {
                         "typeIdentifier": "t_string_storage",
                         "typeString": "string storage ref"
@@ -2717,13 +2717,13 @@
                       "nodeType": "Identifier",
                       "overloadedDeclarations": [],
                       "referencedDeclaration": 198,
-                      "src": "2108:7:0",
+                      "src": "2193:7:0",
                       "typeDescriptions": {
                         "typeIdentifier": "t_string_memory_ptr",
                         "typeString": "string memory"
                       }
                     },
-                    "src": "2099:16:0",
+                    "src": "2184:16:0",
                     "typeDescriptions": {
                       "typeIdentifier": "t_string_storage",
                       "typeString": "string storage ref"
@@ -2731,7 +2731,7 @@
                   },
                   "id": 212,
                   "nodeType": "ExpressionStatement",
-                  "src": "2099:16:0"
+                  "src": "2184:16:0"
                 },
                 {
                   "expression": {
@@ -2746,7 +2746,7 @@
                       "nodeType": "Identifier",
                       "overloadedDeclarations": [],
                       "referencedDeclaration": 194,
-                      "src": "2125:8:0",
+                      "src": "2211:8:0",
                       "typeDescriptions": {
                         "typeIdentifier": "t_string_storage",
                         "typeString": "string storage ref"
@@ -2760,13 +2760,13 @@
                       "nodeType": "Identifier",
                       "overloadedDeclarations": [],
                       "referencedDeclaration": 200,
-                      "src": "2136:9:0",
+                      "src": "2222:9:0",
                       "typeDescriptions": {
                         "typeIdentifier": "t_string_memory_ptr",
                         "typeString": "string memory"
                       }
                     },
-                    "src": "2125:20:0",
+                    "src": "2211:20:0",
                     "typeDescriptions": {
                       "typeIdentifier": "t_string_storage",
                       "typeString": "string storage ref"
@@ -2774,7 +2774,7 @@
                   },
                   "id": 216,
                   "nodeType": "ExpressionStatement",
-                  "src": "2125:20:0"
+                  "src": "2211:20:0"
                 }
               ]
             },
@@ -2790,14 +2790,14 @@
                   "id": 202,
                   "name": "Candidate",
                   "nameLocations": [
-                    "2051:9:0"
+                    "2134:9:0"
                   ],
                   "nodeType": "IdentifierPath",
                   "referencedDeclaration": 20,
-                  "src": "2051:9:0"
+                  "src": "2134:9:0"
                 },
                 "nodeType": "ModifierInvocation",
-                "src": "2051:11:0"
+                "src": "2134:11:0"
               }
             ],
             "name": "",
@@ -2812,10 +2812,10 @@
                   "id": 196,
                   "mutability": "mutable",
                   "name": "_nombre",
-                  "nameLocation": "1994:7:0",
+                  "nameLocation": "2077:7:0",
                   "nodeType": "VariableDeclaration",
                   "scope": 218,
-                  "src": "1980:21:0",
+                  "src": "2063:21:0",
                   "stateVariable": false,
                   "storageLocation": "memory",
                   "typeDescriptions": {
@@ -2826,7 +2826,7 @@
                     "id": 195,
                     "name": "string",
                     "nodeType": "ElementaryTypeName",
-                    "src": "1980:6:0",
+                    "src": "2063:6:0",
                     "typeDescriptions": {
                       "typeIdentifier": "t_string_storage_ptr",
                       "typeString": "string"
@@ -2839,10 +2839,10 @@
                   "id": 198,
                   "mutability": "mutable",
                   "name": "_siglas",
-                  "nameLocation": "2017:7:0",
+                  "nameLocation": "2100:7:0",
                   "nodeType": "VariableDeclaration",
                   "scope": 218,
-                  "src": "2003:21:0",
+                  "src": "2086:21:0",
                   "stateVariable": false,
                   "storageLocation": "memory",
                   "typeDescriptions": {
@@ -2853,7 +2853,7 @@
                     "id": 197,
                     "name": "string",
                     "nodeType": "ElementaryTypeName",
-                    "src": "2003:6:0",
+                    "src": "2086:6:0",
                     "typeDescriptions": {
                       "typeIdentifier": "t_string_storage_ptr",
                       "typeString": "string"
@@ -2866,10 +2866,10 @@
                   "id": 200,
                   "mutability": "mutable",
                   "name": "_facultad",
-                  "nameLocation": "2040:9:0",
+                  "nameLocation": "2123:9:0",
                   "nodeType": "VariableDeclaration",
                   "scope": 218,
-                  "src": "2026:23:0",
+                  "src": "2109:23:0",
                   "stateVariable": false,
                   "storageLocation": "memory",
                   "typeDescriptions": {
@@ -2880,7 +2880,7 @@
                     "id": 199,
                     "name": "string",
                     "nodeType": "ElementaryTypeName",
-                    "src": "2026:6:0",
+                    "src": "2109:6:0",
                     "typeDescriptions": {
                       "typeIdentifier": "t_string_storage_ptr",
                       "typeString": "string"
@@ -2889,27 +2889,27 @@
                   "visibility": "internal"
                 }
               ],
-              "src": "1979:71:0"
+              "src": "2062:71:0"
             },
             "returnParameters": {
               "id": 204,
               "nodeType": "ParameterList",
               "parameters": [],
-              "src": "2063:0:0"
+              "src": "2146:0:0"
             },
             "scope": 219,
-            "src": "1968:184:0",
+            "src": "2051:188:0",
             "stateMutability": "nonpayable",
             "virtual": false,
             "visibility": "public"
           }
         ],
         "scope": 220,
-        "src": "1843:311:0",
+        "src": "1921:321:0",
         "usedErrors": []
       }
     ],
-    "src": "39:4422:0"
+    "src": "40:4556:0"
   },
   "compiler": {
     "name": "solc",
@@ -2917,7 +2917,7 @@
   },
   "networks": {},
   "schemaVersion": "3.4.10",
-  "updatedAt": "2022-11-16T17:46:16.665Z",
+  "updatedAt": "2022-11-21T02:03:42.044Z",
   "devdoc": {
     "kind": "dev",
     "methods": {},

@@ -11,13 +11,22 @@ contract Eleccion {
 
     uint[] public registroElectoral;
 
+    string[] public escuelas;
+
     mapping (uint => Votante) public votantesRegistrados;
+    uint public numeroVotantesRegistrados;
     mapping (uint => ConsejoAcademico) public candidatosConsejoAcademico;
+    uint public numeroCandidatosConsejoAcademico;
     mapping (string => JuntaDirectivaFCE) public candidatosJuntaFCE;
+    string[] public candidatosJuntaFCEKeys;
     mapping (string => CoordinacionFCE) public candidatosCoordinacionFCE;
+    string[] public candidatosCoordinacionFCEKeys;
     mapping (string => mapping (string => CentroEstudiantes)) public candidatosCentroEstudiantes;
+    string[] public candidatosCentroEstudiantesKeys;
     mapping (string => mapping (string => ConsejoEscuela)) public candidatosConsejoEscuela;
+    string[] public candidatosConsejoEscuelaKeys;
     mapping (string => mapping (string => ConsejoFacultad)) public candidatosConsejoFacultad;
+    string[] public candidatosConsejoFacultadKeys;
 
     constructor () {
         owner = msg.sender;
@@ -40,6 +49,7 @@ contract Eleccion {
     function agregarVotante(uint _id, string[] memory _carreras, string[] memory _facultades) public {
         require(checkRegistroElectoral(_id), "No se encuentra en el registro electoral");
         votantesRegistrados[_id] = new Votante(_id, _carreras, _facultades);
+        numeroVotantesRegistrados++;
     }
 
     function getVotanteInfo(uint _id) public view returns (uint, string[] memory, string[] memory) {
@@ -61,6 +71,7 @@ contract Eleccion {
     function agregarCandidatoConsejoAcademico(string memory _nombre, uint _id, string memory _carrera) public {
         // TODO: Check if candidate already exists
         candidatosConsejoAcademico[_id] = new ConsejoAcademico(_nombre, _id, _carrera);
+        numeroCandidatosConsejoAcademico++;
     }
 
     function getCandidatoConsejoAcademico(uint _id) public view returns (string memory, uint, string memory, uint) {
@@ -78,6 +89,7 @@ contract Eleccion {
     function agregarCandidatoJuntaDirectivaFCE(string memory _agrupacion, string memory _siglas) public {
         // TODO: Check if candidate already exists
         candidatosJuntaFCE[_siglas] = new JuntaDirectivaFCE(_agrupacion, _siglas);
+        candidatosJuntaFCEKeys.push(_siglas);
     }
 
     function getCandidatoJuntaDirectivaFCE(string memory _siglas) public view returns (string memory, string memory, uint) {
@@ -93,6 +105,7 @@ contract Eleccion {
 
     function agregarCandidatoCoordinacionFCE(string memory _agrupacion, string memory _siglas) public {
         candidatosCoordinacionFCE[_siglas] = new CoordinacionFCE(_agrupacion, _siglas);
+        candidatosCoordinacionFCEKeys.push(_siglas);
     }
 
     function getCandidatoCoordinacionFCE(string memory _siglas) public view returns (string memory, string memory, uint) {
@@ -108,6 +121,7 @@ contract Eleccion {
 
     function agregarCandidatoCentroEstudiantes(string memory _nombre, string memory _siglas, string memory _escuela) public {
         candidatosCentroEstudiantes[_escuela][_siglas] = new CentroEstudiantes(_nombre, _siglas, _escuela);
+        candidatosCentroEstudiantesKeys.push(_siglas);
     }
 
     function getCandidatoCentroEstudiantes(string memory _siglas, string memory _escuela) public view returns (string memory, string memory, string memory, uint) {
@@ -123,6 +137,7 @@ contract Eleccion {
 
     function agregarCandidatoConsejoEscuela(string memory _nombre, string memory _siglas, string memory _escuela) public {
         candidatosConsejoEscuela[_escuela][_siglas] = new ConsejoEscuela(_nombre, _siglas, _escuela);
+        candidatosConsejoEscuelaKeys.push(_siglas);
     }
 
     function getCandidatoConsejoEscuela(string memory _siglas, string memory _escuela) public view returns (string memory, string memory, string memory, uint) {
@@ -138,6 +153,7 @@ contract Eleccion {
 
     function agregarCandidatoConsejoFacultad(string memory _nombre, string memory _siglas, string memory _facultad) public {
         candidatosConsejoFacultad[_facultad][_siglas] = new ConsejoFacultad(_nombre, _siglas, _facultad);
+        candidatosConsejoFacultadKeys.push(_siglas);
     }
 
     function getCandidatoConsejoFacultad(string memory _siglas, string memory _facultad) public view returns (string memory, string memory, string memory, uint) {
@@ -151,5 +167,24 @@ contract Eleccion {
         votante.votarConsejoFacultad();
     }
 
+    function getCandidatosJuntaFCELength() public view returns (uint) {
+        return candidatosJuntaFCEKeys.length;
+    }
+
+    function getCandidatosCoordinacionFCELength() public view returns (uint) {
+        return candidatosCoordinacionFCEKeys.length;
+    }
+
+    function getCandidatosCentroEstudiantesLength() public view returns (uint) {
+        return candidatosCentroEstudiantesKeys.length;
+    }
+
+    function getCandidatosConsejoEscuelaLength() public view returns (uint) {
+        return candidatosConsejoEscuelaKeys.length;
+    }
+
+    function getCandidatosConsejoFacultadLength() public view returns (uint) {
+        return candidatosConsejoFacultadKeys.length;
+    }
 
 }

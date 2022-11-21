@@ -1,6 +1,7 @@
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import { VotingPage } from "./pages/VotingPage/VotingPage";
-import { RegisterCandidate } from "./pages/RegisterCandidate/RegisterCandidate";
+import { RegisterConsejoAcademico } from "./pages/RegisterConsejoAcademico/RegisterConsejoAcademico";
+import { RegisterFCE } from "./pages/RegisterFCE/RegisterFCE";
 import { Layout } from "./container/Layout/Layout";
 import "./App.css";
 import { load } from "./funcs.js";
@@ -14,10 +15,12 @@ import LoginPage from "./pages/LoginPage/LoginPage";
 import AuthProvider from "./context/authContext";
 import RegisterForm from "./components/RegisterFrom";
 import { ProtectedRoute } from "./components/ProtectedRoute";
+import { Audit } from "./pages/Audit/Audit";
+
 const App = () => {
   useEffect(() => {
     load();
-  });
+  }, []);
 
   return (
     <BrowserRouter>
@@ -41,10 +44,18 @@ const App = () => {
               }
             />
             <Route
-              path="/registercandidate"
+              path="/registerConsejoAcademico"
               element={
                 <ProtectedRoute>
-                  <RegisterCandidate />
+                  <RegisterConsejoAcademico />
+                </ProtectedRoute>
+              }
+            />
+            <Route
+              path="/registerCentroEstudiantes"
+              element={
+                <ProtectedRoute>
+                  <RegisterFCE />
                 </ProtectedRoute>
               }
             />
@@ -61,6 +72,14 @@ const App = () => {
               element={
                 <ProtectedRoute>
                   <VotedVoters />
+                </ProtectedRoute>
+              }
+            />
+            <Route
+              path="/audit"
+              element={
+                <ProtectedRoute>
+                  <Audit />
                 </ProtectedRoute>
               }
             />

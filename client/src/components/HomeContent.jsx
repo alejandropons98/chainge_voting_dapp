@@ -16,7 +16,6 @@ const HomeContent = () => {
 
   return (
     <div>
-      HOME welcome {user.email}
       <button onClick={handleLogout}>log out</button>;
     </div>
   );
