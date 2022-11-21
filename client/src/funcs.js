@@ -43,7 +43,10 @@ export const getConsejoAcademicoCandidates = async() => {
 
 export const getJuntaFCECandidates = async() => {
     const numeroCandidatosJuntaFCE = await electionContract.methods.getCandidatosJuntaFCELength().call();
-    const candidatosJuntaFCEKeys = await electionContract.methods.candidatosJuntaFCEKeys().call();
+    var candidatosJuntaFCEKeys = [];
+    for(let i = 0; i < numeroCandidatosJuntaFCE; i++){
+        candidatosJuntaFCEKeys.push(await electionContract.methods.candidatosJuntaFCEKeys(i).call());
+    }
     var juntaFCECandidates = [];
     for(let i = 0; i < numeroCandidatosJuntaFCE; i++){
         juntaFCECandidates.push(await electionContract.methods.getCandidatosJuntaFCE(candidatosJuntaFCEKeys[i]).call());
@@ -52,7 +55,10 @@ export const getJuntaFCECandidates = async() => {
 }
 export const getCoordinacionFCECandidates = async() => {
     const numeroCandidatosCoordinacionFCE = await electionContract.methods.getCandidatosCoordinacionFCELength().call();
-    const candidatosCoordinacionFCEKeys = await electionContract.methods.candidatosCoordinacionFCEKeys().call();
+    var candidatosCoordinacionFCEKeys = [];
+    for(let i = 0; i < numeroCandidatosJuntaFCE; i++){
+        candidatosCoordinacionFCEKeys.push(await electionContract.methods.candidatosJuntaFCEKeys(i).call());
+    }
     var coordinacionFCECandidates = [];
     for(let i = 0; i < numeroCandidatosCoordinacionFCE; i++){
         coordinacionFCECandidates.push(await electionContract.methods.getCandidatoCoordinacionFCE(candidatosCoordinacionFCEKeys[i]).call());
@@ -63,9 +69,9 @@ export const getCoordinacionFCECandidates = async() => {
 export const getCentroEstudiantesCandidates = async() => {
     const numeroCandidatosCentroEstudiantes = await electionContract.methods.getCandidatosCentroEstudiantesLength().call();
     const candidatosCentroEstudiantesKeys = await electionContract.methods.candidatosCentroEstudiantesKeys().call();
-    const escuelas = await electionContract.methods.escuelas().call();
+    const numeroEscuelas = await electionContract.methods.getEscuelasLength().call();
     var centroEstudiantesCandidates = {};
-    for(let i = 0; i < escuelas.length(); i++){
+    for(let i = 0; i < numeroEscuelas; i++){
         for(let j = 0; j < numeroCandidatosCentroEstudiantes; j++){
             centroEstudiantesCandidates[escuelas[i]].push(await electionContract.methods.getCandidatoCentroEstudiantes(candidatosCentroEstudiantesKeys[j], escuelas[i]).call());
         }
@@ -75,10 +81,13 @@ export const getCentroEstudiantesCandidates = async() => {
 
 export const getConsejoEscuelaCandidates = async() => {
     const numeroCandidatosConsejoEscuela = await electionContract.methods.getCandidatosConsejoEscuelaLength().call();
-    const candidatosConsejoEscuelaKeys = await electionContract.methods.candidatosConsejoEscuelaKeys().call();
-    const escuelas = await electionContract.methods.escuelas().call();
+    var candidatosConsejoEscuelaKeys = [];
+    for(let i = 0; i < numeroCandidatosConsejoEscuela; i++){
+        candidatosConsejoEscuelaKeys.push(await electionContract.methods.candidatosConsejoEscuelaKeys(i).call());
+    }
+    const numeroEscuelas = await electionContract.methods.getEscuelasLength().call();
     var ConsejoEscuelaCandidates = {};
-    for(let i = 0; i < escuelas.length(); i++){
+    for(let i = 0; i < numeroEscuelas; i++){
         for(let j = 0; j < numeroCandidatosConsejoEscuela; j++){
             ConsejoEscuelaCandidates[escuelas[i]].push(await electionContract.methods.getCandidatoConsejoEscuela(candidatosConsejoEscuelaKeys[j], escuelas[i]).call());
         }
@@ -88,10 +97,13 @@ export const getConsejoEscuelaCandidates = async() => {
 
 export const getConsejoFacultadCandidates = async() => {
     const numeroCandidatosConsejoFacultad = await electionContract.methods.getCandidatosConsejoFacultadLength().call();
-    const candidatosConsejoFacultadKeys = await electionContract.methods.candidatosConsejoFacultadKeys().call();
-    const escuelas = await electionContract.methods.escuelas().call();
+    var candidatosConsejoFacultadKeys = [];
+    for(let i = 0; i < numeroCandidatosConsejoFacultad; i++){
+        candidatosConsejoFacultadKeys.push(await electionContract.methods.candidatosConsejoFacultadKeys(i).call());
+    }
+    const numeroEscuelas = await electionContract.methods.getEscuelasLength().call();
     var ConsejoFacultadCandidates = {};
-    for(let i = 0; i < escuelas.length(); i++){
+    for(let i = 0; i < numeroEscuelas; i++){
         for(let j = 0; j < numeroCandidatosConsejoFacultad; j++){
             ConsejoFacultadCandidates[escuelas[i]].push(await electionContract.methods.getCandidatoConsejoFacultad(candidatosConsejoFacultadKeys[j], escuelas[i]).call());
         }

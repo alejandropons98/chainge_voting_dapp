@@ -187,4 +187,8 @@ contract Eleccion {
         return candidatosConsejoFacultadKeys.length;
     }
 
+    function getEscuelasLength() public view returns (uint) {
+        return escuelas.length;
+    }
+
 }

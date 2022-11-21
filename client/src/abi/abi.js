@@ -1043,6 +1043,20 @@ export const ElectionContract = [
     "stateMutability": "view",
     "type": "function",
     "constant": true
+  },
+  {
+    "inputs": [],
+    "name": "getEscuelasLength",
+    "outputs": [
+      {
+        "internalType": "uint256",
+        "name": "",
+        "type": "uint256"
+      }
+    ],
+    "stateMutability": "view",
+    "type": "function",
+    "constant": true
   }
 
 ]
