@@ -1,5 +1,5 @@
 import CandidateCardGrid from "../../components/CandidateCardGrid"
-import { getConsejoAcademicoCandidates } from "../../funcs"
+import { getConsejoAcademicoCandidates, getJuntaFCECandidates, getCoordinacionFCECandidates, getConsejoFacultadCandidates ,getCentroEstudiantesCandidates, getConsejoEscuelaCandidates } from "../../funcs"
 import { useEffect, useState } from "react"
 import { ElectionContract } from "../../abi/abi"
 
@@ -38,15 +38,16 @@ const VotingPage = () => {
         },
     ])
 
-    const fetchCandidates = async () => {
-        const newCandidates = await getCandidates()
-        setCandidates(candidates.concat(newCandidates))
-    }
+    // const fetchCandidates = async () => {
+    //     const newCandidates = await getCandidates()
+    //     setCandidates(candidates.concat(newCandidates))
+    // }
 
     useEffect(() => {
         if(!refresh) return
         setRefresh(false)
-        fetchCandidates()
+        // fetchCandidates()
+        console.log(getConsejoFacultadCandidates())
 
     }, [refresh,candidates])
 

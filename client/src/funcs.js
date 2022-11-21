@@ -3,7 +3,7 @@ import Web3 from 'web3';
 import { ElectionContract } from './abi/abi';
 
 const web3 = new Web3(Web3.givenProvider);
-const contractAddress = '0xBE9bab0388e440D319E5dAA1af209b89D833C1d0';
+const contractAddress = '0x55a983FdcC93E1dB2F8Ca382CDae2237D6332978';
 const electionContract = new web3.eth.Contract(ElectionContract, contractAddress);
 
 
@@ -56,8 +56,8 @@ export const getJuntaFCECandidates = async() => {
 export const getCoordinacionFCECandidates = async() => {
     const numeroCandidatosCoordinacionFCE = await electionContract.methods.getCandidatosCoordinacionFCELength().call();
     var candidatosCoordinacionFCEKeys = [];
-    for(let i = 0; i < numeroCandidatosJuntaFCE; i++){
-        candidatosCoordinacionFCEKeys.push(await electionContract.methods.candidatosJuntaFCEKeys(i).call());
+    for(let i = 0; i < numeroCandidatosCoordinacionFCE; i++){
+        candidatosCoordinacionFCEKeys.push(await electionContract.methods.candidatosCoordinacionFCEKeys(i).call());
     }
     var coordinacionFCECandidates = [];
     for(let i = 0; i < numeroCandidatosCoordinacionFCE; i++){
@@ -68,7 +68,10 @@ export const getCoordinacionFCECandidates = async() => {
 
 export const getCentroEstudiantesCandidates = async() => {
     const numeroCandidatosCentroEstudiantes = await electionContract.methods.getCandidatosCentroEstudiantesLength().call();
-    const candidatosCentroEstudiantesKeys = await electionContract.methods.candidatosCentroEstudiantesKeys().call();
+    var candidatosCentroEstudiantesKeys = [];
+    for(let i = 0; i < numeroCandidatosCentroEstudiantes; i++){
+        candidatosCentroEstudiantesKeys.push(await electionContract.methods.candidatosCentroEstudiantesKeys(i).call());
+    }
     const numeroEscuelas = await electionContract.methods.getEscuelasLength().call();
     var centroEstudiantesCandidates = {};
     for(let i = 0; i < numeroEscuelas; i++){
