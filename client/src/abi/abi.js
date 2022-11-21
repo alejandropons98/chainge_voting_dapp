@@ -37,6 +37,26 @@ export const ElectionContract = [
         "type": "uint256"
       }
     ],
+    "name": "candidatosCentroEstudiantesKeys",
+    "outputs": [
+      {
+        "internalType": "string",
+        "name": "",
+        "type": "string"
+      }
+    ],
+    "stateMutability": "view",
+    "type": "function",
+    "constant": true
+  },
+  {
+    "inputs": [
+      {
+        "internalType": "uint256",
+        "name": "",
+        "type": "uint256"
+      }
+    ],
     "name": "candidatosConsejoAcademico",
     "outputs": [
       {
@@ -77,6 +97,26 @@ export const ElectionContract = [
   {
     "inputs": [
       {
+        "internalType": "uint256",
+        "name": "",
+        "type": "uint256"
+      }
+    ],
+    "name": "candidatosConsejoEscuelaKeys",
+    "outputs": [
+      {
+        "internalType": "string",
+        "name": "",
+        "type": "string"
+      }
+    ],
+    "stateMutability": "view",
+    "type": "function",
+    "constant": true
+  },
+  {
+    "inputs": [
+      {
         "internalType": "string",
         "name": "",
         "type": "string"
@@ -93,6 +133,26 @@ export const ElectionContract = [
         "internalType": "contract ConsejoFacultad",
         "name": "",
         "type": "address"
+      }
+    ],
+    "stateMutability": "view",
+    "type": "function",
+    "constant": true
+  },
+  {
+    "inputs": [
+      {
+        "internalType": "uint256",
+        "name": "",
+        "type": "uint256"
+      }
+    ],
+    "name": "candidatosConsejoFacultadKeys",
+    "outputs": [
+      {
+        "internalType": "string",
+        "name": "",
+        "type": "string"
       }
     ],
     "stateMutability": "view",
@@ -122,6 +182,26 @@ export const ElectionContract = [
   {
     "inputs": [
       {
+        "internalType": "uint256",
+        "name": "",
+        "type": "uint256"
+      }
+    ],
+    "name": "candidatosCoordinacionFCEKeys",
+    "outputs": [
+      {
+        "internalType": "string",
+        "name": "",
+        "type": "string"
+      }
+    ],
+    "stateMutability": "view",
+    "type": "function",
+    "constant": true
+  },
+  {
+    "inputs": [
+      {
         "internalType": "string",
         "name": "",
         "type": "string"
@@ -133,6 +213,74 @@ export const ElectionContract = [
         "internalType": "contract JuntaDirectivaFCE",
         "name": "",
         "type": "address"
+      }
+    ],
+    "stateMutability": "view",
+    "type": "function",
+    "constant": true
+  },
+  {
+    "inputs": [
+      {
+        "internalType": "uint256",
+        "name": "",
+        "type": "uint256"
+      }
+    ],
+    "name": "candidatosJuntaFCEKeys",
+    "outputs": [
+      {
+        "internalType": "string",
+        "name": "",
+        "type": "string"
+      }
+    ],
+    "stateMutability": "view",
+    "type": "function",
+    "constant": true
+  },
+  {
+    "inputs": [
+      {
+        "internalType": "uint256",
+        "name": "",
+        "type": "uint256"
+      }
+    ],
+    "name": "escuelas",
+    "outputs": [
+      {
+        "internalType": "string",
+        "name": "",
+        "type": "string"
+      }
+    ],
+    "stateMutability": "view",
+    "type": "function",
+    "constant": true
+  },
+  {
+    "inputs": [],
+    "name": "numeroCandidatosConsejoAcademico",
+    "outputs": [
+      {
+        "internalType": "uint256",
+        "name": "",
+        "type": "uint256"
+      }
+    ],
+    "stateMutability": "view",
+    "type": "function",
+    "constant": true
+  },
+  {
+    "inputs": [],
+    "name": "numeroVotantesRegistrados",
+    "outputs": [
+      {
+        "internalType": "uint256",
+        "name": "",
+        "type": "uint256"
       }
     ],
     "stateMutability": "view",
@@ -273,7 +421,7 @@ export const ElectionContract = [
         "type": "uint256"
       }
     ],
-    "name": "getVotanteVotado",
+    "name": "getVotanteCulminoVotacion",
     "outputs": [
       {
         "internalType": "bool",
@@ -293,8 +441,13 @@ export const ElectionContract = [
         "type": "uint256"
       }
     ],
-    "name": "getVotanteVotados",
+    "name": "getVotanteSeccionesVotadas",
     "outputs": [
+      {
+        "internalType": "bool",
+        "name": "",
+        "type": "bool"
+      },
       {
         "internalType": "bool",
         "name": "",
@@ -386,7 +539,7 @@ export const ElectionContract = [
         "type": "uint256"
       }
     ],
-    "name": "getCandidateConsejoAcademico",
+    "name": "getCandidatoConsejoAcademico",
     "outputs": [
       {
         "internalType": "string",
@@ -426,7 +579,7 @@ export const ElectionContract = [
         "type": "uint256"
       }
     ],
-    "name": "voteCandidateConsejoAcademico",
+    "name": "voteCandidatoConsejoAcademico",
     "outputs": [],
     "stateMutability": "nonpayable",
     "type": "function"
@@ -457,7 +610,7 @@ export const ElectionContract = [
         "type": "string"
       }
     ],
-    "name": "getCandidateJuntaDirectivaFCE",
+    "name": "getCandidatoJuntaDirectivaFCE",
     "outputs": [
       {
         "internalType": "string",
@@ -492,7 +645,7 @@ export const ElectionContract = [
         "type": "uint256"
       }
     ],
-    "name": "voteCandidateJuntaDirectivaFCE",
+    "name": "voteCandidatoJuntaDirectivaFCE",
     "outputs": [],
     "stateMutability": "nonpayable",
     "type": "function"
@@ -558,7 +711,7 @@ export const ElectionContract = [
         "type": "uint256"
       }
     ],
-    "name": "voteCandidateCoordinacionFCE",
+    "name": "voteCandidatoCoordinacionFCE",
     "outputs": [],
     "stateMutability": "nonpayable",
     "type": "function"
@@ -644,7 +797,7 @@ export const ElectionContract = [
         "type": "uint256"
       }
     ],
-    "name": "voteCandidateCentroEstudiantes",
+    "name": "voteCandidatoCentroEstudiantes",
     "outputs": [],
     "stateMutability": "nonpayable",
     "type": "function"
@@ -730,7 +883,7 @@ export const ElectionContract = [
         "type": "uint256"
       }
     ],
-    "name": "voteCandidateConsejoEscuela",
+    "name": "voteCandidatoConsejoEscuela",
     "outputs": [],
     "stateMutability": "nonpayable",
     "type": "function"
@@ -816,10 +969,80 @@ export const ElectionContract = [
         "type": "uint256"
       }
     ],
-    "name": "voteCandidateConsejoFacultad",
+    "name": "voteCandidatoConsejoFacultad",
     "outputs": [],
     "stateMutability": "nonpayable",
     "type": "function"
+  },
+  {
+    "inputs": [],
+    "name": "getCandidatosJuntaFCELength",
+    "outputs": [
+      {
+        "internalType": "uint256",
+        "name": "",
+        "type": "uint256"
+      }
+    ],
+    "stateMutability": "view",
+    "type": "function",
+    "constant": true
+  },
+  {
+    "inputs": [],
+    "name": "getCandidatosCoordinacionFCELength",
+    "outputs": [
+      {
+        "internalType": "uint256",
+        "name": "",
+        "type": "uint256"
+      }
+    ],
+    "stateMutability": "view",
+    "type": "function",
+    "constant": true
+  },
+  {
+    "inputs": [],
+    "name": "getCandidatosCentroEstudiantesLength",
+    "outputs": [
+      {
+        "internalType": "uint256",
+        "name": "",
+        "type": "uint256"
+      }
+    ],
+    "stateMutability": "view",
+    "type": "function",
+    "constant": true
+  },
+  {
+    "inputs": [],
+    "name": "getCandidatosConsejoEscuelaLength",
+    "outputs": [
+      {
+        "internalType": "uint256",
+        "name": "",
+        "type": "uint256"
+      }
+    ],
+    "stateMutability": "view",
+    "type": "function",
+    "constant": true
+  },
+  {
+    "inputs": [],
+    "name": "getCandidatosConsejoFacultadLength",
+    "outputs": [
+      {
+        "internalType": "uint256",
+        "name": "",
+        "type": "uint256"
+      }
+    ],
+    "stateMutability": "view",
+    "type": "function",
+    "constant": true
   }
 
 ]

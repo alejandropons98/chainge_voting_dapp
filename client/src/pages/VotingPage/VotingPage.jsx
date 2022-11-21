@@ -1,5 +1,5 @@
 import CandidateCardGrid from "../../components/CandidateCardGrid"
-import { getCandidates } from "../../funcs"
+import { getConsejoAcademicoCandidates } from "../../funcs"
 import { useEffect, useState } from "react"
 import { ElectionContract } from "../../abi/abi"
 
