@@ -6434,14 +6434,14 @@
     "absolutePath": "project:/contracts/Votante.sol",
     "exportedSymbols": {
       "Votante": [
-        1603
+        1616
       ]
     },
-    "id": 1604,
+    "id": 1617,
     "nodeType": "SourceUnit",
     "nodes": [
       {
-        "id": 1272,
+        "id": 1285,
         "literals": [
           "solidity",
           "^",
@@ -6458,9 +6458,9 @@
         "contractDependencies": [],
         "contractKind": "contract",
         "fullyImplemented": true,
-        "id": 1603,
+        "id": 1616,
         "linearizedBaseContracts": [
-          1603
+          1616
         ],
         "name": "Votante",
         "nameLocation": "76:7:4",
@@ -6468,12 +6468,12 @@
         "nodes": [
           {
             "constant": false,
-            "id": 1274,
+            "id": 1287,
             "mutability": "mutable",
             "name": "studentId",
             "nameLocation": "96:9:4",
             "nodeType": "VariableDeclaration",
-            "scope": 1603,
+            "scope": 1616,
             "src": "91:14:4",
             "stateVariable": true,
             "storageLocation": "default",
@@ -6482,7 +6482,7 @@
               "typeString": "uint256"
             },
             "typeName": {
-              "id": 1273,
+              "id": 1286,
               "name": "uint",
               "nodeType": "ElementaryTypeName",
               "src": "91:4:4",
@@ -6495,12 +6495,12 @@
           },
           {
             "constant": false,
-            "id": 1277,
+            "id": 1290,
             "mutability": "mutable",
             "name": "carreras",
             "nameLocation": "121:8:4",
             "nodeType": "VariableDeclaration",
-            "scope": 1603,
+            "scope": 1616,
             "src": "112:17:4",
             "stateVariable": true,
             "storageLocation": "default",
@@ -6510,7 +6510,7 @@
             },
             "typeName": {
               "baseType": {
-                "id": 1275,
+                "id": 1288,
                 "name": "string",
                 "nodeType": "ElementaryTypeName",
                 "src": "112:6:4",
@@ -6519,7 +6519,7 @@
                   "typeString": "string"
                 }
               },
-              "id": 1276,
+              "id": 1289,
               "nodeType": "ArrayTypeName",
               "src": "112:8:4",
               "typeDescriptions": {
@@ -6531,12 +6531,12 @@
           },
           {
             "constant": false,
-            "id": 1280,
+            "id": 1293,
             "mutability": "mutable",
             "name": "facultades",
             "nameLocation": "145:10:4",
             "nodeType": "VariableDeclaration",
-            "scope": 1603,
+            "scope": 1616,
             "src": "136:19:4",
             "stateVariable": true,
             "storageLocation": "default",
@@ -6546,7 +6546,7 @@
             },
             "typeName": {
               "baseType": {
-                "id": 1278,
+                "id": 1291,
                 "name": "string",
                 "nodeType": "ElementaryTypeName",
                 "src": "136:6:4",
@@ -6555,7 +6555,7 @@
                   "typeString": "string"
                 }
               },
-              "id": 1279,
+              "id": 1292,
               "nodeType": "ArrayTypeName",
               "src": "136:8:4",
               "typeDescriptions": {
@@ -6567,12 +6567,12 @@
           },
           {
             "constant": false,
-            "id": 1282,
+            "id": 1295,
             "mutability": "mutable",
             "name": "voted",
             "nameLocation": "167:5:4",
             "nodeType": "VariableDeclaration",
-            "scope": 1603,
+            "scope": 1616,
             "src": "162:10:4",
             "stateVariable": true,
             "storageLocation": "default",
@@ -6581,7 +6581,7 @@
               "typeString": "bool"
             },
             "typeName": {
-              "id": 1281,
+              "id": 1294,
               "name": "bool",
               "nodeType": "ElementaryTypeName",
               "src": "162:4:4",
@@ -6594,12 +6594,12 @@
           },
           {
             "constant": false,
-            "id": 1284,
+            "id": 1297,
             "mutability": "mutable",
             "name": "votedConsejoAcademico",
             "nameLocation": "184:21:4",
             "nodeType": "VariableDeclaration",
-            "scope": 1603,
+            "scope": 1616,
             "src": "179:26:4",
             "stateVariable": true,
             "storageLocation": "default",
@@ -6608,7 +6608,7 @@
               "typeString": "bool"
             },
             "typeName": {
-              "id": 1283,
+              "id": 1296,
               "name": "bool",
               "nodeType": "ElementaryTypeName",
               "src": "179:4:4",
@@ -6621,12 +6621,12 @@
           },
           {
             "constant": false,
-            "id": 1286,
+            "id": 1299,
             "mutability": "mutable",
             "name": "votedJuntaDirectivaFCE",
             "nameLocation": "217:22:4",
             "nodeType": "VariableDeclaration",
-            "scope": 1603,
+            "scope": 1616,
             "src": "212:27:4",
             "stateVariable": true,
             "storageLocation": "default",
@@ -6635,7 +6635,7 @@
               "typeString": "bool"
             },
             "typeName": {
-              "id": 1285,
+              "id": 1298,
               "name": "bool",
               "nodeType": "ElementaryTypeName",
               "src": "212:4:4",
@@ -6648,12 +6648,12 @@
           },
           {
             "constant": false,
-            "id": 1288,
+            "id": 1301,
             "mutability": "mutable",
             "name": "votedCoordinacionFCE",
             "nameLocation": "251:20:4",
             "nodeType": "VariableDeclaration",
-            "scope": 1603,
+            "scope": 1616,
             "src": "246:25:4",
             "stateVariable": true,
             "storageLocation": "default",
@@ -6662,7 +6662,7 @@
               "typeString": "bool"
             },
             "typeName": {
-              "id": 1287,
+              "id": 1300,
               "name": "bool",
               "nodeType": "ElementaryTypeName",
               "src": "246:4:4",
@@ -6675,12 +6675,12 @@
           },
           {
             "constant": false,
-            "id": 1290,
+            "id": 1303,
             "mutability": "mutable",
             "name": "votedCentroEstudiantes",
             "nameLocation": "283:22:4",
             "nodeType": "VariableDeclaration",
-            "scope": 1603,
+            "scope": 1616,
             "src": "278:27:4",
             "stateVariable": true,
             "storageLocation": "default",
@@ -6689,7 +6689,7 @@
               "typeString": "bool"
             },
             "typeName": {
-              "id": 1289,
+              "id": 1302,
               "name": "bool",
               "nodeType": "ElementaryTypeName",
               "src": "278:4:4",
@@ -6702,12 +6702,12 @@
           },
           {
             "constant": false,
-            "id": 1292,
+            "id": 1305,
             "mutability": "mutable",
             "name": "votedConsejoEscuela",
             "nameLocation": "317:19:4",
             "nodeType": "VariableDeclaration",
-            "scope": 1603,
+            "scope": 1616,
             "src": "312:24:4",
             "stateVariable": true,
             "storageLocation": "default",
@@ -6716,7 +6716,7 @@
               "typeString": "bool"
             },
             "typeName": {
-              "id": 1291,
+              "id": 1304,
               "name": "bool",
               "nodeType": "ElementaryTypeName",
               "src": "312:4:4",
@@ -6729,12 +6729,12 @@
           },
           {
             "constant": false,
-            "id": 1294,
+            "id": 1307,
             "mutability": "mutable",
             "name": "votedConsejoFacultad",
             "nameLocation": "348:20:4",
             "nodeType": "VariableDeclaration",
-            "scope": 1603,
+            "scope": 1616,
             "src": "343:25:4",
             "stateVariable": true,
             "storageLocation": "default",
@@ -6743,7 +6743,7 @@
               "typeString": "bool"
             },
             "typeName": {
-              "id": 1293,
+              "id": 1306,
               "name": "bool",
               "nodeType": "ElementaryTypeName",
               "src": "343:4:4",
@@ -6756,12 +6756,12 @@
           },
           {
             "constant": false,
-            "id": 1296,
+            "id": 1309,
             "mutability": "mutable",
             "name": "numeroVotosCentroEst",
             "nameLocation": "380:20:4",
             "nodeType": "VariableDeclaration",
-            "scope": 1603,
+            "scope": 1616,
             "src": "375:25:4",
             "stateVariable": true,
             "storageLocation": "default",
@@ -6770,7 +6770,7 @@
               "typeString": "uint256"
             },
             "typeName": {
-              "id": 1295,
+              "id": 1308,
               "name": "uint",
               "nodeType": "ElementaryTypeName",
               "src": "375:4:4",
@@ -6783,12 +6783,12 @@
           },
           {
             "constant": false,
-            "id": 1298,
+            "id": 1311,
             "mutability": "mutable",
             "name": "numeroVotosCF",
             "nameLocation": "412:13:4",
             "nodeType": "VariableDeclaration",
-            "scope": 1603,
+            "scope": 1616,
             "src": "407:18:4",
             "stateVariable": true,
             "storageLocation": "default",
@@ -6797,7 +6797,7 @@
               "typeString": "uint256"
             },
             "typeName": {
-              "id": 1297,
+              "id": 1310,
               "name": "uint",
               "nodeType": "ElementaryTypeName",
               "src": "407:4:4",
@@ -6810,12 +6810,12 @@
           },
           {
             "constant": false,
-            "id": 1300,
+            "id": 1313,
             "mutability": "mutable",
             "name": "numeroVotosCE",
             "nameLocation": "437:13:4",
             "nodeType": "VariableDeclaration",
-            "scope": 1603,
+            "scope": 1616,
             "src": "432:18:4",
             "stateVariable": true,
             "storageLocation": "default",
@@ -6824,7 +6824,7 @@
               "typeString": "uint256"
             },
             "typeName": {
-              "id": 1299,
+              "id": 1312,
               "name": "uint",
               "nodeType": "ElementaryTypeName",
               "src": "432:4:4",
@@ -6837,23 +6837,23 @@
           },
           {
             "body": {
-              "id": 1366,
+              "id": 1379,
               "nodeType": "Block",
               "src": "538:497:4",
               "statements": [
                 {
                   "expression": {
-                    "id": 1313,
+                    "id": 1326,
                     "isConstant": false,
                     "isLValue": false,
                     "isPure": false,
                     "lValueRequested": false,
                     "leftHandSide": {
-                      "id": 1311,
+                      "id": 1324,
                       "name": "studentId",
                       "nodeType": "Identifier",
                       "overloadedDeclarations": [],
-                      "referencedDeclaration": 1274,
+                      "referencedDeclaration": 1287,
                       "src": "549:9:4",
                       "typeDescriptions": {
                         "typeIdentifier": "t_uint256",
@@ -6863,11 +6863,11 @@
                     "nodeType": "Assignment",
                     "operator": "=",
                     "rightHandSide": {
-                      "id": 1312,
+                      "id": 1325,
                       "name": "_id",
                       "nodeType": "Identifier",
                       "overloadedDeclarations": [],
-                      "referencedDeclaration": 1302,
+                      "referencedDeclaration": 1315,
                       "src": "561:3:4",
                       "typeDescriptions": {
                         "typeIdentifier": "t_uint256",
@@ -6880,23 +6880,23 @@
                       "typeString": "uint256"
                     }
                   },
-                  "id": 1314,
+                  "id": 1327,
                   "nodeType": "ExpressionStatement",
                   "src": "549:15:4"
                 },
                 {
                   "expression": {
-                    "id": 1317,
+                    "id": 1330,
                     "isConstant": false,
                     "isLValue": false,
                     "isPure": false,
                     "lValueRequested": false,
                     "leftHandSide": {
-                      "id": 1315,
+                      "id": 1328,
                       "name": "carreras",
                       "nodeType": "Identifier",
                       "overloadedDeclarations": [],
-                      "referencedDeclaration": 1277,
+                      "referencedDeclaration": 1290,
                       "src": "575:8:4",
                       "typeDescriptions": {
                         "typeIdentifier": "t_array$_t_string_storage_$dyn_storage",
@@ -6906,11 +6906,11 @@
                     "nodeType": "Assignment",
                     "operator": "=",
                     "rightHandSide": {
-                      "id": 1316,
+                      "id": 1329,
                       "name": "_carreras",
                       "nodeType": "Identifier",
                       "overloadedDeclarations": [],
-                      "referencedDeclaration": 1305,
+                      "referencedDeclaration": 1318,
                       "src": "586:9:4",
                       "typeDescriptions": {
                         "typeIdentifier": "t_array$_t_string_memory_ptr_$dyn_memory_ptr",
@@ -6923,23 +6923,23 @@
                       "typeString": "string storage ref[] storage ref"
                     }
                   },
-                  "id": 1318,
+                  "id": 1331,
                   "nodeType": "ExpressionStatement",
                   "src": "575:20:4"
                 },
                 {
                   "expression": {
-                    "id": 1321,
+                    "id": 1334,
                     "isConstant": false,
                     "isLValue": false,
                     "isPure": false,
                     "lValueRequested": false,
                     "leftHandSide": {
-                      "id": 1319,
+                      "id": 1332,
                       "name": "facultades",
                       "nodeType": "Identifier",
                       "overloadedDeclarations": [],
-                      "referencedDeclaration": 1280,
+                      "referencedDeclaration": 1293,
                       "src": "606:10:4",
                       "typeDescriptions": {
                         "typeIdentifier": "t_array$_t_string_storage_$dyn_storage",
@@ -6949,11 +6949,11 @@
                     "nodeType": "Assignment",
                     "operator": "=",
                     "rightHandSide": {
-                      "id": 1320,
+                      "id": 1333,
                       "name": "_facultades",
                       "nodeType": "Identifier",
                       "overloadedDeclarations": [],
-                      "referencedDeclaration": 1308,
+                      "referencedDeclaration": 1321,
                       "src": "619:11:4",
                       "typeDescriptions": {
                         "typeIdentifier": "t_array$_t_string_memory_ptr_$dyn_memory_ptr",
@@ -6966,23 +6966,23 @@
                       "typeString": "string storage ref[] storage ref"
                     }
                   },
-                  "id": 1322,
+                  "id": 1335,
                   "nodeType": "ExpressionStatement",
                   "src": "606:24:4"
                 },
                 {
                   "expression": {
-                    "id": 1325,
+                    "id": 1338,
                     "isConstant": false,
                     "isLValue": false,
                     "isPure": false,
                     "lValueRequested": false,
                     "leftHandSide": {
-                      "id": 1323,
+                      "id": 1336,
                       "name": "voted",
                       "nodeType": "Identifier",
                       "overloadedDeclarations": [],
-                      "referencedDeclaration": 1282,
+                      "referencedDeclaration": 1295,
                       "src": "641:5:4",
                       "typeDescriptions": {
                         "typeIdentifier": "t_bool",
@@ -6993,7 +6993,7 @@
                     "operator": "=",
                     "rightHandSide": {
                       "hexValue": "66616c7365",
-                      "id": 1324,
+                      "id": 1337,
                       "isConstant": false,
                       "isLValue": false,
                       "isPure": true,
@@ -7013,23 +7013,23 @@
                       "typeString": "bool"
                     }
                   },
-                  "id": 1326,
+                  "id": 1339,
                   "nodeType": "ExpressionStatement",
                   "src": "641:13:4"
                 },
                 {
                   "expression": {
-                    "id": 1329,
+                    "id": 1342,
                     "isConstant": false,
                     "isLValue": false,
                     "isPure": false,
                     "lValueRequested": false,
                     "leftHandSide": {
-                      "id": 1327,
+                      "id": 1340,
                       "name": "votedConsejoAcademico",
                       "nodeType": "Identifier",
                       "overloadedDeclarations": [],
-                      "referencedDeclaration": 1284,
+                      "referencedDeclaration": 1297,
                       "src": "665:21:4",
                       "typeDescriptions": {
                         "typeIdentifier": "t_bool",
@@ -7040,7 +7040,7 @@
                     "operator": "=",
                     "rightHandSide": {
                       "hexValue": "66616c7365",
-                      "id": 1328,
+                      "id": 1341,
                       "isConstant": false,
                       "isLValue": false,
                       "isPure": true,
@@ -7060,23 +7060,23 @@
                       "typeString": "bool"
                     }
                   },
-                  "id": 1330,
+                  "id": 1343,
                   "nodeType": "ExpressionStatement",
                   "src": "665:29:4"
                 },
                 {
                   "expression": {
-                    "id": 1333,
+                    "id": 1346,
                     "isConstant": false,
                     "isLValue": false,
                     "isPure": false,
                     "lValueRequested": false,
                     "leftHandSide": {
-                      "id": 1331,
+                      "id": 1344,
                       "name": "votedJuntaDirectivaFCE",
                       "nodeType": "Identifier",
                       "overloadedDeclarations": [],
-                      "referencedDeclaration": 1286,
+                      "referencedDeclaration": 1299,
                       "src": "705:22:4",
                       "typeDescriptions": {
                         "typeIdentifier": "t_bool",
@@ -7087,7 +7087,7 @@
                     "operator": "=",
                     "rightHandSide": {
                       "hexValue": "66616c7365",
-                      "id": 1332,
+                      "id": 1345,
                       "isConstant": false,
                       "isLValue": false,
                       "isPure": true,
@@ -7107,23 +7107,23 @@
                       "typeString": "bool"
                     }
                   },
-                  "id": 1334,
+                  "id": 1347,
                   "nodeType": "ExpressionStatement",
                   "src": "705:30:4"
                 },
                 {
                   "expression": {
-                    "id": 1337,
+                    "id": 1350,
                     "isConstant": false,
                     "isLValue": false,
                     "isPure": false,
                     "lValueRequested": false,
                     "leftHandSide": {
-                      "id": 1335,
+                      "id": 1348,
                       "name": "votedCoordinacionFCE",
                       "nodeType": "Identifier",
                       "overloadedDeclarations": [],
-                      "referencedDeclaration": 1288,
+                      "referencedDeclaration": 1301,
                       "src": "746:20:4",
                       "typeDescriptions": {
                         "typeIdentifier": "t_bool",
@@ -7134,7 +7134,7 @@
                     "operator": "=",
                     "rightHandSide": {
                       "hexValue": "66616c7365",
-                      "id": 1336,
+                      "id": 1349,
                       "isConstant": false,
                       "isLValue": false,
                       "isPure": true,
@@ -7154,23 +7154,23 @@
                       "typeString": "bool"
                     }
                   },
-                  "id": 1338,
+                  "id": 1351,
                   "nodeType": "ExpressionStatement",
                   "src": "746:28:4"
                 },
                 {
                   "expression": {
-                    "id": 1341,
+                    "id": 1354,
                     "isConstant": false,
                     "isLValue": false,
                     "isPure": false,
                     "lValueRequested": false,
                     "leftHandSide": {
-                      "id": 1339,
+                      "id": 1352,
                       "name": "votedCentroEstudiantes",
                       "nodeType": "Identifier",
                       "overloadedDeclarations": [],
-                      "referencedDeclaration": 1290,
+                      "referencedDeclaration": 1303,
                       "src": "785:22:4",
                       "typeDescriptions": {
                         "typeIdentifier": "t_bool",
@@ -7181,7 +7181,7 @@
                     "operator": "=",
                     "rightHandSide": {
                       "hexValue": "66616c7365",
-                      "id": 1340,
+                      "id": 1353,
                       "isConstant": false,
                       "isLValue": false,
                       "isPure": true,
@@ -7201,23 +7201,23 @@
                       "typeString": "bool"
                     }
                   },
-                  "id": 1342,
+                  "id": 1355,
                   "nodeType": "ExpressionStatement",
                   "src": "785:30:4"
                 },
                 {
                   "expression": {
-                    "id": 1345,
+                    "id": 1358,
                     "isConstant": false,
                     "isLValue": false,
                     "isPure": false,
                     "lValueRequested": false,
                     "leftHandSide": {
-                      "id": 1343,
+                      "id": 1356,
                       "name": "votedConsejoEscuela",
                       "nodeType": "Identifier",
                       "overloadedDeclarations": [],
-                      "referencedDeclaration": 1292,
+                      "referencedDeclaration": 1305,
                       "src": "826:19:4",
                       "typeDescriptions": {
                         "typeIdentifier": "t_bool",
@@ -7228,7 +7228,7 @@
                     "operator": "=",
                     "rightHandSide": {
                       "hexValue": "66616c7365",
-                      "id": 1344,
+                      "id": 1357,
                       "isConstant": false,
                       "isLValue": false,
                       "isPure": true,
@@ -7248,23 +7248,23 @@
                       "typeString": "bool"
                     }
                   },
-                  "id": 1346,
+                  "id": 1359,
                   "nodeType": "ExpressionStatement",
                   "src": "826:27:4"
                 },
                 {
                   "expression": {
-                    "id": 1349,
+                    "id": 1362,
                     "isConstant": false,
                     "isLValue": false,
                     "isPure": false,
                     "lValueRequested": false,
                     "leftHandSide": {
-                      "id": 1347,
+                      "id": 1360,
                       "name": "votedConsejoFacultad",
                       "nodeType": "Identifier",
                       "overloadedDeclarations": [],
-                      "referencedDeclaration": 1294,
+                      "referencedDeclaration": 1307,
                       "src": "864:20:4",
                       "typeDescriptions": {
                         "typeIdentifier": "t_bool",
@@ -7275,7 +7275,7 @@
                     "operator": "=",
                     "rightHandSide": {
                       "hexValue": "66616c7365",
-                      "id": 1348,
+                      "id": 1361,
                       "isConstant": false,
                       "isLValue": false,
                       "isPure": true,
@@ -7295,23 +7295,23 @@
                       "typeString": "bool"
                     }
                   },
-                  "id": 1350,
+                  "id": 1363,
                   "nodeType": "ExpressionStatement",
                   "src": "864:28:4"
                 },
                 {
                   "expression": {
-                    "id": 1354,
+                    "id": 1367,
                     "isConstant": false,
                     "isLValue": false,
                     "isPure": false,
                     "lValueRequested": false,
                     "leftHandSide": {
-                      "id": 1351,
+                      "id": 1364,
                       "name": "numeroVotosCentroEst",
                       "nodeType": "Identifier",
                       "overloadedDeclarations": [],
-                      "referencedDeclaration": 1296,
+                      "referencedDeclaration": 1309,
                       "src": "903:20:4",
                       "typeDescriptions": {
                         "typeIdentifier": "t_uint256",
@@ -7322,18 +7322,18 @@
                     "operator": "=",
                     "rightHandSide": {
                       "expression": {
-                        "id": 1352,
+                        "id": 1365,
                         "name": "carreras",
                         "nodeType": "Identifier",
                         "overloadedDeclarations": [],
-                        "referencedDeclaration": 1277,
+                        "referencedDeclaration": 1290,
                         "src": "926:8:4",
                         "typeDescriptions": {
                           "typeIdentifier": "t_array$_t_string_storage_$dyn_storage",
                           "typeString": "string storage ref[] storage ref"
                         }
                       },
-                      "id": 1353,
+                      "id": 1366,
                       "isConstant": false,
                       "isLValue": false,
                       "isPure": false,
@@ -7353,23 +7353,23 @@
                       "typeString": "uint256"
                     }
                   },
-                  "id": 1355,
+                  "id": 1368,
                   "nodeType": "ExpressionStatement",
                   "src": "903:38:4"
                 },
                 {
                   "expression": {
-                    "id": 1359,
+                    "id": 1372,
                     "isConstant": false,
                     "isLValue": false,
                     "isPure": false,
                     "lValueRequested": false,
                     "leftHandSide": {
-                      "id": 1356,
+                      "id": 1369,
                       "name": "numeroVotosCE",
                       "nodeType": "Identifier",
                       "overloadedDeclarations": [],
-                      "referencedDeclaration": 1300,
+                      "referencedDeclaration": 1313,
                       "src": "952:13:4",
                       "typeDescriptions": {
                         "typeIdentifier": "t_uint256",
@@ -7380,18 +7380,18 @@
                     "operator": "=",
                     "rightHandSide": {
                       "expression": {
-                        "id": 1357,
+                        "id": 1370,
                         "name": "carreras",
                         "nodeType": "Identifier",
                         "overloadedDeclarations": [],
-                        "referencedDeclaration": 1277,
+                        "referencedDeclaration": 1290,
                         "src": "968:8:4",
                         "typeDescriptions": {
                           "typeIdentifier": "t_array$_t_string_storage_$dyn_storage",
                           "typeString": "string storage ref[] storage ref"
                         }
                       },
-                      "id": 1358,
+                      "id": 1371,
                       "isConstant": false,
                       "isLValue": false,
                       "isPure": false,
@@ -7411,23 +7411,23 @@
                       "typeString": "uint256"
                     }
                   },
-                  "id": 1360,
+                  "id": 1373,
                   "nodeType": "ExpressionStatement",
                   "src": "952:31:4"
                 },
                 {
                   "expression": {
-                    "id": 1364,
+                    "id": 1377,
                     "isConstant": false,
                     "isLValue": false,
                     "isPure": false,
                     "lValueRequested": false,
                     "leftHandSide": {
-                      "id": 1361,
+                      "id": 1374,
                       "name": "numeroVotosCF",
                       "nodeType": "Identifier",
                       "overloadedDeclarations": [],
-                      "referencedDeclaration": 1298,
+                      "referencedDeclaration": 1311,
                       "src": "994:13:4",
                       "typeDescriptions": {
                         "typeIdentifier": "t_uint256",
@@ -7438,18 +7438,18 @@
                     "operator": "=",
                     "rightHandSide": {
                       "expression": {
-                        "id": 1362,
+                        "id": 1375,
                         "name": "facultades",
                         "nodeType": "Identifier",
                         "overloadedDeclarations": [],
-                        "referencedDeclaration": 1280,
+                        "referencedDeclaration": 1293,
                         "src": "1010:10:4",
                         "typeDescriptions": {
                           "typeIdentifier": "t_array$_t_string_storage_$dyn_storage",
                           "typeString": "string storage ref[] storage ref"
                         }
                       },
-                      "id": 1363,
+                      "id": 1376,
                       "isConstant": false,
                       "isLValue": false,
                       "isPure": false,
@@ -7469,13 +7469,13 @@
                       "typeString": "uint256"
                     }
                   },
-                  "id": 1365,
+                  "id": 1378,
                   "nodeType": "ExpressionStatement",
                   "src": "994:33:4"
                 }
               ]
             },
-            "id": 1367,
+            "id": 1380,
             "implemented": true,
             "kind": "constructor",
             "modifiers": [],
@@ -7483,17 +7483,17 @@
             "nameLocation": "-1:-1:-1",
             "nodeType": "FunctionDefinition",
             "parameters": {
-              "id": 1309,
+              "id": 1322,
               "nodeType": "ParameterList",
               "parameters": [
                 {
                   "constant": false,
-                  "id": 1302,
+                  "id": 1315,
                   "mutability": "mutable",
                   "name": "_id",
                   "nameLocation": "477:3:4",
                   "nodeType": "VariableDeclaration",
-                  "scope": 1367,
+                  "scope": 1380,
                   "src": "472:8:4",
                   "stateVariable": false,
                   "storageLocation": "default",
@@ -7502,7 +7502,7 @@
                     "typeString": "uint256"
                   },
                   "typeName": {
-                    "id": 1301,
+                    "id": 1314,
                     "name": "uint",
                     "nodeType": "ElementaryTypeName",
                     "src": "472:4:4",
@@ -7515,12 +7515,12 @@
                 },
                 {
                   "constant": false,
-                  "id": 1305,
+                  "id": 1318,
                   "mutability": "mutable",
                   "name": "_carreras",
                   "nameLocation": "498:9:4",
                   "nodeType": "VariableDeclaration",
-                  "scope": 1367,
+                  "scope": 1380,
                   "src": "482:25:4",
                   "stateVariable": false,
                   "storageLocation": "memory",
@@ -7530,7 +7530,7 @@
                   },
                   "typeName": {
                     "baseType": {
-                      "id": 1303,
+                      "id": 1316,
                       "name": "string",
                       "nodeType": "ElementaryTypeName",
                       "src": "482:6:4",
@@ -7539,7 +7539,7 @@
                         "typeString": "string"
                       }
                     },
-                    "id": 1304,
+                    "id": 1317,
                     "nodeType": "ArrayTypeName",
                     "src": "482:8:4",
                     "typeDescriptions": {
@@ -7551,12 +7551,12 @@
                 },
                 {
                   "constant": false,
-                  "id": 1308,
+                  "id": 1321,
                   "mutability": "mutable",
                   "name": "_facultades",
                   "nameLocation": "525:11:4",
                   "nodeType": "VariableDeclaration",
-                  "scope": 1367,
+                  "scope": 1380,
                   "src": "509:27:4",
                   "stateVariable": false,
                   "storageLocation": "memory",
@@ -7566,7 +7566,7 @@
                   },
                   "typeName": {
                     "baseType": {
-                      "id": 1306,
+                      "id": 1319,
                       "name": "string",
                       "nodeType": "ElementaryTypeName",
                       "src": "509:6:4",
@@ -7575,7 +7575,7 @@
                         "typeString": "string"
                       }
                     },
-                    "id": 1307,
+                    "id": 1320,
                     "nodeType": "ArrayTypeName",
                     "src": "509:8:4",
                     "typeDescriptions": {
@@ -7589,12 +7589,12 @@
               "src": "471:66:4"
             },
             "returnParameters": {
-              "id": 1310,
+              "id": 1323,
               "nodeType": "ParameterList",
               "parameters": [],
               "src": "538:0:4"
             },
-            "scope": 1603,
+            "scope": 1616,
             "src": "459:576:4",
             "stateMutability": "nonpayable",
             "virtual": false,
@@ -7602,32 +7602,32 @@
           },
           {
             "body": {
-              "id": 1374,
+              "id": 1387,
               "nodeType": "Block",
               "src": "1087:35:4",
               "statements": [
                 {
                   "expression": {
-                    "id": 1372,
+                    "id": 1385,
                     "name": "studentId",
                     "nodeType": "Identifier",
                     "overloadedDeclarations": [],
-                    "referencedDeclaration": 1274,
+                    "referencedDeclaration": 1287,
                     "src": "1105:9:4",
                     "typeDescriptions": {
                       "typeIdentifier": "t_uint256",
                       "typeString": "uint256"
                     }
                   },
-                  "functionReturnParameters": 1371,
-                  "id": 1373,
+                  "functionReturnParameters": 1384,
+                  "id": 1386,
                   "nodeType": "Return",
                   "src": "1098:16:4"
                 }
               ]
             },
             "functionSelector": "ab9dbd07",
-            "id": 1375,
+            "id": 1388,
             "implemented": true,
             "kind": "function",
             "modifiers": [],
@@ -7635,23 +7635,23 @@
             "nameLocation": "1052:5:4",
             "nodeType": "FunctionDefinition",
             "parameters": {
-              "id": 1368,
+              "id": 1381,
               "nodeType": "ParameterList",
               "parameters": [],
               "src": "1057:2:4"
             },
             "returnParameters": {
-              "id": 1371,
+              "id": 1384,
               "nodeType": "ParameterList",
               "parameters": [
                 {
                   "constant": false,
-                  "id": 1370,
+                  "id": 1383,
                   "mutability": "mutable",
                   "name": "",
                   "nameLocation": "-1:-1:-1",
                   "nodeType": "VariableDeclaration",
-                  "scope": 1375,
+                  "scope": 1388,
                   "src": "1081:4:4",
                   "stateVariable": false,
                   "storageLocation": "default",
@@ -7660,7 +7660,7 @@
                     "typeString": "uint256"
                   },
                   "typeName": {
-                    "id": 1369,
+                    "id": 1382,
                     "name": "uint",
                     "nodeType": "ElementaryTypeName",
                     "src": "1081:4:4",
@@ -7674,7 +7674,7 @@
               ],
               "src": "1080:6:4"
             },
-            "scope": 1603,
+            "scope": 1616,
             "src": "1043:79:4",
             "stateMutability": "view",
             "virtual": false,
@@ -7682,32 +7682,32 @@
           },
           {
             "body": {
-              "id": 1383,
+              "id": 1396,
               "nodeType": "Block",
               "src": "1191:34:4",
               "statements": [
                 {
                   "expression": {
-                    "id": 1381,
+                    "id": 1394,
                     "name": "carreras",
                     "nodeType": "Identifier",
                     "overloadedDeclarations": [],
-                    "referencedDeclaration": 1277,
+                    "referencedDeclaration": 1290,
                     "src": "1209:8:4",
                     "typeDescriptions": {
                       "typeIdentifier": "t_array$_t_string_storage_$dyn_storage",
                       "typeString": "string storage ref[] storage ref"
                     }
                   },
-                  "functionReturnParameters": 1380,
-                  "id": 1382,
+                  "functionReturnParameters": 1393,
+                  "id": 1395,
                   "nodeType": "Return",
                   "src": "1202:15:4"
                 }
               ]
             },
             "functionSelector": "61a69587",
-            "id": 1384,
+            "id": 1397,
             "implemented": true,
             "kind": "function",
             "modifiers": [],
@@ -7715,23 +7715,23 @@
             "nameLocation": "1139:11:4",
             "nodeType": "FunctionDefinition",
             "parameters": {
-              "id": 1376,
+              "id": 1389,
               "nodeType": "ParameterList",
               "parameters": [],
               "src": "1150:2:4"
             },
             "returnParameters": {
-              "id": 1380,
+              "id": 1393,
               "nodeType": "ParameterList",
               "parameters": [
                 {
                   "constant": false,
-                  "id": 1379,
+                  "id": 1392,
                   "mutability": "mutable",
                   "name": "",
                   "nameLocation": "-1:-1:-1",
                   "nodeType": "VariableDeclaration",
-                  "scope": 1384,
+                  "scope": 1397,
                   "src": "1174:15:4",
                   "stateVariable": false,
                   "storageLocation": "memory",
@@ -7741,7 +7741,7 @@
                   },
                   "typeName": {
                     "baseType": {
-                      "id": 1377,
+                      "id": 1390,
                       "name": "string",
                       "nodeType": "ElementaryTypeName",
                       "src": "1174:6:4",
@@ -7750,7 +7750,7 @@
                         "typeString": "string"
                       }
                     },
-                    "id": 1378,
+                    "id": 1391,
                     "nodeType": "ArrayTypeName",
                     "src": "1174:8:4",
                     "typeDescriptions": {
@@ -7763,7 +7763,7 @@
               ],
               "src": "1173:17:4"
             },
-            "scope": 1603,
+            "scope": 1616,
             "src": "1130:95:4",
             "stateMutability": "view",
             "virtual": false,
@@ -7771,32 +7771,32 @@
           },
           {
             "body": {
-              "id": 1392,
+              "id": 1405,
               "nodeType": "Block",
               "src": "1296:36:4",
               "statements": [
                 {
                   "expression": {
-                    "id": 1390,
+                    "id": 1403,
                     "name": "facultades",
                     "nodeType": "Identifier",
                     "overloadedDeclarations": [],
-                    "referencedDeclaration": 1280,
+                    "referencedDeclaration": 1293,
                     "src": "1314:10:4",
                     "typeDescriptions": {
                       "typeIdentifier": "t_array$_t_string_storage_$dyn_storage",
                       "typeString": "string storage ref[] storage ref"
                     }
                   },
-                  "functionReturnParameters": 1389,
-                  "id": 1391,
+                  "functionReturnParameters": 1402,
+                  "id": 1404,
                   "nodeType": "Return",
                   "src": "1307:17:4"
                 }
               ]
             },
             "functionSelector": "4a51ede3",
-            "id": 1393,
+            "id": 1406,
             "implemented": true,
             "kind": "function",
             "modifiers": [],
@@ -7804,23 +7804,23 @@
             "nameLocation": "1242:13:4",
             "nodeType": "FunctionDefinition",
             "parameters": {
-              "id": 1385,
+              "id": 1398,
               "nodeType": "ParameterList",
               "parameters": [],
               "src": "1255:2:4"
             },
             "returnParameters": {
-              "id": 1389,
+              "id": 1402,
               "nodeType": "ParameterList",
               "parameters": [
                 {
                   "constant": false,
-                  "id": 1388,
+                  "id": 1401,
                   "mutability": "mutable",
                   "name": "",
                   "nameLocation": "-1:-1:-1",
                   "nodeType": "VariableDeclaration",
-                  "scope": 1393,
+                  "scope": 1406,
                   "src": "1279:15:4",
                   "stateVariable": false,
                   "storageLocation": "memory",
@@ -7830,7 +7830,7 @@
                   },
                   "typeName": {
                     "baseType": {
-                      "id": 1386,
+                      "id": 1399,
                       "name": "string",
                       "nodeType": "ElementaryTypeName",
                       "src": "1279:6:4",
@@ -7839,7 +7839,7 @@
                         "typeString": "string"
                       }
                     },
-                    "id": 1387,
+                    "id": 1400,
                     "nodeType": "ArrayTypeName",
                     "src": "1279:8:4",
                     "typeDescriptions": {
@@ -7852,7 +7852,7 @@
               ],
               "src": "1278:17:4"
             },
-            "scope": 1603,
+            "scope": 1616,
             "src": "1233:99:4",
             "stateMutability": "view",
             "virtual": false,
@@ -7860,7 +7860,7 @@
           },
           {
             "body": {
-              "id": 1427,
+              "id": 1440,
               "nodeType": "Block",
               "src": "1387:265:4",
               "statements": [
@@ -7870,7 +7870,7 @@
                       "typeIdentifier": "t_bool",
                       "typeString": "bool"
                     },
-                    "id": 1420,
+                    "id": 1433,
                     "isConstant": false,
                     "isLValue": false,
                     "isPure": false,
@@ -7880,7 +7880,7 @@
                         "typeIdentifier": "t_bool",
                         "typeString": "bool"
                       },
-                      "id": 1416,
+                      "id": 1429,
                       "isConstant": false,
                       "isLValue": false,
                       "isPure": false,
@@ -7890,7 +7890,7 @@
                           "typeIdentifier": "t_bool",
                           "typeString": "bool"
                         },
-                        "id": 1412,
+                        "id": 1425,
                         "isConstant": false,
                         "isLValue": false,
                         "isPure": false,
@@ -7900,7 +7900,7 @@
                             "typeIdentifier": "t_bool",
                             "typeString": "bool"
                           },
-                          "id": 1408,
+                          "id": 1421,
                           "isConstant": false,
                           "isLValue": false,
                           "isPure": false,
@@ -7910,13 +7910,13 @@
                               "typeIdentifier": "t_bool",
                               "typeString": "bool"
                             },
-                            "id": 1404,
+                            "id": 1417,
                             "isConstant": false,
                             "isLValue": false,
                             "isPure": false,
                             "lValueRequested": false,
                             "leftExpression": {
-                              "id": 1400,
+                              "id": 1413,
                               "isConstant": false,
                               "isLValue": false,
                               "isPure": false,
@@ -7929,18 +7929,18 @@
                                 "arguments": [],
                                 "expression": {
                                   "argumentTypes": [],
-                                  "id": 1398,
+                                  "id": 1411,
                                   "name": "getVotedCentroEstudiantes",
                                   "nodeType": "Identifier",
                                   "overloadedDeclarations": [],
-                                  "referencedDeclaration": 1460,
+                                  "referencedDeclaration": 1473,
                                   "src": "1403:25:4",
                                   "typeDescriptions": {
                                     "typeIdentifier": "t_function_internal_view$__$returns$_t_bool_$",
                                     "typeString": "function () view returns (bool)"
                                   }
                                 },
-                                "id": 1399,
+                                "id": 1412,
                                 "isConstant": false,
                                 "isLValue": false,
                                 "isPure": false,
@@ -7964,7 +7964,7 @@
                             "nodeType": "BinaryOperation",
                             "operator": "||",
                             "rightExpression": {
-                              "id": 1403,
+                              "id": 1416,
                               "isConstant": false,
                               "isLValue": false,
                               "isPure": false,
@@ -7977,18 +7977,18 @@
                                 "arguments": [],
                                 "expression": {
                                   "argumentTypes": [],
-                                  "id": 1401,
+                                  "id": 1414,
                                   "name": "getVotedConsejoFacultad",
                                   "nodeType": "Identifier",
                                   "overloadedDeclarations": [],
-                                  "referencedDeclaration": 1476,
+                                  "referencedDeclaration": 1489,
                                   "src": "1435:23:4",
                                   "typeDescriptions": {
                                     "typeIdentifier": "t_function_internal_view$__$returns$_t_bool_$",
                                     "typeString": "function () view returns (bool)"
                                   }
                                 },
-                                "id": 1402,
+                                "id": 1415,
                                 "isConstant": false,
                                 "isLValue": false,
                                 "isPure": false,
@@ -8018,7 +8018,7 @@
                           "nodeType": "BinaryOperation",
                           "operator": "||",
                           "rightExpression": {
-                            "id": 1407,
+                            "id": 1420,
                             "isConstant": false,
                             "isLValue": false,
                             "isPure": false,
@@ -8031,18 +8031,18 @@
                               "arguments": [],
                               "expression": {
                                 "argumentTypes": [],
-                                "id": 1405,
+                                "id": 1418,
                                 "name": "getVotedConsejoEscuela",
                                 "nodeType": "Identifier",
                                 "overloadedDeclarations": [],
-                                "referencedDeclaration": 1468,
+                                "referencedDeclaration": 1481,
                                 "src": "1465:22:4",
                                 "typeDescriptions": {
                                   "typeIdentifier": "t_function_internal_view$__$returns$_t_bool_$",
                                   "typeString": "function () view returns (bool)"
                                 }
                               },
-                              "id": 1406,
+                              "id": 1419,
                               "isConstant": false,
                               "isLValue": false,
                               "isPure": false,
@@ -8072,7 +8072,7 @@
                         "nodeType": "BinaryOperation",
                         "operator": "||",
                         "rightExpression": {
-                          "id": 1411,
+                          "id": 1424,
                           "isConstant": false,
                           "isLValue": false,
                           "isPure": false,
@@ -8085,18 +8085,18 @@
                             "arguments": [],
                             "expression": {
                               "argumentTypes": [],
-                              "id": 1409,
+                              "id": 1422,
                               "name": "getVotedCoordinacionFCE",
                               "nodeType": "Identifier",
                               "overloadedDeclarations": [],
-                              "referencedDeclaration": 1452,
+                              "referencedDeclaration": 1465,
                               "src": "1494:23:4",
                               "typeDescriptions": {
                                 "typeIdentifier": "t_function_internal_view$__$returns$_t_bool_$",
                                 "typeString": "function () view returns (bool)"
                               }
                             },
-                            "id": 1410,
+                            "id": 1423,
                             "isConstant": false,
                             "isLValue": false,
                             "isPure": false,
@@ -8126,7 +8126,7 @@
                       "nodeType": "BinaryOperation",
                       "operator": "||",
                       "rightExpression": {
-                        "id": 1415,
+                        "id": 1428,
                         "isConstant": false,
                         "isLValue": false,
                         "isPure": false,
@@ -8139,18 +8139,18 @@
                           "arguments": [],
                           "expression": {
                             "argumentTypes": [],
-                            "id": 1413,
+                            "id": 1426,
                             "name": "getVotedJuntaDirectivaFCE",
                             "nodeType": "Identifier",
                             "overloadedDeclarations": [],
-                            "referencedDeclaration": 1444,
+                            "referencedDeclaration": 1457,
                             "src": "1524:25:4",
                             "typeDescriptions": {
                               "typeIdentifier": "t_function_internal_view$__$returns$_t_bool_$",
                               "typeString": "function () view returns (bool)"
                             }
                           },
-                          "id": 1414,
+                          "id": 1427,
                           "isConstant": false,
                           "isLValue": false,
                           "isPure": false,
@@ -8180,7 +8180,7 @@
                     "nodeType": "BinaryOperation",
                     "operator": "||",
                     "rightExpression": {
-                      "id": 1419,
+                      "id": 1432,
                       "isConstant": false,
                       "isLValue": false,
                       "isPure": false,
@@ -8193,18 +8193,18 @@
                         "arguments": [],
                         "expression": {
                           "argumentTypes": [],
-                          "id": 1417,
+                          "id": 1430,
                           "name": "getVotedConsejoAcademico",
                           "nodeType": "Identifier",
                           "overloadedDeclarations": [],
-                          "referencedDeclaration": 1436,
+                          "referencedDeclaration": 1449,
                           "src": "1556:24:4",
                           "typeDescriptions": {
                             "typeIdentifier": "t_function_internal_view$__$returns$_t_bool_$",
                             "typeString": "function () view returns (bool)"
                           }
                         },
-                        "id": 1418,
+                        "id": 1431,
                         "isConstant": false,
                         "isLValue": false,
                         "isPure": false,
@@ -8231,18 +8231,18 @@
                       "typeString": "bool"
                     }
                   },
-                  "id": 1424,
+                  "id": 1437,
                   "nodeType": "IfStatement",
                   "src": "1398:225:4",
                   "trueBody": {
-                    "id": 1423,
+                    "id": 1436,
                     "nodeType": "Block",
                     "src": "1584:39:4",
                     "statements": [
                       {
                         "expression": {
                           "hexValue": "66616c7365",
-                          "id": 1421,
+                          "id": 1434,
                           "isConstant": false,
                           "isLValue": false,
                           "isPure": true,
@@ -8256,8 +8256,8 @@
                           },
                           "value": "false"
                         },
-                        "functionReturnParameters": 1397,
-                        "id": 1422,
+                        "functionReturnParameters": 1410,
+                        "id": 1435,
                         "nodeType": "Return",
                         "src": "1599:12:4"
                       }
@@ -8267,7 +8267,7 @@
                 {
                   "expression": {
                     "hexValue": "74727565",
-                    "id": 1425,
+                    "id": 1438,
                     "isConstant": false,
                     "isLValue": false,
                     "isPure": true,
@@ -8281,15 +8281,15 @@
                     },
                     "value": "true"
                   },
-                  "functionReturnParameters": 1397,
-                  "id": 1426,
+                  "functionReturnParameters": 1410,
+                  "id": 1439,
                   "nodeType": "Return",
                   "src": "1633:11:4"
                 }
               ]
             },
             "functionSelector": "a69799fc",
-            "id": 1428,
+            "id": 1441,
             "implemented": true,
             "kind": "function",
             "modifiers": [],
@@ -8297,23 +8297,23 @@
             "nameLocation": "1349:8:4",
             "nodeType": "FunctionDefinition",
             "parameters": {
-              "id": 1394,
+              "id": 1407,
               "nodeType": "ParameterList",
               "parameters": [],
               "src": "1357:2:4"
             },
             "returnParameters": {
-              "id": 1397,
+              "id": 1410,
               "nodeType": "ParameterList",
               "parameters": [
                 {
                   "constant": false,
-                  "id": 1396,
+                  "id": 1409,
                   "mutability": "mutable",
                   "name": "",
                   "nameLocation": "-1:-1:-1",
                   "nodeType": "VariableDeclaration",
-                  "scope": 1428,
+                  "scope": 1441,
                   "src": "1381:4:4",
                   "stateVariable": false,
                   "storageLocation": "default",
@@ -8322,7 +8322,7 @@
                     "typeString": "bool"
                   },
                   "typeName": {
-                    "id": 1395,
+                    "id": 1408,
                     "name": "bool",
                     "nodeType": "ElementaryTypeName",
                     "src": "1381:4:4",
@@ -8336,7 +8336,7 @@
               ],
               "src": "1380:6:4"
             },
-            "scope": 1603,
+            "scope": 1616,
             "src": "1340:312:4",
             "stateMutability": "view",
             "virtual": false,
@@ -8344,32 +8344,32 @@
           },
           {
             "body": {
-              "id": 1435,
+              "id": 1448,
               "nodeType": "Block",
               "src": "1723:47:4",
               "statements": [
                 {
                   "expression": {
-                    "id": 1433,
+                    "id": 1446,
                     "name": "votedConsejoAcademico",
                     "nodeType": "Identifier",
                     "overloadedDeclarations": [],
-                    "referencedDeclaration": 1284,
+                    "referencedDeclaration": 1297,
                     "src": "1741:21:4",
                     "typeDescriptions": {
                       "typeIdentifier": "t_bool",
                       "typeString": "bool"
                     }
                   },
-                  "functionReturnParameters": 1432,
-                  "id": 1434,
+                  "functionReturnParameters": 1445,
+                  "id": 1447,
                   "nodeType": "Return",
                   "src": "1734:28:4"
                 }
               ]
             },
             "functionSelector": "f79f2110",
-            "id": 1436,
+            "id": 1449,
             "implemented": true,
             "kind": "function",
             "modifiers": [],
@@ -8377,23 +8377,23 @@
             "nameLocation": "1669:24:4",
             "nodeType": "FunctionDefinition",
             "parameters": {
-              "id": 1429,
+              "id": 1442,
               "nodeType": "ParameterList",
               "parameters": [],
               "src": "1693:2:4"
             },
             "returnParameters": {
-              "id": 1432,
+              "id": 1445,
               "nodeType": "ParameterList",
               "parameters": [
                 {
                   "constant": false,
-                  "id": 1431,
+                  "id": 1444,
                   "mutability": "mutable",
                   "name": "",
                   "nameLocation": "-1:-1:-1",
                   "nodeType": "VariableDeclaration",
-                  "scope": 1436,
+                  "scope": 1449,
                   "src": "1717:4:4",
                   "stateVariable": false,
                   "storageLocation": "default",
@@ -8402,7 +8402,7 @@
                     "typeString": "bool"
                   },
                   "typeName": {
-                    "id": 1430,
+                    "id": 1443,
                     "name": "bool",
                     "nodeType": "ElementaryTypeName",
                     "src": "1717:4:4",
@@ -8416,7 +8416,7 @@
               ],
               "src": "1716:6:4"
             },
-            "scope": 1603,
+            "scope": 1616,
             "src": "1660:110:4",
             "stateMutability": "view",
             "virtual": false,
@@ -8424,32 +8424,32 @@
           },
           {
             "body": {
-              "id": 1443,
+              "id": 1456,
               "nodeType": "Block",
               "src": "1842:48:4",
               "statements": [
                 {
                   "expression": {
-                    "id": 1441,
+                    "id": 1454,
                     "name": "votedJuntaDirectivaFCE",
                     "nodeType": "Identifier",
                     "overloadedDeclarations": [],
-                    "referencedDeclaration": 1286,
+                    "referencedDeclaration": 1299,
                     "src": "1860:22:4",
                     "typeDescriptions": {
                       "typeIdentifier": "t_bool",
                       "typeString": "bool"
                     }
                   },
-                  "functionReturnParameters": 1440,
-                  "id": 1442,
+                  "functionReturnParameters": 1453,
+                  "id": 1455,
                   "nodeType": "Return",
                   "src": "1853:29:4"
                 }
               ]
             },
             "functionSelector": "44cd1b21",
-            "id": 1444,
+            "id": 1457,
             "implemented": true,
             "kind": "function",
             "modifiers": [],
@@ -8457,23 +8457,23 @@
             "nameLocation": "1787:25:4",
             "nodeType": "FunctionDefinition",
             "parameters": {
-              "id": 1437,
+              "id": 1450,
               "nodeType": "ParameterList",
               "parameters": [],
               "src": "1812:2:4"
             },
             "returnParameters": {
-              "id": 1440,
+              "id": 1453,
               "nodeType": "ParameterList",
               "parameters": [
                 {
                   "constant": false,
-                  "id": 1439,
+                  "id": 1452,
                   "mutability": "mutable",
                   "name": "",
                   "nameLocation": "-1:-1:-1",
                   "nodeType": "VariableDeclaration",
-                  "scope": 1444,
+                  "scope": 1457,
                   "src": "1836:4:4",
                   "stateVariable": false,
                   "storageLocation": "default",
@@ -8482,7 +8482,7 @@
                     "typeString": "bool"
                   },
                   "typeName": {
-                    "id": 1438,
+                    "id": 1451,
                     "name": "bool",
                     "nodeType": "ElementaryTypeName",
                     "src": "1836:4:4",
@@ -8496,7 +8496,7 @@
               ],
               "src": "1835:6:4"
             },
-            "scope": 1603,
+            "scope": 1616,
             "src": "1778:112:4",
             "stateMutability": "view",
             "virtual": false,
@@ -8504,32 +8504,32 @@
           },
           {
             "body": {
-              "id": 1451,
+              "id": 1464,
               "nodeType": "Block",
               "src": "1960:46:4",
               "statements": [
                 {
                   "expression": {
-                    "id": 1449,
+                    "id": 1462,
                     "name": "votedCoordinacionFCE",
                     "nodeType": "Identifier",
                     "overloadedDeclarations": [],
-                    "referencedDeclaration": 1288,
+                    "referencedDeclaration": 1301,
                     "src": "1978:20:4",
                     "typeDescriptions": {
                       "typeIdentifier": "t_bool",
                       "typeString": "bool"
                     }
                   },
-                  "functionReturnParameters": 1448,
-                  "id": 1450,
+                  "functionReturnParameters": 1461,
+                  "id": 1463,
                   "nodeType": "Return",
                   "src": "1971:27:4"
                 }
               ]
             },
             "functionSelector": "2b4af7a3",
-            "id": 1452,
+            "id": 1465,
             "implemented": true,
             "kind": "function",
             "modifiers": [],
@@ -8537,23 +8537,23 @@
             "nameLocation": "1907:23:4",
             "nodeType": "FunctionDefinition",
             "parameters": {
-              "id": 1445,
+              "id": 1458,
               "nodeType": "ParameterList",
               "parameters": [],
               "src": "1930:2:4"
             },
             "returnParameters": {
-              "id": 1448,
+              "id": 1461,
               "nodeType": "ParameterList",
               "parameters": [
                 {
                   "constant": false,
-                  "id": 1447,
+                  "id": 1460,
                   "mutability": "mutable",
                   "name": "",
                   "nameLocation": "-1:-1:-1",
                   "nodeType": "VariableDeclaration",
-                  "scope": 1452,
+                  "scope": 1465,
                   "src": "1954:4:4",
                   "stateVariable": false,
                   "storageLocation": "default",
@@ -8562,7 +8562,7 @@
                     "typeString": "bool"
                   },
                   "typeName": {
-                    "id": 1446,
+                    "id": 1459,
                     "name": "bool",
                     "nodeType": "ElementaryTypeName",
                     "src": "1954:4:4",
@@ -8576,7 +8576,7 @@
               ],
               "src": "1953:6:4"
             },
-            "scope": 1603,
+            "scope": 1616,
             "src": "1898:108:4",
             "stateMutability": "view",
             "virtual": false,
@@ -8584,32 +8584,32 @@
           },
           {
             "body": {
-              "id": 1459,
+              "id": 1472,
               "nodeType": "Block",
               "src": "2078:48:4",
               "statements": [
                 {
                   "expression": {
-                    "id": 1457,
+                    "id": 1470,
                     "name": "votedCentroEstudiantes",
                     "nodeType": "Identifier",
                     "overloadedDeclarations": [],
-                    "referencedDeclaration": 1290,
+                    "referencedDeclaration": 1303,
                     "src": "2096:22:4",
                     "typeDescriptions": {
                       "typeIdentifier": "t_bool",
                       "typeString": "bool"
                     }
                   },
-                  "functionReturnParameters": 1456,
-                  "id": 1458,
+                  "functionReturnParameters": 1469,
+                  "id": 1471,
                   "nodeType": "Return",
                   "src": "2089:29:4"
                 }
               ]
             },
             "functionSelector": "476abce6",
-            "id": 1460,
+            "id": 1473,
             "implemented": true,
             "kind": "function",
             "modifiers": [],
@@ -8617,23 +8617,23 @@
             "nameLocation": "2023:25:4",
             "nodeType": "FunctionDefinition",
             "parameters": {
-              "id": 1453,
+              "id": 1466,
               "nodeType": "ParameterList",
               "parameters": [],
               "src": "2048:2:4"
             },
             "returnParameters": {
-              "id": 1456,
+              "id": 1469,
               "nodeType": "ParameterList",
               "parameters": [
                 {
                   "constant": false,
-                  "id": 1455,
+                  "id": 1468,
                   "mutability": "mutable",
                   "name": "",
                   "nameLocation": "-1:-1:-1",
                   "nodeType": "VariableDeclaration",
-                  "scope": 1460,
+                  "scope": 1473,
                   "src": "2072:4:4",
                   "stateVariable": false,
                   "storageLocation": "default",
@@ -8642,7 +8642,7 @@
                     "typeString": "bool"
                   },
                   "typeName": {
-                    "id": 1454,
+                    "id": 1467,
                     "name": "bool",
                     "nodeType": "ElementaryTypeName",
                     "src": "2072:4:4",
@@ -8656,7 +8656,7 @@
               ],
               "src": "2071:6:4"
             },
-            "scope": 1603,
+            "scope": 1616,
             "src": "2014:112:4",
             "stateMutability": "view",
             "virtual": false,
@@ -8664,32 +8664,32 @@
           },
           {
             "body": {
-              "id": 1467,
+              "id": 1480,
               "nodeType": "Block",
               "src": "2195:45:4",
               "statements": [
                 {
                   "expression": {
-                    "id": 1465,
+                    "id": 1478,
                     "name": "votedConsejoEscuela",
                     "nodeType": "Identifier",
                     "overloadedDeclarations": [],
-                    "referencedDeclaration": 1292,
+                    "referencedDeclaration": 1305,
                     "src": "2213:19:4",
                     "typeDescriptions": {
                       "typeIdentifier": "t_bool",
                       "typeString": "bool"
                     }
                   },
-                  "functionReturnParameters": 1464,
-                  "id": 1466,
+                  "functionReturnParameters": 1477,
+                  "id": 1479,
                   "nodeType": "Return",
                   "src": "2206:26:4"
                 }
               ]
             },
             "functionSelector": "64debb8f",
-            "id": 1468,
+            "id": 1481,
             "implemented": true,
             "kind": "function",
             "modifiers": [],
@@ -8697,23 +8697,23 @@
             "nameLocation": "2143:22:4",
             "nodeType": "FunctionDefinition",
             "parameters": {
-              "id": 1461,
+              "id": 1474,
               "nodeType": "ParameterList",
               "parameters": [],
               "src": "2165:2:4"
             },
             "returnParameters": {
-              "id": 1464,
+              "id": 1477,
               "nodeType": "ParameterList",
               "parameters": [
                 {
                   "constant": false,
-                  "id": 1463,
+                  "id": 1476,
                   "mutability": "mutable",
                   "name": "",
                   "nameLocation": "-1:-1:-1",
                   "nodeType": "VariableDeclaration",
-                  "scope": 1468,
+                  "scope": 1481,
                   "src": "2189:4:4",
                   "stateVariable": false,
                   "storageLocation": "default",
@@ -8722,7 +8722,7 @@
                     "typeString": "bool"
                   },
                   "typeName": {
-                    "id": 1462,
+                    "id": 1475,
                     "name": "bool",
                     "nodeType": "ElementaryTypeName",
                     "src": "2189:4:4",
@@ -8736,7 +8736,7 @@
               ],
               "src": "2188:6:4"
             },
-            "scope": 1603,
+            "scope": 1616,
             "src": "2134:106:4",
             "stateMutability": "view",
             "virtual": false,
@@ -8744,32 +8744,32 @@
           },
           {
             "body": {
-              "id": 1475,
+              "id": 1488,
               "nodeType": "Block",
               "src": "2310:46:4",
               "statements": [
                 {
                   "expression": {
-                    "id": 1473,
+                    "id": 1486,
                     "name": "votedConsejoFacultad",
                     "nodeType": "Identifier",
                     "overloadedDeclarations": [],
-                    "referencedDeclaration": 1294,
+                    "referencedDeclaration": 1307,
                     "src": "2328:20:4",
                     "typeDescriptions": {
                       "typeIdentifier": "t_bool",
                       "typeString": "bool"
                     }
                   },
-                  "functionReturnParameters": 1472,
-                  "id": 1474,
+                  "functionReturnParameters": 1485,
+                  "id": 1487,
                   "nodeType": "Return",
                   "src": "2321:27:4"
                 }
               ]
             },
             "functionSelector": "5ac952f2",
-            "id": 1476,
+            "id": 1489,
             "implemented": true,
             "kind": "function",
             "modifiers": [],
@@ -8777,23 +8777,23 @@
             "nameLocation": "2257:23:4",
             "nodeType": "FunctionDefinition",
             "parameters": {
-              "id": 1469,
+              "id": 1482,
               "nodeType": "ParameterList",
               "parameters": [],
               "src": "2280:2:4"
             },
             "returnParameters": {
-              "id": 1472,
+              "id": 1485,
               "nodeType": "ParameterList",
               "parameters": [
                 {
                   "constant": false,
-                  "id": 1471,
+                  "id": 1484,
                   "mutability": "mutable",
                   "name": "",
                   "nameLocation": "-1:-1:-1",
                   "nodeType": "VariableDeclaration",
-                  "scope": 1476,
+                  "scope": 1489,
                   "src": "2304:4:4",
                   "stateVariable": false,
                   "storageLocation": "default",
@@ -8802,7 +8802,7 @@
                     "typeString": "bool"
                   },
                   "typeName": {
-                    "id": 1470,
+                    "id": 1483,
                     "name": "bool",
                     "nodeType": "ElementaryTypeName",
                     "src": "2304:4:4",
@@ -8816,7 +8816,7 @@
               ],
               "src": "2303:6:4"
             },
-            "scope": 1603,
+            "scope": 1616,
             "src": "2248:108:4",
             "stateMutability": "view",
             "virtual": false,
@@ -8824,32 +8824,32 @@
           },
           {
             "body": {
-              "id": 1483,
+              "id": 1496,
               "nodeType": "Block",
               "src": "2426:46:4",
               "statements": [
                 {
                   "expression": {
-                    "id": 1481,
+                    "id": 1494,
                     "name": "numeroVotosCentroEst",
                     "nodeType": "Identifier",
                     "overloadedDeclarations": [],
-                    "referencedDeclaration": 1296,
+                    "referencedDeclaration": 1309,
                     "src": "2444:20:4",
                     "typeDescriptions": {
                       "typeIdentifier": "t_uint256",
                       "typeString": "uint256"
                     }
                   },
-                  "functionReturnParameters": 1480,
-                  "id": 1482,
+                  "functionReturnParameters": 1493,
+                  "id": 1495,
                   "nodeType": "Return",
                   "src": "2437:27:4"
                 }
               ]
             },
             "functionSelector": "91b14753",
-            "id": 1484,
+            "id": 1497,
             "implemented": true,
             "kind": "function",
             "modifiers": [],
@@ -8857,23 +8857,23 @@
             "nameLocation": "2373:23:4",
             "nodeType": "FunctionDefinition",
             "parameters": {
-              "id": 1477,
+              "id": 1490,
               "nodeType": "ParameterList",
               "parameters": [],
               "src": "2396:2:4"
             },
             "returnParameters": {
-              "id": 1480,
+              "id": 1493,
               "nodeType": "ParameterList",
               "parameters": [
                 {
                   "constant": false,
-                  "id": 1479,
+                  "id": 1492,
                   "mutability": "mutable",
                   "name": "",
                   "nameLocation": "-1:-1:-1",
                   "nodeType": "VariableDeclaration",
-                  "scope": 1484,
+                  "scope": 1497,
                   "src": "2420:4:4",
                   "stateVariable": false,
                   "storageLocation": "default",
@@ -8882,7 +8882,7 @@
                     "typeString": "uint256"
                   },
                   "typeName": {
-                    "id": 1478,
+                    "id": 1491,
                     "name": "uint",
                     "nodeType": "ElementaryTypeName",
                     "src": "2420:4:4",
@@ -8896,7 +8896,7 @@
               ],
               "src": "2419:6:4"
             },
-            "scope": 1603,
+            "scope": 1616,
             "src": "2364:108:4",
             "stateMutability": "view",
             "virtual": false,
@@ -8904,32 +8904,32 @@
           },
           {
             "body": {
-              "id": 1491,
+              "id": 1504,
               "nodeType": "Block",
               "src": "2535:39:4",
               "statements": [
                 {
                   "expression": {
-                    "id": 1489,
+                    "id": 1502,
                     "name": "numeroVotosCF",
                     "nodeType": "Identifier",
                     "overloadedDeclarations": [],
-                    "referencedDeclaration": 1298,
+                    "referencedDeclaration": 1311,
                     "src": "2553:13:4",
                     "typeDescriptions": {
                       "typeIdentifier": "t_uint256",
                       "typeString": "uint256"
                     }
                   },
-                  "functionReturnParameters": 1488,
-                  "id": 1490,
+                  "functionReturnParameters": 1501,
+                  "id": 1503,
                   "nodeType": "Return",
                   "src": "2546:20:4"
                 }
               ]
             },
             "functionSelector": "bcd75c53",
-            "id": 1492,
+            "id": 1505,
             "implemented": true,
             "kind": "function",
             "modifiers": [],
@@ -8937,23 +8937,23 @@
             "nameLocation": "2489:16:4",
             "nodeType": "FunctionDefinition",
             "parameters": {
-              "id": 1485,
+              "id": 1498,
               "nodeType": "ParameterList",
               "parameters": [],
               "src": "2505:2:4"
             },
             "returnParameters": {
-              "id": 1488,
+              "id": 1501,
               "nodeType": "ParameterList",
               "parameters": [
                 {
                   "constant": false,
-                  "id": 1487,
+                  "id": 1500,
                   "mutability": "mutable",
                   "name": "",
                   "nameLocation": "-1:-1:-1",
                   "nodeType": "VariableDeclaration",
-                  "scope": 1492,
+                  "scope": 1505,
                   "src": "2529:4:4",
                   "stateVariable": false,
                   "storageLocation": "default",
@@ -8962,7 +8962,7 @@
                     "typeString": "uint256"
                   },
                   "typeName": {
-                    "id": 1486,
+                    "id": 1499,
                     "name": "uint",
                     "nodeType": "ElementaryTypeName",
                     "src": "2529:4:4",
@@ -8976,7 +8976,7 @@
               ],
               "src": "2528:6:4"
             },
-            "scope": 1603,
+            "scope": 1616,
             "src": "2480:94:4",
             "stateMutability": "view",
             "virtual": false,
@@ -8984,32 +8984,32 @@
           },
           {
             "body": {
-              "id": 1499,
+              "id": 1512,
               "nodeType": "Block",
               "src": "2637:39:4",
               "statements": [
                 {
                   "expression": {
-                    "id": 1497,
+                    "id": 1510,
                     "name": "numeroVotosCE",
                     "nodeType": "Identifier",
                     "overloadedDeclarations": [],
-                    "referencedDeclaration": 1300,
+                    "referencedDeclaration": 1313,
                     "src": "2655:13:4",
                     "typeDescriptions": {
                       "typeIdentifier": "t_uint256",
                       "typeString": "uint256"
                     }
                   },
-                  "functionReturnParameters": 1496,
-                  "id": 1498,
+                  "functionReturnParameters": 1509,
+                  "id": 1511,
                   "nodeType": "Return",
                   "src": "2648:20:4"
                 }
               ]
             },
             "functionSelector": "ec58caf8",
-            "id": 1500,
+            "id": 1513,
             "implemented": true,
             "kind": "function",
             "modifiers": [],
@@ -9017,23 +9017,23 @@
             "nameLocation": "2591:16:4",
             "nodeType": "FunctionDefinition",
             "parameters": {
-              "id": 1493,
+              "id": 1506,
               "nodeType": "ParameterList",
               "parameters": [],
               "src": "2607:2:4"
             },
             "returnParameters": {
-              "id": 1496,
+              "id": 1509,
               "nodeType": "ParameterList",
               "parameters": [
                 {
                   "constant": false,
-                  "id": 1495,
+                  "id": 1508,
                   "mutability": "mutable",
                   "name": "",
                   "nameLocation": "-1:-1:-1",
                   "nodeType": "VariableDeclaration",
-                  "scope": 1500,
+                  "scope": 1513,
                   "src": "2631:4:4",
                   "stateVariable": false,
                   "storageLocation": "default",
@@ -9042,7 +9042,7 @@
                     "typeString": "uint256"
                   },
                   "typeName": {
-                    "id": 1494,
+                    "id": 1507,
                     "name": "uint",
                     "nodeType": "ElementaryTypeName",
                     "src": "2631:4:4",
@@ -9056,7 +9056,7 @@
               ],
               "src": "2630:6:4"
             },
-            "scope": 1603,
+            "scope": 1616,
             "src": "2582:94:4",
             "stateMutability": "view",
             "virtual": false,
@@ -9064,162 +9064,9 @@
           },
           {
             "body": {
-              "id": 1512,
-              "nodeType": "Block",
-              "src": "2724:89:4",
-              "statements": [
-                {
-                  "expression": {
-                    "arguments": [
-                      {
-                        "id": 1505,
-                        "isConstant": false,
-                        "isLValue": false,
-                        "isPure": false,
-                        "lValueRequested": false,
-                        "nodeType": "UnaryOperation",
-                        "operator": "!",
-                        "prefix": true,
-                        "src": "2743:22:4",
-                        "subExpression": {
-                          "id": 1504,
-                          "name": "votedConsejoAcademico",
-                          "nodeType": "Identifier",
-                          "overloadedDeclarations": [],
-                          "referencedDeclaration": 1284,
-                          "src": "2744:21:4",
-                          "typeDescriptions": {
-                            "typeIdentifier": "t_bool",
-                            "typeString": "bool"
-                          }
-                        },
-                        "typeDescriptions": {
-                          "typeIdentifier": "t_bool",
-                          "typeString": "bool"
-                        }
-                      }
-                    ],
-                    "expression": {
-                      "argumentTypes": [
-                        {
-                          "typeIdentifier": "t_bool",
-                          "typeString": "bool"
-                        }
-                      ],
-                      "id": 1503,
-                      "name": "require",
-                      "nodeType": "Identifier",
-                      "overloadedDeclarations": [
-                        4294967278,
-                        4294967278
-                      ],
-                      "referencedDeclaration": 4294967278,
-                      "src": "2735:7:4",
-                      "typeDescriptions": {
-                        "typeIdentifier": "t_function_require_pure$_t_bool_$returns$__$",
-                        "typeString": "function (bool) pure"
-                      }
-                    },
-                    "id": 1506,
-                    "isConstant": false,
-                    "isLValue": false,
-                    "isPure": false,
-                    "kind": "functionCall",
-                    "lValueRequested": false,
-                    "nameLocations": [],
-                    "names": [],
-                    "nodeType": "FunctionCall",
-                    "src": "2735:31:4",
-                    "tryCall": false,
-                    "typeDescriptions": {
-                      "typeIdentifier": "t_tuple$__$",
-                      "typeString": "tuple()"
-                    }
-                  },
-                  "id": 1507,
-                  "nodeType": "ExpressionStatement",
-                  "src": "2735:31:4"
-                },
-                {
-                  "expression": {
-                    "id": 1510,
-                    "isConstant": false,
-                    "isLValue": false,
-                    "isPure": false,
-                    "lValueRequested": false,
-                    "leftHandSide": {
-                      "id": 1508,
-                      "name": "votedConsejoAcademico",
-                      "nodeType": "Identifier",
-                      "overloadedDeclarations": [],
-                      "referencedDeclaration": 1284,
-                      "src": "2777:21:4",
-                      "typeDescriptions": {
-                        "typeIdentifier": "t_bool",
-                        "typeString": "bool"
-                      }
-                    },
-                    "nodeType": "Assignment",
-                    "operator": "=",
-                    "rightHandSide": {
-                      "hexValue": "74727565",
-                      "id": 1509,
-                      "isConstant": false,
-                      "isLValue": false,
-                      "isPure": true,
-                      "kind": "bool",
-                      "lValueRequested": false,
-                      "nodeType": "Literal",
-                      "src": "2801:4:4",
-                      "typeDescriptions": {
-                        "typeIdentifier": "t_bool",
-                        "typeString": "bool"
-                      },
-                      "value": "true"
-                    },
-                    "src": "2777:28:4",
-                    "typeDescriptions": {
-                      "typeIdentifier": "t_bool",
-                      "typeString": "bool"
-                    }
-                  },
-                  "id": 1511,
-                  "nodeType": "ExpressionStatement",
-                  "src": "2777:28:4"
-                }
-              ]
-            },
-            "functionSelector": "97e8cff9",
-            "id": 1513,
-            "implemented": true,
-            "kind": "function",
-            "modifiers": [],
-            "name": "votarConsejoAcademico",
-            "nameLocation": "2693:21:4",
-            "nodeType": "FunctionDefinition",
-            "parameters": {
-              "id": 1501,
-              "nodeType": "ParameterList",
-              "parameters": [],
-              "src": "2714:2:4"
-            },
-            "returnParameters": {
-              "id": 1502,
-              "nodeType": "ParameterList",
-              "parameters": [],
-              "src": "2724:0:4"
-            },
-            "scope": 1603,
-            "src": "2684:129:4",
-            "stateMutability": "nonpayable",
-            "virtual": false,
-            "visibility": "public"
-          },
-          {
-            "body": {
               "id": 1525,
               "nodeType": "Block",
-              "src": "2862:91:4",
+              "src": "2724:89:4",
               "statements": [
                 {
                   "expression": {
@@ -9233,14 +9080,14 @@
                         "nodeType": "UnaryOperation",
                         "operator": "!",
                         "prefix": true,
-                        "src": "2881:23:4",
+                        "src": "2743:22:4",
                         "subExpression": {
                           "id": 1517,
-                          "name": "votedJuntaDirectivaFCE",
+                          "name": "votedConsejoAcademico",
                           "nodeType": "Identifier",
                           "overloadedDeclarations": [],
-                          "referencedDeclaration": 1286,
-                          "src": "2882:22:4",
+                          "referencedDeclaration": 1297,
+                          "src": "2744:21:4",
                           "typeDescriptions": {
                             "typeIdentifier": "t_bool",
                             "typeString": "bool"
@@ -9267,7 +9114,7 @@
                         4294967278
                       ],
                       "referencedDeclaration": 4294967278,
-                      "src": "2873:7:4",
+                      "src": "2735:7:4",
                       "typeDescriptions": {
                         "typeIdentifier": "t_function_require_pure$_t_bool_$returns$__$",
                         "typeString": "function (bool) pure"
@@ -9282,7 +9129,7 @@
                     "nameLocations": [],
                     "names": [],
                     "nodeType": "FunctionCall",
-                    "src": "2873:32:4",
+                    "src": "2735:31:4",
                     "tryCall": false,
                     "typeDescriptions": {
                       "typeIdentifier": "t_tuple$__$",
@@ -9291,7 +9138,7 @@
                   },
                   "id": 1520,
                   "nodeType": "ExpressionStatement",
-                  "src": "2873:32:4"
+                  "src": "2735:31:4"
                 },
                 {
                   "expression": {
@@ -9302,11 +9149,11 @@
                     "lValueRequested": false,
                     "leftHandSide": {
                       "id": 1521,
-                      "name": "votedJuntaDirectivaFCE",
+                      "name": "votedConsejoAcademico",
                       "nodeType": "Identifier",
                       "overloadedDeclarations": [],
-                      "referencedDeclaration": 1286,
-                      "src": "2916:22:4",
+                      "referencedDeclaration": 1297,
+                      "src": "2777:21:4",
                       "typeDescriptions": {
                         "typeIdentifier": "t_bool",
                         "typeString": "bool"
@@ -9323,14 +9170,14 @@
                       "kind": "bool",
                       "lValueRequested": false,
                       "nodeType": "Literal",
-                      "src": "2941:4:4",
+                      "src": "2801:4:4",
                       "typeDescriptions": {
                         "typeIdentifier": "t_bool",
                         "typeString": "bool"
                       },
                       "value": "true"
                     },
-                    "src": "2916:29:4",
+                    "src": "2777:28:4",
                     "typeDescriptions": {
                       "typeIdentifier": "t_bool",
                       "typeString": "bool"
@@ -9338,32 +9185,32 @@
                   },
                   "id": 1524,
                   "nodeType": "ExpressionStatement",
-                  "src": "2916:29:4"
+                  "src": "2777:28:4"
                 }
               ]
             },
-            "functionSelector": "7da34244",
+            "functionSelector": "97e8cff9",
             "id": 1526,
             "implemented": true,
             "kind": "function",
             "modifiers": [],
-            "name": "votarJuntaDirectivaFCE",
-            "nameLocation": "2830:22:4",
+            "name": "votarConsejoAcademico",
+            "nameLocation": "2693:21:4",
             "nodeType": "FunctionDefinition",
             "parameters": {
               "id": 1514,
               "nodeType": "ParameterList",
               "parameters": [],
-              "src": "2852:2:4"
+              "src": "2714:2:4"
             },
             "returnParameters": {
               "id": 1515,
               "nodeType": "ParameterList",
               "parameters": [],
-              "src": "2862:0:4"
+              "src": "2724:0:4"
             },
-            "scope": 1603,
-            "src": "2821:132:4",
+            "scope": 1616,
+            "src": "2684:129:4",
             "stateMutability": "nonpayable",
             "virtual": false,
             "visibility": "public"
@@ -9372,7 +9219,7 @@
             "body": {
               "id": 1538,
               "nodeType": "Block",
-              "src": "3000:87:4",
+              "src": "2862:91:4",
               "statements": [
                 {
                   "expression": {
@@ -9386,14 +9233,14 @@
                         "nodeType": "UnaryOperation",
                         "operator": "!",
                         "prefix": true,
-                        "src": "3019:21:4",
+                        "src": "2881:23:4",
                         "subExpression": {
                           "id": 1530,
-                          "name": "votedCoordinacionFCE",
+                          "name": "votedJuntaDirectivaFCE",
                           "nodeType": "Identifier",
                           "overloadedDeclarations": [],
-                          "referencedDeclaration": 1288,
-                          "src": "3020:20:4",
+                          "referencedDeclaration": 1299,
+                          "src": "2882:22:4",
                           "typeDescriptions": {
                             "typeIdentifier": "t_bool",
                             "typeString": "bool"
@@ -9420,7 +9267,7 @@
                         4294967278
                       ],
                       "referencedDeclaration": 4294967278,
-                      "src": "3011:7:4",
+                      "src": "2873:7:4",
                       "typeDescriptions": {
                         "typeIdentifier": "t_function_require_pure$_t_bool_$returns$__$",
                         "typeString": "function (bool) pure"
@@ -9435,7 +9282,7 @@
                     "nameLocations": [],
                     "names": [],
                     "nodeType": "FunctionCall",
-                    "src": "3011:30:4",
+                    "src": "2873:32:4",
                     "tryCall": false,
                     "typeDescriptions": {
                       "typeIdentifier": "t_tuple$__$",
@@ -9444,7 +9291,7 @@
                   },
                   "id": 1533,
                   "nodeType": "ExpressionStatement",
-                  "src": "3011:30:4"
+                  "src": "2873:32:4"
                 },
                 {
                   "expression": {
@@ -9455,11 +9302,11 @@
                     "lValueRequested": false,
                     "leftHandSide": {
                       "id": 1534,
-                      "name": "votedCoordinacionFCE",
+                      "name": "votedJuntaDirectivaFCE",
                       "nodeType": "Identifier",
                       "overloadedDeclarations": [],
-                      "referencedDeclaration": 1288,
-                      "src": "3052:20:4",
+                      "referencedDeclaration": 1299,
+                      "src": "2916:22:4",
                       "typeDescriptions": {
                         "typeIdentifier": "t_bool",
                         "typeString": "bool"
@@ -9476,14 +9323,14 @@
                       "kind": "bool",
                       "lValueRequested": false,
                       "nodeType": "Literal",
-                      "src": "3075:4:4",
+                      "src": "2941:4:4",
                       "typeDescriptions": {
                         "typeIdentifier": "t_bool",
                         "typeString": "bool"
                       },
                       "value": "true"
                     },
-                    "src": "3052:27:4",
+                    "src": "2916:29:4",
                     "typeDescriptions": {
                       "typeIdentifier": "t_bool",
                       "typeString": "bool"
@@ -9491,41 +9338,41 @@
                   },
                   "id": 1537,
                   "nodeType": "ExpressionStatement",
-                  "src": "3052:27:4"
+                  "src": "2916:29:4"
                 }
               ]
             },
-            "functionSelector": "35fc1ece",
+            "functionSelector": "7da34244",
             "id": 1539,
             "implemented": true,
             "kind": "function",
             "modifiers": [],
-            "name": "votarCoordinacionFCE",
-            "nameLocation": "2970:20:4",
+            "name": "votarJuntaDirectivaFCE",
+            "nameLocation": "2830:22:4",
             "nodeType": "FunctionDefinition",
             "parameters": {
               "id": 1527,
               "nodeType": "ParameterList",
               "parameters": [],
-              "src": "2990:2:4"
+              "src": "2852:2:4"
             },
             "returnParameters": {
               "id": 1528,
               "nodeType": "ParameterList",
               "parameters": [],
-              "src": "3000:0:4"
+              "src": "2862:0:4"
             },
-            "scope": 1603,
-            "src": "2961:126:4",
+            "scope": 1616,
+            "src": "2821:132:4",
             "stateMutability": "nonpayable",
             "virtual": false,
             "visibility": "public"
           },
           {
             "body": {
-              "id": 1556,
+              "id": 1551,
               "nodeType": "Block",
-              "src": "3136:145:4",
+              "src": "3000:87:4",
               "statements": [
                 {
                   "expression": {
@@ -9539,14 +9386,14 @@
                         "nodeType": "UnaryOperation",
                         "operator": "!",
                         "prefix": true,
-                        "src": "3155:23:4",
+                        "src": "3019:21:4",
                         "subExpression": {
                           "id": 1543,
-                          "name": "votedCentroEstudiantes",
+                          "name": "votedCoordinacionFCE",
                           "nodeType": "Identifier",
                           "overloadedDeclarations": [],
-                          "referencedDeclaration": 1290,
-                          "src": "3156:22:4",
+                          "referencedDeclaration": 1301,
+                          "src": "3020:20:4",
                           "typeDescriptions": {
                             "typeIdentifier": "t_bool",
                             "typeString": "bool"
@@ -9573,13 +9420,166 @@
                         4294967278
                       ],
                       "referencedDeclaration": 4294967278,
-                      "src": "3147:7:4",
+                      "src": "3011:7:4",
                       "typeDescriptions": {
                         "typeIdentifier": "t_function_require_pure$_t_bool_$returns$__$",
                         "typeString": "function (bool) pure"
                       }
                     },
                     "id": 1545,
+                    "isConstant": false,
+                    "isLValue": false,
+                    "isPure": false,
+                    "kind": "functionCall",
+                    "lValueRequested": false,
+                    "nameLocations": [],
+                    "names": [],
+                    "nodeType": "FunctionCall",
+                    "src": "3011:30:4",
+                    "tryCall": false,
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_tuple$__$",
+                      "typeString": "tuple()"
+                    }
+                  },
+                  "id": 1546,
+                  "nodeType": "ExpressionStatement",
+                  "src": "3011:30:4"
+                },
+                {
+                  "expression": {
+                    "id": 1549,
+                    "isConstant": false,
+                    "isLValue": false,
+                    "isPure": false,
+                    "lValueRequested": false,
+                    "leftHandSide": {
+                      "id": 1547,
+                      "name": "votedCoordinacionFCE",
+                      "nodeType": "Identifier",
+                      "overloadedDeclarations": [],
+                      "referencedDeclaration": 1301,
+                      "src": "3052:20:4",
+                      "typeDescriptions": {
+                        "typeIdentifier": "t_bool",
+                        "typeString": "bool"
+                      }
+                    },
+                    "nodeType": "Assignment",
+                    "operator": "=",
+                    "rightHandSide": {
+                      "hexValue": "74727565",
+                      "id": 1548,
+                      "isConstant": false,
+                      "isLValue": false,
+                      "isPure": true,
+                      "kind": "bool",
+                      "lValueRequested": false,
+                      "nodeType": "Literal",
+                      "src": "3075:4:4",
+                      "typeDescriptions": {
+                        "typeIdentifier": "t_bool",
+                        "typeString": "bool"
+                      },
+                      "value": "true"
+                    },
+                    "src": "3052:27:4",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_bool",
+                      "typeString": "bool"
+                    }
+                  },
+                  "id": 1550,
+                  "nodeType": "ExpressionStatement",
+                  "src": "3052:27:4"
+                }
+              ]
+            },
+            "functionSelector": "35fc1ece",
+            "id": 1552,
+            "implemented": true,
+            "kind": "function",
+            "modifiers": [],
+            "name": "votarCoordinacionFCE",
+            "nameLocation": "2970:20:4",
+            "nodeType": "FunctionDefinition",
+            "parameters": {
+              "id": 1540,
+              "nodeType": "ParameterList",
+              "parameters": [],
+              "src": "2990:2:4"
+            },
+            "returnParameters": {
+              "id": 1541,
+              "nodeType": "ParameterList",
+              "parameters": [],
+              "src": "3000:0:4"
+            },
+            "scope": 1616,
+            "src": "2961:126:4",
+            "stateMutability": "nonpayable",
+            "virtual": false,
+            "visibility": "public"
+          },
+          {
+            "body": {
+              "id": 1569,
+              "nodeType": "Block",
+              "src": "3136:145:4",
+              "statements": [
+                {
+                  "expression": {
+                    "arguments": [
+                      {
+                        "id": 1557,
+                        "isConstant": false,
+                        "isLValue": false,
+                        "isPure": false,
+                        "lValueRequested": false,
+                        "nodeType": "UnaryOperation",
+                        "operator": "!",
+                        "prefix": true,
+                        "src": "3155:23:4",
+                        "subExpression": {
+                          "id": 1556,
+                          "name": "votedCentroEstudiantes",
+                          "nodeType": "Identifier",
+                          "overloadedDeclarations": [],
+                          "referencedDeclaration": 1303,
+                          "src": "3156:22:4",
+                          "typeDescriptions": {
+                            "typeIdentifier": "t_bool",
+                            "typeString": "bool"
+                          }
+                        },
+                        "typeDescriptions": {
+                          "typeIdentifier": "t_bool",
+                          "typeString": "bool"
+                        }
+                      }
+                    ],
+                    "expression": {
+                      "argumentTypes": [
+                        {
+                          "typeIdentifier": "t_bool",
+                          "typeString": "bool"
+                        }
+                      ],
+                      "id": 1555,
+                      "name": "require",
+                      "nodeType": "Identifier",
+                      "overloadedDeclarations": [
+                        4294967278,
+                        4294967278
+                      ],
+                      "referencedDeclaration": 4294967278,
+                      "src": "3147:7:4",
+                      "typeDescriptions": {
+                        "typeIdentifier": "t_function_require_pure$_t_bool_$returns$__$",
+                        "typeString": "function (bool) pure"
+                      }
+                    },
+                    "id": 1558,
                     "isConstant": false,
                     "isLValue": false,
                     "isPure": false,
@@ -9595,13 +9595,13 @@
                       "typeString": "tuple()"
                     }
                   },
-                  "id": 1546,
+                  "id": 1559,
                   "nodeType": "ExpressionStatement",
                   "src": "3147:32:4"
                 },
                 {
                   "expression": {
-                    "id": 1548,
+                    "id": 1561,
                     "isConstant": false,
                     "isLValue": false,
                     "isPure": false,
@@ -9611,11 +9611,11 @@
                     "prefix": false,
                     "src": "3190:22:4",
                     "subExpression": {
-                      "id": 1547,
+                      "id": 1560,
                       "name": "numeroVotosCentroEst",
                       "nodeType": "Identifier",
                       "overloadedDeclarations": [],
-                      "referencedDeclaration": 1296,
+                      "referencedDeclaration": 1309,
                       "src": "3190:20:4",
                       "typeDescriptions": {
                         "typeIdentifier": "t_uint256",
@@ -9627,23 +9627,23 @@
                       "typeString": "uint256"
                     }
                   },
-                  "id": 1549,
+                  "id": 1562,
                   "nodeType": "ExpressionStatement",
                   "src": "3190:22:4"
                 },
                 {
                   "expression": {
-                    "id": 1554,
+                    "id": 1567,
                     "isConstant": false,
                     "isLValue": false,
                     "isPure": false,
                     "lValueRequested": false,
                     "leftHandSide": {
-                      "id": 1550,
+                      "id": 1563,
                       "name": "votedCentroEstudiantes",
                       "nodeType": "Identifier",
                       "overloadedDeclarations": [],
-                      "referencedDeclaration": 1290,
+                      "referencedDeclaration": 1303,
                       "src": "3223:22:4",
                       "typeDescriptions": {
                         "typeIdentifier": "t_bool",
@@ -9657,17 +9657,17 @@
                         "typeIdentifier": "t_uint256",
                         "typeString": "uint256"
                       },
-                      "id": 1553,
+                      "id": 1566,
                       "isConstant": false,
                       "isLValue": false,
                       "isPure": false,
                       "lValueRequested": false,
                       "leftExpression": {
-                        "id": 1551,
+                        "id": 1564,
                         "name": "numeroVotosCentroEst",
                         "nodeType": "Identifier",
                         "overloadedDeclarations": [],
-                        "referencedDeclaration": 1296,
+                        "referencedDeclaration": 1309,
                         "src": "3248:20:4",
                         "typeDescriptions": {
                           "typeIdentifier": "t_uint256",
@@ -9678,7 +9678,7 @@
                       "operator": "==",
                       "rightExpression": {
                         "hexValue": "30",
-                        "id": 1552,
+                        "id": 1565,
                         "isConstant": false,
                         "isLValue": false,
                         "isPure": true,
@@ -9704,14 +9704,14 @@
                       "typeString": "bool"
                     }
                   },
-                  "id": 1555,
+                  "id": 1568,
                   "nodeType": "ExpressionStatement",
                   "src": "3223:50:4"
                 }
               ]
             },
             "functionSelector": "91a10b01",
-            "id": 1557,
+            "id": 1570,
             "implemented": true,
             "kind": "function",
             "modifiers": [],
@@ -9719,18 +9719,18 @@
             "nameLocation": "3104:22:4",
             "nodeType": "FunctionDefinition",
             "parameters": {
-              "id": 1540,
+              "id": 1553,
               "nodeType": "ParameterList",
               "parameters": [],
               "src": "3126:2:4"
             },
             "returnParameters": {
-              "id": 1541,
+              "id": 1554,
               "nodeType": "ParameterList",
               "parameters": [],
               "src": "3136:0:4"
             },
-            "scope": 1603,
+            "scope": 1616,
             "src": "3095:186:4",
             "stateMutability": "nonpayable",
             "virtual": false,
@@ -9738,7 +9738,7 @@
           },
           {
             "body": {
-              "id": 1574,
+              "id": 1587,
               "nodeType": "Block",
               "src": "3327:125:4",
               "statements": [
@@ -9746,7 +9746,7 @@
                   "expression": {
                     "arguments": [
                       {
-                        "id": 1562,
+                        "id": 1575,
                         "isConstant": false,
                         "isLValue": false,
                         "isPure": false,
@@ -9756,11 +9756,11 @@
                         "prefix": true,
                         "src": "3346:20:4",
                         "subExpression": {
-                          "id": 1561,
+                          "id": 1574,
                           "name": "votedConsejoEscuela",
                           "nodeType": "Identifier",
                           "overloadedDeclarations": [],
-                          "referencedDeclaration": 1292,
+                          "referencedDeclaration": 1305,
                           "src": "3347:19:4",
                           "typeDescriptions": {
                             "typeIdentifier": "t_bool",
@@ -9780,7 +9780,7 @@
                           "typeString": "bool"
                         }
                       ],
-                      "id": 1560,
+                      "id": 1573,
                       "name": "require",
                       "nodeType": "Identifier",
                       "overloadedDeclarations": [
@@ -9794,7 +9794,7 @@
                         "typeString": "function (bool) pure"
                       }
                     },
-                    "id": 1563,
+                    "id": 1576,
                     "isConstant": false,
                     "isLValue": false,
                     "isPure": false,
@@ -9810,13 +9810,13 @@
                       "typeString": "tuple()"
                     }
                   },
-                  "id": 1564,
+                  "id": 1577,
                   "nodeType": "ExpressionStatement",
                   "src": "3338:29:4"
                 },
                 {
                   "expression": {
-                    "id": 1566,
+                    "id": 1579,
                     "isConstant": false,
                     "isLValue": false,
                     "isPure": false,
@@ -9826,11 +9826,11 @@
                     "prefix": false,
                     "src": "3378:15:4",
                     "subExpression": {
-                      "id": 1565,
+                      "id": 1578,
                       "name": "numeroVotosCE",
                       "nodeType": "Identifier",
                       "overloadedDeclarations": [],
-                      "referencedDeclaration": 1300,
+                      "referencedDeclaration": 1313,
                       "src": "3378:13:4",
                       "typeDescriptions": {
                         "typeIdentifier": "t_uint256",
@@ -9842,23 +9842,23 @@
                       "typeString": "uint256"
                     }
                   },
-                  "id": 1567,
+                  "id": 1580,
                   "nodeType": "ExpressionStatement",
                   "src": "3378:15:4"
                 },
                 {
                   "expression": {
-                    "id": 1572,
+                    "id": 1585,
                     "isConstant": false,
                     "isLValue": false,
                     "isPure": false,
                     "lValueRequested": false,
                     "leftHandSide": {
-                      "id": 1568,
+                      "id": 1581,
                       "name": "votedConsejoEscuela",
                       "nodeType": "Identifier",
                       "overloadedDeclarations": [],
-                      "referencedDeclaration": 1292,
+                      "referencedDeclaration": 1305,
                       "src": "3404:19:4",
                       "typeDescriptions": {
                         "typeIdentifier": "t_bool",
@@ -9872,17 +9872,17 @@
                         "typeIdentifier": "t_uint256",
                         "typeString": "uint256"
                       },
-                      "id": 1571,
+                      "id": 1584,
                       "isConstant": false,
                       "isLValue": false,
                       "isPure": false,
                       "lValueRequested": false,
                       "leftExpression": {
-                        "id": 1569,
+                        "id": 1582,
                         "name": "numeroVotosCE",
                         "nodeType": "Identifier",
                         "overloadedDeclarations": [],
-                        "referencedDeclaration": 1300,
+                        "referencedDeclaration": 1313,
                         "src": "3426:13:4",
                         "typeDescriptions": {
                           "typeIdentifier": "t_uint256",
@@ -9893,7 +9893,7 @@
                       "operator": "==",
                       "rightExpression": {
                         "hexValue": "30",
-                        "id": 1570,
+                        "id": 1583,
                         "isConstant": false,
                         "isLValue": false,
                         "isPure": true,
@@ -9919,14 +9919,14 @@
                       "typeString": "bool"
                     }
                   },
-                  "id": 1573,
+                  "id": 1586,
                   "nodeType": "ExpressionStatement",
                   "src": "3404:40:4"
                 }
               ]
             },
             "functionSelector": "3174149a",
-            "id": 1575,
+            "id": 1588,
             "implemented": true,
             "kind": "function",
             "modifiers": [],
@@ -9934,18 +9934,18 @@
             "nameLocation": "3298:19:4",
             "nodeType": "FunctionDefinition",
             "parameters": {
-              "id": 1558,
+              "id": 1571,
               "nodeType": "ParameterList",
               "parameters": [],
               "src": "3317:2:4"
             },
             "returnParameters": {
-              "id": 1559,
+              "id": 1572,
               "nodeType": "ParameterList",
               "parameters": [],
               "src": "3327:0:4"
             },
-            "scope": 1603,
+            "scope": 1616,
             "src": "3289:163:4",
             "stateMutability": "nonpayable",
             "virtual": false,
@@ -9953,7 +9953,7 @@
           },
           {
             "body": {
-              "id": 1592,
+              "id": 1605,
               "nodeType": "Block",
               "src": "3499:127:4",
               "statements": [
@@ -9961,7 +9961,7 @@
                   "expression": {
                     "arguments": [
                       {
-                        "id": 1580,
+                        "id": 1593,
                         "isConstant": false,
                         "isLValue": false,
                         "isPure": false,
@@ -9971,11 +9971,11 @@
                         "prefix": true,
                         "src": "3518:21:4",
                         "subExpression": {
-                          "id": 1579,
+                          "id": 1592,
                           "name": "votedConsejoFacultad",
                           "nodeType": "Identifier",
                           "overloadedDeclarations": [],
-                          "referencedDeclaration": 1294,
+                          "referencedDeclaration": 1307,
                           "src": "3519:20:4",
                           "typeDescriptions": {
                             "typeIdentifier": "t_bool",
@@ -9995,7 +9995,7 @@
                           "typeString": "bool"
                         }
                       ],
-                      "id": 1578,
+                      "id": 1591,
                       "name": "require",
                       "nodeType": "Identifier",
                       "overloadedDeclarations": [
@@ -10009,7 +10009,7 @@
                         "typeString": "function (bool) pure"
                       }
                     },
-                    "id": 1581,
+                    "id": 1594,
                     "isConstant": false,
                     "isLValue": false,
                     "isPure": false,
@@ -10025,13 +10025,13 @@
                       "typeString": "tuple()"
                     }
                   },
-                  "id": 1582,
+                  "id": 1595,
                   "nodeType": "ExpressionStatement",
                   "src": "3510:30:4"
                 },
                 {
                   "expression": {
-                    "id": 1584,
+                    "id": 1597,
                     "isConstant": false,
                     "isLValue": false,
                     "isPure": false,
@@ -10041,11 +10041,11 @@
                     "prefix": false,
                     "src": "3551:15:4",
                     "subExpression": {
-                      "id": 1583,
+                      "id": 1596,
                       "name": "numeroVotosCF",
                       "nodeType": "Identifier",
                       "overloadedDeclarations": [],
-                      "referencedDeclaration": 1298,
+                      "referencedDeclaration": 1311,
                       "src": "3551:13:4",
                       "typeDescriptions": {
                         "typeIdentifier": "t_uint256",
@@ -10057,23 +10057,23 @@
                       "typeString": "uint256"
                     }
                   },
-                  "id": 1585,
+                  "id": 1598,
                   "nodeType": "ExpressionStatement",
                   "src": "3551:15:4"
                 },
                 {
                   "expression": {
-                    "id": 1590,
+                    "id": 1603,
                     "isConstant": false,
                     "isLValue": false,
                     "isPure": false,
                     "lValueRequested": false,
                     "leftHandSide": {
-                      "id": 1586,
+                      "id": 1599,
                       "name": "votedConsejoFacultad",
                       "nodeType": "Identifier",
                       "overloadedDeclarations": [],
-                      "referencedDeclaration": 1294,
+                      "referencedDeclaration": 1307,
                       "src": "3577:20:4",
                       "typeDescriptions": {
                         "typeIdentifier": "t_bool",
@@ -10087,17 +10087,17 @@
                         "typeIdentifier": "t_uint256",
                         "typeString": "uint256"
                       },
-                      "id": 1589,
+                      "id": 1602,
                       "isConstant": false,
                       "isLValue": false,
                       "isPure": false,
                       "lValueRequested": false,
                       "leftExpression": {
-                        "id": 1587,
+                        "id": 1600,
                         "name": "numeroVotosCF",
                         "nodeType": "Identifier",
                         "overloadedDeclarations": [],
-                        "referencedDeclaration": 1298,
+                        "referencedDeclaration": 1311,
                         "src": "3600:13:4",
                         "typeDescriptions": {
                           "typeIdentifier": "t_uint256",
@@ -10108,7 +10108,7 @@
                       "operator": "==",
                       "rightExpression": {
                         "hexValue": "30",
-                        "id": 1588,
+                        "id": 1601,
                         "isConstant": false,
                         "isLValue": false,
                         "isPure": true,
@@ -10134,14 +10134,14 @@
                       "typeString": "bool"
                     }
                   },
-                  "id": 1591,
+                  "id": 1604,
                   "nodeType": "ExpressionStatement",
                   "src": "3577:41:4"
                 }
               ]
             },
             "functionSelector": "6c6bd0f3",
-            "id": 1593,
+            "id": 1606,
             "implemented": true,
             "kind": "function",
             "modifiers": [],
@@ -10149,18 +10149,18 @@
             "nameLocation": "3469:20:4",
             "nodeType": "FunctionDefinition",
             "parameters": {
-              "id": 1576,
+              "id": 1589,
               "nodeType": "ParameterList",
               "parameters": [],
               "src": "3489:2:4"
             },
             "returnParameters": {
-              "id": 1577,
+              "id": 1590,
               "nodeType": "ParameterList",
               "parameters": [],
               "src": "3499:0:4"
             },
-            "scope": 1603,
+            "scope": 1616,
             "src": "3460:166:4",
             "stateMutability": "nonpayable",
             "virtual": false,
@@ -10168,13 +10168,13 @@
           },
           {
             "body": {
-              "id": 1601,
+              "id": 1614,
               "nodeType": "Block",
               "src": "3680:32:4",
               "statements": [
                 {
                   "expression": {
-                    "id": 1599,
+                    "id": 1612,
                     "isConstant": false,
                     "isLValue": false,
                     "isPure": false,
@@ -10184,11 +10184,11 @@
                     "prefix": true,
                     "src": "3698:6:4",
                     "subExpression": {
-                      "id": 1598,
+                      "id": 1611,
                       "name": "voted",
                       "nodeType": "Identifier",
                       "overloadedDeclarations": [],
-                      "referencedDeclaration": 1282,
+                      "referencedDeclaration": 1295,
                       "src": "3699:5:4",
                       "typeDescriptions": {
                         "typeIdentifier": "t_bool",
@@ -10200,15 +10200,15 @@
                       "typeString": "bool"
                     }
                   },
-                  "functionReturnParameters": 1597,
-                  "id": 1600,
+                  "functionReturnParameters": 1610,
+                  "id": 1613,
                   "nodeType": "Return",
                   "src": "3691:13:4"
                 }
               ]
             },
             "functionSelector": "159e7064",
-            "id": 1602,
+            "id": 1615,
             "implemented": true,
             "kind": "function",
             "modifiers": [],
@@ -10216,23 +10216,23 @@
             "nameLocation": "3643:7:4",
             "nodeType": "FunctionDefinition",
             "parameters": {
-              "id": 1594,
+              "id": 1607,
               "nodeType": "ParameterList",
               "parameters": [],
               "src": "3650:2:4"
             },
             "returnParameters": {
-              "id": 1597,
+              "id": 1610,
               "nodeType": "ParameterList",
               "parameters": [
                 {
                   "constant": false,
-                  "id": 1596,
+                  "id": 1609,
                   "mutability": "mutable",
                   "name": "",
                   "nameLocation": "-1:-1:-1",
                   "nodeType": "VariableDeclaration",
-                  "scope": 1602,
+                  "scope": 1615,
                   "src": "3674:4:4",
                   "stateVariable": false,
                   "storageLocation": "default",
@@ -10241,7 +10241,7 @@
                     "typeString": "bool"
                   },
                   "typeName": {
-                    "id": 1595,
+                    "id": 1608,
                     "name": "bool",
                     "nodeType": "ElementaryTypeName",
                     "src": "3674:4:4",
@@ -10255,14 +10255,14 @@
               ],
               "src": "3673:6:4"
             },
-            "scope": 1603,
+            "scope": 1616,
             "src": "3634:78:4",
             "stateMutability": "view",
             "virtual": false,
             "visibility": "public"
           }
         ],
-        "scope": 1604,
+        "scope": 1617,
         "src": "67:3648:4",
         "usedErrors": []
       }
@@ -10275,7 +10275,7 @@
   },
   "networks": {},
   "schemaVersion": "3.4.10",
-  "updatedAt": "2022-11-21T15:59:13.199Z",
+  "updatedAt": "2022-11-21T17:11:37.352Z",
   "devdoc": {
     "kind": "dev",
     "methods": {},

@@ -33,12 +33,16 @@ export const vote = async(id) => {
 // Get Candidatos
 
 export const getConsejoAcademicoCandidates = async() => {
-    const numeroCandidatosConsejoAcademico = await electionContract.methods.numeroCandidatosConsejoAcademico().call();
-    var consejoAcademicoCandidates = [];
+    const numeroCandidatosConsejoAcademico = await electionContract.methods.getCandidatosConsejoAcademicoLength().call();
+    var candidatosConsejoAcademicoKeys = [];
     for(let i = 0; i < numeroCandidatosConsejoAcademico; i++){
-        consejoAcademicoCandidates.push(await electionContract.methods.candidatosConsejoAcademico(i).call());
+        candidatosConsejoAcademicoKeys.push(await electionContract.methods.candidatosConsejoAcademicoKeys(i).call());
     }
-    return consejoAcademicoCandidates;
+    var ConsejoAcademicoCandidates = [];
+    for(let i = 0; i < numeroCandidatosConsejoAcademico; i++){
+        ConsejoAcademicoCandidates.push(await electionContract.methods.getCandidatoConsejoAcademico(candidatosConsejoAcademicoKeys[i]).call());
+    }
+    return ConsejoAcademicoCandidates;
 }
 
 export const getJuntaFCECandidates = async() => {
@@ -49,7 +53,7 @@ export const getJuntaFCECandidates = async() => {
     }
     var juntaFCECandidates = [];
     for(let i = 0; i < numeroCandidatosJuntaFCE; i++){
-        juntaFCECandidates.push(await electionContract.methods.getCandidatosJuntaFCE(candidatosJuntaFCEKeys[i]).call());
+        juntaFCECandidates.push(await electionContract.methods.getCandidatoJuntaDirectivaFCE(candidatosJuntaFCEKeys[i]).call());
     }
     return juntaFCECandidates;
 }

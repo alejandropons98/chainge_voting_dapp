@@ -47,7 +47,7 @@ const VotingPage = () => {
         if(!refresh) return
         setRefresh(false)
         // fetchCandidates()
-        console.log(getConsejoFacultadCandidates())
+        console.log(getJuntaFCECandidates())
 
     }, [refresh,candidates])
 

@@ -16,7 +16,7 @@ contract Eleccion {
     mapping (uint => Votante) public votantesRegistrados;
     uint public numeroVotantesRegistrados;
     mapping (uint => ConsejoAcademico) public candidatosConsejoAcademico;
-    uint public numeroCandidatosConsejoAcademico;
+    uint[] public candidatosConsejoAcademicoKeys;
     mapping (string => JuntaDirectivaFCE) public candidatosJuntaFCE;
     string[] public candidatosJuntaFCEKeys;
     mapping (string => CoordinacionFCE) public candidatosCoordinacionFCE;
@@ -71,7 +71,7 @@ contract Eleccion {
     function agregarCandidatoConsejoAcademico(string memory _nombre, uint _id, string memory _carrera) public {
         // TODO: Check if candidate already exists
         candidatosConsejoAcademico[_id] = new ConsejoAcademico(_nombre, _id, _carrera);
-        numeroCandidatosConsejoAcademico++;
+        candidatosConsejoAcademicoKeys.push(_id);
     }
 
     function getCandidatoConsejoAcademico(uint _id) public view returns (string memory, uint, string memory, uint) {
@@ -185,6 +185,10 @@ contract Eleccion {
 
     function getCandidatosConsejoFacultadLength() public view returns (uint) {
         return candidatosConsejoFacultadKeys.length;
+    }
+
+    function getCandidatosConsejoAcademicoLength() public view returns (uint) {
+        return candidatosConsejoAcademicoKeys.length;
     }
 
     function getEscuelasLength() public view returns (uint) {
