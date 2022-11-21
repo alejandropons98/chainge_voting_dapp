@@ -7,6 +7,17 @@ import { useAuth } from "../context/authContext";
 
 function NavBar() {
   const [refresh, setRefresh] = useState(true);
+
+  const { logout, user } = useAuth();
+
+  console.log(user, "lalalalalal");
+  const handleLogout = async () => {
+    try {
+      await logout();
+    } catch (error) {
+      console.error(error.message);
+    }
+  };
   useEffect(() => {
     if (!refresh) return;
     setRefresh(false);
@@ -31,7 +42,9 @@ function NavBar() {
               <Nav.Link href="/audit">Auditoria</Nav.Link>
             </Nav>
             <Nav>
-              <Nav.Link href="/login">Login</Nav.Link>
+              <Nav.Link onClick={handleLogout} href="/login">
+                Log out
+              </Nav.Link>
             </Nav>
           </Navbar.Collapse>
         </Container>
