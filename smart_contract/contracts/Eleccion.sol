@@ -11,7 +11,21 @@ contract Eleccion {
 
     uint[] public registroElectoral;
 
-    string[] public escuelas;
+    string[14] public escuelas = [
+    "Ciencias Administrativas",
+    "Economia Empresarial",
+    "Contaduria Publica",
+    "Ingenieria Civil",
+    "Ingenieria Mecanica",
+    "Ingenieria de Produccion",
+    "Ingenieria Quimica",
+    "Ingenieria de Sistemas",
+    "Ingenieria Electrica",
+    "Educacion",
+    "Idiomas Modernos",
+    "Matematicas Industriales",
+    "Psicologia",
+    "Derecho y Estudios Liberales"];
 
     mapping (uint => Votante) public votantesRegistrados;
     uint public numeroVotantesRegistrados;
