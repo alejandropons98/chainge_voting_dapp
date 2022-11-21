@@ -2,11 +2,11 @@ import Container from "react-bootstrap/Container";
 import Nav from "react-bootstrap/Nav";
 import Navbar from "react-bootstrap/Navbar";
 import { useState, useEffect } from "react";
-import { useAuth } from "../context/authContext";
 import { async } from "@firebase/util";
+import { useAuth } from "../context/authContext";
+
 function NavBar() {
   const [refresh, setRefresh] = useState(true);
-
   useEffect(() => {
     if (!refresh) return;
     setRefresh(false);
@@ -25,7 +25,7 @@ function NavBar() {
               <Nav.Link href="/vote">Votar</Nav.Link>
             </Nav>
             <Nav>
-              <Nav.Link href="/login">Log Out</Nav.Link>
+              <Nav.Link href="/login">Log out</Nav.Link>
             </Nav>
           </Navbar.Collapse>
         </Container>

@@ -21,8 +21,8 @@ const App = () => {
 
   return (
     <BrowserRouter>
-      <Layout>
-        <AuthProvider>
+      <AuthProvider>
+        <Layout>
           <Routes>
             <Route
               path="/"
@@ -67,8 +67,8 @@ const App = () => {
             <Route path="/login" element={<LoginPage />} />
             <Route path="/registeruser" element={<RegisterForm />} />
           </Routes>
-        </AuthProvider>
-      </Layout>
+        </Layout>
+      </AuthProvider>
     </BrowserRouter>
   );
 };

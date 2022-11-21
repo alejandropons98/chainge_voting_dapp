@@ -21,7 +21,7 @@ function LoginForm() {
     email: "",
     password: "",
   });
-  const { login } = useAuth();
+  const { login, loginWithGoogle } = useAuth();
   const [error, setError] = useState("");
   const navigate = useNavigate();
   const handleSubmit = async (e) => {
@@ -34,10 +34,17 @@ function LoginForm() {
       setError(error.message);
     }
   };
-
   const handleChange = ({ target: { value, name } }) =>
     setUser({ ...user, [name]: value });
 
+  const handleGoogleSignin = async () => {
+    try {
+      await loginWithGoogle();
+      navigate("/");
+    } catch (error) {
+      setError(error.message);
+    }
+  };
   return (
     <form onSubmit={handleSubmit}>
       <MDBContainer fluid>
@@ -65,7 +72,7 @@ function LoginForm() {
               onChange={handleChange}
               wrapperClass="mb-4"
               label="Password"
-              id="form1"
+              id="form2"
               type="password"
               name="password"
             />
@@ -91,6 +98,7 @@ function LoginForm() {
                 color="danger"
                 className="m-3"
                 style={{ color: "white" }}
+                onClick={handleGoogleSignin}
               >
                 <icons.Google />
               </MDBBtn>

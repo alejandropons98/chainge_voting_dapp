@@ -24,7 +24,8 @@ function RegisterForm() {
   const { signup } = useAuth();
 
   const navigate = useNavigate();
-
+  const handleChange = ({ target: { value, name } }) =>
+    setUser({ ...user, [name]: value });
   const handleSubmit = async (e) => {
     e.preventDefault();
     console.log(user);
@@ -51,18 +52,20 @@ function RegisterForm() {
             <h2 className="fw-bold mb-5">Sign up now</h2>
 
             <MDBInput
-              onChange={(e) => setUser({ ...user, email: e.target.value })}
+              onChange={handleChange}
               wrapperClass="mb-4"
               label="Email"
               id="form1"
               type="email"
+              name="email"
             />
             <MDBInput
-              onChange={(e) => setUser({ ...user, password: e.target.value })}
+              onChange={handleChange}
               wrapperClass="mb-4"
               label="Password"
               id="form1"
               type="password"
+              name="password"
             />
 
             <div className="d-flex justify-content-center mb-4">
