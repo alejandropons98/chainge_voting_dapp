@@ -3,7 +3,7 @@ import Web3 from 'web3';
 import { ElectionContract } from './abi/abi';
 
 const web3 = new Web3(Web3.givenProvider);
-const contractAddress = '0xBE9bab0388e440D319E5dAA1af209b89D833C1d0';
+const contractAddress = '0xcB73B008E4b389e6F0704C1a1D6FD93873F23F7A';
 const electionContract = new web3.eth.Contract(ElectionContract, contractAddress);
 
 
@@ -33,26 +33,36 @@ export const vote = async(id) => {
 // Get Candidatos
 
 export const getConsejoAcademicoCandidates = async() => {
-    const numeroCandidatosConsejoAcademico = await electionContract.methods.numeroCandidatosConsejoAcademico().call();
-    var consejoAcademicoCandidates = [];
+    const numeroCandidatosConsejoAcademico = await electionContract.methods.getCandidatosConsejoAcademicoLength().call();
+    var candidatosConsejoAcademicoKeys = [];
     for(let i = 0; i < numeroCandidatosConsejoAcademico; i++){
-        consejoAcademicoCandidates.push(await electionContract.methods.candidatosConsejoAcademico(i).call());
+        candidatosConsejoAcademicoKeys.push(await electionContract.methods.candidatosConsejoAcademicoKeys(i).call());
     }
-    return consejoAcademicoCandidates;
+    var ConsejoAcademicoCandidates = [];
+    for(let i = 0; i < numeroCandidatosConsejoAcademico; i++){
+        ConsejoAcademicoCandidates.push(await electionContract.methods.getCandidatoConsejoAcademico(candidatosConsejoAcademicoKeys[i]).call());
+    }
+    return ConsejoAcademicoCandidates;
 }
 
 export const getJuntaFCECandidates = async() => {
     const numeroCandidatosJuntaFCE = await electionContract.methods.getCandidatosJuntaFCELength().call();
-    const candidatosJuntaFCEKeys = await electionContract.methods.candidatosJuntaFCEKeys().call();
+    var candidatosJuntaFCEKeys = [];
+    for(let i = 0; i < numeroCandidatosJuntaFCE; i++){
+        candidatosJuntaFCEKeys.push(await electionContract.methods.candidatosJuntaFCEKeys(i).call());
+    }
     var juntaFCECandidates = [];
     for(let i = 0; i < numeroCandidatosJuntaFCE; i++){
-        juntaFCECandidates.push(await electionContract.methods.getCandidatosJuntaFCE(candidatosJuntaFCEKeys[i]).call());
+        juntaFCECandidates.push(await electionContract.methods.getCandidatoJuntaDirectivaFCE(candidatosJuntaFCEKeys[i]).call());
     }
     return juntaFCECandidates;
 }
 export const getCoordinacionFCECandidates = async() => {
     const numeroCandidatosCoordinacionFCE = await electionContract.methods.getCandidatosCoordinacionFCELength().call();
-    const candidatosCoordinacionFCEKeys = await electionContract.methods.candidatosCoordinacionFCEKeys().call();
+    var candidatosCoordinacionFCEKeys = [];
+    for(let i = 0; i < numeroCandidatosCoordinacionFCE; i++){
+        candidatosCoordinacionFCEKeys.push(await electionContract.methods.candidatosCoordinacionFCEKeys(i).call());
+    }
     var coordinacionFCECandidates = [];
     for(let i = 0; i < numeroCandidatosCoordinacionFCE; i++){
         coordinacionFCECandidates.push(await electionContract.methods.getCandidatoCoordinacionFCE(candidatosCoordinacionFCEKeys[i]).call());
@@ -62,10 +72,17 @@ export const getCoordinacionFCECandidates = async() => {
 
 export const getCentroEstudiantesCandidates = async() => {
     const numeroCandidatosCentroEstudiantes = await electionContract.methods.getCandidatosCentroEstudiantesLength().call();
-    const candidatosCentroEstudiantesKeys = await electionContract.methods.candidatosCentroEstudiantesKeys().call();
-    const escuelas = await electionContract.methods.escuelas().call();
+    var candidatosCentroEstudiantesKeys = [];
+    for(let i = 0; i < numeroCandidatosCentroEstudiantes; i++){
+        candidatosCentroEstudiantesKeys.push(await electionContract.methods.candidatosCentroEstudiantesKeys(i).call());
+    }
+    const numeroEscuelas = await electionContract.methods.getEscuelasLength().call();
+    var escuelas = []
+    for(let i = 0; i < numeroEscuelas; i++){
+        escuelas.push(await electionContract.methods.escuelas(i).call());
+    }
     var centroEstudiantesCandidates = {};
-    for(let i = 0; i < escuelas.length(); i++){
+    for(let i = 0; i < numeroEscuelas; i++){
         for(let j = 0; j < numeroCandidatosCentroEstudiantes; j++){
             centroEstudiantesCandidates[escuelas[i]].push(await electionContract.methods.getCandidatoCentroEstudiantes(candidatosCentroEstudiantesKeys[j], escuelas[i]).call());
         }
@@ -75,12 +92,25 @@ export const getCentroEstudiantesCandidates = async() => {
 
 export const getConsejoEscuelaCandidates = async() => {
     const numeroCandidatosConsejoEscuela = await electionContract.methods.getCandidatosConsejoEscuelaLength().call();
-    const candidatosConsejoEscuelaKeys = await electionContract.methods.candidatosConsejoEscuelaKeys().call();
-    const escuelas = await electionContract.methods.escuelas().call();
+    var candidatosConsejoEscuelaKeys = [];
+    for(let i = 0; i < numeroCandidatosConsejoEscuela; i++){
+        candidatosConsejoEscuelaKeys.push(await electionContract.methods.candidatosConsejoEscuelaKeys(i).call());
+    }
+    const numeroEscuelas = await electionContract.methods.getEscuelasLength().call();
     var ConsejoEscuelaCandidates = {};
-    for(let i = 0; i < escuelas.length(); i++){
+    var escuelas = []
+    for(let i = 0; i < numeroEscuelas; i++){
+        escuelas.push(await electionContract.methods.escuelas(i).call());
+    }
+    console.log(numeroEscuelas)
+    for(let i = 0; i < numeroEscuelas; i++){
         for(let j = 0; j < numeroCandidatosConsejoEscuela; j++){
-            ConsejoEscuelaCandidates[escuelas[i]].push(await electionContract.methods.getCandidatoConsejoEscuela(candidatosConsejoEscuelaKeys[j], escuelas[i]).call());
+            if(j == 0){
+                ConsejoEscuelaCandidates[escuelas[i]] = [];
+                ConsejoEscuelaCandidates[escuelas[i]].push(await electionContract.methods.getCandidatoConsejoEscuela(candidatosConsejoEscuelaKeys[j], escuelas[i]).call());
+            }else{
+                ConsejoEscuelaCandidates[escuelas[i]].push(await electionContract.methods.getCandidatoConsejoEscuela(candidatosConsejoEscuelaKeys[j], escuelas[i]).call());
+            }
         }
     }
     return ConsejoEscuelaCandidates;
@@ -88,12 +118,24 @@ export const getConsejoEscuelaCandidates = async() => {
 
 export const getConsejoFacultadCandidates = async() => {
     const numeroCandidatosConsejoFacultad = await electionContract.methods.getCandidatosConsejoFacultadLength().call();
-    const candidatosConsejoFacultadKeys = await electionContract.methods.candidatosConsejoFacultadKeys().call();
-    const escuelas = await electionContract.methods.escuelas().call();
+    var candidatosConsejoFacultadKeys = [];
+    for(let i = 0; i < numeroCandidatosConsejoFacultad; i++){
+        candidatosConsejoFacultadKeys.push(await electionContract.methods.candidatosConsejoFacultadKeys(i).call());
+    }
+    const numeroEscuelas = await electionContract.methods.getEscuelasLength().call();
+    var escuelas = []
+    for(let i = 0; i < numeroEscuelas; i++){
+        escuelas.push(await electionContract.methods.escuelas(i).call());
+    }
     var ConsejoFacultadCandidates = {};
-    for(let i = 0; i < escuelas.length(); i++){
+    for(let i = 0; i < numeroEscuelas; i++){
         for(let j = 0; j < numeroCandidatosConsejoFacultad; j++){
-            ConsejoFacultadCandidates[escuelas[i]].push(await electionContract.methods.getCandidatoConsejoFacultad(candidatosConsejoFacultadKeys[j], escuelas[i]).call());
+            if(j == 0){
+                ConsejoFacultadCandidates[escuelas[i]] = [];
+                ConsejoFacultadCandidates[escuelas[i]].push(await electionContract.methods.getCandidatoConsejoFacultad(candidatosConsejoFacultadKeys[j], escuelas[i]).call());
+            }else{
+                ConsejoFacultadCandidates[escuelas[i]].push(await electionContract.methods.getCandidatoConsejoFacultad(candidatosConsejoFacultadKeys[j], escuelas[i]).call());
+            }
         }
     }
     return ConsejoFacultadCandidates;
@@ -122,6 +164,7 @@ export const getActiveVoters = async() => {
     var voters = await electionContract.methods.getVoterRegistry().call();
     return voters;
 }
+//Registros
 export const registerCandidateJDFCE = async(agrupacion, siglas) => {
     const accounts = await window.ethereum.enable();
     const account = accounts[0]
@@ -158,6 +201,14 @@ export const registerConsejoEscuela = async(name, siglas, escuela) => {
     )
 }
 
+export const registerPlanchaCentroEstudiantes = async(name, siglas, escuela) => {
+    const accounts = await window.ethereum.enable();
+    const account = accounts[0]
+    await electionContract.methods.agregarCandidatoCentroEstudiantes(name, siglas, escuela).send({from: account}).then(
+        e => console.log(e)
+    )
+}
+
 export const registerVoter = async(id, carreras, facultades) => {
     const accounts = await window.ethereum.enable();
     const account = accounts[0];
@@ -167,6 +218,47 @@ export const registerVoter = async(id, carreras, facultades) => {
         }
     );
 }
+// EndRegistros
+
+// Votar
+export const voteCandidateJDFCE = async(siglas,voterId) => {
+    const accounts = await window.ethereum.enable()
+    const account = accounts[0]
+    await electionContract.methods.voteCandidatoJuntaDirectivaFCE(siglas,voterId).send({from: account}).then(info => 
+        console.log(info));
+}
+export const voteCandidateCoordFCE = async(siglas,voterId) => {
+    const accounts = await window.ethereum.enable()
+    const account = accounts[0]
+    await electionContract.methods.voteCandidatoCoordinacionFCE(siglas,voterId).send({from: account}).then(info => 
+        console.log(info));
+}
+export const voteCentroEstudiantes = async(siglas,escuela,voterId) => {
+    const accounts = await window.ethereum.enable()
+    const account = accounts[0]
+    await electionContract.methods.voteCandidatoCentroEstudiantes(siglas,escuela,voterId).send({from: account}).then(info => 
+        console.log(info));
+}
+export const voteCandidateConsejoAcademico = async(consejeroId,voterId) => {
+    const accounts = await window.ethereum.enable()
+    const account = accounts[0]
+    await electionContract.methods.voteCandidatoConsejoAcademico(consejeroId,voterId).send({from: account}).then(info => 
+        console.log(info));
+}
+export const voteCandidateConsejoEscuela = async(siglas, escuela, voterId) => {
+    const accounts = await window.ethereum.enable()
+    const account = accounts[0]
+    await electionContract.methods.voteCandidatoConsejoEscuela(siglas,escuela, voterId).send({from: account}).then(info => 
+        console.log(info));
+}
+export const voteCandidateConsejoFacultad = async(siglas, facultad, voterId) => {
+    const accounts = await window.ethereum.enable()
+    const account = accounts[0]
+    await electionContract.methods.voteCandidatoConsejoFacultad(siglas,facultad, voterId).send({from: account}).then(info => 
+        console.log(info));
+}
+// End Votos Funcs
+
 
 export const verCandidatosCentroEstudiantes = async() => {
     var candidatos = await electionContract.methods.candidatosCentroEstudiantes().call
@@ -190,4 +282,3 @@ const loadWeb3 = async () => {
         window.alert('Non-Ethereum browser detected. You should consider trying MetaMask!');
     }
 };
-

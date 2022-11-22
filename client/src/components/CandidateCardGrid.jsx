@@ -5,9 +5,9 @@ import { CandidateCard } from './CandidateCard';
 
 function CandidateCardGrid(props) {
 
-  const candidates = props.candidates;
-  console.log("Grid " + candidates.length);
-
+  const candidates = props.candidates
+  const type = props.type
+  const vote = props.vote
   const mystyle = {
     display: 'flex',
     flexDirection: 'row',
@@ -23,14 +23,13 @@ function CandidateCardGrid(props) {
   
   return (
     <Row xs={1} md={2} className="g-4"  style={mystyle2}>
-      {candidates.map((candidate) => (
-        <Col key = {candidate.id} style={mystyle}>
+      {candidates.map((candidate,id) => (
+        <Col key = {id} style={mystyle}>
           <CandidateCard 
-          name = {candidate.name}
-          party = {candidate.party}
-          degree = {candidate.degree}
-          image = {candidate.image}
-          id = {candidate.id}
+          nombre = {candidate.nombre}
+          siglas = {candidate.siglas}
+          type = {type}
+          vote = {vote}
           />
         </Col>
       ))}

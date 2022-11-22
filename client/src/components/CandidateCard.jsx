@@ -14,7 +14,7 @@ function CandidateCard(props) {
 
   const mystyle2 = {
     width: '18rem',
-    height: '28rem'
+    height: '15rem'
   };
 
   const mystyle3 = {
@@ -26,19 +26,18 @@ function CandidateCard(props) {
 
   return (
     <Card style={mystyle2} border="primary" key = "{props.id}" className="bg-dark text-white">
-      <Card.Img variant="top" src={props.image} style={mystyle} />
       <Card.Body>
-        <Card.Title>{props.name}</Card.Title>
-        <Card.Text>{props.party}</Card.Text>
-        <Card.Text>{props.degree}</Card.Text>
-        <Card.Text>{props.id}</Card.Text>
+        <Card.Title>{props.nombre}</Card.Title>
+        <Card.Text>{props.siglas}</Card.Text>
         {/* <Button variant="primary" onClick={() => {vote(props.id)}}>Votar</Button> */}
         <Button style={mystyle3} variant="primary" onClick={() => setModalShow(true)}>Votar</Button>
         <VoteModal
         show={modalShow}
         onHide={() => setModalShow(false)}
-        candidateId = {props.id}
-        candidateName = {props.name}
+        candidateName = {props.nombre}
+        candidateSiglas = {props.siglas}
+        votingType={props.type}
+        voteFunction={props.vote}
       />
       </Card.Body>
     </Card>
