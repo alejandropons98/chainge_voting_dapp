@@ -1,18 +1,20 @@
 import Button from 'react-bootstrap/Button';
 import Form from 'react-bootstrap/Form';
 import Row from 'react-bootstrap/Row';
-import {registerCandidateJDFCE, registerCandidateCCFCE, registerPlanchaCentroEstudiantes, registerConsejoEscuela} from '../funcs'
+import { registerConsejoFacultad, registerConsejoEscuela } from '../funcs'
+import { Navigate, useNavigate } from "react-router-dom";
 import { useState } from "react";
 import SplitButton from 'react-bootstrap/SplitButton';
 import Dropdown from 'react-bootstrap/Dropdown';
 
-function RegisterFCEForm() {
+function RegisterConsejoEstudiantilForm() {
     
     const [facultades, setFacultades] = useState(['Est. Juridicos y Politicos', 'Ciencias y Artes', 'Cs. Econ. y Sociales','Ingenieria'])
     const [facultadesSeleccionadas, setFacultadesSeleccionadas] = useState([])
     const [carrerasSeleccionadas, setCarrerasSeleccionadas] = useState([])
     const [newCarreras, setNewCarreras] = useState( new Set() )
     const [formValue, setFormValue] = useState({})
+    const [siglasFacultad, setSiglasFacultad] = useState([])
 
     const carrerasDict = {
         'Est. Juridicos y Politicos': ['Estudios Liberales', 'Derecho'],
@@ -24,13 +26,15 @@ function RegisterFCEForm() {
     const handleSubmit = async(e) => {
         e.preventDefault()
         console.log(formValue)
-        await registerCandidateJDFCE(formValue["agrupacion"], formValue["siglas"])
-        if (formValue["checkbox"] ="on") await registerCandidateCCFCE(formValue["agrupacion"], formValue["siglas"])
-        carrerasSeleccionadas.map(async (carrera) => {
-            await registerPlanchaCentroEstudiantes(formValue[carrera], formValue["siglas"+" "+carrera], carrera)
-        }) 
+        facultadesSeleccionadas.map(async (facultad) => {
+            await registerConsejoFacultad(formValue[facultad], formValue["siglas"+" "+facultad], facultad)
+            carrerasSeleccionadas.map(async (carrera) => {
+                await registerConsejoEscuela(formValue[carrera], formValue["siglas"+" "+carrera], carrera)
+            }) 
+        })
     }
     const handleChange = ({target}) => {
+        console.log(target.text)
         setFormValue((prev) => {
             return {...prev, [target.name] : target.value}
         })
@@ -67,45 +71,43 @@ function RegisterFCEForm() {
     
     return (
         <Form style={mystyle} className='ml' onSubmit={handleSubmit}>
-            <br />
-            <h2>Registro de Junta Directiva FCE</h2>
-            <Form.Group className="mb-3" controlid="formAgrup">
-                <Form.Control type="input" key="Agrupacion" placeholder="Agrupacion" name="agrupacion" onChange={handleChange}/>
-            </Form.Group>
-            <Form.Group className="mb-3" controlid="formSiglas">
-                <Form.Control type="input" placeholder="Siglas" key="siglas" name="siglas" onChange={handleChange}/>
-            </Form.Group>
-            <Row/>
-            <Form.Check type='checkbox' name="checkbox" key="checkbox" onChange={handleChange} label='Checkbox para agregar su junta a la Coordinacion de la FCE'>
-            </Form.Check>
-            <Row/>
             <>
-                <br />
-                <h4>Seleccionar las facultades en las que desea registrar las planchas de Centro de Estudiantes</h4>
+                <h4>Consejo de Facultades</h4>
+                <div>Indique el nombre y siglas del Participante a Consejo de las Facultades seleccionadas</div>
+                <br/>
                 <SplitButton key= 'Facultad' title='Facultades'>
-                    {facultades.map((facultad,i) => (
-                    <Dropdown.Item eventKey={i} key= {facultad} title = {facultad} onClick={handleClick}>{facultad}</Dropdown.Item>
+                    {facultades.map((facultad) => (
+                        <Dropdown.Item key= {facultad} title = {facultad} onClick={handleClick}>{facultad}</Dropdown.Item>
                     ))}
                 </SplitButton>
-            </>
-            <>
-                <Row/>
                 <br />
-                <SplitButton key= 'Carreras' title='Carreras'>
+                {facultadesSeleccionadas.map((facultad)=>(
+                    <Form.Group className = "facultades">
+                        <br />
+                        <Form.Control type="input" placeholder={facultad} name={facultad} key={"form" + facultad} onChange={handleChange}></Form.Control>
+                        <br />
+                        <Form.Control type = "input" name= {"siglas"+" "+facultad} placeholder = "Siglas" key= {"formSiglas" + facultad} onChange={handleChange}></Form.Control>
+                    </Form.Group>
+                ))} 
+            </>
+            <br />
+            <>
+                <h4>Consejo de Escuelas</h4>
+                <div>Indique el nombre y siglas del Participante a Consejo de las Escuelas seleccionadas</div>
+                <br/>
+                <SplitButton key= 'Carrera' title='Carrera'>
                     {facultadesSeleccionadas.map((facultad,i) => (
                         carrerasDict[facultad].map((carrera) => (
                         <Dropdown.Item eventKey={i} key= {carrera} onClick={handleCarrera}>{carrera}</Dropdown.Item>
                         ))
                     ))}
                 </SplitButton>
-                <br/>
-                <div>Indique el nombre y las siglas de cada Plancha</div>
-                {carrerasSeleccionadas.map((carrera) => (
+                {carrerasSeleccionadas.map((carrera,i) => (
                     <Form.Group className = "carreras" >
                         <br />
-                        <Form.Control type = "input" name={carrera} placeholder = {carrera} key= {"form" + carrera} onChange={handleChange}></Form.Control>
+                        <Form.Control type = "input" name= "{carrera}" placeholder = {carrera} key= {"form" + carrera} onChange={handleChange}></Form.Control>
                         <br />
-                        <Form.Control type = "input" name= {"siglas"+" " +carrera} placeholder = "Siglas" key= {"formSiglas" + carrera} onChange={handleChange}></Form.Control>
+                        <Form.Control type = "input" name= {"siglas"+" "+carrera} placeholder = "Siglas" key= {"formSiglas" + carrera} onChange={handleChange}></Form.Control>
                     </Form.Group>
                 ))}
             </>
@@ -117,4 +119,4 @@ function RegisterFCEForm() {
     )
 }
 
-export { RegisterFCEForm };
+export { RegisterConsejoEstudiantilForm };

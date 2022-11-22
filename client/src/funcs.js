@@ -200,6 +200,14 @@ export const registerConsejoEscuela = async(name, siglas, escuela) => {
     )
 }
 
+export const registerPlanchaCentroEstudiantes = async(name, siglas, escuela) => {
+    const accounts = await window.ethereum.enable();
+    const account = accounts[0]
+    await electionContract.methods.agregarCandidatoCentroEstudiantes(name, siglas, escuela).send({from: account}).then(
+        e => console.log(e)
+    )
+}
+
 export const registerVoter = async(id, carreras, facultades) => {
     const accounts = await window.ethereum.enable();
     const account = accounts[0];

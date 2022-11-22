@@ -1,6 +1,7 @@
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import { VotingPage } from "./pages/VotingPage/VotingPage";
 import { RegisterConsejoAcademico } from "./pages/RegisterConsejoAcademico/RegisterConsejoAcademico";
+import { RegisterConsejoEstudiantil } from "./pages/RegisterConsejoEstudiantil/RegisterConsejoEstudiantil";
 import { RegisterFCE } from "./pages/RegisterFCE/RegisterFCE";
 import { Layout } from "./container/Layout/Layout";
 import './App.css';
@@ -26,6 +27,7 @@ const App = () => {
       <Route path="/" element={<Home />} />
       <Route path="/vote" element={<VotingPage />} />
       <Route path="/registerConsejoAcademico" element={<RegisterConsejoAcademico />} />
+      <Route path="/registerConsejoEstudiantil" element={<RegisterConsejoEstudiantil />} />
       <Route path="/registerCentroEstudiantes" element={<RegisterFCE/>} />
       <Route path="/registervoter" element={<RegisterVoter />} />
       <Route path="/voters" element={<VotedVoters />} />
