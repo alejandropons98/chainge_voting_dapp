@@ -3,7 +3,7 @@ import Web3 from 'web3';
 import { ElectionContract } from './abi/abi';
 
 const web3 = new Web3(Web3.givenProvider);
-const contractAddress = '0xBdD68Db7c680AA3e7D985f7F2605246CF27a3f0f';
+const contractAddress = '0xcB73B008E4b389e6F0704C1a1D6FD93873F23F7A';
 const electionContract = new web3.eth.Contract(ElectionContract, contractAddress);
 
 
@@ -164,6 +164,7 @@ export const getActiveVoters = async() => {
     var voters = await electionContract.methods.getVoterRegistry().call();
     return voters;
 }
+//Registros
 export const registerCandidateJDFCE = async(agrupacion, siglas) => {
     const accounts = await window.ethereum.enable();
     const account = accounts[0]
@@ -217,6 +218,47 @@ export const registerVoter = async(id, carreras, facultades) => {
         }
     );
 }
+// EndRegistros
+
+// Votar
+export const voteCandidateJDFCE = async(siglas,voterId) => {
+    const accounts = await window.ethereum.enable()
+    const account = accounts[0]
+    await electionContract.methods.voteCandidatoJuntaDirectivaFCE(siglas,voterId).send({from: account}).then(info => 
+        console.log(info));
+}
+export const voteCandidateCoordFCE = async(siglas,voterId) => {
+    const accounts = await window.ethereum.enable()
+    const account = accounts[0]
+    await electionContract.methods.voteCandidatoCoordinacionFCE(siglas,voterId).send({from: account}).then(info => 
+        console.log(info));
+}
+export const voteCentroEstudiantes = async(siglas,escuela,voterId) => {
+    const accounts = await window.ethereum.enable()
+    const account = accounts[0]
+    await electionContract.methods.voteCandidatoCentroEstudiantes(siglas,escuela,voterId).send({from: account}).then(info => 
+        console.log(info));
+}
+export const voteCandidateConsejoAcademico = async(consejeroId,voterId) => {
+    const accounts = await window.ethereum.enable()
+    const account = accounts[0]
+    await electionContract.methods.voteCandidatoConsejoAcademico(consejeroId,voterId).send({from: account}).then(info => 
+        console.log(info));
+}
+export const voteCandidateConsejoEscuela = async(siglas, escuela, voterId) => {
+    const accounts = await window.ethereum.enable()
+    const account = accounts[0]
+    await electionContract.methods.voteCandidatoConsejoEscuela(siglas,escuela, voterId).send({from: account}).then(info => 
+        console.log(info));
+}
+export const voteCandidateConsejoFacultad = async(siglas, facultad, voterId) => {
+    const accounts = await window.ethereum.enable()
+    const account = accounts[0]
+    await electionContract.methods.voteCandidatoConsejoFacultad(siglas,facultad, voterId).send({from: account}).then(info => 
+        console.log(info));
+}
+// End Votos Funcs
+
 
 export const verCandidatosCentroEstudiantes = async() => {
     var candidatos = await electionContract.methods.candidatosCentroEstudiantes().call

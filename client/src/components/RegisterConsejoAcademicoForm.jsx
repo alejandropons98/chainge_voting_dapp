@@ -1,6 +1,6 @@
 import Button from 'react-bootstrap/Button';
 import Form from 'react-bootstrap/Form';
-import { registerConsejoAcademico, verCandidatosConsejoAcademico } from '../funcs'
+import { registerConsejoAcademico } from '../funcs'
 import { Navigate, useNavigate } from "react-router-dom";
 import { useState } from "react"
 import SplitButton from 'react-bootstrap/SplitButton';
@@ -21,7 +21,6 @@ function RegisterConsejoAcademicoForm() {
         const id = e.target[0].value
         const nombreCA = e.target[1].value
         await registerConsejoAcademico(nombreCA, carreraSeleccionada, id)
-        await verCandidatosConsejoAcademico()
     }
 
     const mystyle = {

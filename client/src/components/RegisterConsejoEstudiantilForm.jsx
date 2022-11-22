@@ -14,7 +14,6 @@ function RegisterConsejoEstudiantilForm() {
     const [carrerasSeleccionadas, setCarrerasSeleccionadas] = useState([])
     const [newCarreras, setNewCarreras] = useState( new Set() )
     const [formValue, setFormValue] = useState({})
-    const [siglasFacultad, setSiglasFacultad] = useState([])
 
     const carrerasDict = {
         'Est. Juridicos y Politicos': ['Estudios Liberales', 'Derecho'],
@@ -25,7 +24,6 @@ function RegisterConsejoEstudiantilForm() {
 
     const handleSubmit = async(e) => {
         e.preventDefault()
-        console.log(formValue)
         facultadesSeleccionadas.map(async (facultad) => {
             await registerConsejoFacultad(formValue[facultad], formValue["siglas"+" "+facultad], facultad)
             carrerasSeleccionadas.map(async (carrera) => {
@@ -33,6 +31,7 @@ function RegisterConsejoEstudiantilForm() {
             }) 
         })
     }
+
     const handleChange = ({target}) => {
         console.log(target.text)
         setFormValue((prev) => {
@@ -67,8 +66,8 @@ function RegisterConsejoEstudiantilForm() {
         padding: '20px',
         background: '#212529',
         color: 'white'
-      };
-    
+    }
+
     return (
         <Form style={mystyle} className='ml' onSubmit={handleSubmit}>
             <>
@@ -102,6 +101,7 @@ function RegisterConsejoEstudiantilForm() {
                         ))
                     ))}
                 </SplitButton>
+                <br />
                 {carrerasSeleccionadas.map((carrera,i) => (
                     <Form.Group className = "carreras" >
                         <br />
