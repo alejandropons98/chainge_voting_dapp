@@ -1,6 +1,6 @@
 import Button from 'react-bootstrap/Button';
 import Form from 'react-bootstrap/Form';
-import { registerConsejoAcademico, verCandidatosConsejoAcademico } from '../funcs'
+import { registerConsejoAcademico } from '../funcs'
 import { Navigate, useNavigate } from "react-router-dom";
 import { useState } from "react"
 import SplitButton from 'react-bootstrap/SplitButton';
@@ -9,7 +9,7 @@ import Dropdown from 'react-bootstrap/Dropdown';
 function RegisterConsejoAcademicoForm() {
     
     const [carreraSeleccionada, setCarreraSeleccionada] = useState("Carrera")
-    const carreras = ['Estudios Liberales', 'Derecho','Educacion', 'Psicologia','Idiomas Modernos','Mate. Industrial', 'Ciencias Administrativas', 'Economia','Contaduria Publica','Ing. Quimica', 'Ing. de Produccion','Ing. Mecanica', 'Ing. Civil', 'Ing. Electrica', 'Ing. Sistemas']  
+    const carreras = ['Estudios Liberales', 'Derecho','Educacion', 'Psicologia','Idiomas Modernos','Mate. Industrial', 'Ciencias Administrativas', 'Economia','Contaduria Publica','Ingenieria Quimica', 'Ingenieria de Produccion','Ingenieria Mecanica', 'Ingenieria Civil', 'Ingenieria Electrica', 'Ingenieria Sistemas']  
     
     const handleCarrera = (e) => {
         e.preventDefault()
@@ -21,7 +21,6 @@ function RegisterConsejoAcademicoForm() {
         const id = e.target[0].value
         const nombreCA = e.target[1].value
         await registerConsejoAcademico(nombreCA, carreraSeleccionada, id)
-        await verCandidatosConsejoAcademico()
     }
 
     const mystyle = {
