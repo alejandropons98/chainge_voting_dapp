@@ -7,7 +7,8 @@ import {
   GoogleAuthProvider,
   signInWithPopup,
 } from "firebase/auth";
-import { auth } from "../utils/firebase-config";
+import { auth, db } from "../utils/firebase-config";
+import { doc, setDoc, getDoc } from "firebase/firestore";
 
 import { useEffect } from "react";
 
@@ -23,12 +24,56 @@ function AuthProvider({ children }) {
   const [user, setUser] = useState(null);
   const [loading, setLoading] = useState(true);
 
-  const signup = (email, password) => {
-    return createUserWithEmailAndPassword(auth, email, password);
+  const signup = async (email, password, cedula) => {
+    try {
+      const infoUsuario = await createUserWithEmailAndPassword(
+        auth,
+        email,
+        password
+      );
+
+      await setDoc(doc(db, "usuarios", infoUsuario.user.email), {
+        name,
+        correo: email,
+        cedula,
+        //rol
+      });
+
+      setUser({
+        id: infoUsuario.user.uid,
+        //id: "17cgV8GIFEPIKuMqEMdr3zGFNFp2",
+        name,
+        //name: "Lionel Andrés",
+        correo: email,
+        //correo: "app@gmail.com",
+        //rol,
+        cedula,
+      });
+    } catch (e) {
+      console.error("Error adding document: ", e);
+    }
   };
 
-  const login = (email, password) => {
-    return signInWithEmailAndPassword(auth, email, password);
+  const login = async (email, password) => {
+    try {
+      const infoUsuario = await signInWithEmailAndPassword(
+        auth,
+        email,
+        password
+      );
+      const docRef = doc(db, "usuarios", infoUsuario.user.email);
+      const docSnap = await getDoc(docRef);
+      const userData = docSnap.data();
+      console.log(docSnap.data());
+
+      setUser({
+        id: infoUsuario.user.uid,
+        correo: email,
+        name: userData.cedula,
+      });
+    } catch (e) {
+      console.error("Error: ", e);
+    }
   };
 
   const loginWithGoogle = () => {
