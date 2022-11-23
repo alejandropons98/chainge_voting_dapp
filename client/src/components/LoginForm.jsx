@@ -13,7 +13,7 @@ import {
 import * as icons from "react-bootstrap-icons";
 import { useState } from "react";
 import { useAuth } from "../context/authContext";
-import { useNavigate } from "react-router-dom";
+import { useNavigate, Link } from "react-router-dom";
 import { async } from "@firebase/util";
 
 function LoginForm() {
@@ -44,6 +44,10 @@ function LoginForm() {
     } catch (error) {
       setError(error.message);
     }
+
+    const handleRegister = () => {
+      return navigate("/registeruser");
+    };
   };
   return (
     <form onSubmit={handleSubmit}>
@@ -102,6 +106,15 @@ function LoginForm() {
               >
                 <icons.Google />
               </MDBBtn>
+              <p className="my-4 text-sm flex justify-between px-3">
+                Don't have an account?
+                <Link
+                  to="/registeruser"
+                  className="text-blue-700 hover:text-blue-900"
+                >
+                  Register
+                </Link>
+              </p>
             </div>
           </MDBCardBody>
         </MDBCard>
