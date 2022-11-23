@@ -1,5 +1,5 @@
 import CandidateCardGrid from "../../components/CandidateCardGrid"
-import { getJuntaFCECandidates, getCoordinacionFCECandidates, getCentroEstudiantesCandidates, getConsejoEscuelaCandidates, getConsejoFacultadCandidates, getConsejoAcademicoCandidates, voteCandidateJDFCE, voteCandidateCoordFCE   } from "../../funcs"
+import { getJuntaFCECandidates, getCoordinacionFCECandidates, getCentroEstudiantesCandidates, getConsejoEscuelaCandidates, getConsejoFacultadCandidates, getConsejoAcademicoCandidates, voteCandidateJDFCE, voteCandidateCoordFCE,voteCandidateConsejoAcademico, voteCentroEstudiantes,voteCandidateConsejoEscuela, voteCandidateConsejoFacultad } from "../../funcs"
 import { useEffect, useState } from "react";
 import {db} from "../../utils/firebase-config.js"
 
@@ -12,6 +12,10 @@ const VotingPage = () => {
     const [pairsCF, setPairsCF] = useState([]);
     const [pairsCEs, setPairsCEs] = useState([]);
     const[coordFCECandidates,setCoordFCECandidates]=useState([])
+    const[consejoEscuelaCandidates,setConsejoEscuelaCandidates]=useState([])
+    const[consejoFacultadCandidates,setConsejoFacultadCandidates]=useState([])
+    const[centroEstudiantesCandidates,setCentroEstudiantesCandidates]=useState([])
+    const[consejoAcademico,setConsejoAcademico]=useState([])
     const[juntaFCECandidates,setJuntaFCECandidates]=useState([
         {
             nombre: 'Monkey D. Luffy',
@@ -46,13 +50,14 @@ const VotingPage = () => {
               pairsArray.push(pair);
             });
             setPairsCE(pairsArray);
+            console.log(pairsCE)
           })
           .catch((error) => {
             console.log(error);
           });
       };
-
-      const fetchPairsCF = () => {
+        
+    const fetchPairsCF = () => {
         const pairs = db.collection("pairsCF");
         pairs
           .get()
@@ -69,7 +74,7 @@ const VotingPage = () => {
           });
       };
 
-      const fetchPairsCEs = () => {
+    const fetchPairsCEs = () => {
         const pairs = db.collection("pairsCEs");
         pairs
           .get()
@@ -126,6 +131,7 @@ const VotingPage = () => {
     useEffect(() => {
         if(!refresh) return
         setRefresh(false)
+        fetchCentroEstudiantesCandidates()
         fetchCandidates()
     }, [refresh,juntaFCECandidates, coordFCECandidates])
 
@@ -138,6 +144,18 @@ const VotingPage = () => {
             <h3>
                 Candidatos a Coordinacion FCE
                 <CandidateCardGrid candidates={coordFCECandidates} type="Coordinacion FCE" vote={voteCandidateCoordFCE}/>
+            </h3>
+            <h3>
+                Candidatos a Centro de Estudiantes
+                <CandidateCardGrid candidates={centroEstudiantesCandidates} type="Centro de Estudiantes" vote={voteCentroEstudiantes}/>
+            </h3>
+            <h3>
+                Candidatos a Consejo de Facultad
+                <CandidateCardGrid candidates={consejoFacultadCandidates} type="Consejo de Facultad" vote={voteCandidateConsejoAcademico}/>
+            </h3>
+            <h3>
+                Candidatos a Consejo de Escuela
+                <CandidateCardGrid candidates={consejoEscuelaCandidates} type="Consejo Escuela" vote={voteCandidateConsejoEscuela}/>
             </h3>
         </div>
 

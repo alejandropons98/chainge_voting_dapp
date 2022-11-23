@@ -10,7 +10,7 @@
   "sourceMap": "67:319:3:-:0;;;;;;;;;;;;;;;-1:-1:-1;;;67:319:3;;;;;;;;;;;;;;;;;",
   "deployedSourceMap": "67:319:3:-:0;;;;;;;;",
   "source": "// SPDX-Licence-Identifier: UNLICENSED\r\npragma solidity ^0.8.0;\r\n\r\nlibrary StringCompare {\r\n    function compare(string memory _a, string memory _b) internal pure returns (bool) {\r\n        if (bytes(_a).length != bytes(_b).length) {\r\n            return false;\r\n        } else {\r\n            return keccak256(abi.encodePacked(_a)) == keccak256(abi.encodePacked(_b));\r\n        }\r\n    }\r\n}\r\n",
-  "sourcePath": "D:\\Windows Folders\\Documents\\Uni\\Software\\voting-dapp\\smart_contract\\contracts\\StringCompare.sol",
+  "sourcePath": "C:\\Users\\Jose Rubin\\Desktop\\Chainge\\chainge_voting_dapp\\smart_contract\\contracts\\StringCompare.sol",
   "ast": {
     "absolutePath": "project:/contracts/StringCompare.sol",
     "exportedSymbols": {
@@ -606,7 +606,7 @@
   },
   "networks": {},
   "schemaVersion": "3.4.10",
-  "updatedAt": "2022-11-23T01:31:10.214Z",
+  "updatedAt": "2022-11-23T06:07:01.340Z",
   "devdoc": {
     "kind": "dev",
     "methods": {},

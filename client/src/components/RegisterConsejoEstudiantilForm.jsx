@@ -27,14 +27,16 @@ function RegisterConsejoEstudiantilForm() {
         facultadesSeleccionadas.map(async (facultad) => {
             await registerConsejoFacultad(formValue[facultad], formValue["siglas"+" "+facultad], facultad)
             await db.collection("pairsCF").add({
-                facultad: formValue[facultad],
-                siglas: formValue["siglas"]
+                nombre: formValue[facultad],
+                facultad: facultad,
+                siglas: formValue["siglas"+" "+facultad]
             });
             carrerasSeleccionadas.map(async (carrera) => {
                 await registerConsejoEscuela(formValue[carrera], formValue["siglas"+" "+carrera], carrera)
                 await db.collection("pairsCEs").add({
-                    escuela: formValue[carrera],
-                    siglas: formValue["siglas"]
+                    nombre: formValue[carrera],
+                    escuela: carrera,
+                    siglas: formValue["siglas"+" "+carrera]
                 });
             }) 
         })

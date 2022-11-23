@@ -31,13 +31,13 @@ const HomeContent = () => {
                     <div className="text_container2">
                         <h1>A prueba de fraudes</h1>
                         <p>
-                            La transparencia e inalterabilidad de la blockchain nos permite
-                            asegurar unas elecciones seguras, anonimas y transparnetes. Al
-                            participar, los votantes tienen una copia de cada vez que se
-                            actualizan los bloques, esto nos ayuda en el momento que existe
-                            una incosistencia, los votantes corroborar si la informacion del
-                            bloque afectado es verdadera, al no serlo el bloque se actualiza
-                            con la informacion dada por las copias de todos los votantes
+                          La transparencia e inalterabilidad de la blockchain nos permite
+                          asegurar unas elecciones seguras, anonimas y transparnetes. Al
+                          participar, los votantes tienen una copia de cada vez que se
+                          actualizan los bloques, esto nos ayuda en el momento que existe
+                          una incosistencia, los votantes corroborar si la informacion del
+                          bloque afectado es verdadera, al no serlo el bloque se actualiza
+                          con la informacion dada por las copias de todos los votantes
                         </p>
                     </div>
                 </div>
@@ -63,7 +63,7 @@ const HomeContent = () => {
                 <button
                 >
                     <h1 className="h1register">
-                        Ingresa aqui
+                      Ingresa aqui
                     </h1>
                 </button>
                 </Link>
