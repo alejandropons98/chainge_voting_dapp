@@ -13,9 +13,10 @@ import {
 import * as icons from "react-bootstrap-icons";
 import { useState } from "react";
 import { useAuth } from "../context/authContext";
-import { useNavigate } from "react-router-dom";
+import { useNavigate, Link } from "react-router-dom";
 import { async } from "@firebase/util";
-
+import { getDoc, doc } from "firebase/firestore";
+import { db } from "../utils/firebase-config";
 function LoginForm() {
   const [user, setUser] = useState({
     email: "",
@@ -29,6 +30,9 @@ function LoginForm() {
     setError("");
     try {
       await login(user.email, user.password);
+      //const docRef = doc(db, "usuarios", user.email);
+      //const docSnap = await getDoc(docRef);
+      // console.log(docSnap.data());
       navigate("/");
     } catch (error) {
       setError(error.message);
@@ -81,12 +85,16 @@ function LoginForm() {
               Log In
             </MDBBtn>
 
-            <MDBBtn type="submit" className="w-100 mb-4" size="md" href="/registeruser">
+            <MDBBtn
+              type="submit"
+              className="w-100 mb-4"
+              size="md"
+              href="/registeruser"
+            >
               Sign Up
             </MDBBtn>
 
             <div className="text-center">
-
               <MDBBtn
                 tag="a"
                 color="danger"
@@ -96,6 +104,15 @@ function LoginForm() {
               >
                 <icons.Google />
               </MDBBtn>
+              <p className="my-4 text-sm flex justify-between px-3">
+                Don't have an account?
+                <Link
+                  to="/registeruser"
+                  className="text-blue-700 hover:text-blue-900"
+                >
+                  Register
+                </Link>
+              </p>
             </div>
           </MDBCardBody>
         </MDBCard>
