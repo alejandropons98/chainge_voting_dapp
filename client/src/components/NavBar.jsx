@@ -8,8 +8,9 @@ import { useAuth } from "../context/authContext";
 function NavBar() {
   const [refresh, setRefresh] = useState(true);
 
-  const { logout, user } = useAuth();
-
+  const { logout, user, isLoggedIn } = useAuth();
+  // const userCi = isLoggedIn ? user.email : ""
+  const userCi = ""
   const handleLogout = async () => {
     try {
       await logout();
@@ -25,7 +26,7 @@ function NavBar() {
     <>
       <Navbar collapseOnSelect expand="lg" bg="dark" variant="dark" fixed="top">
         <Container>
-          <Navbar.Brand href="/">Chainge</Navbar.Brand>
+          <Navbar.Brand href="/">Chainge {userCi} </Navbar.Brand>
           <Navbar.Toggle aria-controls="responsive-navbar-nav" />
           <Navbar.Collapse id="responsive-navbar-nav">
             <Nav className="me-auto" variant="tabs">

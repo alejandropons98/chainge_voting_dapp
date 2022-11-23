@@ -64,12 +64,11 @@ function AuthProvider({ children }) {
       const docRef = doc(db, "usuarios", infoUsuario.user.email);
       const docSnap = await getDoc(docRef);
       const userData = docSnap.data();
-      console.log(docSnap.data());
 
       setUser({
         id: infoUsuario.user.uid,
         correo: email,
-        name: userData.cedula,
+        cedula: userData.cedula,
       });
     } catch (e) {
       console.error("Error: ", e);
@@ -90,6 +89,8 @@ function AuthProvider({ children }) {
     });
     return () => unsubuscribe();
   }, []);
+  
+  const isLoggedIn = user !== null;
 
   return (
     <authContext.Provider
@@ -100,6 +101,7 @@ function AuthProvider({ children }) {
         logout,
         loading,
         loginWithGoogle,
+        isLoggedIn
       }}
     >
       {children}

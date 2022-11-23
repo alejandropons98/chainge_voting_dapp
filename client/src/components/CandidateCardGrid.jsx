@@ -26,10 +26,12 @@ function CandidateCardGrid(props) {
       {candidates.map((candidate,id) => (
         <Col key = {id} style={mystyle}>
           <CandidateCard 
-          nombre = {candidate.nombre}
           siglas = {candidate.siglas}
+          nombre = {candidate.nombre}
+          nombrePlancha = {candidate.nombrePlancha}
           type = {type}
           vote = {vote}
+
           />
         </Col>
       ))}

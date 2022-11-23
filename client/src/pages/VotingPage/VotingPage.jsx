@@ -49,8 +49,8 @@ const VotingPage = () => {
               const pair = { ...element.data() };
               pairsArray.push(pair);
             });
-            setPairsCE(pairsArray);
-            console.log(pairsCE)
+            setPairsCE(pairsArray)
+            setCentroEstudiantesCandidates(pairsArray)
           })
           .catch((error) => {
             console.log(error);
@@ -68,6 +68,8 @@ const VotingPage = () => {
               pairsArray.push(pair);
             });
             setPairsCF(pairsArray);
+            console.log(pairsArray)
+            setConsejoFacultadCandidates(pairsArray)
           })
           .catch((error) => {
             console.log(error);
@@ -85,6 +87,26 @@ const VotingPage = () => {
               pairsArray.push(pair);
             });
             setPairsCEs(pairsArray);
+            console.log(pairsArray)
+            setConsejoEscuelaCandidates(pairsArray)
+          })
+          .catch((error) => {
+            console.log(error);
+          });
+      };
+
+    const fetchPairsCA = () => {
+        const pairs = db.collection("pairsCA");
+        pairs
+          .get()
+          .then((data) => {
+            const pairsArray = [];
+            data.docs.forEach((element) => {
+              const pair = { ...element.data() };
+              pairsArray.push(pair);
+            });
+            setPairsCEs(pairsArray);
+            setConsejoAcademico(pairsArray)
           })
           .catch((error) => {
             console.log(error);
@@ -93,6 +115,7 @@ const VotingPage = () => {
 
 
     const fetchCentroEstudiantesCandidates = async() => {
+        // No se me actualizaba el useState y mande la info de los candidatos por el fetch de arriba
         fetchPairsCE();
         for(let i = 0; i < pairsCE.length; i++){
             var candidato = await getCentroEstudiantesCandidates(pairsCE[i].siglas, pairsCE[i].escuela)
@@ -115,7 +138,6 @@ const VotingPage = () => {
     }
 
     const fetchCandidates = async () => {
-        // console.log(await getConsejoEscuelaCandidates())
         const newFCECandidates = (await getJuntaFCECandidates()).map((list,i) => (
             {"nombre": list[0], "siglas":list[1]}
         ));
@@ -131,9 +153,13 @@ const VotingPage = () => {
     useEffect(() => {
         if(!refresh) return
         setRefresh(false)
-        fetchCentroEstudiantesCandidates()
+        fetchPairsCE()
+        fetchPairsCF()
+        fetchPairsCA()
+        fetchPairsCEs()
+        // fetchCentroEstudiantesCandidates()
         fetchCandidates()
-    }, [refresh,juntaFCECandidates, coordFCECandidates])
+    }, [refresh,juntaFCECandidates, coordFCECandidates, centroEstudiantesCandidates, consejoEscuelaCandidates, consejoFacultadCandidates])
 
     return (
         <div style = {needSpace}>
@@ -148,6 +174,10 @@ const VotingPage = () => {
             <h3>
                 Candidatos a Centro de Estudiantes
                 <CandidateCardGrid candidates={centroEstudiantesCandidates} type="Centro de Estudiantes" vote={voteCentroEstudiantes}/>
+            </h3>
+            <h3>
+                Candidatos a Consejero Academico
+                <CandidateCardGrid candidates={consejoAcademico} type="Consejero Academico" vote={voteCandidateConsejoAcademico}/>
             </h3>
             <h3>
                 Candidatos a Consejo de Facultad
