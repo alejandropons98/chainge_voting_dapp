@@ -17,10 +17,7 @@ function NavBar() {
       console.error(error.message);
     }
   };
-  useEffect(() => {
-    if (!refresh) return;
-    setRefresh(false);
-  }, [refresh]);
+
   return (
     <>
       <Navbar collapseOnSelect expand="lg" bg="dark" variant="dark" fixed="top">

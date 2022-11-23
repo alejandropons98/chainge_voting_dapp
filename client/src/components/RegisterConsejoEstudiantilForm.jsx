@@ -26,14 +26,21 @@ function RegisterConsejoEstudiantilForm() {
         e.preventDefault()
         facultadesSeleccionadas.map(async (facultad) => {
             await registerConsejoFacultad(formValue[facultad], formValue["siglas"+" "+facultad], facultad)
+            await db.collection("pairsCF").add({
+                facultad: formValue[facultad],
+                siglas: formValue["siglas"]
+            });
             carrerasSeleccionadas.map(async (carrera) => {
                 await registerConsejoEscuela(formValue[carrera], formValue["siglas"+" "+carrera], carrera)
+                await db.collection("pairsCEs").add({
+                    escuela: formValue[carrera],
+                    siglas: formValue["siglas"]
+                });
             }) 
         })
     }
 
     const handleChange = ({target}) => {
-        console.log(target.text)
         setFormValue((prev) => {
             return {...prev, [target.name] : target.value}
         })
@@ -44,7 +51,6 @@ function RegisterConsejoEstudiantilForm() {
         const carreraSelect=e.target.text
         newCarreras.add(carreraSelect)
         const carrerasLista=[...newCarreras]
-        console.log(newCarreras)
         setCarrerasSeleccionadas(carrerasLista)
     }
 

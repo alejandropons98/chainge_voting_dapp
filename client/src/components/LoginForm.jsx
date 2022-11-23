@@ -30,9 +30,9 @@ function LoginForm() {
     setError("");
     try {
       await login(user.email, user.password);
-      const docRef = doc(db, "usuarios", user.email);
-      const docSnap = await getDoc(docRef);
-      console.log(docSnap.data());
+      //const docRef = doc(db, "usuarios", user.email);
+      //const docSnap = await getDoc(docRef);
+      // console.log(docSnap.data());
       navigate("/");
     } catch (error) {
       setError(error.message);
@@ -81,22 +81,20 @@ function LoginForm() {
               name="password"
             />
 
-            <div className="d-flex justify-content-center mb-4">
-              <MDBCheckbox
-                name="flexCheck"
-                value=""
-                id="flexCheckDefault"
-                label="Subscribe to our newsletter"
-              />
-            </div>
-
             <MDBBtn type="submit" className="w-100 mb-4" size="md">
               Log In
             </MDBBtn>
 
-            <div className="text-center">
-              <p>or sign up with:</p>
+            <MDBBtn
+              type="submit"
+              className="w-100 mb-4"
+              size="md"
+              href="/registeruser"
+            >
+              Sign Up
+            </MDBBtn>
 
+            <div className="text-center">
               <MDBBtn
                 tag="a"
                 color="danger"

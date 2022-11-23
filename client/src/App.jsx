@@ -30,85 +30,77 @@ const App = () => {
           <Route
             path="/"
             element={
-              <ProtectedRoute>
                 <Layout>
                   <Home />
                 </Layout>
-              </ProtectedRoute>
             }
           />
           <Route
             path="/vote"
             element={
-              <ProtectedRoute>
                 <Layout>
                   <VotingPage />
                 </Layout>
-              </ProtectedRoute>
             }
           />
           <Route
             path="/registerConsejoAcademico"
             element={
-              <ProtectedRoute>
                 <Layout>
                   <RegisterConsejoAcademico />
                 </Layout>
-              </ProtectedRoute>
             }
           />
           <Route
             path="/registerCentroEstudiantes"
             element={
-              <ProtectedRoute>
                 <Layout>
                   <RegisterFCE />
                 </Layout>
-              </ProtectedRoute>
             }
           />
           <Route
             path="/registerConsejoEstudiantil"
             element={
-              <ProtectedRoute>
                 <Layout>
                   <RegisterConsejoEstudiantil />
                 </Layout>
-              </ProtectedRoute>
             }
           />
           <Route
             path="/registervoter"
             element={
-              <ProtectedRoute>
                 <Layout>
                   <RegisterVoter />
                 </Layout>
-              </ProtectedRoute>
             }
           />
           <Route
             path="/voters"
             element={
-              <ProtectedRoute>
                 <Layout>
                   <VotedVoters />
                 </Layout>
-              </ProtectedRoute>
             }
           />
           <Route
             path="/audit"
             element={
-              <ProtectedRoute>
-                <Layout>
-                  <Audit />
-                </Layout>
-              </ProtectedRoute>
+              <Layout>
+                <Audit />
+              </Layout>
             }
           />
-          <Route path="/login" element={<LoginPage />} />
-          <Route path="/registeruser" element={<RegisterForm />} />
+            <Route path="/login" element={
+              <Layout>
+                <LoginPage />
+              </Layout>
+            } />
+            <Route path="/registeruser" element={
+              <Layout>
+                <RegisterForm />
+              </Layout>
+            } />
         </Routes>
       </AuthProvider>
     </BrowserRouter>

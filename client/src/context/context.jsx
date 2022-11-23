@@ -47,7 +47,7 @@ export default function SessionProvider(props) {
         password
       );
 
-      await setDoc(doc(db, "usuarios", infoUsuario.user.uid), {
+      await setDoc(doc(db, "usuarios", infoUsuario.user.email), {
         name,
         correo: email,
         rol,
@@ -60,8 +60,8 @@ export default function SessionProvider(props) {
         //name: "Lionel Andrés",
         correo: email,
         //correo: "app@gmail.com",
-        rol,
-        //rol: "usuario"
+        //rol,
+        //rol: "usuario",
       });
     } catch (e) {
       console.error("Error adding document: ", e);
