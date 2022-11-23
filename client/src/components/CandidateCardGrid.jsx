@@ -8,6 +8,7 @@ function CandidateCardGrid(props) {
   const candidates = props.candidates
   const type = props.type
   const vote = props.vote
+  const params = props.params
   const mystyle = {
     display: 'flex',
     flexDirection: 'row',
@@ -26,12 +27,15 @@ function CandidateCardGrid(props) {
       {candidates.map((candidate,id) => (
         <Col key = {id} style={mystyle}>
           <CandidateCard 
-          siglas = {candidate.siglas}
-          nombre = {candidate.nombre}
-          nombrePlancha = {candidate.nombrePlancha}
-          type = {type}
-          vote = {vote}
-
+            siglas = {candidate.siglas}
+            nombre = {candidate.nombre}
+            nombrePlancha = {candidate.nombrePlancha}
+            type = {type}
+            vote = {vote}
+            id = {candidate.id}
+            escuela = {candidate.escuela}
+            facultad = {candidate.facultad}
+            params = {params}
           />
         </Col>
       ))}
