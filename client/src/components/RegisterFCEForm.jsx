@@ -59,7 +59,7 @@ function RegisterFCEForm() {
         border: '#0d6efd solid',
         borderRadius: '50px',
         padding: '20px',
-        background: '#212529',
+        // background: '#212529',
         color: 'white'
       };
     

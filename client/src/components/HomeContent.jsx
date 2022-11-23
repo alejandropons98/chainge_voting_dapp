@@ -59,8 +59,9 @@ const HomeContent = () => {
                 </div>
             </div>
             <div className="registercontainer">
-                <Link to="/login">
-                <button
+                <Link to="/login" >
+                <button className="boton-login"
+    
                 >
                     <h1 className="h1register">
                         Ingresa aqui

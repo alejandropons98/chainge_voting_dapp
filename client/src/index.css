@@ -30,6 +30,11 @@ body {
   place-items: center;
   min-width: 320px;
   min-height: 100vh;
+  
+  background-image: url("./assets/wallpaperflare.com_wallpaper.jpg");
+}
+.ml{
+  background-image: url("./assets/wallpaperflare.com_wallpaper (4).jpg");
 }
 
 h1 {

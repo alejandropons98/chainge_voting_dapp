@@ -14,7 +14,7 @@ function CandidateCard(props) {
 
   const mystyle2 = {
     width: '18rem',
-    height: '15rem'
+    height: '15rem',
   };
 
   const mystyle3 = {
@@ -25,7 +25,7 @@ function CandidateCard(props) {
   };
 
   return (
-    <Card style={mystyle2} border="primary" key = "{props.id}" className="bg-dark text-white">
+    <Card style={mystyle2} border="primary" key = "{props.id}" className="ml text-white">
       <Card.Body>
         <Card.Title>{props.nombre}</Card.Title>
         <Card.Text>{props.siglas}</Card.Text>

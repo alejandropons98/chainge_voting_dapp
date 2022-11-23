@@ -14,6 +14,7 @@ function CandidateCardGrid(props) {
     justifyContent: 'center',
     alignContent: 'center',
     flexWrap: 'wrap',
+    
   };
 
   const mystyle2 = {

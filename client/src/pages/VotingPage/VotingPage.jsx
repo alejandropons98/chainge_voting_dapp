@@ -52,11 +52,11 @@ const VotingPage = () => {
 
     return (
         <div style = {needSpace}>
-            <h3>
+            <h3 style={{color: "#0d6efd"}}>
                 Candidatos a Junta Directiva FCE
                 <CandidateCardGrid candidates={juntaFCECandidates} type="Junta Directiva" vote={voteCandidateJDFCE}/>
             </h3>
-            <h3>
+            <h3 style={{color: "#0d6efd"}}>
                 Candidatos a Coordinacion FCE
                 <CandidateCardGrid candidates={coordFCECandidates} type="Coordinacion FCE" vote={voteCandidateCoordFCE}/>
             </h3>
