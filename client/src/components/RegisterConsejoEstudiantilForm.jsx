@@ -34,6 +34,7 @@ function RegisterConsejoEstudiantilForm() {
                 siglas: formValue["siglas"+" "+facultad]
             });
         })
+        //Aqui hay un error pero no lo veo 
         carrerasSeleccionadas.map(async (carrera) => {
             console.log(carrera)
             await registerConsejoEscuela(formValue[carrera], formValue["siglas"+" "+carrera], carrera)

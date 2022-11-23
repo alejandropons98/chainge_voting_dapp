@@ -35,9 +35,7 @@ function NavBar() {
               <Nav.Link href="/registerCentroEstudiantes">
                 Registrar Centro de Estudiantes
               </Nav.Link>
-              <Nav.Link href="/registerConsejoEstudiantil">
-                Registrar Consejos de Facultades y Escuelas
-              </Nav.Link>
+              <Nav.Link href="/registerConsejoEstudiantil">Registrar Consejos de Facultades y Escuelas</Nav.Link> 
               <Nav.Link href="/registervoter">Registrar Votante</Nav.Link>
               <Nav.Link href="/voters">Votantes Activos</Nav.Link>
               <Nav.Link href="/vote">Votar</Nav.Link>
