@@ -6,8 +6,6 @@ import {
 import { auth, db } from "../utils/firebase-config";
 import { doc, setDoc, getDoc } from "firebase/firestore";
 import { useState } from "react";
-import { createContext } from "react";
-const sessionContext = createContext();
 
 export default function SessionProvider(props) {
   const [session, setSession] = useState(null);
@@ -47,7 +45,7 @@ export default function SessionProvider(props) {
         password
       );
 
-      await setDoc(doc(db, "usuarios", infoUsuario.user.email), {
+      await setDoc(doc(db, "usuarios", infoUsuario.user.uid), {
         name,
         correo: email,
         rol,
@@ -60,8 +58,8 @@ export default function SessionProvider(props) {
         //name: "Lionel Andrés",
         correo: email,
         //correo: "app@gmail.com",
-        //rol,
-        //rol: "usuario",
+        rol,
+        //rol: "usuario"
       });
     } catch (e) {
       console.error("Error adding document: ", e);
