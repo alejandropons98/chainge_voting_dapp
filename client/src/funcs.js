@@ -3,25 +3,15 @@ import Web3 from 'web3';
 import { ElectionContract } from './abi/abi';
 
 const web3 = new Web3(Web3.givenProvider);
-const contractAddress = '0x742BB983DFAD1316FF195c866aA3787De3c05D2b';
+const contractAddress = '0x67cB2aE166CA64Acd059b6399CC3BB01cC633acf';
 const electionContract = new web3.eth.Contract(ElectionContract, contractAddress);
-
 
 export const load = async () => {
     await loadWeb3();
-    //Primer Address Migration y Segundo primera de Ganache o las de Ganache
-    // electionContract.methods.registerVoter("0",'0xA98370E06Ef5A917D6E9c41B3EcD6A6dfc1C60c5').send({from: '0xb5F5DfFa482505d45bC1D1529BcAF5eD51D4A3b4'}).then(
-    //     function(info){
-    //         console.log(info);
-    //     }
-    // );
     return;
 
 };
-// Esto no es algo que necesitamos ahorita. Vamos a tener que agregar un array de Voters (Ahorita es un mapping)
-// export const getVoters = async() => {
-//     return await electionContract.methods.voters(contractAddress).call().then(info => console.log(info));
-// }
+
 export const vote = async(id) => {
     const accounts = await window.ethereum.enable();
     const account = accounts[0];
@@ -71,6 +61,7 @@ export const getCoordinacionFCECandidates = async() => {
 }
 
 export const getCentroEstudiantesCandidates = async(object) => {
+    console.log(electionContract.methods)
     var candidato = await electionContract.methods.getCandidatoCentroEstudiantes(object.siglas, object.escuela).call()
     return candidato;
 }
@@ -94,20 +85,11 @@ export const registerNewId = async(id) => {
         console.log(info));
 }
 
-// function getCandidateById(id){
-//     electionContract.methods.getCandidateById(id).call().then(
-//         function(info){
-//             console.log(info);
-//             return info;
-
-//         }
-//     );
-// };
-
 export const getActiveVoters = async() => {
     var voters = await electionContract.methods.getVoterRegistry().call();
     return voters;
 }
+
 //Registros
 export const registerCandidateJDFCE = async(agrupacion, siglas) => {
     const accounts = await window.ethereum.enable();

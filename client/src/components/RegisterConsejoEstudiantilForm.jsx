@@ -6,6 +6,8 @@ import { Navigate, useNavigate } from "react-router-dom";
 import { useState } from "react";
 import SplitButton from 'react-bootstrap/SplitButton';
 import Dropdown from 'react-bootstrap/Dropdown';
+import { db } from '../utils/firebase-config.js'
+
 
 function RegisterConsejoEstudiantilForm() {
     
@@ -27,17 +29,21 @@ function RegisterConsejoEstudiantilForm() {
         facultadesSeleccionadas.map(async (facultad) => {
             await registerConsejoFacultad(formValue[facultad], formValue["siglas"+" "+facultad], facultad)
             await db.collection("pairsCF").add({
-                facultad: formValue[facultad],
-                siglas: formValue["siglas"]
+                nombre: formValue[facultad],
+                facultad: facultad,
+                siglas: formValue["siglas"+" "+facultad]
             });
-            carrerasSeleccionadas.map(async (carrera) => {
-                await registerConsejoEscuela(formValue[carrera], formValue["siglas"+" "+carrera], carrera)
-                await db.collection("pairsCEs").add({
-                    escuela: formValue[carrera],
-                    siglas: formValue["siglas"]
-                });
-            }) 
         })
+        //Aqui hay un error pero no lo veo 
+        carrerasSeleccionadas.map(async (carrera) => {
+            console.log(carrera)
+            await registerConsejoEscuela(formValue[carrera], formValue["siglas"+" "+carrera], carrera)
+            await db.collection("pairsCEs").add({
+                nombre: formValue[carrera],
+                escuela: carrera,
+                siglas: formValue["siglas"+" "+carrera]
+            });
+        }) 
     }
 
     const handleChange = ({target}) => {
@@ -82,7 +88,7 @@ function RegisterConsejoEstudiantilForm() {
                 <br/>
                 <SplitButton key= 'Facultad' title='Facultades'>
                     {facultades.map((facultad) => (
-                        <Dropdown.Item key= {facultad} title = {facultad} onClick={handleClick}>{facultad}</Dropdown.Item>
+                        <Dropdown.Item key={facultad} onClick={handleClick}>{facultad}</Dropdown.Item>
                     ))}
                 </SplitButton>
                 <br />

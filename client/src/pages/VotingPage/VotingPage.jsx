@@ -1,5 +1,5 @@
 import CandidateCardGrid from "../../components/CandidateCardGrid"
-import { getJuntaFCECandidates, getCoordinacionFCECandidates, getCentroEstudiantesCandidates, getConsejoEscuelaCandidates, getConsejoFacultadCandidates, getConsejoAcademicoCandidates, voteCandidateJDFCE, voteCandidateCoordFCE   } from "../../funcs"
+import { getJuntaFCECandidates, getCoordinacionFCECandidates, getCentroEstudiantesCandidates, getConsejoEscuelaCandidates, getConsejoFacultadCandidates, getConsejoAcademicoCandidates, voteCandidateJDFCE, voteCandidateCoordFCE,voteCandidateConsejoAcademico, voteCentroEstudiantes,voteCandidateConsejoEscuela, voteCandidateConsejoFacultad } from "../../funcs"
 import { useEffect, useState } from "react";
 import {db} from "../../utils/firebase-config.js"
 
@@ -12,6 +12,10 @@ const VotingPage = () => {
     const [pairsCF, setPairsCF] = useState([]);
     const [pairsCEs, setPairsCEs] = useState([]);
     const[coordFCECandidates,setCoordFCECandidates]=useState([])
+    const[consejoEscuelaCandidates,setConsejoEscuelaCandidates]=useState([])
+    const[consejoFacultadCandidates,setConsejoFacultadCandidates]=useState([])
+    const[centroEstudiantesCandidates,setCentroEstudiantesCandidates]=useState([])
+    const[consejoAcademico,setConsejoAcademico]=useState([])
     const[juntaFCECandidates,setJuntaFCECandidates]=useState([
         {
             nombre: 'Monkey D. Luffy',
@@ -45,14 +49,15 @@ const VotingPage = () => {
               const pair = { ...element.data() };
               pairsArray.push(pair);
             });
-            setPairsCE(pairsArray);
+            setPairsCE(pairsArray)
+            setCentroEstudiantesCandidates(pairsArray)
           })
           .catch((error) => {
             console.log(error);
           });
       };
-
-      const fetchPairsCF = () => {
+        
+    const fetchPairsCF = () => {
         const pairs = db.collection("pairsCF");
         pairs
           .get()
@@ -63,13 +68,15 @@ const VotingPage = () => {
               pairsArray.push(pair);
             });
             setPairsCF(pairsArray);
+            console.log(pairsArray)
+            setConsejoFacultadCandidates(pairsArray)
           })
           .catch((error) => {
             console.log(error);
           });
       };
 
-      const fetchPairsCEs = () => {
+    const fetchPairsCEs = () => {
         const pairs = db.collection("pairsCEs");
         pairs
           .get()
@@ -80,6 +87,26 @@ const VotingPage = () => {
               pairsArray.push(pair);
             });
             setPairsCEs(pairsArray);
+            console.log(pairsArray)
+            setConsejoEscuelaCandidates(pairsArray)
+          })
+          .catch((error) => {
+            console.log(error);
+          });
+      };
+
+    const fetchPairsCA = () => {
+        const pairs = db.collection("pairsCA");
+        pairs
+          .get()
+          .then((data) => {
+            const pairsArray = [];
+            data.docs.forEach((element) => {
+              const pair = { ...element.data() };
+              pairsArray.push(pair);
+            });
+            setPairsCEs(pairsArray);
+            setConsejoAcademico(pairsArray)
           })
           .catch((error) => {
             console.log(error);
@@ -88,6 +115,7 @@ const VotingPage = () => {
 
 
     const fetchCentroEstudiantesCandidates = async() => {
+        // No se me actualizaba el useState y mande la info de los candidatos por el fetch de arriba
         fetchPairsCE();
         for(let i = 0; i < pairsCE.length; i++){
             var candidato = await getCentroEstudiantesCandidates(pairsCE[i].siglas, pairsCE[i].escuela)
@@ -110,7 +138,6 @@ const VotingPage = () => {
     }
 
     const fetchCandidates = async () => {
-        // console.log(await getConsejoEscuelaCandidates())
         const newFCECandidates = (await getJuntaFCECandidates()).map((list,i) => (
             {"nombre": list[0], "siglas":list[1]}
         ));
@@ -126,8 +153,13 @@ const VotingPage = () => {
     useEffect(() => {
         if(!refresh) return
         setRefresh(false)
+        fetchPairsCE()
+        fetchPairsCF()
+        fetchPairsCA()
+        fetchPairsCEs()
+        // fetchCentroEstudiantesCandidates()
         fetchCandidates()
-    }, [refresh,juntaFCECandidates, coordFCECandidates])
+    }, [refresh,juntaFCECandidates, coordFCECandidates, centroEstudiantesCandidates, consejoEscuelaCandidates, consejoFacultadCandidates])
 
     return (
         <div style = {needSpace}>
@@ -138,6 +170,22 @@ const VotingPage = () => {
             <h3>
                 Candidatos a Coordinacion FCE
                 <CandidateCardGrid candidates={coordFCECandidates} type="Coordinacion FCE" vote={voteCandidateCoordFCE}/>
+            </h3>
+            <h3>
+                Candidatos a Centro de Estudiantes
+                <CandidateCardGrid candidates={centroEstudiantesCandidates} type="Centro de Estudiantes" vote={voteCentroEstudiantes}/>
+            </h3>
+            <h3>
+                Candidatos a Consejero Academico
+                <CandidateCardGrid candidates={consejoAcademico} type="Consejero Academico" vote={voteCandidateConsejoAcademico}/>
+            </h3>
+            <h3>
+                Candidatos a Consejo de Facultad
+                <CandidateCardGrid candidates={consejoFacultadCandidates} type="Consejo de Facultad" vote={voteCandidateConsejoAcademico}/>
+            </h3>
+            <h3>
+                Candidatos a Consejo de Escuela
+                <CandidateCardGrid candidates={consejoEscuelaCandidates} type="Consejo Escuela" vote={voteCandidateConsejoEscuela}/>
             </h3>
         </div>
 

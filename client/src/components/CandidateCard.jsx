@@ -35,6 +35,7 @@ function CandidateCard(props) {
         show={modalShow}
         onHide={() => setModalShow(false)}
         candidateName = {props.nombre}
+        candidateCentroEstudiante = {props.nombrePlancha}
         candidateSiglas = {props.siglas}
         votingType={props.type}
         voteFunction={props.vote}

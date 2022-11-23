@@ -29,8 +29,9 @@ function RegisterFCEForm() {
         carrerasSeleccionadas.map(async (carrera) => {
             await registerPlanchaCentroEstudiantes(formValue[carrera], formValue["siglas" + " " + carrera], carrera)
             await db.collection("pairsCE").add({
-                escuela: formValue[carrera],
-                siglas: formValue["siglas"]
+                nombrePlancha: formValue[carrera],
+                escuela: carrera,
+                siglas: formValue["siglas" + " " + carrera]
             });
         })  
     }
