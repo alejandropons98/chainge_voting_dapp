@@ -86,13 +86,21 @@ const App = () => {
           <Route
             path="/audit"
             element={
-                <Layout>
-                  <Audit />
-                </Layout>
+              <Layout>
+                <Audit />
+              </Layout>
             }
           />
-          <Route path="/login" element={<LoginPage />} />
-          <Route path="/registeruser" element={<RegisterForm />} />
+            <Route path="/login" element={
+              <Layout>
+                <LoginPage />
+              </Layout>
+            } />
+            <Route path="/registeruser" element={
+              <Layout>
+                <RegisterForm />
+              </Layout>
+            } />
         </Routes>
       </AuthProvider>
     </BrowserRouter>

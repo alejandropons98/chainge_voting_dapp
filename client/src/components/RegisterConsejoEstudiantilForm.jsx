@@ -41,7 +41,6 @@ function RegisterConsejoEstudiantilForm() {
     }
 
     const handleChange = ({target}) => {
-        console.log(target.text)
         setFormValue((prev) => {
             return {...prev, [target.name] : target.value}
         })
@@ -52,7 +51,6 @@ function RegisterConsejoEstudiantilForm() {
         const carreraSelect=e.target.text
         newCarreras.add(carreraSelect)
         const carrerasLista=[...newCarreras]
-        console.log(newCarreras)
         setCarrerasSeleccionadas(carrerasLista)
     }
 
