@@ -10,7 +10,6 @@ function NavBar() {
 
   const { logout, user } = useAuth();
 
-  console.log(user, "lalalalalal");
   const handleLogout = async () => {
     try {
       await logout();
@@ -18,10 +17,7 @@ function NavBar() {
       console.error(error.message);
     }
   };
-  useEffect(() => {
-    if (!refresh) return;
-    setRefresh(false);
-  }, [refresh]);
+
   return (
     <>
       <Navbar collapseOnSelect expand="lg" bg="dark" variant="dark" fixed="top">

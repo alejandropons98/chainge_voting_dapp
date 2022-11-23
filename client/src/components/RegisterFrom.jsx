@@ -28,12 +28,11 @@ function RegisterForm() {
     setUser({ ...user, [name]: value });
   const handleSubmit = async (e) => {
     e.preventDefault();
-    console.log(user);
     try {
       await signup(user.email, user.password);
       navigate("/login");
     } catch (error) {
-      console.log("eeror");
+      console.log("error");
     }
   };
 
@@ -67,23 +66,11 @@ function RegisterForm() {
               type="password"
               name="password"
             />
-
-            <div className="d-flex justify-content-center mb-4">
-              <MDBCheckbox
-                name="flexCheck"
-                value=""
-                id="flexCheckDefault"
-                label="Subscribe to our newsletter"
-              />
-            </div>
-
             <MDBBtn type="submit" className="w-100 mb-4" size="md">
               sign up
             </MDBBtn>
 
             <div className="text-center">
-              <p>or sign up with:</p>
-
               <MDBBtn
                 tag="a"
                 color="danger"

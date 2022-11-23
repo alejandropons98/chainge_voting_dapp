@@ -23,7 +23,6 @@ function RegisterFCEForm() {
 
     const handleSubmit = async(e) => {
         e.preventDefault()
-        console.log(formValue)
         await registerCandidateJDFCE(formValue["agrupacion"], formValue["siglas"])
         if (formValue["checkbox"] ="on") await registerCandidateCCFCE(formValue["agrupacion"], formValue["siglas"])
         carrerasSeleccionadas.map(async (carrera) => {
@@ -41,7 +40,6 @@ function RegisterFCEForm() {
         const carreraSelect=e.target.text
         newCarreras.add(carreraSelect)
         const carrerasLista=[...newCarreras]
-        console.log(newCarreras)
         setCarrerasSeleccionadas(carrerasLista)
     }
 
