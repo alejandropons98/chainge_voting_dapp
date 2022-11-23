@@ -14,29 +14,37 @@ import * as icons from "react-bootstrap-icons";
 import { useState } from "react";
 import { useAuth } from "../context/authContext";
 import { useNavigate } from "react-router-dom";
-import { async } from "@firebase/util";
 
 function RegisterForm() {
   const [user, setUser] = useState({
     email: "",
     password: "",
   });
-  const { signup } = useAuth();
+  const { signup, loginWithGoogle } = useAuth();
 
+  const [error, setError] = useState("");
   const navigate = useNavigate();
-  const handleChange = ({ target: { value, name } }) =>
-    setUser({ ...user, [name]: value });
   const handleSubmit = async (e) => {
     e.preventDefault();
-    console.log(user);
+    setError("");
     try {
       await signup(user.email, user.password);
-      navigate("/login");
+      navigate("/");
     } catch (error) {
-      console.log("eeror");
+      setError(error.message);
     }
   };
+  const handleChange = ({ target: { value, name } }) =>
+    setUser({ ...user, [name]: value });
 
+  const handleGoogleSignin = async () => {
+    try {
+      await loginWithGoogle();
+      navigate("/");
+    } catch (error) {
+      setError(error.message);
+    }
+  };
   return (
     <form onSubmit={handleSubmit}>
       <MDBContainer fluid>
@@ -89,6 +97,7 @@ function RegisterForm() {
                 color="danger"
                 className="m-3"
                 style={{ color: "white" }}
+                onClick={handleGoogleSignin}
               >
                 <icons.Google />
               </MDBBtn>

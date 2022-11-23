@@ -44,10 +44,6 @@ function LoginForm() {
     } catch (error) {
       setError(error.message);
     }
-
-    const handleRegister = () => {
-      return navigate("/registeruser");
-    };
   };
   return (
     <form onSubmit={handleSubmit}>
