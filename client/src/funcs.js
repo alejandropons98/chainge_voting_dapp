@@ -3,7 +3,7 @@ import Web3 from 'web3';
 import { ElectionContract } from './abi/abi';
 
 const web3 = new Web3(Web3.givenProvider);
-const contractAddress = '0xcB73B008E4b389e6F0704C1a1D6FD93873F23F7A';
+const contractAddress = '0x742BB983DFAD1316FF195c866aA3787De3c05D2b';
 const electionContract = new web3.eth.Contract(ElectionContract, contractAddress);
 
 
@@ -70,75 +70,19 @@ export const getCoordinacionFCECandidates = async() => {
     return coordinacionFCECandidates;
 }
 
-export const getCentroEstudiantesCandidates = async() => {
-    const numeroCandidatosCentroEstudiantes = await electionContract.methods.getCandidatosCentroEstudiantesLength().call();
-    var candidatosCentroEstudiantesKeys = [];
-    for(let i = 0; i < numeroCandidatosCentroEstudiantes; i++){
-        candidatosCentroEstudiantesKeys.push(await electionContract.methods.candidatosCentroEstudiantesKeys(i).call());
-    }
-    const numeroEscuelas = await electionContract.methods.getEscuelasLength().call();
-    var escuelas = []
-    for(let i = 0; i < numeroEscuelas; i++){
-        escuelas.push(await electionContract.methods.escuelas(i).call());
-    }
-    var centroEstudiantesCandidates = {};
-    for(let i = 0; i < numeroEscuelas; i++){
-        for(let j = 0; j < numeroCandidatosCentroEstudiantes; j++){
-            centroEstudiantesCandidates[escuelas[i]].push(await electionContract.methods.getCandidatoCentroEstudiantes(candidatosCentroEstudiantesKeys[j], escuelas[i]).call());
-        }
-    }
-    return centroEstudiantesCandidates;
+export const getCentroEstudiantesCandidates = async(object) => {
+    var candidato = await electionContract.methods.getCandidatoCentroEstudiantes(object.siglas, object.escuela).call()
+    return candidato;
 }
 
-export const getConsejoEscuelaCandidates = async() => {
-    const numeroCandidatosConsejoEscuela = await electionContract.methods.getCandidatosConsejoEscuelaLength().call();
-    var candidatosConsejoEscuelaKeys = [];
-    for(let i = 0; i < numeroCandidatosConsejoEscuela; i++){
-        candidatosConsejoEscuelaKeys.push(await electionContract.methods.candidatosConsejoEscuelaKeys(i).call());
-    }
-    const numeroEscuelas = await electionContract.methods.getEscuelasLength().call();
-    var ConsejoEscuelaCandidates = {};
-    var escuelas = []
-    for(let i = 0; i < numeroEscuelas; i++){
-        escuelas.push(await electionContract.methods.escuelas(i).call());
-    }
-    console.log(numeroEscuelas)
-    for(let i = 0; i < numeroEscuelas; i++){
-        for(let j = 0; j < numeroCandidatosConsejoEscuela; j++){
-            if(j == 0){
-                ConsejoEscuelaCandidates[escuelas[i]] = [];
-                ConsejoEscuelaCandidates[escuelas[i]].push(await electionContract.methods.getCandidatoConsejoEscuela(candidatosConsejoEscuelaKeys[j], escuelas[i]).call());
-            }else{
-                ConsejoEscuelaCandidates[escuelas[i]].push(await electionContract.methods.getCandidatoConsejoEscuela(candidatosConsejoEscuelaKeys[j], escuelas[i]).call());
-            }
-        }
-    }
-    return ConsejoEscuelaCandidates;
+export const getConsejoEscuelaCandidates = async(object) => {
+    var candidato = await electionContract.methods.getCandidatoConsejoEscuela(object.siglas, object.escuela).call()
+    return candidato;
 }
 
-export const getConsejoFacultadCandidates = async() => {
-    const numeroCandidatosConsejoFacultad = await electionContract.methods.getCandidatosConsejoFacultadLength().call();
-    var candidatosConsejoFacultadKeys = [];
-    for(let i = 0; i < numeroCandidatosConsejoFacultad; i++){
-        candidatosConsejoFacultadKeys.push(await electionContract.methods.candidatosConsejoFacultadKeys(i).call());
-    }
-    const numeroEscuelas = await electionContract.methods.getEscuelasLength().call();
-    var escuelas = []
-    for(let i = 0; i < numeroEscuelas; i++){
-        escuelas.push(await electionContract.methods.escuelas(i).call());
-    }
-    var ConsejoFacultadCandidates = {};
-    for(let i = 0; i < numeroEscuelas; i++){
-        for(let j = 0; j < numeroCandidatosConsejoFacultad; j++){
-            if(j == 0){
-                ConsejoFacultadCandidates[escuelas[i]] = [];
-                ConsejoFacultadCandidates[escuelas[i]].push(await electionContract.methods.getCandidatoConsejoFacultad(candidatosConsejoFacultadKeys[j], escuelas[i]).call());
-            }else{
-                ConsejoFacultadCandidates[escuelas[i]].push(await electionContract.methods.getCandidatoConsejoFacultad(candidatosConsejoFacultadKeys[j], escuelas[i]).call());
-            }
-        }
-    }
-    return ConsejoFacultadCandidates;
+export const getConsejoFacultadCandidates = async(object) => {
+    var candidato = await electionContract.methods.getCandidatoConsejoFacultad(object.siglas, object.facultad).call()
+    return candidato;
 }
 
 //End Get Candidatos
