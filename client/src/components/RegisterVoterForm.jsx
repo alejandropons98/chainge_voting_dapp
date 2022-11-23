@@ -61,8 +61,8 @@ function RegisterVoterForm() {
       <h2>Registra un votante</h2>
       <br />
       <div>Cedula: </div>
-      <Form.Group key = "CedulaForm">
-        <Form.Control type="input" placeholder="Cedula" key = "CI"/>
+      <Form.Group key = "CorreoForm">
+        <Form.Control type="input" placeholder="Correo Unimet" key = "Correo"/>
       </Form.Group>
       <br />
       <>

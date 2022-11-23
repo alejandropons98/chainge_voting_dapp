@@ -1,9 +1,7 @@
-import Container from "react-bootstrap/Container";
-import Nav from "react-bootstrap/Nav";
-import Navbar from "react-bootstrap/Navbar";
-import { useState, useEffect } from "react";
-import { async } from "@firebase/util";
-import { useAuth } from "../context/authContext";
+import Container from 'react-bootstrap/Container';
+import Nav from 'react-bootstrap/Nav';
+import Navbar from 'react-bootstrap/Navbar';
+import { useState, useEffect } from "react"
 
 function NavBar() {
   const [refresh, setRefresh] = useState(true);
@@ -19,9 +17,10 @@ function NavBar() {
     }
   };
   useEffect(() => {
-    if (!refresh) return;
-    setRefresh(false);
-  }, [refresh]);
+    if(!refresh) return
+    setRefresh(false)
+  }, [refresh])
+
   return (
     <>
       <Navbar collapseOnSelect expand="lg" bg="dark" variant="dark" fixed="top">
