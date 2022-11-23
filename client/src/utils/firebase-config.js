@@ -13,6 +13,7 @@ import "firebase/compat/firestore";
 //   measurementId: "G-B92SPLEKSH",
 // };
 
+
 // //export const googleProvider = new firebase.auth.GoogleAuthProvider();
 // import firebase from "firebase";
 // import "firebase/firestore";
@@ -23,7 +24,7 @@ const firebaseConfig = {
   projectId: "chainge-15d3c",
   storageBucket: "chainge-15d3c.appspot.com",
   messagingSenderId: "466260256315",
-  appId: "1:466260256315:web:ba9337086acdb06f821e1e",
+  appId: "1:466260256315:web:ba9337086acdb06f821e1e"
 };
 
 const app = firebase.initializeApp(firebaseConfig);

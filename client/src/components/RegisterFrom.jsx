@@ -14,42 +14,28 @@ import * as icons from "react-bootstrap-icons";
 import { useState } from "react";
 import { useAuth } from "../context/authContext";
 import { useNavigate } from "react-router-dom";
-import { setDoc, doc } from "firebase/firestore";
-import { db } from "../utils/firebase-config";
+import { async } from "@firebase/util";
+
 function RegisterForm() {
   const [user, setUser] = useState({
     email: "",
     password: "",
   });
-  const { signup, loginWithGoogle } = useAuth();
-  const [error, setError] = useState("");
-  const navigate = useNavigate();
-  const handleSubmit = async (e) => {
-    e.preventDefault();
-    setError("");
-    try {
-      await signup(user.email, user.password, user.cedula);
-      //await setDoc(doc(db, "usuarios", user.email), {
-      // email: user.email,
-      // cedula: user.cedula,
-      //  });
+  const { signup } = useAuth();
 
-      navigate("/");
-    } catch (error) {
-      setError(error.message);
-    }
-  };
+  const navigate = useNavigate();
   const handleChange = ({ target: { value, name } }) =>
     setUser({ ...user, [name]: value });
-
-  const handleGoogleSignin = async () => {
+  const handleSubmit = async (e) => {
+    e.preventDefault();
     try {
-      await loginWithGoogle();
-      navigate("/");
+      await signup(user.email, user.password);
+      navigate("/login");
     } catch (error) {
-      setError(error.message);
+      console.log("error");
     }
   };
+
   return (
     <form onSubmit={handleSubmit}>
       <MDBContainer fluid>
@@ -64,14 +50,6 @@ function RegisterForm() {
           <MDBCardBody className="p-5 text-center">
             <h2 className="fw-bold mb-5">Sign up now</h2>
 
-            <MDBInput
-              onChange={handleChange}
-              wrapperClass="mb-4"
-              label="Cedula"
-              id="form1"
-              type="text"
-              name="cedula"
-            />
             <MDBInput
               onChange={handleChange}
               wrapperClass="mb-4"
@@ -98,7 +76,6 @@ function RegisterForm() {
                 color="danger"
                 className="m-3"
                 style={{ color: "white" }}
-                onClick={handleGoogleSignin}
               >
                 <icons.Google />
               </MDBBtn>
