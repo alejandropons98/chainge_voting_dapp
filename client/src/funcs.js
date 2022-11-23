@@ -3,7 +3,7 @@ import Web3 from 'web3';
 import { ElectionContract } from './abi/abi';
 
 const web3 = new Web3(Web3.givenProvider);
-const contractAddress = '0x67cB2aE166CA64Acd059b6399CC3BB01cC633acf';
+const contractAddress = '0x49F80be1eC4BF0548f640752d6A5f626906dcF40';
 const electionContract = new web3.eth.Contract(ElectionContract, contractAddress);
 
 export const load = async () => {
