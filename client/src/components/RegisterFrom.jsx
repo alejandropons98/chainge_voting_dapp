@@ -14,35 +14,49 @@ import * as icons from "react-bootstrap-icons";
 import { useState } from "react";
 import { useAuth } from "../context/authContext";
 import { useNavigate } from "react-router-dom";
-import { async } from "@firebase/util";
-
+import { setDoc, doc } from "firebase/firestore";
+import { db } from "../utils/firebase-config";
 function RegisterForm() {
   const [user, setUser] = useState({
     email: "",
     password: "",
   });
-  const { signup } = useAuth();
-
+  const { signup, loginWithGoogle } = useAuth();
+  const [error, setError] = useState("");
   const navigate = useNavigate();
-  const handleChange = ({ target: { value, name } }) =>
-    setUser({ ...user, [name]: value });
   const handleSubmit = async (e) => {
     e.preventDefault();
+    setError("");
     try {
-      await signup(user.email, user.password);
-      navigate("/login");
+      await signup(user.email, user.password, user.cedula);
+      //await setDoc(doc(db, "usuarios", user.email), {
+      // email: user.email,
+      // cedula: user.cedula,
+      //  });
+
+      navigate("/");
     } catch (error) {
-      console.log("error");
+      setError(error.message);
     }
   };
+  const handleChange = ({ target: { value, name } }) =>
+    setUser({ ...user, [name]: value });
 
+  const handleGoogleSignin = async () => {
+    try {
+      await loginWithGoogle();
+      navigate("/");
+    } catch (error) {
+      setError(error.message);
+    }
+  };
   return (
     <form onSubmit={handleSubmit}>
       <MDBContainer fluid>
         <MDBCard
-          className="mx-5 mb-5 p-5 shadow-5"
+          className=" shadow-5" //mx-5 mb-5 p-5
           style={{
-            marginTop: "100px",
+            // marginTop: "100px",
             background: "hsla(0, 0%, 100%, 0.8)",
             backdropFilter: "blur(30px)",
           }}
@@ -53,18 +67,29 @@ function RegisterForm() {
             <MDBInput
               onChange={handleChange}
               wrapperClass="mb-4"
-              label="Email"
+              // label="Cedula"
               id="form1"
-              type="email"
-              name="email"
+              type="text"
+              name="cedula"
+              placeholder="Cedula"
             />
             <MDBInput
               onChange={handleChange}
               wrapperClass="mb-4"
-              label="Password"
+              // label="Email"
+              id="form1"
+              type="email"
+              name="email"
+              placeholder="Email"
+            />
+            <MDBInput
+              onChange={handleChange}
+              wrapperClass="mb-4"
+              // label="Password"
               id="form1"
               type="password"
               name="password"
+              placeholder="Password"
             />
             <MDBBtn type="submit" className="w-100 mb-4" size="md">
               sign up
@@ -76,6 +101,7 @@ function RegisterForm() {
                 color="danger"
                 className="m-3"
                 style={{ color: "white" }}
+                onClick={handleGoogleSignin}
               >
                 <icons.Google />
               </MDBBtn>

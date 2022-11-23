@@ -4,7 +4,7 @@ import { Card } from "react-bootstrap";
 function AuditVotesCard() {
 
 return (
-    <Card style={{ width: '40rem' }} >
+    <Card style={{ width: '100%' }} >
         <Card.Body>
         <Card.Title>Votantes Registrados: "Numero"</Card.Title>
           <Card.Title>Votos Emitidos: "Numero"</Card.Title>

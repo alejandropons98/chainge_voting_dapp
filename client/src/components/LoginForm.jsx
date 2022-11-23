@@ -13,9 +13,10 @@ import {
 import * as icons from "react-bootstrap-icons";
 import { useState } from "react";
 import { useAuth } from "../context/authContext";
-import { useNavigate } from "react-router-dom";
+import { useNavigate, Link } from "react-router-dom";
 import { async } from "@firebase/util";
-
+import { getDoc, doc } from "firebase/firestore";
+import { db } from "../utils/firebase-config";
 function LoginForm() {
   const [user, setUser] = useState({
     email: "",
@@ -29,6 +30,9 @@ function LoginForm() {
     setError("");
     try {
       await login(user.email, user.password);
+      //const docRef = doc(db, "usuarios", user.email);
+      //const docSnap = await getDoc(docRef);
+      // console.log(docSnap.data());
       navigate("/");
     } catch (error) {
       setError(error.message);
@@ -46,12 +50,12 @@ function LoginForm() {
     }
   };
   return (
-    <form onSubmit={handleSubmit}>
+    <form onSubmit={handleSubmit} style={{width:'100%'}}>
       <MDBContainer fluid>
         <MDBCard
-          className="mx-5 mb-5 p-5 shadow-5"
+          className=" shadow-5" //mx-5 mb-5 p-5
           style={{
-            marginTop: "100px",
+            // marginTop: "100px",
             background: "hsla(0, 0%, 100%, 0.8)",
             backdropFilter: "blur(30px)",
           }}
@@ -62,31 +66,37 @@ function LoginForm() {
             <MDBInput
               onChange={handleChange}
               wrapperClass="mb-4"
-              label="Email"
+              // label="Email"
               id="form1"
               type="email"
               name="email"
+              placeholder="Email"
               //COLOCAR NAME PORQUE NO TIENE Y ASI FUNCIOINA EL HANDLECHANGE
             />
             <MDBInput
               onChange={handleChange}
               wrapperClass="mb-4"
-              label="Password"
+              // label="Password"
               id="form2"
               type="password"
               name="password"
+              placeholder="Password"
             />
 
             <MDBBtn type="submit" className="w-100 mb-4" size="md">
               Log In
             </MDBBtn>
 
-            <MDBBtn type="submit" className="w-100 mb-4" size="md" href="/registeruser">
+            {/* <MDBBtn
+              type="submit"
+              className="w-100 mb-4"
+              size="md"
+              href="/registeruser"
+            >
               Sign Up
-            </MDBBtn>
+            </MDBBtn> */}
 
             <div className="text-center">
-
               <MDBBtn
                 tag="a"
                 color="danger"
@@ -96,6 +106,15 @@ function LoginForm() {
               >
                 <icons.Google />
               </MDBBtn>
+              <p className="my-4 text-sm flex justify-between px-3">
+                Don't have an account?
+                <Link
+                  to="/registeruser"
+                  className="text-blue-700 hover:text-blue-900"
+                >
+                  Register
+                </Link>
+              </p>
             </div>
           </MDBCardBody>
         </MDBCard>

@@ -5,6 +5,7 @@ import { Navigate, useNavigate } from "react-router-dom";
 import { useState } from "react"
 import SplitButton from 'react-bootstrap/SplitButton';
 import Dropdown from 'react-bootstrap/Dropdown';
+import { db } from '../utils/firebase-config.js'
 
 function RegisterConsejoAcademicoForm() {
     
@@ -21,10 +22,15 @@ function RegisterConsejoAcademicoForm() {
         const id = e.target[0].value
         const nombreCA = e.target[1].value
         await registerConsejoAcademico(nombreCA, carreraSeleccionada, id)
+        await db.collection("pairsCA").add({
+            nombre: nombreCA,
+            escuela: carreraSeleccionada,
+            id: id
+        });
     }
 
     const mystyle = {
-        width: '50vw',
+        width: '100%',
         marginLeft: 'auto',
         marginRight: 'auto',
         border: '#0d6efd solid',

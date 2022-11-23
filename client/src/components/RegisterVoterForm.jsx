@@ -45,7 +45,7 @@ function RegisterVoterForm() {
   }
 
   const mystyle = {
-    width: '50vw',
+    width: '100%',
     marginLeft: 'auto',
     marginRight: 'auto',
     border: '#0d6efd solid',
