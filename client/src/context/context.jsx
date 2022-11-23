@@ -6,6 +6,8 @@ import {
 import { auth, db } from "../utils/firebase-config";
 import { doc, setDoc, getDoc } from "firebase/firestore";
 import { useState } from "react";
+import { createContext } from "react";
+const sessionContext = createContext();
 
 export default function SessionProvider(props) {
   const [session, setSession] = useState(null);

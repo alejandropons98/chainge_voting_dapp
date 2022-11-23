@@ -15,7 +15,8 @@ import { useState } from "react";
 import { useAuth } from "../context/authContext";
 import { useNavigate, Link } from "react-router-dom";
 import { async } from "@firebase/util";
-
+import { getDoc, doc } from "firebase/firestore";
+import { db } from "../utils/firebase-config";
 function LoginForm() {
   const [user, setUser] = useState({
     email: "",
@@ -29,6 +30,9 @@ function LoginForm() {
     setError("");
     try {
       await login(user.email, user.password);
+      const docRef = doc(db, "usuarios", user.email);
+      const docSnap = await getDoc(docRef);
+      console.log(docSnap.data());
       navigate("/");
     } catch (error) {
       setError(error.message);

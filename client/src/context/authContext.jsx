@@ -7,7 +7,7 @@ import {
   GoogleAuthProvider,
   signInWithPopup,
 } from "firebase/auth";
-import { auth } from "../utils/firebase-config";
+import { auth, db } from "../utils/firebase-config";
 
 import { useEffect } from "react";
 
