@@ -21,7 +21,7 @@ const VoteModal = (props) => {
                 <h4>Seguro que quiere votar por la {props.votingType} <strong>{props.candidateName}</strong>?</h4>
             </Modal.Body>
             <Modal.Footer>
-                <Button onClick={() => {props.voteFunction(props.candidateSiglas,"1234")}} id='botonModal'>Votar</Button>
+                <Button onClick={() => {props.voteFunction(props.candidateSiglas,"prueba@unimet.edu.ve")}} id='botonModal'>Votar</Button>
             </Modal.Footer>
         </Modal>
     )
