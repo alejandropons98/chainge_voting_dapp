@@ -10,13 +10,28 @@ const VoteModal = (props) => {
 
     const { isLoggedIn, user } = useAuth();
     const [cedulaDatum, setCedulaDatum] = useState("Error")
-    // const userCedula = isLoggedIn ? user.cedula : "1234"
+
     const handleClick = async () => {
         const docRef = doc(db, "usuarios", user.email);
         const docSnap = await getDoc(docRef);
         const userData = docSnap.data();
         setCedulaDatum(userData.cedula)
-        await props.voteFunction(props.candidateSiglas,cedulaDatum)
+        console.log(cedulaDatum)
+        switch (props.params){
+            case "Onlysiglas":
+                console.log(props.params)
+                props.voteFunction(props.candidateSiglas,cedulaDatum)
+                break
+            case "siglasEscuela":
+                props.voteFunction(props.candidateSiglas, props.escuela,cedulaDatum)
+                break
+            case "siglasFacultad":
+                props.voteFunction(props.candidateSiglas,props.facultad, cedulaDatum)
+                break
+            case "consejeroId":
+                props.voteFunction(props.candidateCAId, cedulaDatum)
+                break
+       }
     };
     return (
         <Modal
@@ -31,7 +46,7 @@ const VoteModal = (props) => {
                 </Modal.Title>
             </Modal.Header>
             <Modal.Body>
-                <h4>Seguro que quiere votar por la {props.votingType} <strong>{props.candidateName}</strong>?</h4>
+                <h4>Seguro que quiere votar por el {props.votingType} <strong>{props.candidateName}</strong>?</h4>
             </Modal.Body>
             <Modal.Footer>
                 <Button id='botonModal' onClick={handleClick}>Votar</Button>

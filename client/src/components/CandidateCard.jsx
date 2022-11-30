@@ -32,13 +32,17 @@ function CandidateCard(props) {
         {/* <Button variant="primary" onClick={() => {vote(props.id)}}>Votar</Button> */}
         <Button style={mystyle3} variant="primary" onClick={() => setModalShow(true)}>Votar</Button>
         <VoteModal
-        show={modalShow}
-        onHide={() => setModalShow(false)}
-        candidateName = {props.nombre}
-        candidateCentroEstudiante = {props.nombrePlancha}
-        candidateSiglas = {props.siglas}
-        votingType={props.type}
-        voteFunction={props.vote}
+          show={modalShow}
+          onHide={() => setModalShow(false)}
+          candidateName = {props.nombre}
+          candidateCentroEstudiante = {props.nombrePlancha}
+          candidateSiglas = {props.siglas}
+          votingType={props.type}
+          voteFunction={props.vote}
+          candidateCAId = {props.id}
+          facultad = {props.facultad}
+          escuela = {props.escuela}
+          params = {props.params}
       />
       </Card.Body>
     </Card>

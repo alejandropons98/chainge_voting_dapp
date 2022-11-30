@@ -68,7 +68,6 @@ const VotingPage = () => {
               pairsArray.push(pair);
             });
             setPairsCF(pairsArray);
-            console.log(pairsArray)
             setConsejoFacultadCandidates(pairsArray)
           })
           .catch((error) => {
@@ -87,32 +86,12 @@ const VotingPage = () => {
               pairsArray.push(pair);
             });
             setPairsCEs(pairsArray);
-            console.log(pairsArray)
             setConsejoEscuelaCandidates(pairsArray)
           })
           .catch((error) => {
             console.log(error);
           });
       };
-
-    const fetchPairsCA = () => {
-        const pairs = db.collection("pairsCA");
-        pairs
-          .get()
-          .then((data) => {
-            const pairsArray = [];
-            data.docs.forEach((element) => {
-              const pair = { ...element.data() };
-              pairsArray.push(pair);
-            });
-            setPairsCEs(pairsArray);
-            setConsejoAcademico(pairsArray)
-          })
-          .catch((error) => {
-            console.log(error);
-          });
-      };
-
 
     const fetchCentroEstudiantesCandidates = async() => {
         // No se me actualizaba el useState y mande la info de los candidatos por el fetch de arriba
@@ -139,14 +118,18 @@ const VotingPage = () => {
 
     const fetchCandidates = async () => {
         const newFCECandidates = (await getJuntaFCECandidates()).map((list,i) => (
-            {"nombre": list[0], "siglas":list[1]}
+          {"nombre": list[0], "siglas":list[1]}
         ));
         setJuntaFCECandidates(juntaFCECandidates.concat(newFCECandidates))
 
         const newCoordFCE = (await getCoordinacionFCECandidates()).map((list,i) => (
-            {"nombre": list[0], "siglas":list[1]}
+          {"nombre": list[0], "siglas":list[1]}
         ));
         setCoordFCECandidates(newCoordFCE)
+        const newConsejoAcademico = (await getConsejoAcademicoCandidates()).map((list,i) => (
+          {"nombre": list[0], "id":list[1], "escuela":list[2] }
+        ));
+        setConsejoAcademico(newConsejoAcademico)
     }
 
 
@@ -155,37 +138,37 @@ const VotingPage = () => {
         setRefresh(false)
         fetchPairsCE()
         fetchPairsCF()
-        fetchPairsCA()
+        // fetchPairsCA()
         fetchPairsCEs()
         // fetchCentroEstudiantesCandidates()
         fetchCandidates()
-    }, [refresh,juntaFCECandidates, coordFCECandidates, centroEstudiantesCandidates, consejoEscuelaCandidates, consejoFacultadCandidates])
+    }, [refresh,juntaFCECandidates, coordFCECandidates, centroEstudiantesCandidates, consejoEscuelaCandidates, consejoFacultadCandidates, consejoAcademico])
 
     return (
         <div style = {needSpace}>
             <h3 style={{color: "#0d6efd"}}>
                 Candidatos a Junta Directiva FCE
-                <CandidateCardGrid candidates={juntaFCECandidates} type="Junta Directiva" vote={voteCandidateJDFCE}/>
+                <CandidateCardGrid candidates={juntaFCECandidates} type="Junta Directiva" vote={voteCandidateJDFCE} params="Onlysiglas"/>
             </h3>
             <h3 style={{color: "#0d6efd"}}>
                 Candidatos a Coordinacion FCE
-                <CandidateCardGrid candidates={coordFCECandidates} type="Coordinacion FCE" vote={voteCandidateCoordFCE}/>
+                <CandidateCardGrid candidates={coordFCECandidates} type="Coordinacion FCE" vote={voteCandidateCoordFCE} params="Onlysiglas"/>
             </h3>
             <h3 style={{color: "#0d6efd"}}>
                 Candidatos a Centro de Estudiantes
-                <CandidateCardGrid candidates={centroEstudiantesCandidates} type="Centro de Estudiantes" vote={voteCentroEstudiantes}/>
+                <CandidateCardGrid candidates={centroEstudiantesCandidates} type="Centro de Estudiantes" vote={voteCentroEstudiantes} params="siglasEscuela"/>
             </h3>
             <h3 style={{color: "#0d6efd"}}>
                 Candidatos a Consejero Academico
-                <CandidateCardGrid candidates={consejoAcademico} type="Consejero Academico" vote={voteCandidateConsejoAcademico}/>
+                <CandidateCardGrid candidates={consejoAcademico} type="Consejero Academico" vote={voteCandidateConsejoAcademico} params="consejeroId"/>
             </h3>
             <h3 style={{color: "#0d6efd"}}>
                 Candidatos a Consejo de Facultad
-                <CandidateCardGrid candidates={consejoFacultadCandidates} type="Consejo de Facultad" vote={voteCandidateConsejoAcademico}/>
+                <CandidateCardGrid candidates={consejoFacultadCandidates} type="Consejo de Facultad" vote={voteCandidateConsejoFacultad} params="siglasFacultad" />
             </h3>
             <h3 style={{color: "#0d6efd"}}>
                 Candidatos a Consejo de Escuela
-                <CandidateCardGrid candidates={consejoEscuelaCandidates} type="Consejo Escuela" vote={voteCandidateConsejoEscuela}/>
+                <CandidateCardGrid candidates={consejoEscuelaCandidates} type="Consejo Escuela" vote={voteCandidateConsejoEscuela} params="siglasEscuela" />
             </h3>
         </div>
 

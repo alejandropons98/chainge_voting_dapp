@@ -22,11 +22,11 @@ function RegisterConsejoAcademicoForm() {
         const id = e.target[0].value
         const nombreCA = e.target[1].value
         await registerConsejoAcademico(nombreCA, carreraSeleccionada, id)
-        await db.collection("pairsCA").add({
-            nombre: nombreCA,
-            escuela: carreraSeleccionada,
-            id: id
-        });
+        // await db.collection("pairsCA").add({
+        //     nombre: nombreCA,
+        //     escuela: carreraSeleccionada,
+        //     id: id
+        // });
     }
 
     const mystyle = {

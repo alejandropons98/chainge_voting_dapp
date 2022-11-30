@@ -36,7 +36,6 @@ function RegisterConsejoEstudiantilForm() {
         })
         //Aqui hay un error pero no lo veo 
         carrerasSeleccionadas.map(async (carrera) => {
-            console.log(carrera)
             await registerConsejoEscuela(formValue[carrera], formValue["siglas"+" "+carrera], carrera)
             await db.collection("pairsCEs").add({
                 nombre: formValue[carrera],
@@ -117,7 +116,7 @@ function RegisterConsejoEstudiantilForm() {
                 {carrerasSeleccionadas.map((carrera,i) => (
                     <Form.Group className = "carreras" >
                         <br />
-                        <Form.Control type = "input" name= "{carrera}" placeholder = {carrera} key= {"form" + carrera} onChange={handleChange}></Form.Control>
+                        <Form.Control type = "input" name= {carrera} placeholder = {carrera} key= {"form" + carrera} onChange={handleChange}></Form.Control>
                         <br />
                         <Form.Control type = "input" name= {"siglas"+" "+carrera} placeholder = "Siglas" key= {"formSiglas" + carrera} onChange={handleChange}></Form.Control>
                     </Form.Group>
