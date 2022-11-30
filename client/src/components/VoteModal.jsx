@@ -9,27 +9,23 @@ import { useAuth } from "../context/authContext";
 const VoteModal = (props) => {
 
     const { isLoggedIn, user } = useAuth();
-    const [cedulaDatum, setCedulaDatum] = useState("Error")
 
     const handleClick = async () => {
-        const docRef = doc(db, "usuarios", user.email);
+        const docRef = doc(db, "usuarios", user.correo);
         const docSnap = await getDoc(docRef);
         const userData = docSnap.data();
-        setCedulaDatum(userData.cedula)
-        console.log(cedulaDatum)
         switch (props.params){
             case "Onlysiglas":
-                console.log(props.params)
-                props.voteFunction(props.candidateSiglas,cedulaDatum)
+                props.voteFunction(props.candidateSiglas,userData.cedula)
                 break
             case "siglasEscuela":
-                props.voteFunction(props.candidateSiglas, props.escuela,cedulaDatum)
+                props.voteFunction(props.candidateSiglas, props.escuela,userData.cedula)
                 break
             case "siglasFacultad":
-                props.voteFunction(props.candidateSiglas,props.facultad, cedulaDatum)
+                props.voteFunction(props.candidateSiglas,props.facultad, userData.cedula)
                 break
             case "consejeroId":
-                props.voteFunction(props.candidateCAId, cedulaDatum)
+                props.voteFunction(props.candidateCAId, userData.cedula)
                 break
        }
     };

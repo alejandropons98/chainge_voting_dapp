@@ -30224,12 +30224,12 @@
     "5777": {
       "events": {},
       "links": {},
-      "address": "0x49F80be1eC4BF0548f640752d6A5f626906dcF40",
-      "transactionHash": "0x34c176e135e920652c91b6c3b20423de2e9aad6ad0d768d83410f84b5794193d"
+      "address": "0xBDf7f827F4D1F1d4921a1fae823b33286367a343",
+      "transactionHash": "0x7f66c1c072c0f047d7a13c7869232fc80cbcf94caba5bc5761431f94b1e6b8a8"
     }
   },
   "schemaVersion": "3.4.10",
-  "updatedAt": "2022-11-23T13:50:59.048Z",
+  "updatedAt": "2022-11-30T16:50:50.902Z",
   "networkType": "ethereum",
   "devdoc": {
     "kind": "dev",
