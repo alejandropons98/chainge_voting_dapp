@@ -5,11 +5,12 @@ import NavDropdown from 'react-bootstrap/NavDropdown';
 import { useState, useEffect } from "react";
 import { async } from "@firebase/util";
 import { useAuth } from "../context/authContext";
+import { useNavigate, Link } from "react-router-dom";
 
 function NavBar() {
   const [refresh, setRefresh] = useState(true);
-
-  const { logout, user } = useAuth();
+  const { logout, user, isLoggedIn, isAdmin } = useAuth();
+  const navigate = useNavigate();
 
   const handleLogout = async () => {
     try {
@@ -23,31 +24,29 @@ function NavBar() {
     <>
       <Navbar collapseOnSelect expand="lg" bg="dark" variant="dark" fixed="top">
         <Container>
-          <Navbar.Brand href="/">Chainge</Navbar.Brand>
+          <Navbar.Brand onClick={(e) => navigate("/")}>Chainge</Navbar.Brand>
           <Navbar.Toggle aria-controls="responsive-navbar-nav" />
           <Navbar.Collapse id="responsive-navbar-nav">
             <Nav className="me-auto" variant="tabs">
-
-            <NavDropdown title="Registros" id="navbarScrollingDropdown"> 
-                <NavDropdown.Item href="/registerConsejoAcademico">
-                  Registro Consejo Academico
-                </NavDropdown.Item>
-                <NavDropdown.Item href="/registerCentroEstudiantes">
-                  Registrar Centro de Estudiantes
-                </NavDropdown.Item>
-                <NavDropdown.Item href="/registerConsejoEstudiantil">
-                  Registrar Consejos de Facultades y Escuelas
-                </NavDropdown.Item>
-                <NavDropdown.Item href="/registervoter">Registrar Votante</NavDropdown.Item>
-            </NavDropdown>   
-              <Nav.Link href="/voters">Votantes Activos</Nav.Link>
-              <Nav.Link href="/vote">Votar</Nav.Link>
-              <Nav.Link href="/audit">Auditoria</Nav.Link>
+            {isAdmin ?
+              <>  
+              <NavDropdown title="Registros" id="navbarScrollingDropdown"> 
+                <NavDropdown.Item onClick={(e) => navigate("/registerConsejoAcademico")}>Registro Consejo Academico</NavDropdown.Item>
+                <NavDropdown.Item onClick={(e) => navigate("/registerCentroEstudiantes")}>Registrar Centro de Estudiantes</NavDropdown.Item>
+                <NavDropdown.Item onClick={(e) => navigate("/registerConsejoEstudiantil")}>Registrar Consejos de Facultades y Escuelas</NavDropdown.Item>
+                <NavDropdown.Item onClick={(e) => navigate("/registervoter")}>Registrar Votante</NavDropdown.Item>
+                <NavDropdown.Item onClick={(e) => navigate("/audit")}>Auditoria</NavDropdown.Item>
+                <NavDropdown.Item onClick={(e) => navigate("/vote")}>Votar</NavDropdown.Item> 
+              </NavDropdown>
+              </>
+               : 
+              <Nav.Link onClick={(e) => navigate("/vote")}>Votar</Nav.Link>
+               } 
             </Nav>
             <Nav>
-              <Nav.Link onClick={handleLogout} href="/login">
-                Log out
-              </Nav.Link>
+                {isLoggedIn ? <Nav.Link onClick={handleLogout} href="/login">
+                  Log out
+                </Nav.Link> : <Nav.Link href="/login">Login</Nav.Link>}
             </Nav>
           </Navbar.Collapse>
         </Container>

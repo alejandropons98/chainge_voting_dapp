@@ -9,6 +9,9 @@ function CandidateCardGrid(props) {
   const type = props.type
   const vote = props.vote
   const params = props.params
+  const cedulaUser = props.cedulaUser
+  const facultadesUser = props.facultadesUser
+  const carrerasUser = props.carrerasUser
   const mystyle = {
     display: 'flex',
     flexDirection: 'row',
@@ -37,6 +40,9 @@ function CandidateCardGrid(props) {
             escuela = {candidate.escuela}
             facultad = {candidate.facultad}
             params = {params}
+            carrerasUser={carrerasUser}
+            cedulaUser={cedulaUser}
+            facultadesUser={facultadesUser}
           />
         </Col>
       ))}

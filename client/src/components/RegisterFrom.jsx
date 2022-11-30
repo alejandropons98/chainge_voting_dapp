@@ -28,12 +28,11 @@ function RegisterForm() {
     e.preventDefault();
     setError("");
     try {
-      await signup(user.email, user.password, user.cedula);
+      await signup(user.email, user.password, user.cedula, "usuario");
       //await setDoc(doc(db, "usuarios", user.email), {
       // email: user.email,
       // cedula: user.cedula,
       //  });
-
       navigate("/");
     } catch (error) {
       setError(error.message);

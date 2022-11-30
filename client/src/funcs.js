@@ -3,25 +3,25 @@ import Web3 from 'web3';
 import { ElectionContract } from './abi/abi';
 
 const web3 = new Web3(Web3.givenProvider);
-const contractAddress = '0x49F80be1eC4BF0548f640752d6A5f626906dcF40';
+const contractAddress = '0xBDf7f827F4D1F1d4921a1fae823b33286367a343';
 const electionContract = new web3.eth.Contract(ElectionContract, contractAddress);
 
 export const load = async () => {
     await loadWeb3();
     return;
-
 };
-
 export const vote = async(id) => {
     const accounts = await window.ethereum.enable();
     const account = accounts[0];
     await electionContract.methods.vote(id).send({from: account}).then(info => 
         console.log(info));
-
+}
+export const getVoterInfo = async(id) => {
+    var candidato = await electionContract.methods.getVotanteInfo(id).call();
+    return candidato;
 }
 
 // Get Candidatos
-
 export const getConsejoAcademicoCandidates = async() => {
     const numeroCandidatosConsejoAcademico = await electionContract.methods.getCandidatosConsejoAcademicoLength().call();
     var candidatosConsejoAcademicoKeys = [];
@@ -158,6 +158,9 @@ export const voteCandidateCoordFCE = async(siglas,voterId) => {
     const account = accounts[0]
     await electionContract.methods.voteCandidatoCoordinacionFCE(siglas,voterId).send({from: account}).then(info => 
         console.log(info));
+        // await db.collection("transaccionesBD").add({
+
+        // });
 }
 export const voteCentroEstudiantes = async(siglas,escuela,voterId) => {
     const accounts = await window.ethereum.enable()

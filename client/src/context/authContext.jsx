@@ -22,9 +22,12 @@ export const useAuth = () => {
 
 function AuthProvider({ children }) {
   const [user, setUser] = useState(null);
-  const [loading, setLoading] = useState(true);
+  const [loading, setLoading] = useState(false);
 
-  const signup = async (email, password, cedula) => {
+  const signup = async (email, password, cedula, rol) => {
+
+    setLoading(true);
+
     try {
       const infoUsuario = await createUserWithEmailAndPassword(
         auth,
@@ -36,6 +39,7 @@ function AuthProvider({ children }) {
         name,
         correo: email,
         cedula,
+        rol,
         //rol
       });
 
@@ -48,13 +52,19 @@ function AuthProvider({ children }) {
         //correo: "app@gmail.com",
         //rol,
         cedula,
+        rol,
       });
     } catch (e) {
       console.error("Error adding document: ", e);
     }
+
+    setLoading(true);
   };
 
   const login = async (email, password) => {
+
+    setLoading(true);
+
     try {
       const infoUsuario = await signInWithEmailAndPassword(
         auth,
@@ -64,16 +74,19 @@ function AuthProvider({ children }) {
       const docRef = doc(db, "usuarios", infoUsuario.user.email);
       const docSnap = await getDoc(docRef);
       const userData = docSnap.data();
-      console.log(docSnap.data());
 
       setUser({
         id: infoUsuario.user.uid,
         correo: email,
-        name: userData.cedula,
+        cedula: userData.cedula,
+        rol: userData.rol,
       });
     } catch (e) {
       console.error("Error: ", e);
     }
+
+    setLoading(false);
+
   };
 
   const loginWithGoogle = () => {
@@ -84,12 +97,23 @@ function AuthProvider({ children }) {
   const logout = () => signOut(auth);
 
   useEffect(() => {
-    const unsubuscribe = onAuthStateChanged(auth, (currentUser) => {
-      setUser(currentUser);
+    const unsubuscribe = onAuthStateChanged(auth, async (currentUser) => {
+      const docRef = doc(db, "usuarios", currentUser.email);
+      const docSnap = await getDoc(docRef);
+      const userData = docSnap.data();
+      setUser({
+        correo: email,
+        cedula: userData.cedula,
+        rol: userData.rol,
+      });
       setLoading(false);
     });
     return () => unsubuscribe();
   }, []);
+
+  const isLoggedIn = user !== null;
+
+  const isAdmin = isLoggedIn && user.rol === "admin";
 
   return (
     <authContext.Provider
@@ -100,6 +124,8 @@ function AuthProvider({ children }) {
         logout,
         loading,
         loginWithGoogle,
+        isLoggedIn,
+        isAdmin,
       }}
     >
       {children}
